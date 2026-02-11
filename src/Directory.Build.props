@@ -5,8 +5,8 @@
     <PackageTags>sdk;api;http;library</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright 2026 Believe</Copyright>
-    <PackageProjectUrl>https://www.github.com/stainless-sdks/believe-csharp</PackageProjectUrl>
-    <RepositoryUrl>https://www.github.com/stainless-sdks/believe-csharp</RepositoryUrl>
+    <PackageProjectUrl>https://www.github.com/cjavdev/believe-csharp</PackageProjectUrl>
+    <RepositoryUrl>https://www.github.com/cjavdev/believe-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <!-- Documentation-->
