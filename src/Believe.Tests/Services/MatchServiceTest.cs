@@ -77,7 +77,7 @@ public class MatchServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Mock server doesn't support callbacks yet")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task StreamLive_Works()
     {
         await this.client.Matches.StreamLive(new(), TestContext.Current.CancellationToken);
