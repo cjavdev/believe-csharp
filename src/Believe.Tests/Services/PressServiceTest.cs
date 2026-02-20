@@ -4,7 +4,7 @@ namespace Believe.Tests.Services;
 
 public class PressServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Simulate_Works()
     {
         var response = await this.client.Press.Simulate(

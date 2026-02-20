@@ -5,7 +5,7 @@ namespace Believe.Tests.Services;
 
 public class WebhookServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var webhook = await this.client.Webhooks.Create(
@@ -15,7 +15,7 @@ public class WebhookServiceTest : TestBase
         webhook.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var registeredWebhook = await this.client.Webhooks.Retrieve(
@@ -26,7 +26,7 @@ public class WebhookServiceTest : TestBase
         registeredWebhook.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var registeredWebhooks = await this.client.Webhooks.List(
@@ -39,7 +39,7 @@ public class WebhookServiceTest : TestBase
         }
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Webhooks.Delete(
@@ -49,7 +49,7 @@ public class WebhookServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task TriggerEvent_Works()
     {
         var response = await this.client.Webhooks.TriggerEvent(

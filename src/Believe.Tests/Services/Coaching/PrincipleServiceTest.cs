@@ -4,7 +4,7 @@ namespace Believe.Tests.Services.Coaching;
 
 public class PrincipleServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var coachingPrinciple = await this.client.Coaching.Principles.Retrieve(
@@ -15,7 +15,7 @@ public class PrincipleServiceTest : TestBase
         coachingPrinciple.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Coaching.Principles.List(
@@ -25,7 +25,7 @@ public class PrincipleServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetRandom_Works()
     {
         var coachingPrinciple = await this.client.Coaching.Principles.GetRandom(

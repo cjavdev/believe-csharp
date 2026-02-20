@@ -5,7 +5,7 @@ namespace Believe.Tests.Services;
 
 public class ConflictServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Resolve_Works()
     {
         var response = await this.client.Conflicts.Resolve(
