@@ -5,7 +5,7 @@ namespace Believe.Tests.Services;
 
 public class TeamServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var team = await this.client.Teams.Create(
@@ -28,7 +28,7 @@ public class TeamServiceTest : TestBase
         team.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var team = await this.client.Teams.Retrieve(
@@ -39,7 +39,7 @@ public class TeamServiceTest : TestBase
         team.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var team = await this.client.Teams.Update(
@@ -50,26 +50,26 @@ public class TeamServiceTest : TestBase
         team.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Teams.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Teams.Delete("team_id", new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetCulture_Works()
     {
         await this.client.Teams.GetCulture("team_id", new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetRivals_Works()
     {
         var teams = await this.client.Teams.GetRivals(
@@ -83,7 +83,7 @@ public class TeamServiceTest : TestBase
         }
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListLogos_Works()
     {
         var fileUploads = await this.client.Teams.ListLogos(

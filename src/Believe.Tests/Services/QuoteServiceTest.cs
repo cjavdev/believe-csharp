@@ -5,7 +5,7 @@ namespace Believe.Tests.Services;
 
 public class QuoteServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var quote = await this.client.Quotes.Create(
@@ -22,7 +22,7 @@ public class QuoteServiceTest : TestBase
         quote.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var quote = await this.client.Quotes.Retrieve(
@@ -33,7 +33,7 @@ public class QuoteServiceTest : TestBase
         quote.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var quote = await this.client.Quotes.Update(
@@ -44,20 +44,20 @@ public class QuoteServiceTest : TestBase
         quote.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Quotes.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Quotes.Delete("quote_id", new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetRandom_Works()
     {
         var quote = await this.client.Quotes.GetRandom(
@@ -67,7 +67,7 @@ public class QuoteServiceTest : TestBase
         quote.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListByCharacter_Works()
     {
         var page = await this.client.Quotes.ListByCharacter(
@@ -78,7 +78,7 @@ public class QuoteServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListByTheme_Works()
     {
         var page = await this.client.Quotes.ListByTheme(

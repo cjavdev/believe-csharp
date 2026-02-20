@@ -5,7 +5,7 @@ namespace Believe.Tests.Services;
 
 public class TeamMemberServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var teamMember = await this.client.TeamMembers.Create(
@@ -29,7 +29,7 @@ public class TeamMemberServiceTest : TestBase
         teamMember.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var teamMember = await this.client.TeamMembers.Retrieve(
@@ -40,7 +40,7 @@ public class TeamMemberServiceTest : TestBase
         teamMember.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var teamMember = await this.client.TeamMembers.Update(
@@ -63,14 +63,14 @@ public class TeamMemberServiceTest : TestBase
         teamMember.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.TeamMembers.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.TeamMembers.Delete(
@@ -80,7 +80,7 @@ public class TeamMemberServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListCoaches_Works()
     {
         var page = await this.client.TeamMembers.ListCoaches(
@@ -90,7 +90,7 @@ public class TeamMemberServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListPlayers_Works()
     {
         var page = await this.client.TeamMembers.ListPlayers(
@@ -100,7 +100,7 @@ public class TeamMemberServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListStaff_Works()
     {
         var page = await this.client.TeamMembers.ListStaff(

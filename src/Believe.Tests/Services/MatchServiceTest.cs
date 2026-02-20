@@ -6,7 +6,7 @@ namespace Believe.Tests.Services;
 
 public class MatchServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var match = await this.client.Matches.Create(
@@ -22,7 +22,7 @@ public class MatchServiceTest : TestBase
         match.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var match = await this.client.Matches.Retrieve(
@@ -33,7 +33,7 @@ public class MatchServiceTest : TestBase
         match.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var match = await this.client.Matches.Update(
@@ -44,20 +44,20 @@ public class MatchServiceTest : TestBase
         match.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Matches.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Matches.Delete("match_id", new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetLesson_Works()
     {
         await this.client.Matches.GetLesson(
@@ -67,7 +67,7 @@ public class MatchServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetTurningPoints_Works()
     {
         await this.client.Matches.GetTurningPoints(
@@ -77,7 +77,7 @@ public class MatchServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism doesn't support callbacks yet")]
+    [Fact(Skip = "Mock server doesn't support callbacks yet")]
     public async Task StreamLive_Works()
     {
         await this.client.Matches.StreamLive(new(), TestContext.Current.CancellationToken);
