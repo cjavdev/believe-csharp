@@ -153,36 +153,6 @@ public sealed class EpisodeService : IEpisodeService
 
         return this.GetWisdom(parameters with { EpisodeID = episodeID }, cancellationToken);
     }
-
-    /// <inheritdoc/>
-    public async Task<EpisodeListBySeasonPage> ListBySeason(
-        EpisodeListBySeasonParams parameters,
-        CancellationToken cancellationToken = default
-    )
-    {
-        using var response = await this
-            .WithRawResponse.ListBySeason(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public Task<EpisodeListBySeasonPage> ListBySeason(
-        long seasonNumber,
-        EpisodeListBySeasonParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        parameters ??= new();
-
-        return this.ListBySeason(
-            parameters with
-            {
-                SeasonNumber = seasonNumber,
-            },
-            cancellationToken
-        );
-    }
 }
 
 /// <inheritdoc/>
@@ -412,56 +382,5 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
         parameters ??= new();
 
         return this.GetWisdom(parameters with { EpisodeID = episodeID }, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task<HttpResponse<EpisodeListBySeasonPage>> ListBySeason(
-        EpisodeListBySeasonParams parameters,
-        CancellationToken cancellationToken = default
-    )
-    {
-        if (parameters.SeasonNumber == null)
-        {
-            throw new BelieveInvalidDataException("'parameters.SeasonNumber' cannot be null");
-        }
-
-        HttpRequest<EpisodeListBySeasonParams> request = new()
-        {
-            Method = HttpMethod.Get,
-            Params = parameters,
-        };
-        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<PaginatedResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new EpisodeListBySeasonPage(this, parameters, page);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
-    public Task<HttpResponse<EpisodeListBySeasonPage>> ListBySeason(
-        long seasonNumber,
-        EpisodeListBySeasonParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        parameters ??= new();
-
-        return this.ListBySeason(
-            parameters with
-            {
-                SeasonNumber = seasonNumber,
-            },
-            cancellationToken
-        );
     }
 }

@@ -100,21 +100,6 @@ public interface IEpisodeService
         EpisodeGetWisdomParams? parameters = null,
         CancellationToken cancellationToken = default
     );
-
-    /// <summary>
-    /// Get a paginated list of episodes from a specific season.
-    /// </summary>
-    Task<EpisodeListBySeasonPage> ListBySeason(
-        EpisodeListBySeasonParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListBySeason(EpisodeListBySeasonParams, CancellationToken)"/>
-    Task<EpisodeListBySeasonPage> ListBySeason(
-        long seasonNumber,
-        EpisodeListBySeasonParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
 }
 
 /// <summary>
@@ -209,22 +194,6 @@ public interface IEpisodeServiceWithRawResponse
     Task<HttpResponse<Dictionary<string, JsonElement>>> GetWisdom(
         string episodeID,
         EpisodeGetWisdomParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Returns a raw HTTP response for `get /episodes/seasons/{season_number}`, but is otherwise the
-    /// same as <see cref="IEpisodeService.ListBySeason(EpisodeListBySeasonParams, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<EpisodeListBySeasonPage>> ListBySeason(
-        EpisodeListBySeasonParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListBySeason(EpisodeListBySeasonParams, CancellationToken)"/>
-    Task<HttpResponse<EpisodeListBySeasonPage>> ListBySeason(
-        long seasonNumber,
-        EpisodeListBySeasonParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
