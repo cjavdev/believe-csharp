@@ -52,6 +52,18 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, TeamMemberListParamsMemberType>(),
             new ApiEnumConverter<string, Webhooks::RegisteredWebhookEventType>(),
             new ApiEnumConverter<string, Webhooks::WebhookTriggerEventResponseEventType>(),
+            new ApiEnumConverter<string, Webhooks::MatchCompletedWebhookEventDataMatchType>(),
+            new ApiEnumConverter<string, Webhooks::MatchCompletedWebhookEventDataResult>(),
+            new ApiEnumConverter<string, Webhooks::MatchCompletedWebhookEventEventType>(),
+            new ApiEnumConverter<
+                string,
+                Webhooks::TeamMemberTransferredWebhookEventDataMemberType
+            >(),
+            new ApiEnumConverter<
+                string,
+                Webhooks::TeamMemberTransferredWebhookEventDataTransferType
+            >(),
+            new ApiEnumConverter<string, Webhooks::TeamMemberTransferredWebhookEventEventType>(),
             new ApiEnumConverter<string, Webhooks::EventType>(),
             new ApiEnumConverter<string, Webhooks::WebhookTriggerEventParamsEventType>(),
             new ApiEnumConverter<string, Webhooks::MatchType>(),

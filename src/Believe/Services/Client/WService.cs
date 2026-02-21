@@ -1,9 +1,5 @@
 using System;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using Believe.Core;
-using Believe.Models.Client.Ws;
 
 namespace Believe.Services.Client;
 
@@ -32,12 +28,6 @@ public sealed class WService : IWService
 
         _withRawResponse = new(() => new WServiceWithRawResponse(client.WithRawResponse));
     }
-
-    /// <inheritdoc/>
-    public Task Test(WTestParams? parameters = null, CancellationToken cancellationToken = default)
-    {
-        return this.WithRawResponse.Test(parameters, cancellationToken);
-    }
 }
 
 /// <inheritdoc/>
@@ -54,17 +44,5 @@ public sealed class WServiceWithRawResponse : IWServiceWithRawResponse
     public WServiceWithRawResponse(IBelieveClientWithRawResponse client)
     {
         _client = client;
-    }
-
-    /// <inheritdoc/>
-    public Task<HttpResponse> Test(
-        WTestParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        parameters ??= new();
-
-        HttpRequest<WTestParams> request = new() { Method = HttpMethod.Get, Params = parameters };
-        return this._client.Execute(request, cancellationToken);
     }
 }

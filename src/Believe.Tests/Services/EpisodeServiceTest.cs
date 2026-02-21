@@ -4,7 +4,7 @@ namespace Believe.Tests.Services;
 
 public class EpisodeServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var episode = await this.client.Episodes.Create(
@@ -28,7 +28,7 @@ public class EpisodeServiceTest : TestBase
         episode.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var episode = await this.client.Episodes.Retrieve(
@@ -39,7 +39,7 @@ public class EpisodeServiceTest : TestBase
         episode.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var episode = await this.client.Episodes.Update(
@@ -50,14 +50,14 @@ public class EpisodeServiceTest : TestBase
         episode.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Episodes.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Episodes.Delete(
@@ -67,7 +67,7 @@ public class EpisodeServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetWisdom_Works()
     {
         await this.client.Episodes.GetWisdom(
@@ -77,7 +77,7 @@ public class EpisodeServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListBySeason_Works()
     {
         var page = await this.client.Episodes.ListBySeason(

@@ -5,7 +5,7 @@ namespace Believe.Tests.Services.Teams;
 
 public class LogoServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Teams.Logo.Delete(
@@ -15,7 +15,7 @@ public class LogoServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Download_Works()
     {
         await this.client.Teams.Logo.Download(
@@ -25,7 +25,7 @@ public class LogoServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Upload_Works()
     {
         var fileUpload = await this.client.Teams.Logo.Upload(

@@ -5,7 +5,7 @@ namespace Believe.Tests.Services;
 
 public class CharacterServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
         var character = await this.client.Characters.Create(
@@ -30,7 +30,7 @@ public class CharacterServiceTest : TestBase
         character.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var character = await this.client.Characters.Retrieve(
@@ -41,7 +41,7 @@ public class CharacterServiceTest : TestBase
         character.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var character = await this.client.Characters.Update(
@@ -52,14 +52,14 @@ public class CharacterServiceTest : TestBase
         character.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Characters.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
         await this.client.Characters.Delete(
@@ -69,7 +69,7 @@ public class CharacterServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetQuotes_Works()
     {
         await this.client.Characters.GetQuotes(

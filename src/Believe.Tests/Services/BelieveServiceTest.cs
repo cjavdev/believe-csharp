@@ -5,7 +5,7 @@ namespace Believe.Tests.Services;
 
 public class BelieveServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Submit_Works()
     {
         var response = await this.client.Believe.Submit(
