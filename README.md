@@ -135,8 +135,6 @@ The SDK throws custom unchecked exception types:
 
 Additionally, all 4xx errors inherit from `Believe4xxException`.
 
-false
-
 - `BelieveIOException`: I/O networking errors.
 
 - `BelieveInvalidDataException`: Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
