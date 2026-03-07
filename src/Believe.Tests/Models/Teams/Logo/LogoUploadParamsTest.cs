@@ -10,7 +10,7 @@ public class LogoUploadParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        BinaryContent file = Encoding.UTF8.GetBytes("text");
+        BinaryContent file = Encoding.UTF8.GetBytes("Example data");
 
         var parameters = new LogoUploadParams { TeamID = "team_id", File = file };
 
@@ -27,7 +27,7 @@ public class LogoUploadParamsTest : TestBase
         LogoUploadParams parameters = new()
         {
             TeamID = "team_id",
-            File = Encoding.UTF8.GetBytes("text"),
+            File = Encoding.UTF8.GetBytes("Example data"),
         };
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
@@ -41,7 +41,7 @@ public class LogoUploadParamsTest : TestBase
         var parameters = new LogoUploadParams
         {
             TeamID = "team_id",
-            File = Encoding.UTF8.GetBytes("text"),
+            File = Encoding.UTF8.GetBytes("Example data"),
         };
 
         LogoUploadParams copied = new(parameters);

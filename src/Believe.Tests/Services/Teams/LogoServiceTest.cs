@@ -30,7 +30,7 @@ public class LogoServiceTest : TestBase
     {
         var fileUpload = await this.client.Teams.Logo.Upload(
             "team_id",
-            new() { File = Encoding.UTF8.GetBytes("text") },
+            new() { File = Encoding.UTF8.GetBytes("Example data") },
             TestContext.Current.CancellationToken
         );
         fileUpload.Validate();
