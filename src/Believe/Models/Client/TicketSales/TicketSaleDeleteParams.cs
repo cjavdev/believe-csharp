@@ -6,73 +6,31 @@ using System.Net.Http;
 using System.Text.Json;
 using Believe.Core;
 
-namespace Believe.Models.Episodes;
+namespace Believe.Models.Client.TicketSales;
 
 /// <summary>
-/// Get a paginated list of episodes from a specific season.
+/// Remove a ticket sale from the database.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public record class EpisodeListBySeasonParams : ParamsBase
+public record class TicketSaleDeleteParams : ParamsBase
 {
-    public long? SeasonNumber { get; init; }
+    public string? TicketSaleID { get; init; }
 
-    /// <summary>
-    /// Maximum number of items to return (max: 100)
-    /// </summary>
-    public long? Limit
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawQueryData.Set("limit", value);
-        }
-    }
-
-    /// <summary>
-    /// Number of items to skip (offset)
-    /// </summary>
-    public long? Skip
-    {
-        get
-        {
-            this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
-        }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            this._rawQueryData.Set("skip", value);
-        }
-    }
-
-    public EpisodeListBySeasonParams() { }
+    public TicketSaleDeleteParams() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public EpisodeListBySeasonParams(EpisodeListBySeasonParams episodeListBySeasonParams)
-        : base(episodeListBySeasonParams)
+    public TicketSaleDeleteParams(TicketSaleDeleteParams ticketSaleDeleteParams)
+        : base(ticketSaleDeleteParams)
     {
-        this.SeasonNumber = episodeListBySeasonParams.SeasonNumber;
+        this.TicketSaleID = ticketSaleDeleteParams.TicketSaleID;
     }
 #pragma warning restore CS8618
 
-    public EpisodeListBySeasonParams(
+    public TicketSaleDeleteParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -83,7 +41,7 @@ public record class EpisodeListBySeasonParams : ParamsBase
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    EpisodeListBySeasonParams(
+    TicketSaleDeleteParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -94,7 +52,7 @@ public record class EpisodeListBySeasonParams : ParamsBase
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
-    public static EpisodeListBySeasonParams FromRawUnchecked(
+    public static TicketSaleDeleteParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -110,7 +68,7 @@ public record class EpisodeListBySeasonParams : ParamsBase
             FriendlyJsonPrinter.PrintValue(
                 new Dictionary<string, JsonElement>()
                 {
-                    ["SeasonNumber"] = JsonSerializer.SerializeToElement(this.SeasonNumber),
+                    ["TicketSaleID"] = JsonSerializer.SerializeToElement(this.TicketSaleID),
                     ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
                     ),
@@ -122,13 +80,13 @@ public record class EpisodeListBySeasonParams : ParamsBase
             ModelBase.ToStringSerializerOptions
         );
 
-    public virtual bool Equals(EpisodeListBySeasonParams? other)
+    public virtual bool Equals(TicketSaleDeleteParams? other)
     {
         if (other == null)
         {
             return false;
         }
-        return (this.SeasonNumber?.Equals(other.SeasonNumber) ?? other.SeasonNumber == null)
+        return (this.TicketSaleID?.Equals(other.TicketSaleID) ?? other.TicketSaleID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData);
     }
@@ -137,7 +95,7 @@ public record class EpisodeListBySeasonParams : ParamsBase
     {
         return new UriBuilder(
             options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/episodes/seasons/{0}", this.SeasonNumber)
+                + string.Format("/ticket-sales/{0}", this.TicketSaleID)
         )
         {
             Query = this.QueryString(options),

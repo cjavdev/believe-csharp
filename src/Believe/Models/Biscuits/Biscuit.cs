@@ -151,6 +151,8 @@ public enum Type
     Shortbread,
     ChocolateChip,
     OatmealRaisin,
+    Snickerdoodle,
+    LemonDrizzle,
 }
 
 sealed class TypeConverter : JsonConverter<global::Believe.Models.Biscuits.Type>
@@ -167,6 +169,8 @@ sealed class TypeConverter : JsonConverter<global::Believe.Models.Biscuits.Type>
             "shortbread" => global::Believe.Models.Biscuits.Type.Shortbread,
             "chocolate_chip" => global::Believe.Models.Biscuits.Type.ChocolateChip,
             "oatmeal_raisin" => global::Believe.Models.Biscuits.Type.OatmealRaisin,
+            "snickerdoodle" => global::Believe.Models.Biscuits.Type.Snickerdoodle,
+            "lemon_drizzle" => global::Believe.Models.Biscuits.Type.LemonDrizzle,
             _ => (global::Believe.Models.Biscuits.Type)(-1),
         };
     }
@@ -185,6 +189,8 @@ sealed class TypeConverter : JsonConverter<global::Believe.Models.Biscuits.Type>
                 global::Believe.Models.Biscuits.Type.Shortbread => "shortbread",
                 global::Believe.Models.Biscuits.Type.ChocolateChip => "chocolate_chip",
                 global::Believe.Models.Biscuits.Type.OatmealRaisin => "oatmeal_raisin",
+                global::Believe.Models.Biscuits.Type.Snickerdoodle => "snickerdoodle",
+                global::Believe.Models.Biscuits.Type.LemonDrizzle => "lemon_drizzle",
                 _ => throw new BelieveInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),

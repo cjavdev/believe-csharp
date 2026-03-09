@@ -5,21 +5,21 @@ using System.Threading;
 using System.Threading.Tasks;
 using Believe.Core;
 using Believe.Exceptions;
-using Believe.Services;
+using Believe.Services.Client;
 
-namespace Believe.Models.Episodes;
+namespace Believe.Models.Client.TicketSales;
 
 /// <summary>
-/// A single page from the paginated endpoint that <see cref="IEpisodeService.ListBySeason(EpisodeListBySeasonParams, CancellationToken)"/> queries.
+/// A single page from the paginated endpoint that <see cref="ITicketSaleService.List(TicketSaleListParams, CancellationToken)"/> queries.
 /// </summary>
-public sealed class EpisodeListBySeasonPage(
-    IEpisodeServiceWithRawResponse service,
-    EpisodeListBySeasonParams parameters,
-    PaginatedResponse response
-) : IPage<Episode>
+public sealed class TicketSaleListPage(
+    ITicketSaleServiceWithRawResponse service,
+    TicketSaleListParams parameters,
+    TicketSaleListPageResponse response
+) : IPage<TicketSaleListResponse>
 {
     /// <inheritdoc/>
-    public IReadOnlyList<Episode> Items
+    public IReadOnlyList<TicketSaleListResponse> Items
     {
         get { return response.Data; }
     }
@@ -46,21 +46,16 @@ public sealed class EpisodeListBySeasonPage(
     }
 
     /// <inheritdoc/>
-    async Task<IPage<Episode>> IPage<Episode>.Next(CancellationToken cancellationToken) =>
-        await this.Next(cancellationToken).ConfigureAwait(false);
+    async Task<IPage<TicketSaleListResponse>> IPage<TicketSaleListResponse>.Next(
+        CancellationToken cancellationToken
+    ) => await this.Next(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc cref="IPage{T}.Next"/>
-    public async Task<EpisodeListBySeasonPage> Next(CancellationToken cancellationToken = default)
+    public async Task<TicketSaleListPage> Next(CancellationToken cancellationToken = default)
     {
         var currentOffset = parameters.Skip ?? 0;
         using var nextResponse = await service
-            .ListBySeason(
-                parameters with
-                {
-                    Skip = currentOffset + this.Items.Count,
-                },
-                cancellationToken
-            )
+            .List(parameters with { Skip = currentOffset + this.Items.Count }, cancellationToken)
             .ConfigureAwait(false);
         return await nextResponse.Deserialize(cancellationToken).ConfigureAwait(false);
     }
@@ -79,7 +74,7 @@ public sealed class EpisodeListBySeasonPage(
 
     public override bool Equals(object? obj)
     {
-        if (obj is not EpisodeListBySeasonPage other)
+        if (obj is not TicketSaleListPage other)
         {
             return false;
         }

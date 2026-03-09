@@ -9,9 +9,11 @@ using Believe.Models.Episodes;
 namespace Believe.Services;
 
 /// <summary>
-/// NOTE: Do not inherit from this type outside the SDK unless you're okay with breaking
-/// changes in non-major versions. We may add new methods in the future that cause
-/// existing derived classes to break.
+/// Operations related to TV episodes
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 public interface IEpisodeService
 {
@@ -98,21 +100,6 @@ public interface IEpisodeService
     Task<Dictionary<string, JsonElement>> GetWisdom(
         string episodeID,
         EpisodeGetWisdomParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Get a paginated list of episodes from a specific season.
-    /// </summary>
-    Task<EpisodeListBySeasonPage> ListBySeason(
-        EpisodeListBySeasonParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListBySeason(EpisodeListBySeasonParams, CancellationToken)"/>
-    Task<EpisodeListBySeasonPage> ListBySeason(
-        long seasonNumber,
-        EpisodeListBySeasonParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }
@@ -209,22 +196,6 @@ public interface IEpisodeServiceWithRawResponse
     Task<HttpResponse<Dictionary<string, JsonElement>>> GetWisdom(
         string episodeID,
         EpisodeGetWisdomParams? parameters = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Returns a raw HTTP response for `get /episodes/seasons/{season_number}`, but is otherwise the
-    /// same as <see cref="IEpisodeService.ListBySeason(EpisodeListBySeasonParams, CancellationToken)"/>.
-    /// </summary>
-    Task<HttpResponse<EpisodeListBySeasonPage>> ListBySeason(
-        EpisodeListBySeasonParams parameters,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListBySeason(EpisodeListBySeasonParams, CancellationToken)"/>
-    Task<HttpResponse<EpisodeListBySeasonPage>> ListBySeason(
-        long seasonNumber,
-        EpisodeListBySeasonParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 }

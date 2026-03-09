@@ -140,6 +140,8 @@ public class TypeTest : TestBase
     [InlineData(Type.Shortbread)]
     [InlineData(Type.ChocolateChip)]
     [InlineData(Type.OatmealRaisin)]
+    [InlineData(Type.Snickerdoodle)]
+    [InlineData(Type.LemonDrizzle)]
     public void Validation_Works(Type rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -164,6 +166,8 @@ public class TypeTest : TestBase
     [InlineData(Type.Shortbread)]
     [InlineData(Type.ChocolateChip)]
     [InlineData(Type.OatmealRaisin)]
+    [InlineData(Type.Snickerdoodle)]
+    [InlineData(Type.LemonDrizzle)]
     public void SerializationRoundtrip_Works(Type rawValue)
     {
         // force implicit conversion because Theory can't do that for us

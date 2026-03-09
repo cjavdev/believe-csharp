@@ -76,15 +76,4 @@ public class EpisodeServiceTest : TestBase
             TestContext.Current.CancellationToken
         );
     }
-
-    [Fact(Skip = "Mock server tests are disabled")]
-    public async Task ListBySeason_Works()
-    {
-        var page = await this.client.Episodes.ListBySeason(
-            0,
-            new(),
-            TestContext.Current.CancellationToken
-        );
-        page.Validate();
-    }
 }

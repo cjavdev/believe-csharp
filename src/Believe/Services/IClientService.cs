@@ -25,6 +25,8 @@ public interface IClientService
     IClientService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     IWService Ws { get; }
+
+    ITicketSaleService TicketSales { get; }
 }
 
 /// <summary>
@@ -41,4 +43,6 @@ public interface IClientServiceWithRawResponse
     IClientServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     IWServiceWithRawResponse Ws { get; }
+
+    ITicketSaleServiceWithRawResponse TicketSales { get; }
 }
