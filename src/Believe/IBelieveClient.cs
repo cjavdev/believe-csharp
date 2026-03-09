@@ -83,6 +83,8 @@ public interface IBelieveClient : IDisposable
 
     IWebhookService Webhooks { get; }
 
+    ITicketSaleService TicketSales { get; }
+
     IHealthService Health { get; }
 
     IVersionService Version { get; }
@@ -156,6 +158,8 @@ public interface IBelieveClientWithRawResponse : IDisposable
     ITeamMemberServiceWithRawResponse TeamMembers { get; }
 
     IWebhookServiceWithRawResponse Webhooks { get; }
+
+    ITicketSaleServiceWithRawResponse TicketSales { get; }
 
     IHealthServiceWithRawResponse Health { get; }
 

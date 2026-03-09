@@ -2,9 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Believe.Core;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Services.Client;
+namespace Believe.Services;
 
 /// <summary>
 /// Ticket sales with 300 records for practicing pagination, filtering, and financial data
@@ -31,7 +31,7 @@ public interface ITicketSaleService
     /// <summary>
     /// Record a new ticket sale.
     /// </summary>
-    Task<TicketSaleCreateResponse> Create(
+    Task<TicketSale> Create(
         TicketSaleCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -39,13 +39,13 @@ public interface ITicketSaleService
     /// <summary>
     /// Retrieve detailed information about a specific ticket sale.
     /// </summary>
-    Task<TicketSaleRetrieveResponse> Retrieve(
+    Task<TicketSale> Retrieve(
         TicketSaleRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>
-    Task<TicketSaleRetrieveResponse> Retrieve(
+    Task<TicketSale> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -54,13 +54,13 @@ public interface ITicketSaleService
     /// <summary>
     /// Update specific fields of an existing ticket sale.
     /// </summary>
-    Task<TicketSaleUpdateResponse> Update(
+    Task<TicketSale> Update(
         TicketSaleUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(TicketSaleUpdateParams, CancellationToken)"/>
-    Task<TicketSaleUpdateResponse> Update(
+    Task<TicketSale> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -105,7 +105,7 @@ public interface ITicketSaleServiceWithRawResponse
     /// Returns a raw HTTP response for `post /ticket-sales`, but is otherwise the
     /// same as <see cref="ITicketSaleService.Create(TicketSaleCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TicketSaleCreateResponse>> Create(
+    Task<HttpResponse<TicketSale>> Create(
         TicketSaleCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -114,13 +114,13 @@ public interface ITicketSaleServiceWithRawResponse
     /// Returns a raw HTTP response for `get /ticket-sales/{ticket_sale_id}`, but is otherwise the
     /// same as <see cref="ITicketSaleService.Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TicketSaleRetrieveResponse>> Retrieve(
+    Task<HttpResponse<TicketSale>> Retrieve(
         TicketSaleRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<TicketSaleRetrieveResponse>> Retrieve(
+    Task<HttpResponse<TicketSale>> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -130,13 +130,13 @@ public interface ITicketSaleServiceWithRawResponse
     /// Returns a raw HTTP response for `patch /ticket-sales/{ticket_sale_id}`, but is otherwise the
     /// same as <see cref="ITicketSaleService.Update(TicketSaleUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<TicketSaleUpdateResponse>> Update(
+    Task<HttpResponse<TicketSale>> Update(
         TicketSaleUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(TicketSaleUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<TicketSaleUpdateResponse>> Update(
+    Task<HttpResponse<TicketSale>> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
         CancellationToken cancellationToken = default

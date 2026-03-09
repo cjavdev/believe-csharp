@@ -1,19 +1,17 @@
-using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Believe.Core;
-using Believe.Exceptions;
 
-namespace Believe.Models.Client.TicketSales;
+namespace Believe.Models.TicketSales;
 
 /// <summary>
 /// Full ticket sale model with ID.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<TicketSaleListResponse, TicketSaleListResponseFromRaw>))]
-public sealed record class TicketSaleListResponse : JsonModel
+[JsonConverter(typeof(JsonModelConverter<TicketSale, TicketSaleFromRaw>))]
+public sealed record class TicketSale : JsonModel
 {
     /// <summary>
     /// Unique identifier
@@ -83,14 +81,14 @@ public sealed record class TicketSaleListResponse : JsonModel
     /// <summary>
     /// How the ticket was purchased
     /// </summary>
-    public required ApiEnum<string, TicketSaleListResponsePurchaseMethod> PurchaseMethod
+    public required ApiEnum<string, PurchaseMethod> PurchaseMethod
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<
-                ApiEnum<string, TicketSaleListResponsePurchaseMethod>
-            >("purchase_method");
+            return this._rawData.GetNotNullClass<ApiEnum<string, PurchaseMethod>>(
+                "purchase_method"
+            );
         }
         init { this._rawData.Set("purchase_method", value); }
     }
@@ -204,94 +202,37 @@ public sealed record class TicketSaleListResponse : JsonModel
         _ = this.CouponCode;
     }
 
-    public TicketSaleListResponse() { }
+    public TicketSale() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TicketSaleListResponse(TicketSaleListResponse ticketSaleListResponse)
-        : base(ticketSaleListResponse) { }
+    public TicketSale(TicketSale ticketSale)
+        : base(ticketSale) { }
 #pragma warning restore CS8618
 
-    public TicketSaleListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    public TicketSale(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TicketSaleListResponse(FrozenDictionary<string, JsonElement> rawData)
+    TicketSale(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="TicketSaleListResponseFromRaw.FromRawUnchecked"/>
-    public static TicketSaleListResponse FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="TicketSaleFromRaw.FromRawUnchecked"/>
+    public static TicketSale FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class TicketSaleListResponseFromRaw : IFromRawJson<TicketSaleListResponse>
+class TicketSaleFromRaw : IFromRawJson<TicketSale>
 {
     /// <inheritdoc/>
-    public TicketSaleListResponse FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TicketSaleListResponse.FromRawUnchecked(rawData);
-}
-
-/// <summary>
-/// How the ticket was purchased
-/// </summary>
-[JsonConverter(typeof(TicketSaleListResponsePurchaseMethodConverter))]
-public enum TicketSaleListResponsePurchaseMethod
-{
-    Online,
-    BoxOffice,
-    WillCall,
-    Phone,
-}
-
-sealed class TicketSaleListResponsePurchaseMethodConverter
-    : JsonConverter<TicketSaleListResponsePurchaseMethod>
-{
-    public override TicketSaleListResponsePurchaseMethod Read(
-        ref Utf8JsonReader reader,
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
-    {
-        return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "online" => TicketSaleListResponsePurchaseMethod.Online,
-            "box_office" => TicketSaleListResponsePurchaseMethod.BoxOffice,
-            "will_call" => TicketSaleListResponsePurchaseMethod.WillCall,
-            "phone" => TicketSaleListResponsePurchaseMethod.Phone,
-            _ => (TicketSaleListResponsePurchaseMethod)(-1),
-        };
-    }
-
-    public override void Write(
-        Utf8JsonWriter writer,
-        TicketSaleListResponsePurchaseMethod value,
-        JsonSerializerOptions options
-    )
-    {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TicketSaleListResponsePurchaseMethod.Online => "online",
-                TicketSaleListResponsePurchaseMethod.BoxOffice => "box_office",
-                TicketSaleListResponsePurchaseMethod.WillCall => "will_call",
-                TicketSaleListResponsePurchaseMethod.Phone => "phone",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
-    }
+    public TicketSale FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        TicketSale.FromRawUnchecked(rawData);
 }
