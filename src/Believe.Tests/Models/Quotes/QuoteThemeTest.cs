@@ -35,6 +35,10 @@ public class QuoteThemeTest : TestBase
     [InlineData(QuoteTheme.Conflict)]
     [InlineData(QuoteTheme.Honesty)]
     [InlineData(QuoteTheme.Integrity)]
+    [InlineData(QuoteTheme.Intimidation)]
+    [InlineData(QuoteTheme.Ambition)]
+    [InlineData(QuoteTheme.Narcissism)]
+    [InlineData(QuoteTheme.Maturity)]
     public void Validation_Works(QuoteTheme rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -82,6 +86,10 @@ public class QuoteThemeTest : TestBase
     [InlineData(QuoteTheme.Conflict)]
     [InlineData(QuoteTheme.Honesty)]
     [InlineData(QuoteTheme.Integrity)]
+    [InlineData(QuoteTheme.Intimidation)]
+    [InlineData(QuoteTheme.Ambition)]
+    [InlineData(QuoteTheme.Narcissism)]
+    [InlineData(QuoteTheme.Maturity)]
     public void SerializationRoundtrip_Works(QuoteTheme rawValue)
     {
         // force implicit conversion because Theory can't do that for us
