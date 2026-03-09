@@ -1,7 +1,7 @@
 using System;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Tests.Models.Client.TicketSales;
+namespace Believe.Tests.Models.TicketSales;
 
 public class TicketSaleRetrieveParamsTest : TestBase
 {

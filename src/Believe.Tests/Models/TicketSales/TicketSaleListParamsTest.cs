@@ -1,10 +1,8 @@
 using System;
-using System.Text.Json;
 using Believe.Core;
-using Believe.Exceptions;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Tests.Models.Client.TicketSales;
+namespace Believe.Tests.Models.TicketSales;
 
 public class TicketSaleListParamsTest : TestBase
 {
@@ -17,7 +15,7 @@ public class TicketSaleListParamsTest : TestBase
             Currency = "currency",
             Limit = 10,
             MatchID = "match_id",
-            PurchaseMethod = TicketSaleListParamsPurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Skip = 0,
         };
 
@@ -25,8 +23,7 @@ public class TicketSaleListParamsTest : TestBase
         string expectedCurrency = "currency";
         long expectedLimit = 10;
         string expectedMatchID = "match_id";
-        ApiEnum<string, TicketSaleListParamsPurchaseMethod> expectedPurchaseMethod =
-            TicketSaleListParamsPurchaseMethod.Online;
+        ApiEnum<string, PurchaseMethod> expectedPurchaseMethod = PurchaseMethod.Online;
         long expectedSkip = 0;
 
         Assert.Equal(expectedCouponCode, parameters.CouponCode);
@@ -45,7 +42,7 @@ public class TicketSaleListParamsTest : TestBase
             CouponCode = "coupon_code",
             Currency = "currency",
             MatchID = "match_id",
-            PurchaseMethod = TicketSaleListParamsPurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
         };
 
         Assert.Null(parameters.Limit);
@@ -62,7 +59,7 @@ public class TicketSaleListParamsTest : TestBase
             CouponCode = "coupon_code",
             Currency = "currency",
             MatchID = "match_id",
-            PurchaseMethod = TicketSaleListParamsPurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
 
             // Null should be interpreted as omitted for these properties
             Limit = null,
@@ -123,7 +120,7 @@ public class TicketSaleListParamsTest : TestBase
             Currency = "currency",
             Limit = 10,
             MatchID = "match_id",
-            PurchaseMethod = TicketSaleListParamsPurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Skip = 0,
         };
 
@@ -146,72 +143,12 @@ public class TicketSaleListParamsTest : TestBase
             Currency = "currency",
             Limit = 10,
             MatchID = "match_id",
-            PurchaseMethod = TicketSaleListParamsPurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Skip = 0,
         };
 
         TicketSaleListParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
-    }
-}
-
-public class TicketSaleListParamsPurchaseMethodTest : TestBase
-{
-    [Theory]
-    [InlineData(TicketSaleListParamsPurchaseMethod.Online)]
-    [InlineData(TicketSaleListParamsPurchaseMethod.BoxOffice)]
-    [InlineData(TicketSaleListParamsPurchaseMethod.WillCall)]
-    [InlineData(TicketSaleListParamsPurchaseMethod.Phone)]
-    public void Validation_Works(TicketSaleListParamsPurchaseMethod rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TicketSaleListParamsPurchaseMethod> value = rawValue;
-        value.Validate();
-    }
-
-    [Fact]
-    public void InvalidEnumValidationThrows_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TicketSaleListParamsPurchaseMethod>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-
-        Assert.NotNull(value);
-        Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
-    }
-
-    [Theory]
-    [InlineData(TicketSaleListParamsPurchaseMethod.Online)]
-    [InlineData(TicketSaleListParamsPurchaseMethod.BoxOffice)]
-    [InlineData(TicketSaleListParamsPurchaseMethod.WillCall)]
-    [InlineData(TicketSaleListParamsPurchaseMethod.Phone)]
-    public void SerializationRoundtrip_Works(TicketSaleListParamsPurchaseMethod rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TicketSaleListParamsPurchaseMethod> value = rawValue;
-
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleListParamsPurchaseMethod>
-        >(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(value, deserialized);
-    }
-
-    [Fact]
-    public void InvalidEnumSerializationRoundtrip_Works()
-    {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TicketSaleListParamsPurchaseMethod>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleListParamsPurchaseMethod>
-        >(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(value, deserialized);
     }
 }

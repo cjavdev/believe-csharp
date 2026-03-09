@@ -5,9 +5,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Believe.Core;
 using Believe.Exceptions;
-using Believe.Services.Client;
+using Believe.Services;
 
-namespace Believe.Models.Client.TicketSales;
+namespace Believe.Models.TicketSales;
 
 /// <summary>
 /// A single page from the paginated endpoint that <see cref="ITicketSaleService.List(TicketSaleListParams, CancellationToken)"/> queries.
@@ -16,10 +16,10 @@ public sealed class TicketSaleListPage(
     ITicketSaleServiceWithRawResponse service,
     TicketSaleListParams parameters,
     TicketSaleListPageResponse response
-) : IPage<TicketSaleListResponse>
+) : IPage<TicketSale>
 {
     /// <inheritdoc/>
-    public IReadOnlyList<TicketSaleListResponse> Items
+    public IReadOnlyList<TicketSale> Items
     {
         get { return response.Data; }
     }
@@ -46,9 +46,8 @@ public sealed class TicketSaleListPage(
     }
 
     /// <inheritdoc/>
-    async Task<IPage<TicketSaleListResponse>> IPage<TicketSaleListResponse>.Next(
-        CancellationToken cancellationToken
-    ) => await this.Next(cancellationToken).ConfigureAwait(false);
+    async Task<IPage<TicketSale>> IPage<TicketSale>.Next(CancellationToken cancellationToken) =>
+        await this.Next(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc cref="IPage{T}.Next"/>
     public async Task<TicketSaleListPage> Next(CancellationToken cancellationToken = default)
