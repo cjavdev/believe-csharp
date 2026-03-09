@@ -38,6 +38,10 @@ public enum QuoteTheme
     Conflict,
     Honesty,
     Integrity,
+    Intimidation,
+    Ambition,
+    Narcissism,
+    Maturity,
 }
 
 sealed class QuoteThemeConverter : JsonConverter<QuoteTheme>
@@ -77,6 +81,10 @@ sealed class QuoteThemeConverter : JsonConverter<QuoteTheme>
             "conflict" => QuoteTheme.Conflict,
             "honesty" => QuoteTheme.Honesty,
             "integrity" => QuoteTheme.Integrity,
+            "intimidation" => QuoteTheme.Intimidation,
+            "ambition" => QuoteTheme.Ambition,
+            "narcissism" => QuoteTheme.Narcissism,
+            "maturity" => QuoteTheme.Maturity,
             _ => (QuoteTheme)(-1),
         };
     }
@@ -118,6 +126,10 @@ sealed class QuoteThemeConverter : JsonConverter<QuoteTheme>
                 QuoteTheme.Conflict => "conflict",
                 QuoteTheme.Honesty => "honesty",
                 QuoteTheme.Integrity => "integrity",
+                QuoteTheme.Intimidation => "intimidation",
+                QuoteTheme.Ambition => "ambition",
+                QuoteTheme.Narcissism => "narcissism",
+                QuoteTheme.Maturity => "maturity",
                 _ => throw new BelieveInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
