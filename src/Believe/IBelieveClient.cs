@@ -85,6 +85,12 @@ public interface IBelieveClient : IDisposable
 
     ITicketSaleService TicketSales { get; }
 
+    IHealthService Health { get; }
+
+    IVersionService Version { get; }
+
+    IClientService Client { get; }
+
     /// <summary>
     /// Get a warm welcome and overview of available endpoints.
     /// </summary>
@@ -154,6 +160,12 @@ public interface IBelieveClientWithRawResponse : IDisposable
     IWebhookServiceWithRawResponse Webhooks { get; }
 
     ITicketSaleServiceWithRawResponse TicketSales { get; }
+
+    IHealthServiceWithRawResponse Health { get; }
+
+    IVersionServiceWithRawResponse Version { get; }
+
+    IClientServiceWithRawResponse Client { get; }
 
     /// <summary>
     /// Returns a raw HTTP response for `get /`, but is otherwise the
