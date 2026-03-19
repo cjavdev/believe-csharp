@@ -1,8 +1,10 @@
 using System;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Believe.Core;
+using Believe.Models;
 using Believe.Services;
 
 namespace Believe;
@@ -80,6 +82,16 @@ public interface IBelieveClient : IDisposable
     ITeamMemberService TeamMembers { get; }
 
     IWebhookService Webhooks { get; }
+
+    ITicketSaleService TicketSales { get; }
+
+    /// <summary>
+    /// Get a warm welcome and overview of available endpoints.
+    /// </summary>
+    Task<JsonElement> GetWelcome(
+        ClientGetWelcomeParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
 }
 
 /// <summary>
@@ -140,6 +152,17 @@ public interface IBelieveClientWithRawResponse : IDisposable
     ITeamMemberServiceWithRawResponse TeamMembers { get; }
 
     IWebhookServiceWithRawResponse Webhooks { get; }
+
+    ITicketSaleServiceWithRawResponse TicketSales { get; }
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /`, but is otherwise the
+    /// same as <see cref="IBelieveClient.GetWelcome(ClientGetWelcomeParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<JsonElement>> GetWelcome(
+        ClientGetWelcomeParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     /// Sends a request to the Believe REST API.

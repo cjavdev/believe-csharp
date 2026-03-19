@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Believe.Core;
 using Believe.Exceptions;
+using Believe.Models;
 using Believe.Services;
 
 namespace Believe;
@@ -162,6 +164,24 @@ public sealed class BelieveClient : IBelieveClient
         get { return _webhooks.Value; }
     }
 
+    readonly Lazy<ITicketSaleService> _ticketSales;
+    public ITicketSaleService TicketSales
+    {
+        get { return _ticketSales.Value; }
+    }
+
+    /// <inheritdoc/>
+    public async Task<JsonElement> GetWelcome(
+        ClientGetWelcomeParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.GetWelcome(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
     public void Dispose() => this.HttpClient.Dispose();
 
     public BelieveClient()
@@ -184,6 +204,7 @@ public sealed class BelieveClient : IBelieveClient
         _stream = new(() => new StreamService(this));
         _teamMembers = new(() => new TeamMemberService(this));
         _webhooks = new(() => new WebhookService(this));
+        _ticketSales = new(() => new TicketSaleService(this));
     }
 
     public BelieveClient(ClientOptions options)
@@ -347,6 +368,35 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
     public IWebhookServiceWithRawResponse Webhooks
     {
         get { return _webhooks.Value; }
+    }
+
+    readonly Lazy<ITicketSaleServiceWithRawResponse> _ticketSales;
+    public ITicketSaleServiceWithRawResponse TicketSales
+    {
+        get { return _ticketSales.Value; }
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<JsonElement>> GetWelcome(
+        ClientGetWelcomeParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        HttpRequest<ClientGetWelcomeParams> request = new()
+        {
+            Method = HttpMethod.Get,
+            Params = parameters,
+        };
+        var response = await this.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
+            }
+        );
     }
 
     /// <inheritdoc/>
@@ -562,6 +612,7 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
         _stream = new(() => new StreamServiceWithRawResponse(this));
         _teamMembers = new(() => new TeamMemberServiceWithRawResponse(this));
         _webhooks = new(() => new WebhookServiceWithRawResponse(this));
+        _ticketSales = new(() => new TicketSaleServiceWithRawResponse(this));
     }
 
     public BelieveClientWithRawResponse(ClientOptions options)
