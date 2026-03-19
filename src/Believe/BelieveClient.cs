@@ -170,6 +170,24 @@ public sealed class BelieveClient : IBelieveClient
         get { return _ticketSales.Value; }
     }
 
+    readonly Lazy<IHealthService> _health;
+    public IHealthService Health
+    {
+        get { return _health.Value; }
+    }
+
+    readonly Lazy<IVersionService> _version;
+    public IVersionService Version
+    {
+        get { return _version.Value; }
+    }
+
+    readonly Lazy<IClientService> _client;
+    public IClientService Client
+    {
+        get { return _client.Value; }
+    }
+
     /// <inheritdoc/>
     public async Task<JsonElement> GetWelcome(
         ClientGetWelcomeParams? parameters = null,
@@ -205,6 +223,9 @@ public sealed class BelieveClient : IBelieveClient
         _teamMembers = new(() => new TeamMemberService(this));
         _webhooks = new(() => new WebhookService(this));
         _ticketSales = new(() => new TicketSaleService(this));
+        _health = new(() => new HealthService(this));
+        _version = new(() => new VersionService(this));
+        _client = new(() => new ClientService(this));
     }
 
     public BelieveClient(ClientOptions options)
@@ -374,6 +395,24 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
     public ITicketSaleServiceWithRawResponse TicketSales
     {
         get { return _ticketSales.Value; }
+    }
+
+    readonly Lazy<IHealthServiceWithRawResponse> _health;
+    public IHealthServiceWithRawResponse Health
+    {
+        get { return _health.Value; }
+    }
+
+    readonly Lazy<IVersionServiceWithRawResponse> _version;
+    public IVersionServiceWithRawResponse Version
+    {
+        get { return _version.Value; }
+    }
+
+    readonly Lazy<IClientServiceWithRawResponse> _client;
+    public IClientServiceWithRawResponse Client
+    {
+        get { return _client.Value; }
     }
 
     /// <inheritdoc/>
@@ -613,6 +652,9 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
         _teamMembers = new(() => new TeamMemberServiceWithRawResponse(this));
         _webhooks = new(() => new WebhookServiceWithRawResponse(this));
         _ticketSales = new(() => new TicketSaleServiceWithRawResponse(this));
+        _health = new(() => new HealthServiceWithRawResponse(this));
+        _version = new(() => new VersionServiceWithRawResponse(this));
+        _client = new(() => new ClientServiceWithRawResponse(this));
     }
 
     public BelieveClientWithRawResponse(ClientOptions options)
