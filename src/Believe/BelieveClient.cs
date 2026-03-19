@@ -156,6 +156,12 @@ public sealed class BelieveClient : IBelieveClient
         get { return _teamMembers.Value; }
     }
 
+    readonly Lazy<IWebhookService> _webhooks;
+    public IWebhookService Webhooks
+    {
+        get { return _webhooks.Value; }
+    }
+
     public void Dispose() => this.HttpClient.Dispose();
 
     public BelieveClient()
@@ -177,6 +183,7 @@ public sealed class BelieveClient : IBelieveClient
         _pepTalk = new(() => new PepTalkService(this));
         _stream = new(() => new StreamService(this));
         _teamMembers = new(() => new TeamMemberService(this));
+        _webhooks = new(() => new WebhookService(this));
     }
 
     public BelieveClient(ClientOptions options)
@@ -334,6 +341,12 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
     public ITeamMemberServiceWithRawResponse TeamMembers
     {
         get { return _teamMembers.Value; }
+    }
+
+    readonly Lazy<IWebhookServiceWithRawResponse> _webhooks;
+    public IWebhookServiceWithRawResponse Webhooks
+    {
+        get { return _webhooks.Value; }
     }
 
     /// <inheritdoc/>
@@ -548,6 +561,7 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
         _pepTalk = new(() => new PepTalkServiceWithRawResponse(this));
         _stream = new(() => new StreamServiceWithRawResponse(this));
         _teamMembers = new(() => new TeamMemberServiceWithRawResponse(this));
+        _webhooks = new(() => new WebhookServiceWithRawResponse(this));
     }
 
     public BelieveClientWithRawResponse(ClientOptions options)

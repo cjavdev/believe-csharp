@@ -78,6 +78,8 @@ public interface IBelieveClient : IDisposable
     IStreamService Stream { get; }
 
     ITeamMemberService TeamMembers { get; }
+
+    IWebhookService Webhooks { get; }
 }
 
 /// <summary>
@@ -136,6 +138,8 @@ public interface IBelieveClientWithRawResponse : IDisposable
     IStreamServiceWithRawResponse Stream { get; }
 
     ITeamMemberServiceWithRawResponse TeamMembers { get; }
+
+    IWebhookServiceWithRawResponse Webhooks { get; }
 
     /// <summary>
     /// Sends a request to the Believe REST API.
