@@ -8,6 +8,7 @@ using Believe.Models.Matches;
 using Believe.Models.Quotes;
 using Believe.Models.TeamMembers;
 using Believe.Models.Teams;
+using Believe.Models.TicketSales;
 using Webhooks = Believe.Models.Webhooks;
 
 namespace Believe.Core;
@@ -60,6 +61,7 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, Webhooks::MemberType>(),
             new ApiEnumConverter<string, Webhooks::TransferType>(),
             new ApiEnumConverter<string, Webhooks::TeamMemberTransferredEventType>(),
+            new ApiEnumConverter<string, PurchaseMethod>(),
         },
     };
 
