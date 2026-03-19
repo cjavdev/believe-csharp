@@ -8,8 +8,6 @@ using Believe.Models.Matches;
 using Believe.Models.Quotes;
 using Believe.Models.TeamMembers;
 using Believe.Models.Teams;
-using Believe.Models.TicketSales;
-using Webhooks = Believe.Models.Webhooks;
 
 namespace Believe.Core;
 
@@ -51,29 +49,6 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, MedicalStaffMemberType>(),
             new ApiEnumConverter<string, EquipmentManagerMemberType>(),
             new ApiEnumConverter<string, TeamMemberListParamsMemberType>(),
-            new ApiEnumConverter<string, Webhooks::RegisteredWebhookEventType>(),
-            new ApiEnumConverter<string, Webhooks::WebhookTriggerEventResponseEventType>(),
-            new ApiEnumConverter<string, Webhooks::MatchCompletedWebhookEventDataMatchType>(),
-            new ApiEnumConverter<string, Webhooks::MatchCompletedWebhookEventDataResult>(),
-            new ApiEnumConverter<string, Webhooks::MatchCompletedWebhookEventEventType>(),
-            new ApiEnumConverter<
-                string,
-                Webhooks::TeamMemberTransferredWebhookEventDataMemberType
-            >(),
-            new ApiEnumConverter<
-                string,
-                Webhooks::TeamMemberTransferredWebhookEventDataTransferType
-            >(),
-            new ApiEnumConverter<string, Webhooks::TeamMemberTransferredWebhookEventEventType>(),
-            new ApiEnumConverter<string, Webhooks::EventType>(),
-            new ApiEnumConverter<string, Webhooks::WebhookTriggerEventParamsEventType>(),
-            new ApiEnumConverter<string, Webhooks::MatchType>(),
-            new ApiEnumConverter<string, Webhooks::Result>(),
-            new ApiEnumConverter<string, Webhooks::MatchCompletedEventType>(),
-            new ApiEnumConverter<string, Webhooks::MemberType>(),
-            new ApiEnumConverter<string, Webhooks::TransferType>(),
-            new ApiEnumConverter<string, Webhooks::TeamMemberTransferredEventType>(),
-            new ApiEnumConverter<string, PurchaseMethod>(),
         },
     };
 

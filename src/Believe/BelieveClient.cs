@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Believe.Core;
 using Believe.Exceptions;
-using Believe.Models;
 using Believe.Services;
 
 namespace Believe;
@@ -158,48 +156,6 @@ public sealed class BelieveClient : IBelieveClient
         get { return _teamMembers.Value; }
     }
 
-    readonly Lazy<IWebhookService> _webhooks;
-    public IWebhookService Webhooks
-    {
-        get { return _webhooks.Value; }
-    }
-
-    readonly Lazy<ITicketSaleService> _ticketSales;
-    public ITicketSaleService TicketSales
-    {
-        get { return _ticketSales.Value; }
-    }
-
-    readonly Lazy<IHealthService> _health;
-    public IHealthService Health
-    {
-        get { return _health.Value; }
-    }
-
-    readonly Lazy<IVersionService> _version;
-    public IVersionService Version
-    {
-        get { return _version.Value; }
-    }
-
-    readonly Lazy<IClientService> _client;
-    public IClientService Client
-    {
-        get { return _client.Value; }
-    }
-
-    /// <inheritdoc/>
-    public async Task<JsonElement> GetWelcome(
-        ClientGetWelcomeParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        using var response = await this
-            .WithRawResponse.GetWelcome(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
     public void Dispose() => this.HttpClient.Dispose();
 
     public BelieveClient()
@@ -221,11 +177,6 @@ public sealed class BelieveClient : IBelieveClient
         _pepTalk = new(() => new PepTalkService(this));
         _stream = new(() => new StreamService(this));
         _teamMembers = new(() => new TeamMemberService(this));
-        _webhooks = new(() => new WebhookService(this));
-        _ticketSales = new(() => new TicketSaleService(this));
-        _health = new(() => new HealthService(this));
-        _version = new(() => new VersionService(this));
-        _client = new(() => new ClientService(this));
     }
 
     public BelieveClient(ClientOptions options)
@@ -383,59 +334,6 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
     public ITeamMemberServiceWithRawResponse TeamMembers
     {
         get { return _teamMembers.Value; }
-    }
-
-    readonly Lazy<IWebhookServiceWithRawResponse> _webhooks;
-    public IWebhookServiceWithRawResponse Webhooks
-    {
-        get { return _webhooks.Value; }
-    }
-
-    readonly Lazy<ITicketSaleServiceWithRawResponse> _ticketSales;
-    public ITicketSaleServiceWithRawResponse TicketSales
-    {
-        get { return _ticketSales.Value; }
-    }
-
-    readonly Lazy<IHealthServiceWithRawResponse> _health;
-    public IHealthServiceWithRawResponse Health
-    {
-        get { return _health.Value; }
-    }
-
-    readonly Lazy<IVersionServiceWithRawResponse> _version;
-    public IVersionServiceWithRawResponse Version
-    {
-        get { return _version.Value; }
-    }
-
-    readonly Lazy<IClientServiceWithRawResponse> _client;
-    public IClientServiceWithRawResponse Client
-    {
-        get { return _client.Value; }
-    }
-
-    /// <inheritdoc/>
-    public async Task<HttpResponse<JsonElement>> GetWelcome(
-        ClientGetWelcomeParams? parameters = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        parameters ??= new();
-
-        HttpRequest<ClientGetWelcomeParams> request = new()
-        {
-            Method = HttpMethod.Get,
-            Params = parameters,
-        };
-        var response = await this.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
-            }
-        );
     }
 
     /// <inheritdoc/>
@@ -650,11 +548,6 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
         _pepTalk = new(() => new PepTalkServiceWithRawResponse(this));
         _stream = new(() => new StreamServiceWithRawResponse(this));
         _teamMembers = new(() => new TeamMemberServiceWithRawResponse(this));
-        _webhooks = new(() => new WebhookServiceWithRawResponse(this));
-        _ticketSales = new(() => new TicketSaleServiceWithRawResponse(this));
-        _health = new(() => new HealthServiceWithRawResponse(this));
-        _version = new(() => new VersionServiceWithRawResponse(this));
-        _client = new(() => new ClientServiceWithRawResponse(this));
     }
 
     public BelieveClientWithRawResponse(ClientOptions options)
