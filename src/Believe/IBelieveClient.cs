@@ -168,7 +168,7 @@ public interface IBelieveClientWithRawResponse : IDisposable
     IClientServiceWithRawResponse Client { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /</c>, but is otherwise the
     /// same as <see cref="IBelieveClient.GetWelcome(ClientGetWelcomeParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<JsonElement>> GetWelcome(

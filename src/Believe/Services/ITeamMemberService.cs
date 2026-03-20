@@ -33,17 +33,19 @@ public interface ITeamMemberService
     ///
     /// <para>The request body is a **union type (oneOf)** - you must include the
     /// `member_type` discriminator field: - `"member_type": "player"` - Creates a
-    /// player (requires position, jersey_number, etc.) - `"member_type": "coach"`
-    /// - Creates a coach (requires specialty, etc.) - `"member_type": "medical_staff"`
-    /// - Creates medical staff (requires medical specialty, etc.) - `"member_type":
-    /// "equipment_manager"` - Creates equipment manager (requires responsibilities, etc.)</para>
+    /// player (requires position, jersey_number, etc.) - `"member_type": "coach"` -
+    /// Creates a coach (requires specialty, etc.) - `"member_type": "medical_staff"` -
+    /// Creates medical staff (requires medical specialty, etc.) - `"member_type":
+    /// "equipment_manager"` - Creates equipment manager (requires responsibilities,
+    /// etc.)</para>
     ///
-    /// <para>The `character_id` field references an existing character from `/characters/{id}`.</para>
+    /// <para>The `character_id` field references an existing character from
+    /// `/characters/{id}`.</para>
     ///
     /// <para>**Example for creating a player:** ```json {   "member_type": "player",
-    ///   "character_id": "sam-obisanya",   "team_id": "afc-richmond",   "years_with_team":
-    /// 2,   "position": "midfielder",   "jersey_number": 24,   "goals_scored": 12,
-    ///   "assists": 15 } ```</para>
+    /// "character_id": "sam-obisanya",   "team_id": "afc-richmond",
+    /// "years_with_team": 2,   "position": "midfielder",   "jersey_number": 24,
+    /// "goals_scored": 12,   "assists": 15 } ```</para>
     /// </summary>
     Task<TeamMemberCreateResponse> Create(
         TeamMemberCreateParams parameters,
@@ -53,13 +55,14 @@ public interface ITeamMemberService
     /// <summary>
     /// Retrieve detailed information about a specific team member.
     ///
-    /// <para>The response is a **union type (oneOf)** - the actual shape depends
-    /// on the member's type: - **player**: Includes position, jersey_number, goals_scored,
-    /// assists, is_captain - **coach**: Includes specialty, certifications, win_rate
-    /// - **medical_staff**: Includes specialty, qualifications, license_number -
+    /// <para>The response is a **union type (oneOf)** - the actual shape depends on the
+    /// member's type: - **player**: Includes position, jersey_number, goals_scored,
+    /// assists, is_captain - **coach**: Includes specialty, certifications, win_rate -
+    /// **medical_staff**: Includes specialty, qualifications, license_number -
     /// **equipment_manager**: Includes responsibilities, is_head_kitman</para>
     ///
-    /// <para>Use `character_id` to fetch full character details from `/characters/{character_id}`.</para>
+    /// <para>Use `character_id` to fetch full character details from
+    /// `/characters/{character_id}`.</para>
     /// </summary>
     Task<TeamMemberRetrieveResponse> Retrieve(
         TeamMemberRetrieveParams parameters,
@@ -91,10 +94,10 @@ public interface ITeamMemberService
     /// <summary>
     /// Get a paginated list of all team members.
     ///
-    /// <para>This endpoint demonstrates **union types (oneOf)** in the response.
-    /// Each team member can be one of: Player, Coach, MedicalStaff, or EquipmentManager.
-    /// The `member_type` field acts as a discriminator to determine the shape of
-    /// each object.</para>
+    /// <para>This endpoint demonstrates **union types (oneOf)** in the response. Each
+    /// team member can be one of: Player, Coach, MedicalStaff, or EquipmentManager. The
+    /// `member_type` field acts as a discriminator to determine the shape of each
+    /// object.</para>
     /// </summary>
     Task<TeamMemberListPage> List(
         TeamMemberListParams? parameters = null,
@@ -155,7 +158,7 @@ public interface ITeamMemberServiceWithRawResponse
     ITeamMemberServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /team-members`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /team-members</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.Create(TeamMemberCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamMemberCreateResponse>> Create(
@@ -164,7 +167,7 @@ public interface ITeamMemberServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /team-members/{member_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /team-members/{member_id}</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.Retrieve(TeamMemberRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamMemberRetrieveResponse>> Retrieve(
@@ -180,7 +183,7 @@ public interface ITeamMemberServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /team-members/{member_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /team-members/{member_id}</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.Update(TeamMemberUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamMemberUpdateResponse>> Update(
@@ -196,7 +199,7 @@ public interface ITeamMemberServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /team-members`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /team-members</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.List(TeamMemberListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamMemberListPage>> List(
@@ -205,7 +208,7 @@ public interface ITeamMemberServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /team-members/{member_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /team-members/{member_id}</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.Delete(TeamMemberDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -221,7 +224,7 @@ public interface ITeamMemberServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /team-members/coaches/`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /team-members/coaches/</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.ListCoaches(TeamMemberListCoachesParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamMemberListCoachesPage>> ListCoaches(
@@ -230,7 +233,7 @@ public interface ITeamMemberServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /team-members/players/`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /team-members/players/</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.ListPlayers(TeamMemberListPlayersParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamMemberListPlayersPage>> ListPlayers(
@@ -239,7 +242,7 @@ public interface ITeamMemberServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /team-members/staff/`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /team-members/staff/</c>, but is otherwise the
     /// same as <see cref="ITeamMemberService.ListStaff(TeamMemberListStaffParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamMemberListStaffPage>> ListStaff(

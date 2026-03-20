@@ -84,7 +84,7 @@ public record class TeamMemberListStaffResponse : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TeamMemberMedicalStaff"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -105,7 +105,7 @@ public record class TeamMemberListStaffResponse : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TeamMemberEquipmentManager"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -125,7 +125,7 @@ public record class TeamMemberListStaffResponse : ModelBase
     /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
     /// if you need your function parameters to return something.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -136,8 +136,8 @@ public record class TeamMemberListStaffResponse : ModelBase
     /// <example>
     /// <code>
     /// instance.Switch(
-    ///     (TeamMemberMedicalStaff value) => {...},
-    ///     (TeamMemberEquipmentManager value) => {...}
+    ///     (TeamMemberMedicalStaff value) =&gt; {...},
+    ///     (TeamMemberEquipmentManager value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -166,7 +166,7 @@ public record class TeamMemberListStaffResponse : ModelBase
     /// Calls the function parameter corresponding to the variant the instance was constructed with and
     /// returns its result.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
     /// if you don't need your function parameters to return a value.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -177,8 +177,8 @@ public record class TeamMemberListStaffResponse : ModelBase
     /// <example>
     /// <code>
     /// var result = instance.Match(
-    ///     (TeamMemberMedicalStaff value) => {...},
-    ///     (TeamMemberEquipmentManager value) => {...}
+    ///     (TeamMemberMedicalStaff value) =&gt; {...},
+    ///     (TeamMemberEquipmentManager value) =&gt; {...}
     /// );
     /// </code>
     /// </example>

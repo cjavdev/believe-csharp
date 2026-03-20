@@ -86,7 +86,7 @@ public interface ILogoServiceWithRawResponse
     ILogoServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /teams/{team_id}/logo/{file_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /teams/{team_id}/logo/{file_id}</c>, but is otherwise the
     /// same as <see cref="ILogoService.Delete(LogoDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -102,7 +102,7 @@ public interface ILogoServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /teams/{team_id}/logo/{file_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /teams/{team_id}/logo/{file_id}</c>, but is otherwise the
     /// same as <see cref="ILogoService.Download(LogoDownloadParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<JsonElement>> Download(
@@ -118,7 +118,7 @@ public interface ILogoServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /teams/{team_id}/logo`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /teams/{team_id}/logo</c>, but is otherwise the
     /// same as <see cref="ILogoService.Upload(LogoUploadParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<FileUpload>> Upload(

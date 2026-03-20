@@ -53,7 +53,7 @@ public interface IPepTalkServiceWithRawResponse
     IPepTalkServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /pep-talk`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /pep-talk</c>, but is otherwise the
     /// same as <see cref="IPepTalkService.Retrieve(PepTalkRetrieveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PepTalkRetrieveResponse>> Retrieve(

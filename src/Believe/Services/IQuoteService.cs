@@ -133,7 +133,7 @@ public interface IQuoteServiceWithRawResponse
     IQuoteServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /quotes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /quotes</c>, but is otherwise the
     /// same as <see cref="IQuoteService.Create(QuoteCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Quote>> Create(
@@ -142,7 +142,7 @@ public interface IQuoteServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /quotes/{quote_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /quotes/{quote_id}</c>, but is otherwise the
     /// same as <see cref="IQuoteService.Retrieve(QuoteRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Quote>> Retrieve(
@@ -158,7 +158,7 @@ public interface IQuoteServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /quotes/{quote_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /quotes/{quote_id}</c>, but is otherwise the
     /// same as <see cref="IQuoteService.Update(QuoteUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Quote>> Update(
@@ -174,7 +174,7 @@ public interface IQuoteServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /quotes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /quotes</c>, but is otherwise the
     /// same as <see cref="IQuoteService.List(QuoteListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<QuoteListPage>> List(
@@ -183,7 +183,7 @@ public interface IQuoteServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /quotes/{quote_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /quotes/{quote_id}</c>, but is otherwise the
     /// same as <see cref="IQuoteService.Delete(QuoteDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -199,7 +199,7 @@ public interface IQuoteServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /quotes/random`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /quotes/random</c>, but is otherwise the
     /// same as <see cref="IQuoteService.GetRandom(QuoteGetRandomParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Quote>> GetRandom(
@@ -208,7 +208,7 @@ public interface IQuoteServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /quotes/characters/{character_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /quotes/characters/{character_id}</c>, but is otherwise the
     /// same as <see cref="IQuoteService.ListByCharacter(QuoteListByCharacterParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<QuoteListByCharacterPage>> ListByCharacter(
@@ -224,7 +224,7 @@ public interface IQuoteServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /quotes/themes/{theme}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /quotes/themes/{theme}</c>, but is otherwise the
     /// same as <see cref="IQuoteService.ListByTheme(QuoteListByThemeParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<QuoteListByThemePage>> ListByTheme(

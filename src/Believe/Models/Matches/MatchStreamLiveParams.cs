@@ -20,7 +20,7 @@ namespace Believe.Models.Matches;
 ///
 /// <para>## Example WebSocket URL</para>
 ///
-/// <para>``` ws://localhost:8000/matches/live?home_team=AFC%20Richmond&away_team=Manchester%20City&speed=2.0&excitement_level=7 ```</para>
+/// <para>``` ws://localhost:8000/matches/live?home_team=AFC%20Richmond&amp;away_team=Manchester%20City&amp;speed=2.0&amp;excitement_level=7 ```</para>
 ///
 /// <para>## Server Messages</para>
 ///
@@ -156,7 +156,7 @@ public record class MatchStreamLiveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static MatchStreamLiveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

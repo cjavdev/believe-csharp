@@ -117,7 +117,7 @@ public interface ICharacterServiceWithRawResponse
     ICharacterServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /characters`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /characters</c>, but is otherwise the
     /// same as <see cref="ICharacterService.Create(CharacterCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Character>> Create(
@@ -126,7 +126,7 @@ public interface ICharacterServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /characters/{character_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /characters/{character_id}</c>, but is otherwise the
     /// same as <see cref="ICharacterService.Retrieve(CharacterRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Character>> Retrieve(
@@ -142,7 +142,7 @@ public interface ICharacterServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /characters/{character_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /characters/{character_id}</c>, but is otherwise the
     /// same as <see cref="ICharacterService.Update(CharacterUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Character>> Update(
@@ -158,7 +158,7 @@ public interface ICharacterServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /characters`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /characters</c>, but is otherwise the
     /// same as <see cref="ICharacterService.List(CharacterListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<CharacterListPage>> List(
@@ -167,7 +167,7 @@ public interface ICharacterServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /characters/{character_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /characters/{character_id}</c>, but is otherwise the
     /// same as <see cref="ICharacterService.Delete(CharacterDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -183,7 +183,7 @@ public interface ICharacterServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /characters/{character_id}/quotes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /characters/{character_id}/quotes</c>, but is otherwise the
     /// same as <see cref="ICharacterService.GetQuotes(CharacterGetQuotesParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<string>>> GetQuotes(
