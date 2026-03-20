@@ -17,7 +17,7 @@ namespace Believe.Models.Client.Ws;
 /// <para>## Example</para>
 ///
 /// <para>```javascript const ws = new WebSocket('ws://localhost:8000/ws/test');
-/// ws.onmessage = (event) => console.log(event.data); ws.send('Hello!');  // Server
+/// ws.onmessage = (event) =&gt; console.log(event.data); ws.send('Hello!');  // Server
 /// responds with echo ```</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
@@ -55,7 +55,7 @@ public record class WTestParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static WTestParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

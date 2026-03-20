@@ -74,7 +74,7 @@ public interface IPrincipleServiceWithRawResponse
     IPrincipleServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /coaching/principles/{principle_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /coaching/principles/{principle_id}</c>, but is otherwise the
     /// same as <see cref="IPrincipleService.Retrieve(PrincipleRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<CoachingPrinciple>> Retrieve(
@@ -90,7 +90,7 @@ public interface IPrincipleServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /coaching/principles`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /coaching/principles</c>, but is otherwise the
     /// same as <see cref="IPrincipleService.List(PrincipleListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PrincipleListPage>> List(
@@ -99,7 +99,7 @@ public interface IPrincipleServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /coaching/principles/random`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /coaching/principles/random</c>, but is otherwise the
     /// same as <see cref="IPrincipleService.GetRandom(PrincipleGetRandomParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<CoachingPrinciple>> GetRandom(

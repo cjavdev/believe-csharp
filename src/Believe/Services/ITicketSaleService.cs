@@ -102,7 +102,7 @@ public interface ITicketSaleServiceWithRawResponse
     ITicketSaleServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /ticket-sales`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /ticket-sales</c>, but is otherwise the
     /// same as <see cref="ITicketSaleService.Create(TicketSaleCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TicketSale>> Create(
@@ -111,7 +111,7 @@ public interface ITicketSaleServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /ticket-sales/{ticket_sale_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
     /// same as <see cref="ITicketSaleService.Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TicketSale>> Retrieve(
@@ -127,7 +127,7 @@ public interface ITicketSaleServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /ticket-sales/{ticket_sale_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
     /// same as <see cref="ITicketSaleService.Update(TicketSaleUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TicketSale>> Update(
@@ -143,7 +143,7 @@ public interface ITicketSaleServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /ticket-sales`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /ticket-sales</c>, but is otherwise the
     /// same as <see cref="ITicketSaleService.List(TicketSaleListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TicketSaleListPage>> List(
@@ -152,7 +152,7 @@ public interface ITicketSaleServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /ticket-sales/{ticket_sale_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
     /// same as <see cref="ITicketSaleService.Delete(TicketSaleDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(

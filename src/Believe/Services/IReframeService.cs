@@ -51,7 +51,7 @@ public interface IReframeServiceWithRawResponse
     IReframeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /reframe`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /reframe</c>, but is otherwise the
     /// same as <see cref="IReframeService.TransformNegativeThoughts(ReframeTransformNegativeThoughtsParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ReframeTransformNegativeThoughtsResponse>> TransformNegativeThoughts(

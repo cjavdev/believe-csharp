@@ -67,7 +67,8 @@ public interface ITeamService
     );
 
     /// <summary>
-    /// Get a paginated list of all teams with optional filtering by league or culture score.
+    /// Get a paginated list of all teams with optional filtering by league or culture
+    /// score.
     /// </summary>
     Task<TeamListPage> List(
         TeamListParams? parameters = null,
@@ -148,7 +149,7 @@ public interface ITeamServiceWithRawResponse
     ILogoServiceWithRawResponse Logo { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /teams`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /teams</c>, but is otherwise the
     /// same as <see cref="ITeamService.Create(TeamCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Team>> Create(
@@ -157,7 +158,7 @@ public interface ITeamServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /teams/{team_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /teams/{team_id}</c>, but is otherwise the
     /// same as <see cref="ITeamService.Retrieve(TeamRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Team>> Retrieve(
@@ -173,7 +174,7 @@ public interface ITeamServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /teams/{team_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /teams/{team_id}</c>, but is otherwise the
     /// same as <see cref="ITeamService.Update(TeamUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Team>> Update(
@@ -189,7 +190,7 @@ public interface ITeamServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /teams`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /teams</c>, but is otherwise the
     /// same as <see cref="ITeamService.List(TeamListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TeamListPage>> List(
@@ -198,7 +199,7 @@ public interface ITeamServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /teams/{team_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /teams/{team_id}</c>, but is otherwise the
     /// same as <see cref="ITeamService.Delete(TeamDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -214,7 +215,7 @@ public interface ITeamServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /teams/{team_id}/culture`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /teams/{team_id}/culture</c>, but is otherwise the
     /// same as <see cref="ITeamService.GetCulture(TeamGetCultureParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Dictionary<string, JsonElement>>> GetCulture(
@@ -230,7 +231,7 @@ public interface ITeamServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /teams/{team_id}/rivals`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /teams/{team_id}/rivals</c>, but is otherwise the
     /// same as <see cref="ITeamService.GetRivals(TeamGetRivalsParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<Team>>> GetRivals(
@@ -246,7 +247,7 @@ public interface ITeamServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /teams/{team_id}/logos`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /teams/{team_id}/logos</c>, but is otherwise the
     /// same as <see cref="ITeamService.ListLogos(TeamListLogosParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<FileUpload>>> ListLogos(

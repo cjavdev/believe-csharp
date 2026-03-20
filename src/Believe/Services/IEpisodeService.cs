@@ -69,7 +69,8 @@ public interface IEpisodeService
     );
 
     /// <summary>
-    /// Get a paginated list of all Ted Lasso episodes with optional filtering by season.
+    /// Get a paginated list of all Ted Lasso episodes with optional filtering by
+    /// season.
     /// </summary>
     Task<EpisodeListPage> List(
         EpisodeListParams? parameters = null,
@@ -118,7 +119,7 @@ public interface IEpisodeServiceWithRawResponse
     IEpisodeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /episodes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /episodes</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Create(EpisodeCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Episode>> Create(
@@ -127,7 +128,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /episodes/{episode_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /episodes/{episode_id}</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Retrieve(EpisodeRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Episode>> Retrieve(
@@ -143,7 +144,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /episodes/{episode_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /episodes/{episode_id}</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Update(EpisodeUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Episode>> Update(
@@ -159,7 +160,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /episodes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /episodes</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.List(EpisodeListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<EpisodeListPage>> List(
@@ -168,7 +169,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /episodes/{episode_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /episodes/{episode_id}</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Delete(EpisodeDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -184,7 +185,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /episodes/{episode_id}/wisdom`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /episodes/{episode_id}/wisdom</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.GetWisdom(EpisodeGetWisdomParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Dictionary<string, JsonElement>>> GetWisdom(

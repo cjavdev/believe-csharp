@@ -121,18 +121,21 @@ public interface IMatchService
     ///
     /// <para>## Connection</para>
     ///
-    /// <para>Connect via WebSocket with optional query parameters to customize the simulation.</para>
+    /// <para>Connect via WebSocket with optional query parameters to customize the
+    /// simulation.</para>
     ///
     /// <para>## Example WebSocket URL</para>
     ///
-    /// <para>``` ws://localhost:8000/matches/live?home_team=AFC%20Richmond&away_team=Manchester%20City&speed=2.0&excitement_level=7 ```</para>
+    /// <para>```
+    /// ws://localhost:8000/matches/live?home_team=AFC%20Richmond&away_team=Manchester%20City&speed=2.0&excitement_level=7
+    /// ```</para>
     ///
     /// <para>## Server Messages</para>
     ///
     /// <para>The server sends JSON messages with these types: - `match_start` - When
     /// the match begins - `match_event` - For each match event (goals, fouls, cards,
-    /// etc.) - `match_end` - When the match concludes - `error` - If an error occurs
-    /// - `pong` - Response to client ping</para>
+    /// etc.) - `match_end` - When the match concludes - `error` - If an error occurs -
+    /// `pong` - Response to client ping</para>
     ///
     /// <para>## Client Messages</para>
     ///
@@ -140,7 +143,7 @@ public interface IMatchService
     /// server responds with `{"type": "pong"}` - `{"action": "pause"}` - Pause the
     /// simulation - `{"action": "resume"}` - Resume a paused simulation - `{"action":
     /// "set_speed", "speed": 2.0}` - Change playback speed (0.1-10.0) - `{"action":
-    /// "get_status"}` - Request current match status</para>
+    /// "get_status"}` - Request current match status </para>
     /// </summary>
     Task StreamLive(
         MatchStreamLiveParams? parameters = null,
@@ -164,7 +167,7 @@ public interface IMatchServiceWithRawResponse
     ICommentaryServiceWithRawResponse Commentary { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /matches`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /matches</c>, but is otherwise the
     /// same as <see cref="IMatchService.Create(MatchCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Match>> Create(
@@ -173,7 +176,7 @@ public interface IMatchServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /matches/{match_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /matches/{match_id}</c>, but is otherwise the
     /// same as <see cref="IMatchService.Retrieve(MatchRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Match>> Retrieve(
@@ -189,7 +192,7 @@ public interface IMatchServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `patch /matches/{match_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>patch /matches/{match_id}</c>, but is otherwise the
     /// same as <see cref="IMatchService.Update(MatchUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Match>> Update(
@@ -205,7 +208,7 @@ public interface IMatchServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /matches`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /matches</c>, but is otherwise the
     /// same as <see cref="IMatchService.List(MatchListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<MatchListPage>> List(
@@ -214,7 +217,7 @@ public interface IMatchServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /matches/{match_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /matches/{match_id}</c>, but is otherwise the
     /// same as <see cref="IMatchService.Delete(MatchDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Delete(
@@ -230,7 +233,7 @@ public interface IMatchServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /matches/{match_id}/lesson`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /matches/{match_id}/lesson</c>, but is otherwise the
     /// same as <see cref="IMatchService.GetLesson(MatchGetLessonParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Dictionary<string, JsonElement>>> GetLesson(
@@ -246,7 +249,7 @@ public interface IMatchServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /matches/{match_id}/turning-points`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /matches/{match_id}/turning-points</c>, but is otherwise the
     /// same as <see cref="IMatchService.GetTurningPoints(MatchGetTurningPointsParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<Dictionary<string, JsonElement>>>> GetTurningPoints(
@@ -262,7 +265,7 @@ public interface IMatchServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /matches/live`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /matches/live</c>, but is otherwise the
     /// same as <see cref="IMatchService.StreamLive(MatchStreamLiveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> StreamLive(

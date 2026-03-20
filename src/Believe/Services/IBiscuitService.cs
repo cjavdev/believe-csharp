@@ -75,7 +75,7 @@ public interface IBiscuitServiceWithRawResponse
     IBiscuitServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /biscuits/{biscuit_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /biscuits/{biscuit_id}</c>, but is otherwise the
     /// same as <see cref="IBiscuitService.Retrieve(BiscuitRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Biscuit>> Retrieve(
@@ -91,7 +91,7 @@ public interface IBiscuitServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /biscuits`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /biscuits</c>, but is otherwise the
     /// same as <see cref="IBiscuitService.List(BiscuitListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<BiscuitListPage>> List(
@@ -100,7 +100,7 @@ public interface IBiscuitServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /biscuits/fresh`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /biscuits/fresh</c>, but is otherwise the
     /// same as <see cref="IBiscuitService.GetFresh(BiscuitGetFreshParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Biscuit>> GetFresh(
