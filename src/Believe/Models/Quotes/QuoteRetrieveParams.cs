@@ -43,23 +43,27 @@ public record class QuoteRetrieveParams : ParamsBase
     [SetsRequiredMembers]
     QuoteRetrieveParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
-        FrozenDictionary<string, JsonElement> rawQueryData
+        FrozenDictionary<string, JsonElement> rawQueryData,
+        string quoteID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
+        this.QuoteID = quoteID;
     }
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static QuoteRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
-        IReadOnlyDictionary<string, JsonElement> rawQueryData
+        IReadOnlyDictionary<string, JsonElement> rawQueryData,
+        string quoteID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
-            FrozenDictionary.ToFrozenDictionary(rawQueryData)
+            FrozenDictionary.ToFrozenDictionary(rawQueryData),
+            quoteID
         );
     }
 
