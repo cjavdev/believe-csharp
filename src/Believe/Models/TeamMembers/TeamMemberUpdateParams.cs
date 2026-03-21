@@ -21,11 +21,7 @@ namespace Believe.Models.TeamMembers;
 /// </summary>
 public record class TeamMemberUpdateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
-        get { return this._rawBodyData.Freeze(); }
-    }
+    public JsonElement RawBodyData { get; private init; }
 
     public string? MemberID { get; init; }
 
@@ -36,10 +32,9 @@ public record class TeamMemberUpdateParams : ParamsBase
     {
         get
         {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<Updates>("updates");
+            return WrappedJsonSerializer.GetNotNullClass<Updates>(this.RawBodyData, "RawBodyData");
         }
-        init { this._rawBodyData.Set("updates", value); }
+        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
     public TeamMemberUpdateParams() { }
@@ -51,19 +46,19 @@ public record class TeamMemberUpdateParams : ParamsBase
     {
         this.MemberID = teamMemberUpdateParams.MemberID;
 
-        this._rawBodyData = new(teamMemberUpdateParams._rawBodyData);
+        this.RawBodyData = teamMemberUpdateParams.RawBodyData;
     }
 #pragma warning restore CS8618
 
     public TeamMemberUpdateParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
     }
 
 #pragma warning disable CS8618
@@ -71,13 +66,13 @@ public record class TeamMemberUpdateParams : ParamsBase
     TeamMemberUpdateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData,
+        JsonElement rawBodyData,
         string memberID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
         this.MemberID = memberID;
     }
 #pragma warning restore CS8618
@@ -86,14 +81,14 @@ public record class TeamMemberUpdateParams : ParamsBase
     public static TeamMemberUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData,
+        JsonElement rawBodyData,
         string memberID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData),
+            rawBodyData,
             memberID
         );
     }
@@ -110,7 +105,7 @@ public record class TeamMemberUpdateParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -125,7 +120,7 @@ public record class TeamMemberUpdateParams : ParamsBase
         return (this.MemberID?.Equals(other.MemberID) ?? other.MemberID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+            && this.RawBodyData.Equals(other.RawBodyData);
     }
 
     public override Uri Url(ClientOptions options)
