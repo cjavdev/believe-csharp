@@ -509,11 +509,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     var deserialized = JsonSerializer.Deserialize<Player>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -527,11 +526,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     var deserialized = JsonSerializer.Deserialize<Coach>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -545,11 +543,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     var deserialized = JsonSerializer.Deserialize<MedicalStaff>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -566,11 +563,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }

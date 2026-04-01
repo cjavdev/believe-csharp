@@ -381,11 +381,10 @@ sealed class TeamMemberUpdateResponseConverter : JsonConverter<TeamMemberUpdateR
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -402,11 +401,10 @@ sealed class TeamMemberUpdateResponseConverter : JsonConverter<TeamMemberUpdateR
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -423,11 +421,10 @@ sealed class TeamMemberUpdateResponseConverter : JsonConverter<TeamMemberUpdateR
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -444,11 +441,10 @@ sealed class TeamMemberUpdateResponseConverter : JsonConverter<TeamMemberUpdateR
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
