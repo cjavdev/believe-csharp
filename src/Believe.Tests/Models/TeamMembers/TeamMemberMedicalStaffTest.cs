@@ -13,14 +13,10 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
 
         string expectedID = "sharon-fieldstone-richmond";
@@ -29,9 +25,11 @@ public class TeamMemberMedicalStaffTest : TestBase
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 1;
         string expectedLicenseNumber = "PSY-12345";
-        ApiEnum<string, TeamMemberMedicalStaffMemberType> expectedMemberType =
-            TeamMemberMedicalStaffMemberType.MedicalStaff;
-        List<string> expectedQualifications = ["PhD Clinical Psychology"];
+        ApiEnum<string, TeamMemberMedicalStaffMemberType> expectedMemberType = TeamMemberMedicalStaffMemberType.MedicalStaff;
+        List<string> expectedQualifications =
+        [
+            "PhD Clinical Psychology"
+        ];
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCharacterID, model.CharacterID);
@@ -53,21 +51,14 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberMedicalStaff>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberMedicalStaff>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -77,21 +68,14 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberMedicalStaff>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberMedicalStaff>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "sharon-fieldstone-richmond";
@@ -100,9 +84,11 @@ public class TeamMemberMedicalStaffTest : TestBase
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 1;
         string expectedLicenseNumber = "PSY-12345";
-        ApiEnum<string, TeamMemberMedicalStaffMemberType> expectedMemberType =
-            TeamMemberMedicalStaffMemberType.MedicalStaff;
-        List<string> expectedQualifications = ["PhD Clinical Psychology"];
+        ApiEnum<string, TeamMemberMedicalStaffMemberType> expectedMemberType = TeamMemberMedicalStaffMemberType.MedicalStaff;
+        List<string> expectedQualifications =
+        [
+            "PhD Clinical Psychology"
+        ];
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCharacterID, deserialized.CharacterID);
@@ -124,14 +110,10 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
 
         model.Validate();
@@ -142,18 +124,13 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",
         };
 
         Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Qualifications);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Qualifications);
         Assert.False(model.RawData.ContainsKey("qualifications"));
+
     }
 
     [Fact]
@@ -161,12 +138,7 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",
         };
 
         model.Validate();
@@ -177,22 +149,16 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",
 
             // Null should be interpreted as omitted for these properties
-            MemberType = null,
-            Qualifications = null,
+            MemberType = null,Qualifications = null,
         };
 
         Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Qualifications);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Qualifications);
         Assert.False(model.RawData.ContainsKey("qualifications"));
+
     }
 
     [Fact]
@@ -200,16 +166,10 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",
 
             // Null should be interpreted as omitted for these properties
-            MemberType = null,
-            Qualifications = null,
+            MemberType = null,Qualifications = null,
         };
 
         model.Validate();
@@ -220,17 +180,15 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
 
         Assert.Null(model.LicenseNumber);
         Assert.False(model.RawData.ContainsKey("license_number"));
+
     }
 
     [Fact]
@@ -238,13 +196,10 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
 
         model.Validate();
@@ -255,19 +210,17 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
 
             LicenseNumber = null,
         };
 
         Assert.Null(model.LicenseNumber);
         Assert.True(model.RawData.ContainsKey("license_number"));
+
     }
 
     [Fact]
@@ -275,13 +228,10 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
 
             LicenseNumber = null,
         };
@@ -294,14 +244,10 @@ public class TeamMemberMedicalStaffTest : TestBase
     {
         var model = new TeamMemberMedicalStaff
         {
-            ID = "sharon-fieldstone-richmond",
-            CharacterID = "dr-sharon",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 1,
-            LicenseNumber = "PSY-12345",
-            MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            ID = "sharon-fieldstone-richmond",CharacterID = "dr-sharon",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 1,LicenseNumber = "PSY-12345",MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
 
         TeamMemberMedicalStaff copied = new(model);
@@ -312,8 +258,7 @@ public class TeamMemberMedicalStaffTest : TestBase
 
 public class TeamMemberMedicalStaffMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(TeamMemberMedicalStaffMemberType.MedicalStaff)]
+    [Theory][InlineData(TeamMemberMedicalStaffMemberType.MedicalStaff)]
     public void Validation_Works(TeamMemberMedicalStaffMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -324,26 +269,22 @@ public class TeamMemberMedicalStaffMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberMedicalStaffMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberMedicalStaffMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(TeamMemberMedicalStaffMemberType.MedicalStaff)]
-    public void SerializationRoundtrip_Works(TeamMemberMedicalStaffMemberType rawValue)
+    [Theory][InlineData(TeamMemberMedicalStaffMemberType.MedicalStaff)]
+    public void SerializationRoundtrip_Works(
+        TeamMemberMedicalStaffMemberType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, TeamMemberMedicalStaffMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberMedicalStaffMemberType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberMedicalStaffMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -351,14 +292,9 @@ public class TeamMemberMedicalStaffMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberMedicalStaffMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberMedicalStaffMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberMedicalStaffMemberType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberMedicalStaffMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

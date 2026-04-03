@@ -18,12 +18,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Unique identifier
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -31,12 +31,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Away team ID
     /// </summary>
-    public required string AwayTeamID
-    {
-        get
-        {
+    public required string AwayTeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("away_team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "away_team_id"
+            );
         }
         init { this._rawData.Set("away_team_id", value); }
     }
@@ -44,12 +44,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Match date and time
     /// </summary>
-    public required DateTimeOffset Date
-    {
-        get
-        {
+    public required DateTimeOffset Date {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<DateTimeOffset>("date");
+            return this._rawData.GetNotNullStruct<DateTimeOffset>(
+                "date"
+            );
         }
         init { this._rawData.Set("date", value); }
     }
@@ -57,12 +57,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Home team ID
     /// </summary>
-    public required string HomeTeamID
-    {
-        get
-        {
+    public required string HomeTeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("home_team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "home_team_id"
+            );
         }
         init { this._rawData.Set("home_team_id", value); }
     }
@@ -70,12 +70,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Type of match
     /// </summary>
-    public required ApiEnum<string, MatchType> MatchType
-    {
-        get
-        {
+    public required ApiEnum<string, MatchType> MatchType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, MatchType>>("match_type");
+            return this._rawData.GetNotNullClass<ApiEnum<string, MatchType>>(
+                "match_type"
+            );
         }
         init { this._rawData.Set("match_type", value); }
     }
@@ -83,12 +83,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Match attendance
     /// </summary>
-    public long? Attendance
-    {
-        get
-        {
+    public long? Attendance {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("attendance");
+            return this._rawData.GetNullableStruct<long>(
+                "attendance"
+            );
         }
         init { this._rawData.Set("attendance", value); }
     }
@@ -96,17 +96,15 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Away team score
     /// </summary>
-    public long? AwayScore
-    {
-        get
-        {
+    public long? AwayScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("away_score");
+            return this._rawData.GetNullableStruct<long>(
+                "away_score"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -117,12 +115,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Episode ID where this match is featured
     /// </summary>
-    public string? EpisodeID
-    {
-        get
-        {
+    public string? EpisodeID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("episode_id");
+            return this._rawData.GetNullableClass<string>(
+                "episode_id"
+            );
         }
         init { this._rawData.Set("episode_id", value); }
     }
@@ -130,17 +128,15 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Home team score
     /// </summary>
-    public long? HomeScore
-    {
-        get
-        {
+    public long? HomeScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("home_score");
+            return this._rawData.GetNullableStruct<long>(
+                "home_score"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -151,12 +147,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// The life lesson learned from this match
     /// </summary>
-    public string? LessonLearned
-    {
-        get
-        {
+    public string? LessonLearned {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("lesson_learned");
+            return this._rawData.GetNullableClass<string>(
+                "lesson_learned"
+            );
         }
         init { this._rawData.Set("lesson_learned", value); }
     }
@@ -164,12 +160,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Home team possession percentage
     /// </summary>
-    public double? PossessionPercentage
-    {
-        get
-        {
+    public double? PossessionPercentage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("possession_percentage");
+            return this._rawData.GetNullableStruct<double>(
+                "possession_percentage"
+            );
         }
         init { this._rawData.Set("possession_percentage", value); }
     }
@@ -177,17 +173,15 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Match result from home team perspective
     /// </summary>
-    public ApiEnum<string, MatchResult>? Result
-    {
-        get
-        {
+    public ApiEnum<string, MatchResult>? Result {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, MatchResult>>("result");
+            return this._rawData.GetNullableClass<ApiEnum<string, MatchResult>>(
+                "result"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -198,12 +192,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Ted's inspirational halftime speech
     /// </summary>
-    public string? TedHalftimeSpeech
-    {
-        get
-        {
+    public string? TedHalftimeSpeech {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("ted_halftime_speech");
+            return this._rawData.GetNullableClass<string>(
+                "ted_halftime_speech"
+            );
         }
         init { this._rawData.Set("ted_halftime_speech", value); }
     }
@@ -211,12 +205,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Total ticket revenue in GBP
     /// </summary>
-    public string? TicketRevenueGbp
-    {
-        get
-        {
+    public string? TicketRevenueGbp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("ticket_revenue_gbp");
+            return this._rawData.GetNullableClass<string>(
+                "ticket_revenue_gbp"
+            );
         }
         init { this._rawData.Set("ticket_revenue_gbp", value); }
     }
@@ -224,17 +218,15 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Key moments that changed the match
     /// </summary>
-    public IReadOnlyList<TurningPoint>? TurningPoints
-    {
-        get
-        {
+    public IReadOnlyList<TurningPoint>? TurningPoints {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<TurningPoint>>("turning_points");
+            return this._rawData.GetNullableStruct<ImmutableArray<TurningPoint>>(
+                "turning_points"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -248,12 +240,12 @@ public sealed record class Match : JsonModel
     /// <summary>
     /// Temperature at kickoff in Celsius
     /// </summary>
-    public double? WeatherTempCelsius
-    {
-        get
-        {
+    public double? WeatherTempCelsius {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("weather_temp_celsius");
+            return this._rawData.GetNullableStruct<double>(
+                "weather_temp_celsius"
+            );
         }
         init { this._rawData.Set("weather_temp_celsius", value); }
     }
@@ -282,37 +274,36 @@ public sealed record class Match : JsonModel
         _ = this.WeatherTempCelsius;
     }
 
-    public Match() { }
+    public Match ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Match(Match match)
-        : base(match) { }
-#pragma warning restore CS8618
+    public Match (Match match) : base(match)
+    {  }
+    #pragma warning restore CS8618
 
-    public Match(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Match (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Match(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Match (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MatchFromRaw.FromRawUnchecked"/>
-    public static Match FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Match FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class MatchFromRaw : IFromRawJson<Match>
 {
     /// <inheritdoc/>
-    public Match FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Match.FromRawUnchecked(rawData);
+    public Match FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Match.FromRawUnchecked(rawData);
 }

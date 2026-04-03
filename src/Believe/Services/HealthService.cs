@@ -14,24 +14,25 @@ public sealed class HealthService : IHealthService
     readonly Lazy<IHealthServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IHealthServiceWithRawResponse WithRawResponse
-    {
+    public IHealthServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IHealthService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new HealthService(this._client.WithOptions(modifier));
-    }
+    public IHealthService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new HealthService(this._client.WithOptions(modifier)); }
 
-    public HealthService(IBelieveClient client)
+    public HealthService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new HealthServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new HealthServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,9 +41,7 @@ public sealed class HealthService : IHealthService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Check(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Check(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -53,15 +52,15 @@ public sealed class HealthServiceWithRawResponse : IHealthServiceWithRawResponse
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IHealthServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IHealthServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new HealthServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public HealthServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public HealthServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<JsonElement>> Check(
@@ -77,12 +76,8 @@ public sealed class HealthServiceWithRawResponse : IHealthServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
-            }
-        );
+        return new(response, async ( token )=>{
+            return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
+        });
     }
 }

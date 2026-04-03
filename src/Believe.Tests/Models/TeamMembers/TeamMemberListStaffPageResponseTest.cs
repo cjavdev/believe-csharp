@@ -23,15 +23,12 @@ public class TeamMemberListStaffPageResponseTest : TestBase
                     YearsWithTeam = 1,
                     LicenseNumber = "PSY-12345",
                     MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-                    Qualifications = ["PhD Clinical Psychology"],
+                    Qualifications =
+                    [
+                        "PhD Clinical Psychology"
+                    ],
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<TeamMemberListStaffResponse> expectedData =
@@ -45,7 +42,10 @@ public class TeamMemberListStaffPageResponseTest : TestBase
                 YearsWithTeam = 1,
                 LicenseNumber = "PSY-12345",
                 MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-                Qualifications = ["PhD Clinical Psychology"],
+                Qualifications =
+                [
+                    "PhD Clinical Psychology"
+                ],
             },
         ];
         bool expectedHasMore = true;
@@ -84,22 +84,16 @@ public class TeamMemberListStaffPageResponseTest : TestBase
                     YearsWithTeam = 1,
                     LicenseNumber = "PSY-12345",
                     MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-                    Qualifications = ["PhD Clinical Psychology"],
+                    Qualifications =
+                    [
+                        "PhD Clinical Psychology"
+                    ],
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -120,22 +114,16 @@ public class TeamMemberListStaffPageResponseTest : TestBase
                     YearsWithTeam = 1,
                     LicenseNumber = "PSY-12345",
                     MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-                    Qualifications = ["PhD Clinical Psychology"],
+                    Qualifications =
+                    [
+                        "PhD Clinical Psychology"
+                    ],
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<TeamMemberListStaffResponse> expectedData =
@@ -149,7 +137,10 @@ public class TeamMemberListStaffPageResponseTest : TestBase
                 YearsWithTeam = 1,
                 LicenseNumber = "PSY-12345",
                 MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-                Qualifications = ["PhD Clinical Psychology"],
+                Qualifications =
+                [
+                    "PhD Clinical Psychology"
+                ],
             },
         ];
         bool expectedHasMore = true;
@@ -188,15 +179,12 @@ public class TeamMemberListStaffPageResponseTest : TestBase
                     YearsWithTeam = 1,
                     LicenseNumber = "PSY-12345",
                     MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-                    Qualifications = ["PhD Clinical Psychology"],
+                    Qualifications =
+                    [
+                        "PhD Clinical Psychology"
+                    ],
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -218,15 +206,12 @@ public class TeamMemberListStaffPageResponseTest : TestBase
                     YearsWithTeam = 1,
                     LicenseNumber = "PSY-12345",
                     MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-                    Qualifications = ["PhD Clinical Psychology"],
+                    Qualifications =
+                    [
+                        "PhD Clinical Psychology"
+                    ],
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         TeamMemberListStaffPageResponse copied = new(model);

@@ -8,7 +8,12 @@ public class CommentaryStreamParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new CommentaryStreamParams { MatchID = "match_id" };
+
+
+        var parameters = new CommentaryStreamParams
+        {
+            MatchID = "match_id",
+        };
 
         string expectedMatchID = "match_id";
 
@@ -20,7 +25,12 @@ public class CommentaryStreamParamsTest : TestBase
     {
         CommentaryStreamParams parameters = new() { MatchID = "match_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/matches/match_id/commentary/stream"), url);
     }
@@ -28,7 +38,10 @@ public class CommentaryStreamParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new CommentaryStreamParams { MatchID = "match_id" };
+        var parameters = new CommentaryStreamParams
+        {
+            MatchID = "match_id"
+        };
 
         CommentaryStreamParams copied = new(parameters);
 

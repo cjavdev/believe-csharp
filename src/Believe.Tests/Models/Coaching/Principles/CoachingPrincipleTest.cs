@@ -11,24 +11,13 @@ public class CoachingPrincipleTest : TestBase
     {
         var model = new CoachingPrinciple
         {
-            ID = "be-curious",
-            Application =
-                "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-            ExampleFromShow =
-                "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-            Explanation =
-                "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
-            Principle = "Be curious, not judgmental",
-            TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
+            ID = "be-curious",Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",Principle = "Be curious, not judgmental",TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
         };
 
         string expectedID = "be-curious";
-        string expectedApplication =
-            "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.";
-        string expectedExampleFromShow =
-            "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.";
-        string expectedExplanation =
-            "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.";
+        string expectedApplication = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.";
+        string expectedExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.";
+        string expectedExplanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.";
         string expectedPrinciple = "Be curious, not judgmental";
         string expectedTedQuote = "Be curious, not judgmental. - Walt Whitman... I think.";
 
@@ -45,22 +34,11 @@ public class CoachingPrincipleTest : TestBase
     {
         var model = new CoachingPrinciple
         {
-            ID = "be-curious",
-            Application =
-                "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-            ExampleFromShow =
-                "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-            Explanation =
-                "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
-            Principle = "Be curious, not judgmental",
-            TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
+            ID = "be-curious",Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",Principle = "Be curious, not judgmental",TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CoachingPrinciple>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CoachingPrinciple>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -70,31 +48,17 @@ public class CoachingPrincipleTest : TestBase
     {
         var model = new CoachingPrinciple
         {
-            ID = "be-curious",
-            Application =
-                "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-            ExampleFromShow =
-                "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-            Explanation =
-                "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
-            Principle = "Be curious, not judgmental",
-            TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
+            ID = "be-curious",Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",Principle = "Be curious, not judgmental",TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CoachingPrinciple>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CoachingPrinciple>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "be-curious";
-        string expectedApplication =
-            "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.";
-        string expectedExampleFromShow =
-            "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.";
-        string expectedExplanation =
-            "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.";
+        string expectedApplication = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.";
+        string expectedExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.";
+        string expectedExplanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.";
         string expectedPrinciple = "Be curious, not judgmental";
         string expectedTedQuote = "Be curious, not judgmental. - Walt Whitman... I think.";
 
@@ -111,15 +75,7 @@ public class CoachingPrincipleTest : TestBase
     {
         var model = new CoachingPrinciple
         {
-            ID = "be-curious",
-            Application =
-                "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-            ExampleFromShow =
-                "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-            Explanation =
-                "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
-            Principle = "Be curious, not judgmental",
-            TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
+            ID = "be-curious",Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",Principle = "Be curious, not judgmental",TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
         };
 
         model.Validate();
@@ -130,15 +86,7 @@ public class CoachingPrincipleTest : TestBase
     {
         var model = new CoachingPrinciple
         {
-            ID = "be-curious",
-            Application =
-                "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-            ExampleFromShow =
-                "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-            Explanation =
-                "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
-            Principle = "Be curious, not judgmental",
-            TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
+            ID = "be-curious",Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",Principle = "Be curious, not judgmental",TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
         };
 
         CoachingPrinciple copied = new(model);

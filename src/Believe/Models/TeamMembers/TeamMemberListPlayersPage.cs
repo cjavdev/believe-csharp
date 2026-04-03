@@ -12,15 +12,12 @@ namespace Believe.Models.TeamMembers;
 /// <summary>
 /// A single page from the paginated endpoint that <see cref="ITeamMemberService.ListPlayers(TeamMemberListPlayersParams, CancellationToken)"/> queries.
 /// </summary>
-public sealed class TeamMemberListPlayersPage(
-    ITeamMemberServiceWithRawResponse service,
-    TeamMemberListPlayersParams parameters,
-    TeamMemberListPlayersPageResponse response
-) : IPage<TeamMemberPlayer>
+public sealed class TeamMemberListPlayersPage(ITeamMemberServiceWithRawResponse service,
+TeamMemberListPlayersParams parameters,
+TeamMemberListPlayersPageResponse response) : IPage<TeamMemberPlayer>
 {
     /// <inheritdoc/>
-    public IReadOnlyList<TeamMemberPlayer> Items
-    {
+    public IReadOnlyList<TeamMemberPlayer> Items {
         get { return response.Data; }
     }
 
@@ -48,35 +45,28 @@ public sealed class TeamMemberListPlayersPage(
     /// <inheritdoc/>
     async Task<IPage<TeamMemberPlayer>> IPage<TeamMemberPlayer>.Next(
         CancellationToken cancellationToken
-    ) => await this.Next(cancellationToken).ConfigureAwait(false);
+    )
+    =>await this.Next(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc cref="IPage{T}.Next"/>
-    public async Task<TeamMemberListPlayersPage> Next(CancellationToken cancellationToken = default)
+    public async Task<TeamMemberListPlayersPage> Next(
+        CancellationToken cancellationToken = default
+    )
     {
         var currentOffset = parameters.Skip ?? 0;
-        using var nextResponse = await service
-            .ListPlayers(
-                parameters with
-                {
-                    Skip = currentOffset + this.Items.Count,
-                },
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        using var nextResponse = await service.ListPlayers(
+            parameters with { Skip = currentOffset + this.Items.Count },
+            cancellationToken
+        ).ConfigureAwait(false);
         return await nextResponse.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public void Validate()
-    {
-        response.Validate();
-    }
+    { response.Validate(); }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)), ModelBase.ToStringSerializerOptions);
 
     public override bool Equals(object? obj)
     {
@@ -88,5 +78,6 @@ public sealed class TeamMemberListPlayersPage(
         return Enumerable.SequenceEqual(this.Items, other.Items);
     }
 
-    public override int GetHashCode() => 0;
+    public override int GetHashCode()
+    =>0;
 }

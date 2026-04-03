@@ -22,17 +22,15 @@ public record class QuoteListByCharacterParams : ParamsBase
     /// <summary>
     /// Maximum number of items to return (max: 100)
     /// </summary>
-    public long? Limit
-    {
-        get
-        {
+    public long? Limit {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "limit"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -43,17 +41,15 @@ public record class QuoteListByCharacterParams : ParamsBase
     /// <summary>
     /// Number of items to skip (offset)
     /// </summary>
-    public long? Skip
-    {
-        get
-        {
+    public long? Skip {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "skip"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -61,18 +57,18 @@ public record class QuoteListByCharacterParams : ParamsBase
         }
     }
 
-    public QuoteListByCharacterParams() { }
+    public QuoteListByCharacterParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public QuoteListByCharacterParams(QuoteListByCharacterParams quoteListByCharacterParams)
-        : base(quoteListByCharacterParams)
-    {
-        this.CharacterID = quoteListByCharacterParams.CharacterID;
-    }
-#pragma warning restore CS8618
+    public QuoteListByCharacterParams (
+        QuoteListByCharacterParams quoteListByCharacterParams
+    ) : base(quoteListByCharacterParams)
+    { this.CharacterID = quoteListByCharacterParams.CharacterID; }
+    #pragma warning restore CS8618
 
-    public QuoteListByCharacterParams(
+    public QuoteListByCharacterParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -81,9 +77,9 @@ public record class QuoteListByCharacterParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    QuoteListByCharacterParams(
+    QuoteListByCharacterParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string characterID
@@ -93,7 +89,7 @@ public record class QuoteListByCharacterParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.CharacterID = characterID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static QuoteListByCharacterParams FromRawUnchecked(
@@ -106,25 +102,18 @@ public record class QuoteListByCharacterParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             characterID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["CharacterID"] = JsonSerializer.SerializeToElement(this.CharacterID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["CharacterID"] = JsonSerializer.SerializeToElement(this.CharacterID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(QuoteListByCharacterParams? other)
     {
@@ -132,23 +121,23 @@ public record class QuoteListByCharacterParams : ParamsBase
         {
             return false;
         }
-        return (this.CharacterID?.Equals(other.CharacterID) ?? other.CharacterID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.CharacterID?.Equals(other.CharacterID) ?? other.CharacterID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/quotes/characters/{0}", this.CharacterID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/quotes/characters/{0}",
+            this.CharacterID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -158,7 +147,5 @@ public record class QuoteListByCharacterParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

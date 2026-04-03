@@ -29,8 +29,7 @@ public class MatchListPageResponseTest : TestBase
                     LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
                     PossessionPercentage = 52.3,
                     Result = MatchResult.Draw,
-                    TedHalftimeSpeech =
-                        "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
+                    TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
                     TicketRevenueGbp = "735000.00",
                     TurningPoints =
                     [
@@ -44,13 +43,7 @@ public class MatchListPageResponseTest : TestBase
                     ],
                     WeatherTempCelsius = 14.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<Match> expectedData =
@@ -69,8 +62,7 @@ public class MatchListPageResponseTest : TestBase
                 LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
                 PossessionPercentage = 52.3,
                 Result = MatchResult.Draw,
-                TedHalftimeSpeech =
-                    "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
+                TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
                 TicketRevenueGbp = "735000.00",
                 TurningPoints =
                 [
@@ -126,8 +118,7 @@ public class MatchListPageResponseTest : TestBase
                     LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
                     PossessionPercentage = 52.3,
                     Result = MatchResult.Draw,
-                    TedHalftimeSpeech =
-                        "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
+                    TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
                     TicketRevenueGbp = "735000.00",
                     TurningPoints =
                     [
@@ -141,20 +132,11 @@ public class MatchListPageResponseTest : TestBase
                     ],
                     WeatherTempCelsius = 14.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchListPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchListPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -180,8 +162,7 @@ public class MatchListPageResponseTest : TestBase
                     LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
                     PossessionPercentage = 52.3,
                     Result = MatchResult.Draw,
-                    TedHalftimeSpeech =
-                        "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
+                    TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
                     TicketRevenueGbp = "735000.00",
                     TurningPoints =
                     [
@@ -195,20 +176,11 @@ public class MatchListPageResponseTest : TestBase
                     ],
                     WeatherTempCelsius = 14.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchListPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchListPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<Match> expectedData =
@@ -227,8 +199,7 @@ public class MatchListPageResponseTest : TestBase
                 LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
                 PossessionPercentage = 52.3,
                 Result = MatchResult.Draw,
-                TedHalftimeSpeech =
-                    "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
+                TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
                 TicketRevenueGbp = "735000.00",
                 TurningPoints =
                 [
@@ -284,8 +255,7 @@ public class MatchListPageResponseTest : TestBase
                     LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
                     PossessionPercentage = 52.3,
                     Result = MatchResult.Draw,
-                    TedHalftimeSpeech =
-                        "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
+                    TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
                     TicketRevenueGbp = "735000.00",
                     TurningPoints =
                     [
@@ -299,13 +269,7 @@ public class MatchListPageResponseTest : TestBase
                     ],
                     WeatherTempCelsius = 14.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -332,8 +296,7 @@ public class MatchListPageResponseTest : TestBase
                     LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
                     PossessionPercentage = 52.3,
                     Result = MatchResult.Draw,
-                    TedHalftimeSpeech =
-                        "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
+                    TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
                     TicketRevenueGbp = "735000.00",
                     TurningPoints =
                     [
@@ -347,13 +310,7 @@ public class MatchListPageResponseTest : TestBase
                     ],
                     WeatherTempCelsius = 14.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         MatchListPageResponse copied = new(model);

@@ -12,17 +12,12 @@ namespace Believe.Models.Quotes;
 /// <summary>
 /// A single page from the paginated endpoint that <see cref="IQuoteService.ListByTheme(QuoteListByThemeParams, CancellationToken)"/> queries.
 /// </summary>
-public sealed class QuoteListByThemePage(
-    IQuoteServiceWithRawResponse service,
-    QuoteListByThemeParams parameters,
-    PaginatedResponseQuote response
-) : IPage<Quote>
+public sealed class QuoteListByThemePage(IQuoteServiceWithRawResponse service,
+QuoteListByThemeParams parameters,
+PaginatedResponseQuote response) : IPage<Quote>
 {
     /// <inheritdoc/>
-    public IReadOnlyList<Quote> Items
-    {
-        get { return response.Data; }
-    }
+    public IReadOnlyList<Quote> Items { get { return response.Data; } }
 
     /// <inheritdoc/>
     public bool HasNext()
@@ -46,36 +41,30 @@ public sealed class QuoteListByThemePage(
     }
 
     /// <inheritdoc/>
-    async Task<IPage<Quote>> IPage<Quote>.Next(CancellationToken cancellationToken) =>
-        await this.Next(cancellationToken).ConfigureAwait(false);
+    async Task<IPage<Quote>> IPage<Quote>.Next(
+        CancellationToken cancellationToken
+    )
+    =>await this.Next(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc cref="IPage{T}.Next"/>
-    public async Task<QuoteListByThemePage> Next(CancellationToken cancellationToken = default)
+    public async Task<QuoteListByThemePage> Next(
+        CancellationToken cancellationToken = default
+    )
     {
         var currentOffset = parameters.Skip ?? 0;
-        using var nextResponse = await service
-            .ListByTheme(
-                parameters with
-                {
-                    Skip = currentOffset + this.Items.Count,
-                },
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        using var nextResponse = await service.ListByTheme(
+            parameters with { Skip = currentOffset + this.Items.Count },
+            cancellationToken
+        ).ConfigureAwait(false);
         return await nextResponse.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public void Validate()
-    {
-        response.Validate();
-    }
+    { response.Validate(); }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)), ModelBase.ToStringSerializerOptions);
 
     public override bool Equals(object? obj)
     {
@@ -87,5 +76,6 @@ public sealed class QuoteListByThemePage(
         return Enumerable.SequenceEqual(this.Items, other.Items);
     }
 
-    public override int GetHashCode() => 0;
+    public override int GetHashCode()
+    =>0;
 }

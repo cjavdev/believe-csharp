@@ -8,7 +8,12 @@ public class TeamGetCultureParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new TeamGetCultureParams { TeamID = "team_id" };
+
+
+        var parameters = new TeamGetCultureParams
+        {
+            TeamID = "team_id",
+        };
 
         string expectedTeamID = "team_id";
 
@@ -20,7 +25,12 @@ public class TeamGetCultureParamsTest : TestBase
     {
         TeamGetCultureParams parameters = new() { TeamID = "team_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/teams/team_id/culture"), url);
     }
@@ -28,7 +38,10 @@ public class TeamGetCultureParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new TeamGetCultureParams { TeamID = "team_id" };
+        var parameters = new TeamGetCultureParams
+        {
+            TeamID = "team_id"
+        };
 
         TeamGetCultureParams copied = new(parameters);
 

@@ -18,7 +18,7 @@ public enum League
     LaLiga,
     SerieA,
     Bundesliga,
-    Ligue1,
+    Ligue1
 }
 
 sealed class LeagueConverter : JsonConverter<League>
@@ -31,37 +31,35 @@ sealed class LeagueConverter : JsonConverter<League>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "Premier League" => League.PremierLeague,
-            "Championship" => League.Championship,
-            "League One" => League.LeagueOne,
-            "League Two" => League.LeagueTwo,
-            "La Liga" => League.LaLiga,
-            "Serie A" => League.SerieA,
-            "Bundesliga" => League.Bundesliga,
-            "Ligue 1" => League.Ligue1,
-            _ => (League)(-1),
+            "Premier League"=>League.PremierLeague,
+            "Championship"=>League.Championship,
+            "League One"=>League.LeagueOne,
+            "League Two"=>League.LeagueTwo,
+            "La Liga"=>League.LaLiga,
+            "Serie A"=>League.SerieA,
+            "Bundesliga"=>League.Bundesliga,
+            "Ligue 1"=>League.Ligue1,
+            _ =>(League)(-1)
         };
     }
 
-    public override void Write(Utf8JsonWriter writer, League value, JsonSerializerOptions options)
+    public override void Write(
+        Utf8JsonWriter writer, League value, JsonSerializerOptions options
+    )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                League.PremierLeague => "Premier League",
-                League.Championship => "Championship",
-                League.LeagueOne => "League One",
-                League.LeagueTwo => "League Two",
-                League.LaLiga => "La Liga",
-                League.SerieA => "Serie A",
-                League.Bundesliga => "Bundesliga",
-                League.Ligue1 => "Ligue 1",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            League.PremierLeague=>"Premier League",
+            League.Championship=>"Championship",
+            League.LeagueOne=>"League One",
+            League.LeagueTwo=>"League Two",
+            League.LaLiga=>"La Liga",
+            League.SerieA=>"Serie A",
+            League.Bundesliga=>"Bundesliga",
+            League.Ligue1=>"Ligue 1",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

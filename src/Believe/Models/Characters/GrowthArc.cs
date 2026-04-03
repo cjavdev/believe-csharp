@@ -16,12 +16,12 @@ public sealed record class GrowthArc : JsonModel
     /// <summary>
     /// Key breakthrough moment
     /// </summary>
-    public required string Breakthrough
-    {
-        get
-        {
+    public required string Breakthrough {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("breakthrough");
+            return this._rawData.GetNotNullClass<string>(
+                "breakthrough"
+            );
         }
         init { this._rawData.Set("breakthrough", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class GrowthArc : JsonModel
     /// <summary>
     /// Main challenge faced
     /// </summary>
-    public required string Challenge
-    {
-        get
-        {
+    public required string Challenge {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("challenge");
+            return this._rawData.GetNotNullClass<string>(
+                "challenge"
+            );
         }
         init { this._rawData.Set("challenge", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class GrowthArc : JsonModel
     /// <summary>
     /// Where the character ends up
     /// </summary>
-    public required string EndingPoint
-    {
-        get
-        {
+    public required string EndingPoint {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("ending_point");
+            return this._rawData.GetNotNullClass<string>(
+                "ending_point"
+            );
         }
         init { this._rawData.Set("ending_point", value); }
     }
@@ -55,12 +55,12 @@ public sealed record class GrowthArc : JsonModel
     /// <summary>
     /// Season number
     /// </summary>
-    public required long Season
-    {
-        get
-        {
+    public required long Season {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("season");
+            return this._rawData.GetNotNullStruct<long>(
+                "season"
+            );
         }
         init { this._rawData.Set("season", value); }
     }
@@ -68,12 +68,12 @@ public sealed record class GrowthArc : JsonModel
     /// <summary>
     /// Where the character starts emotionally
     /// </summary>
-    public required string StartingPoint
-    {
-        get
-        {
+    public required string StartingPoint {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("starting_point");
+            return this._rawData.GetNotNullClass<string>(
+                "starting_point"
+            );
         }
         init { this._rawData.Set("starting_point", value); }
     }
@@ -88,37 +88,36 @@ public sealed record class GrowthArc : JsonModel
         _ = this.StartingPoint;
     }
 
-    public GrowthArc() { }
+    public GrowthArc ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public GrowthArc(GrowthArc growthArc)
-        : base(growthArc) { }
-#pragma warning restore CS8618
+    public GrowthArc (GrowthArc growthArc) : base(growthArc)
+    {  }
+    #pragma warning restore CS8618
 
-    public GrowthArc(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public GrowthArc (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    GrowthArc(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    GrowthArc (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="GrowthArcFromRaw.FromRawUnchecked"/>
-    public static GrowthArc FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static GrowthArc FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class GrowthArcFromRaw : IFromRawJson<GrowthArc>
 {
     /// <inheritdoc/>
-    public GrowthArc FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        GrowthArc.FromRawUnchecked(rawData);
+    public GrowthArc FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>GrowthArc.FromRawUnchecked(rawData);
 }

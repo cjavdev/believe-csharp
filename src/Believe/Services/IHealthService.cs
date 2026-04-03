@@ -25,15 +25,17 @@ public interface IHealthService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IHealthService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IHealthService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Check if the API is running and healthy.
-    /// </summary>
+/// Check if the API is running and healthy.
+/// </summary>
     Task<JsonElement> Check(
         HealthCheckParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -47,14 +49,18 @@ public interface IHealthServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IHealthServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IHealthServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /health</c>, but is otherwise the
-    /// same as <see cref="IHealthService.Check(HealthCheckParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /health</c>, but is otherwise the
+/// same as <see cref="IHealthService.Check(HealthCheckParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<JsonElement>> Check(
         HealthCheckParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

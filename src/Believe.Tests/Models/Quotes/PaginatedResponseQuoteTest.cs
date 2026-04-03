@@ -18,8 +18,7 @@ public class PaginatedResponseQuoteTest : TestBase
                 {
                     ID = "quote-001",
                     CharacterID = "ted-lasso",
-                    Context =
-                        "Ted playing darts against Rupert in the pub, explaining his philosophy",
+                    Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
                     MomentType = QuoteMoment.Pub,
                     Text = "Be curious, not judgmental.",
                     Theme = QuoteTheme.Curiosity,
@@ -27,16 +26,13 @@ public class PaginatedResponseQuoteTest : TestBase
                     IsFunny = false,
                     IsInspirational = true,
                     PopularityScore = 95.5,
-                    SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+                    SecondaryThemes =
+                    [
+                        QuoteTheme.Wisdom, QuoteTheme.Kindness
+                    ],
                     TimesShared = 150000,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<Quote> expectedData =
@@ -53,7 +49,10 @@ public class PaginatedResponseQuoteTest : TestBase
                 IsFunny = false,
                 IsInspirational = true,
                 PopularityScore = 95.5,
-                SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+                SecondaryThemes =
+                [
+                    QuoteTheme.Wisdom, QuoteTheme.Kindness
+                ],
                 TimesShared = 150000,
             },
         ];
@@ -88,8 +87,7 @@ public class PaginatedResponseQuoteTest : TestBase
                 {
                     ID = "quote-001",
                     CharacterID = "ted-lasso",
-                    Context =
-                        "Ted playing darts against Rupert in the pub, explaining his philosophy",
+                    Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
                     MomentType = QuoteMoment.Pub,
                     Text = "Be curious, not judgmental.",
                     Theme = QuoteTheme.Curiosity,
@@ -97,23 +95,17 @@ public class PaginatedResponseQuoteTest : TestBase
                     IsFunny = false,
                     IsInspirational = true,
                     PopularityScore = 95.5,
-                    SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+                    SecondaryThemes =
+                    [
+                        QuoteTheme.Wisdom, QuoteTheme.Kindness
+                    ],
                     TimesShared = 150000,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaginatedResponseQuote>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PaginatedResponseQuote>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -129,8 +121,7 @@ public class PaginatedResponseQuoteTest : TestBase
                 {
                     ID = "quote-001",
                     CharacterID = "ted-lasso",
-                    Context =
-                        "Ted playing darts against Rupert in the pub, explaining his philosophy",
+                    Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
                     MomentType = QuoteMoment.Pub,
                     Text = "Be curious, not judgmental.",
                     Theme = QuoteTheme.Curiosity,
@@ -138,23 +129,17 @@ public class PaginatedResponseQuoteTest : TestBase
                     IsFunny = false,
                     IsInspirational = true,
                     PopularityScore = 95.5,
-                    SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+                    SecondaryThemes =
+                    [
+                        QuoteTheme.Wisdom, QuoteTheme.Kindness
+                    ],
                     TimesShared = 150000,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PaginatedResponseQuote>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PaginatedResponseQuote>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<Quote> expectedData =
@@ -171,7 +156,10 @@ public class PaginatedResponseQuoteTest : TestBase
                 IsFunny = false,
                 IsInspirational = true,
                 PopularityScore = 95.5,
-                SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+                SecondaryThemes =
+                [
+                    QuoteTheme.Wisdom, QuoteTheme.Kindness
+                ],
                 TimesShared = 150000,
             },
         ];
@@ -206,8 +194,7 @@ public class PaginatedResponseQuoteTest : TestBase
                 {
                     ID = "quote-001",
                     CharacterID = "ted-lasso",
-                    Context =
-                        "Ted playing darts against Rupert in the pub, explaining his philosophy",
+                    Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
                     MomentType = QuoteMoment.Pub,
                     Text = "Be curious, not judgmental.",
                     Theme = QuoteTheme.Curiosity,
@@ -215,16 +202,13 @@ public class PaginatedResponseQuoteTest : TestBase
                     IsFunny = false,
                     IsInspirational = true,
                     PopularityScore = 95.5,
-                    SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+                    SecondaryThemes =
+                    [
+                        QuoteTheme.Wisdom, QuoteTheme.Kindness
+                    ],
                     TimesShared = 150000,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -241,8 +225,7 @@ public class PaginatedResponseQuoteTest : TestBase
                 {
                     ID = "quote-001",
                     CharacterID = "ted-lasso",
-                    Context =
-                        "Ted playing darts against Rupert in the pub, explaining his philosophy",
+                    Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
                     MomentType = QuoteMoment.Pub,
                     Text = "Be curious, not judgmental.",
                     Theme = QuoteTheme.Curiosity,
@@ -250,16 +233,13 @@ public class PaginatedResponseQuoteTest : TestBase
                     IsFunny = false,
                     IsInspirational = true,
                     PopularityScore = 95.5,
-                    SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+                    SecondaryThemes =
+                    [
+                        QuoteTheme.Wisdom, QuoteTheme.Kindness
+                    ],
                     TimesShared = 150000,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         PaginatedResponseQuote copied = new(model);

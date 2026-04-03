@@ -4,6 +4,8 @@ namespace Believe.Exceptions;
 
 public class BelieveRateLimitException : Believe4xxException
 {
-    public BelieveRateLimitException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public BelieveRateLimitException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

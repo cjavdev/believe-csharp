@@ -13,13 +13,10 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
-            IsHeadKitman = true,
-            MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,IsHeadKitman = true,MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         string expectedID = "nate-kitman-richmond";
@@ -27,9 +24,11 @@ public class TeamMemberEquipmentManagerTest : TestBase
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 5;
         bool expectedIsHeadKitman = true;
-        ApiEnum<string, TeamMemberEquipmentManagerMemberType> expectedMemberType =
-            TeamMemberEquipmentManagerMemberType.EquipmentManager;
-        List<string> expectedResponsibilities = ["Kit preparation", "Equipment maintenance"];
+        ApiEnum<string, TeamMemberEquipmentManagerMemberType> expectedMemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager;
+        List<string> expectedResponsibilities =
+        [
+            "Kit preparation", "Equipment maintenance"
+        ];
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCharacterID, model.CharacterID);
@@ -50,20 +49,14 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
-            IsHeadKitman = true,
-            MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,IsHeadKitman = true,MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberEquipmentManager>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberEquipmentManager>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -73,20 +66,14 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
-            IsHeadKitman = true,
-            MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,IsHeadKitman = true,MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberEquipmentManager>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberEquipmentManager>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "nate-kitman-richmond";
@@ -94,9 +81,11 @@ public class TeamMemberEquipmentManagerTest : TestBase
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 5;
         bool expectedIsHeadKitman = true;
-        ApiEnum<string, TeamMemberEquipmentManagerMemberType> expectedMemberType =
-            TeamMemberEquipmentManagerMemberType.EquipmentManager;
-        List<string> expectedResponsibilities = ["Kit preparation", "Equipment maintenance"];
+        ApiEnum<string, TeamMemberEquipmentManagerMemberType> expectedMemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager;
+        List<string> expectedResponsibilities =
+        [
+            "Kit preparation", "Equipment maintenance"
+        ];
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCharacterID, deserialized.CharacterID);
@@ -117,13 +106,10 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
-            IsHeadKitman = true,
-            MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,IsHeadKitman = true,MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         model.Validate();
@@ -134,18 +120,14 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,
         };
 
         Assert.Null(model.IsHeadKitman);
-        Assert.False(model.RawData.ContainsKey("is_head_kitman"));
-        Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Responsibilities);
+        Assert.False(model.RawData.ContainsKey("is_head_kitman"));Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Responsibilities);
         Assert.False(model.RawData.ContainsKey("responsibilities"));
+
     }
 
     [Fact]
@@ -153,10 +135,7 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,
         };
 
         model.Validate();
@@ -167,23 +146,17 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,
 
             // Null should be interpreted as omitted for these properties
-            IsHeadKitman = null,
-            MemberType = null,
-            Responsibilities = null,
+            IsHeadKitman = null,MemberType = null,Responsibilities = null,
         };
 
         Assert.Null(model.IsHeadKitman);
-        Assert.False(model.RawData.ContainsKey("is_head_kitman"));
-        Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Responsibilities);
+        Assert.False(model.RawData.ContainsKey("is_head_kitman"));Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Responsibilities);
         Assert.False(model.RawData.ContainsKey("responsibilities"));
+
     }
 
     [Fact]
@@ -191,15 +164,10 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,
 
             // Null should be interpreted as omitted for these properties
-            IsHeadKitman = null,
-            MemberType = null,
-            Responsibilities = null,
+            IsHeadKitman = null,MemberType = null,Responsibilities = null,
         };
 
         model.Validate();
@@ -210,13 +178,10 @@ public class TeamMemberEquipmentManagerTest : TestBase
     {
         var model = new TeamMemberEquipmentManager
         {
-            ID = "nate-kitman-richmond",
-            CharacterID = "nathan-shelley",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 5,
-            IsHeadKitman = true,
-            MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            ID = "nate-kitman-richmond",CharacterID = "nathan-shelley",TeamID = "afc-richmond",YearsWithTeam = 5,IsHeadKitman = true,MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         TeamMemberEquipmentManager copied = new(model);
@@ -227,8 +192,7 @@ public class TeamMemberEquipmentManagerTest : TestBase
 
 public class TeamMemberEquipmentManagerMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(TeamMemberEquipmentManagerMemberType.EquipmentManager)]
+    [Theory][InlineData(TeamMemberEquipmentManagerMemberType.EquipmentManager)]
     public void Validation_Works(TeamMemberEquipmentManagerMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -239,25 +203,22 @@ public class TeamMemberEquipmentManagerMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberEquipmentManagerMemberType>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberEquipmentManagerMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(TeamMemberEquipmentManagerMemberType.EquipmentManager)]
-    public void SerializationRoundtrip_Works(TeamMemberEquipmentManagerMemberType rawValue)
+    [Theory][InlineData(TeamMemberEquipmentManagerMemberType.EquipmentManager)]
+    public void SerializationRoundtrip_Works(
+        TeamMemberEquipmentManagerMemberType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, TeamMemberEquipmentManagerMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberEquipmentManagerMemberType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberEquipmentManagerMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -265,13 +226,9 @@ public class TeamMemberEquipmentManagerMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberEquipmentManagerMemberType>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberEquipmentManagerMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberEquipmentManagerMemberType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberEquipmentManagerMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

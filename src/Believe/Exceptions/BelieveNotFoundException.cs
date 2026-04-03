@@ -4,6 +4,8 @@ namespace Believe.Exceptions;
 
 public class BelieveNotFoundException : Believe4xxException
 {
-    public BelieveNotFoundException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public BelieveNotFoundException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

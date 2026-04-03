@@ -14,62 +14,62 @@ namespace Believe.Models.Teams.Logo;
 [JsonConverter(typeof(JsonModelConverter<FileUpload, FileUploadFromRaw>))]
 public sealed record class FileUpload : JsonModel
 {
-    public required string ChecksumSha256
-    {
-        get
-        {
+    public required string ChecksumSha256 {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("checksum_sha256");
+            return this._rawData.GetNotNullClass<string>(
+                "checksum_sha256"
+            );
         }
         init { this._rawData.Set("checksum_sha256", value); }
     }
 
-    public required string ContentType
-    {
-        get
-        {
+    public required string ContentType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("content_type");
+            return this._rawData.GetNotNullClass<string>(
+                "content_type"
+            );
         }
         init { this._rawData.Set("content_type", value); }
     }
 
-    public required string FileID
-    {
-        get
-        {
+    public required string FileID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("file_id");
+            return this._rawData.GetNotNullClass<string>(
+                "file_id"
+            );
         }
         init { this._rawData.Set("file_id", value); }
     }
 
-    public required string Filename
-    {
-        get
-        {
+    public required string Filename {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("filename");
+            return this._rawData.GetNotNullClass<string>(
+                "filename"
+            );
         }
         init { this._rawData.Set("filename", value); }
     }
 
-    public required long SizeBytes
-    {
-        get
-        {
+    public required long SizeBytes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("size_bytes");
+            return this._rawData.GetNotNullStruct<long>(
+                "size_bytes"
+            );
         }
         init { this._rawData.Set("size_bytes", value); }
     }
 
-    public required DateTimeOffset UploadedAt
-    {
-        get
-        {
+    public required DateTimeOffset UploadedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<DateTimeOffset>("uploaded_at");
+            return this._rawData.GetNotNullStruct<DateTimeOffset>(
+                "uploaded_at"
+            );
         }
         init { this._rawData.Set("uploaded_at", value); }
     }
@@ -85,37 +85,36 @@ public sealed record class FileUpload : JsonModel
         _ = this.UploadedAt;
     }
 
-    public FileUpload() { }
+    public FileUpload ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public FileUpload(FileUpload fileUpload)
-        : base(fileUpload) { }
-#pragma warning restore CS8618
+    public FileUpload (FileUpload fileUpload) : base(fileUpload)
+    {  }
+    #pragma warning restore CS8618
 
-    public FileUpload(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public FileUpload (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    FileUpload(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    FileUpload (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="FileUploadFromRaw.FromRawUnchecked"/>
-    public static FileUpload FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static FileUpload FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class FileUploadFromRaw : IFromRawJson<FileUpload>
 {
     /// <inheritdoc/>
-    public FileUpload FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        FileUpload.FromRawUnchecked(rawData);
+    public FileUpload FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>FileUpload.FromRawUnchecked(rawData);
 }

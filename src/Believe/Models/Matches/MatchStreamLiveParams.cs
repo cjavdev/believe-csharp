@@ -46,17 +46,15 @@ public record class MatchStreamLiveParams : ParamsBase
     /// <summary>
     /// Away team name
     /// </summary>
-    public string? AwayTeam
-    {
-        get
-        {
+    public string? AwayTeam {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("away_team");
+            return this._rawQueryData.GetNullableClass<string>(
+                "away_team"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -67,17 +65,15 @@ public record class MatchStreamLiveParams : ParamsBase
     /// <summary>
     /// How eventful the match should be (1=boring, 10=chaos)
     /// </summary>
-    public long? ExcitementLevel
-    {
-        get
-        {
+    public long? ExcitementLevel {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("excitement_level");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "excitement_level"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -88,17 +84,15 @@ public record class MatchStreamLiveParams : ParamsBase
     /// <summary>
     /// Home team name
     /// </summary>
-    public string? HomeTeam
-    {
-        get
-        {
+    public string? HomeTeam {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("home_team");
+            return this._rawQueryData.GetNullableClass<string>(
+                "home_team"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -109,17 +103,15 @@ public record class MatchStreamLiveParams : ParamsBase
     /// <summary>
     /// Simulation speed multiplier (1.0 = real-time)
     /// </summary>
-    public double? Speed
-    {
-        get
-        {
+    public double? Speed {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<double>("speed");
+            return this._rawQueryData.GetNullableStruct<double>(
+                "speed"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -127,15 +119,18 @@ public record class MatchStreamLiveParams : ParamsBase
         }
     }
 
-    public MatchStreamLiveParams() { }
+    public MatchStreamLiveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MatchStreamLiveParams(MatchStreamLiveParams matchStreamLiveParams)
-        : base(matchStreamLiveParams) { }
-#pragma warning restore CS8618
+    public MatchStreamLiveParams (
+        MatchStreamLiveParams matchStreamLiveParams
+    ) : base(matchStreamLiveParams)
+    {  }
+    #pragma warning restore CS8618
 
-    public MatchStreamLiveParams(
+    public MatchStreamLiveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -144,9 +139,9 @@ public record class MatchStreamLiveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MatchStreamLiveParams(
+    MatchStreamLiveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -154,7 +149,7 @@ public record class MatchStreamLiveParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static MatchStreamLiveParams FromRawUnchecked(
@@ -165,24 +160,17 @@ public record class MatchStreamLiveParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(MatchStreamLiveParams? other)
     {
@@ -190,19 +178,22 @@ public record class MatchStreamLiveParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/matches/live")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/matches/live"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -212,7 +203,5 @@ public record class MatchStreamLiveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

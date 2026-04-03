@@ -32,8 +32,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                 {
                     ChunkID = 3,
                     IsFinal = false,
-                    Text =
-                        "And that's the thing about hard times - they're like a good barbecue rub. ",
+                    Text = "And that's the thing about hard times - they're like a good barbecue rub. ",
                     EmotionalBeat = "building_metaphor",
                 },
                 new()
@@ -50,9 +49,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                     Text = "You got this.",
                     EmotionalBeat = "encouragement",
                 },
-            ],
-            Text =
-                "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
+            ],Text = "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
         };
 
         List<Chunk> expectedChunks =
@@ -93,8 +90,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                 EmotionalBeat = "encouragement",
             },
         ];
-        string expectedText =
-            "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.";
+        string expectedText = "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.";
 
         Assert.Equal(expectedChunks.Count, model.Chunks.Count);
         for (int i = 0; i < expectedChunks.Count; i++)
@@ -129,8 +125,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                 {
                     ChunkID = 3,
                     IsFinal = false,
-                    Text =
-                        "And that's the thing about hard times - they're like a good barbecue rub. ",
+                    Text = "And that's the thing about hard times - they're like a good barbecue rub. ",
                     EmotionalBeat = "building_metaphor",
                 },
                 new()
@@ -147,16 +142,11 @@ public class PepTalkRetrieveResponseTest : TestBase
                     Text = "You got this.",
                     EmotionalBeat = "encouragement",
                 },
-            ],
-            Text =
-                "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
+            ],Text = "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PepTalkRetrieveResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PepTalkRetrieveResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -186,8 +176,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                 {
                     ChunkID = 3,
                     IsFinal = false,
-                    Text =
-                        "And that's the thing about hard times - they're like a good barbecue rub. ",
+                    Text = "And that's the thing about hard times - they're like a good barbecue rub. ",
                     EmotionalBeat = "building_metaphor",
                 },
                 new()
@@ -204,16 +193,11 @@ public class PepTalkRetrieveResponseTest : TestBase
                     Text = "You got this.",
                     EmotionalBeat = "encouragement",
                 },
-            ],
-            Text =
-                "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
+            ],Text = "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PepTalkRetrieveResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PepTalkRetrieveResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<Chunk> expectedChunks =
@@ -254,8 +238,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                 EmotionalBeat = "encouragement",
             },
         ];
-        string expectedText =
-            "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.";
+        string expectedText = "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.";
 
         Assert.Equal(expectedChunks.Count, deserialized.Chunks.Count);
         for (int i = 0; i < expectedChunks.Count; i++)
@@ -290,8 +273,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                 {
                     ChunkID = 3,
                     IsFinal = false,
-                    Text =
-                        "And that's the thing about hard times - they're like a good barbecue rub. ",
+                    Text = "And that's the thing about hard times - they're like a good barbecue rub. ",
                     EmotionalBeat = "building_metaphor",
                 },
                 new()
@@ -308,9 +290,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                     Text = "You got this.",
                     EmotionalBeat = "encouragement",
                 },
-            ],
-            Text =
-                "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
+            ],Text = "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
         };
 
         model.Validate();
@@ -341,8 +321,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                 {
                     ChunkID = 3,
                     IsFinal = false,
-                    Text =
-                        "And that's the thing about hard times - they're like a good barbecue rub. ",
+                    Text = "And that's the thing about hard times - they're like a good barbecue rub. ",
                     EmotionalBeat = "building_metaphor",
                 },
                 new()
@@ -359,9 +338,7 @@ public class PepTalkRetrieveResponseTest : TestBase
                     Text = "You got this.",
                     EmotionalBeat = "encouragement",
                 },
-            ],
-            Text =
-                "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
+            ],Text = "Hey there, friend. I know things feel tough right now. And that's the thing about hard times - they're like a good barbecue rub. They might sting at first, but they're what give you flavor. You got this.",
         };
 
         PepTalkRetrieveResponse copied = new(model);
@@ -377,10 +354,7 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
-            EmotionalBeat = "emotional_beat",
+            ChunkID = 0,IsFinal = true,Text = "text",EmotionalBeat = "emotional_beat",
         };
 
         long expectedChunkID = 0;
@@ -399,10 +373,7 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
-            EmotionalBeat = "emotional_beat",
+            ChunkID = 0,IsFinal = true,Text = "text",EmotionalBeat = "emotional_beat",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -416,10 +387,7 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
-            EmotionalBeat = "emotional_beat",
+            ChunkID = 0,IsFinal = true,Text = "text",EmotionalBeat = "emotional_beat",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -442,10 +410,7 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
-            EmotionalBeat = "emotional_beat",
+            ChunkID = 0,IsFinal = true,Text = "text",EmotionalBeat = "emotional_beat",
         };
 
         model.Validate();
@@ -456,13 +421,12 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
+            ChunkID = 0,IsFinal = true,Text = "text",
         };
 
         Assert.Null(model.EmotionalBeat);
         Assert.False(model.RawData.ContainsKey("emotional_beat"));
+
     }
 
     [Fact]
@@ -470,9 +434,7 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
+            ChunkID = 0,IsFinal = true,Text = "text",
         };
 
         model.Validate();
@@ -483,15 +445,14 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
+            ChunkID = 0,IsFinal = true,Text = "text",
 
             EmotionalBeat = null,
         };
 
         Assert.Null(model.EmotionalBeat);
         Assert.True(model.RawData.ContainsKey("emotional_beat"));
+
     }
 
     [Fact]
@@ -499,9 +460,7 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
+            ChunkID = 0,IsFinal = true,Text = "text",
 
             EmotionalBeat = null,
         };
@@ -514,10 +473,7 @@ public class ChunkTest : TestBase
     {
         var model = new Chunk
         {
-            ChunkID = 0,
-            IsFinal = true,
-            Text = "text",
-            EmotionalBeat = "emotional_beat",
+            ChunkID = 0,IsFinal = true,Text = "text",EmotionalBeat = "emotional_beat",
         };
 
         Chunk copied = new(model);

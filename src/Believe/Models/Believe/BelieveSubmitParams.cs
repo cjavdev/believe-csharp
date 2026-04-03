@@ -20,21 +20,19 @@ namespace Believe.Models.Believe;
 /// </summary>
 public record class BelieveSubmitParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     /// <summary>
     /// Describe your situation
     /// </summary>
-    public required string Situation
-    {
-        get
-        {
+    public required string Situation {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("situation");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "situation"
+            );
         }
         init { this._rawBodyData.Set("situation", value); }
     }
@@ -42,10 +40,8 @@ public record class BelieveSubmitParams : ParamsBase
     /// <summary>
     /// Type of situation
     /// </summary>
-    public required ApiEnum<string, SituationType> SituationType
-    {
-        get
-        {
+    public required ApiEnum<string, SituationType> SituationType {
+        get {
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNotNullClass<ApiEnum<string, SituationType>>(
                 "situation_type"
@@ -57,12 +53,12 @@ public record class BelieveSubmitParams : ParamsBase
     /// <summary>
     /// Additional context
     /// </summary>
-    public string? Context
-    {
-        get
-        {
+    public string? Context {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("context");
+            return this._rawBodyData.GetNullableClass<string>(
+                "context"
+            );
         }
         init { this._rawBodyData.Set("context", value); }
     }
@@ -70,17 +66,15 @@ public record class BelieveSubmitParams : ParamsBase
     /// <summary>
     /// How intense is the response needed (1=gentle, 10=full Ted)
     /// </summary>
-    public long? Intensity
-    {
-        get
-        {
+    public long? Intensity {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<long>("intensity");
+            return this._rawBodyData.GetNullableStruct<long>(
+                "intensity"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -88,18 +82,18 @@ public record class BelieveSubmitParams : ParamsBase
         }
     }
 
-    public BelieveSubmitParams() { }
+    public BelieveSubmitParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public BelieveSubmitParams(BelieveSubmitParams believeSubmitParams)
-        : base(believeSubmitParams)
-    {
-        this._rawBodyData = new(believeSubmitParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public BelieveSubmitParams (BelieveSubmitParams believeSubmitParams) : base(
+        believeSubmitParams
+    )
+    { this._rawBodyData = new(believeSubmitParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public BelieveSubmitParams(
+    public BelieveSubmitParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -110,9 +104,9 @@ public record class BelieveSubmitParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    BelieveSubmitParams(
+    BelieveSubmitParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -122,7 +116,7 @@ public record class BelieveSubmitParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static BelieveSubmitParams FromRawUnchecked(
@@ -135,25 +129,18 @@ public record class BelieveSubmitParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(BelieveSubmitParams? other)
     {
@@ -161,17 +148,19 @@ public record class BelieveSubmitParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/believe")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/believe"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -180,10 +169,12 @@ public record class BelieveSubmitParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -193,9 +184,7 @@ public record class BelieveSubmitParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 /// <summary>
@@ -211,7 +200,7 @@ public enum SituationType
     BigDecision,
     Failure,
     NewBeginning,
-    Relationship,
+    Relationship
 }
 
 sealed class SituationTypeConverter : JsonConverter<SituationType>
@@ -224,15 +213,15 @@ sealed class SituationTypeConverter : JsonConverter<SituationType>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "work_challenge" => SituationType.WorkChallenge,
-            "personal_setback" => SituationType.PersonalSetback,
-            "team_conflict" => SituationType.TeamConflict,
-            "self_doubt" => SituationType.SelfDoubt,
-            "big_decision" => SituationType.BigDecision,
-            "failure" => SituationType.Failure,
-            "new_beginning" => SituationType.NewBeginning,
-            "relationship" => SituationType.Relationship,
-            _ => (SituationType)(-1),
+            "work_challenge"=>SituationType.WorkChallenge,
+            "personal_setback"=>SituationType.PersonalSetback,
+            "team_conflict"=>SituationType.TeamConflict,
+            "self_doubt"=>SituationType.SelfDoubt,
+            "big_decision"=>SituationType.BigDecision,
+            "failure"=>SituationType.Failure,
+            "new_beginning"=>SituationType.NewBeginning,
+            "relationship"=>SituationType.Relationship,
+            _ =>(SituationType)(-1)
         };
     }
 
@@ -242,23 +231,19 @@ sealed class SituationTypeConverter : JsonConverter<SituationType>
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                SituationType.WorkChallenge => "work_challenge",
-                SituationType.PersonalSetback => "personal_setback",
-                SituationType.TeamConflict => "team_conflict",
-                SituationType.SelfDoubt => "self_doubt",
-                SituationType.BigDecision => "big_decision",
-                SituationType.Failure => "failure",
-                SituationType.NewBeginning => "new_beginning",
-                SituationType.Relationship => "relationship",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            SituationType.WorkChallenge=>"work_challenge",
+            SituationType.PersonalSetback=>"personal_setback",
+            SituationType.TeamConflict=>"team_conflict",
+            SituationType.SelfDoubt=>"self_doubt",
+            SituationType.BigDecision=>"big_decision",
+            SituationType.Failure=>"failure",
+            SituationType.NewBeginning=>"new_beginning",
+            SituationType.Relationship=>"relationship",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

@@ -8,20 +8,17 @@ using Believe.Core;
 
 namespace Believe.Models.TicketSales;
 
-[JsonConverter(
-    typeof(JsonModelConverter<TicketSaleListPageResponse, TicketSaleListPageResponseFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<TicketSaleListPageResponse, TicketSaleListPageResponseFromRaw>))]
 public sealed record class TicketSaleListPageResponse : JsonModel
 {
-    public required IReadOnlyList<TicketSale> Data
-    {
-        get
-        {
+    public required IReadOnlyList<TicketSale> Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<TicketSale>>("data");
+            return this._rawData.GetNotNullStruct<ImmutableArray<TicketSale>>(
+                "data"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<TicketSale>>(
                 "data",
                 ImmutableArray.ToImmutableArray(value)
@@ -32,22 +29,22 @@ public sealed record class TicketSaleListPageResponse : JsonModel
     /// <summary>
     /// Whether there are more items after this page.
     /// </summary>
-    public required bool HasMore
-    {
-        get
-        {
+    public required bool HasMore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("has_more");
+            return this._rawData.GetNotNullStruct<bool>(
+                "has_more"
+            );
         }
         init { this._rawData.Set("has_more", value); }
     }
 
-    public required long Limit
-    {
-        get
-        {
+    public required long Limit {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("limit");
+            return this._rawData.GetNotNullStruct<long>(
+                "limit"
+            );
         }
         init { this._rawData.Set("limit", value); }
     }
@@ -55,12 +52,12 @@ public sealed record class TicketSaleListPageResponse : JsonModel
     /// <summary>
     /// Current page number (1-indexed, for display purposes).
     /// </summary>
-    public required long Page
-    {
-        get
-        {
+    public required long Page {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("page");
+            return this._rawData.GetNotNullStruct<long>(
+                "page"
+            );
         }
         init { this._rawData.Set("page", value); }
     }
@@ -68,32 +65,32 @@ public sealed record class TicketSaleListPageResponse : JsonModel
     /// <summary>
     /// Total number of pages.
     /// </summary>
-    public required long Pages
-    {
-        get
-        {
+    public required long Pages {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("pages");
+            return this._rawData.GetNotNullStruct<long>(
+                "pages"
+            );
         }
         init { this._rawData.Set("pages", value); }
     }
 
-    public required long Skip
-    {
-        get
-        {
+    public required long Skip {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("skip");
+            return this._rawData.GetNotNullStruct<long>(
+                "skip"
+            );
         }
         init { this._rawData.Set("skip", value); }
     }
 
-    public required long Total
-    {
-        get
-        {
+    public required long Total {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total");
+            return this._rawData.GetNotNullStruct<long>(
+                "total"
+            );
         }
         init { this._rawData.Set("total", value); }
     }
@@ -113,34 +110,33 @@ public sealed record class TicketSaleListPageResponse : JsonModel
         _ = this.Total;
     }
 
-    public TicketSaleListPageResponse() { }
+    public TicketSaleListPageResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TicketSaleListPageResponse(TicketSaleListPageResponse ticketSaleListPageResponse)
-        : base(ticketSaleListPageResponse) { }
-#pragma warning restore CS8618
+    public TicketSaleListPageResponse (
+        TicketSaleListPageResponse ticketSaleListPageResponse
+    ) : base(ticketSaleListPageResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public TicketSaleListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TicketSaleListPageResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TicketSaleListPageResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TicketSaleListPageResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TicketSaleListPageResponseFromRaw.FromRawUnchecked"/>
     public static TicketSaleListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TicketSaleListPageResponseFromRaw : IFromRawJson<TicketSaleListPageResponse>
@@ -148,5 +144,6 @@ class TicketSaleListPageResponseFromRaw : IFromRawJson<TicketSaleListPageRespons
     /// <inheritdoc/>
     public TicketSaleListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TicketSaleListPageResponse.FromRawUnchecked(rawData);
+    )
+    =>TicketSaleListPageResponse.FromRawUnchecked(rawData);
 }

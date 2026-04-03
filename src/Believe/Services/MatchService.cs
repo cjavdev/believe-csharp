@@ -17,32 +17,30 @@ public sealed class MatchService : IMatchService
     readonly Lazy<IMatchServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IMatchServiceWithRawResponse WithRawResponse
-    {
+    public IMatchServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IMatchService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new MatchService(this._client.WithOptions(modifier));
-    }
+    public IMatchService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new MatchService(this._client.WithOptions(modifier)); }
 
-    public MatchService(IBelieveClient client)
+    public MatchService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new MatchServiceWithRawResponse(client.WithRawResponse));
-        _commentary = new(() => new CommentaryService(client));
+        _withRawResponse =new(
+            () => new MatchServiceWithRawResponse(client.WithRawResponse)
+        ) ;
+        _commentary =new(() => new CommentaryService(client)) ;
     }
 
     readonly Lazy<ICommentaryService> _commentary;
-    public ICommentaryService Commentary
-    {
-        get { return _commentary.Value; }
-    }
+    public ICommentaryService Commentary { get { return _commentary.Value; } }
 
     /// <inheritdoc/>
     public async Task<Match> Create(
@@ -50,9 +48,7 @@ public sealed class MatchService : IMatchService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -62,13 +58,9 @@ public sealed class MatchService : IMatchService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Match> Retrieve(
         string matchID,
         MatchRetrieveParams? parameters = null,
@@ -77,7 +69,9 @@ public sealed class MatchService : IMatchService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { MatchID = matchID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -86,13 +80,9 @@ public sealed class MatchService : IMatchService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Match> Update(
         string matchID,
         MatchUpdateParams? parameters = null,
@@ -101,7 +91,9 @@ public sealed class MatchService : IMatchService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { MatchID = matchID }, cancellationToken);
+        return this.Update(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -110,19 +102,18 @@ public sealed class MatchService : IMatchService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task Delete(MatchDeleteParams parameters, CancellationToken cancellationToken = default)
+    public Task Delete(
+        MatchDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string matchID,
         MatchDeleteParams? parameters = null,
@@ -131,8 +122,9 @@ public sealed class MatchService : IMatchService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { MatchID = matchID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            MatchID = matchID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -141,13 +133,9 @@ public sealed class MatchService : IMatchService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetLesson(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetLesson(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Dictionary<string, JsonElement>> GetLesson(
         string matchID,
         MatchGetLessonParams? parameters = null,
@@ -156,7 +144,9 @@ public sealed class MatchService : IMatchService
     {
         parameters ??= new();
 
-        return this.GetLesson(parameters with { MatchID = matchID }, cancellationToken);
+        return this.GetLesson(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -165,13 +155,9 @@ public sealed class MatchService : IMatchService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetTurningPoints(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetTurningPoints(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<List<Dictionary<string, JsonElement>>> GetTurningPoints(
         string matchID,
         MatchGetTurningPointsParams? parameters = null,
@@ -180,7 +166,9 @@ public sealed class MatchService : IMatchService
     {
         parameters ??= new();
 
-        return this.GetTurningPoints(parameters with { MatchID = matchID }, cancellationToken);
+        return this.GetTurningPoints(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -188,9 +176,7 @@ public sealed class MatchService : IMatchService
         MatchStreamLiveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
-    {
-        return this.WithRawResponse.StreamLive(parameters, cancellationToken);
-    }
+    { return this.WithRawResponse.StreamLive(parameters, cancellationToken); }
 }
 
 /// <inheritdoc/>
@@ -199,21 +185,22 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IMatchServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IMatchServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new MatchServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public MatchServiceWithRawResponse(IBelieveClientWithRawResponse client)
+    public MatchServiceWithRawResponse (IBelieveClientWithRawResponse client)
     {
-        _client = client;
+        _client =client ;
 
-        _commentary = new(() => new CommentaryServiceWithRawResponse(client));
+        _commentary =new(() => new CommentaryServiceWithRawResponse(client)) ;
     }
 
     readonly Lazy<ICommentaryServiceWithRawResponse> _commentary;
-    public ICommentaryServiceWithRawResponse Commentary
-    {
+    public ICommentaryServiceWithRawResponse Commentary {
         get { return _commentary.Value; }
     }
 
@@ -229,18 +216,13 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var match = await response.Deserialize<Match>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    match.Validate();
-                }
-                return match;
+        return new(response, async ( token )=>{
+            var match = await response.Deserialize<Match>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                match.Validate();
             }
-        );
+            return match;
+        });
     }
 
     /// <inheritdoc/>
@@ -251,7 +233,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         if (parameters.MatchID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MatchID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MatchID' cannot be null"
+            );
         }
 
         HttpRequest<MatchRetrieveParams> request = new()
@@ -260,21 +244,14 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var match = await response.Deserialize<Match>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    match.Validate();
-                }
-                return match;
+        return new(response, async ( token )=>{
+            var match = await response.Deserialize<Match>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                match.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return match;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Match>> Retrieve(
         string matchID,
         MatchRetrieveParams? parameters = null,
@@ -283,7 +260,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { MatchID = matchID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -294,7 +273,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         if (parameters.MatchID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MatchID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MatchID' cannot be null"
+            );
         }
 
         HttpRequest<MatchUpdateParams> request = new()
@@ -303,21 +284,14 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var match = await response.Deserialize<Match>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    match.Validate();
-                }
-                return match;
+        return new(response, async ( token )=>{
+            var match = await response.Deserialize<Match>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                match.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return match;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Match>> Update(
         string matchID,
         MatchUpdateParams? parameters = null,
@@ -326,7 +300,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Update(parameters with { MatchID = matchID }, cancellationToken);
+        return this.Update(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -343,20 +319,13 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<MatchListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new MatchListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<MatchListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new MatchListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -367,7 +336,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         if (parameters.MatchID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MatchID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MatchID' cannot be null"
+            );
         }
 
         HttpRequest<MatchDeleteParams> request = new()
@@ -376,9 +347,7 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string matchID,
         MatchDeleteParams? parameters = null,
@@ -387,7 +356,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { MatchID = matchID }, cancellationToken);
+        return this.Delete(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -398,7 +369,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         if (parameters.MatchID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MatchID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MatchID' cannot be null"
+            );
         }
 
         HttpRequest<MatchGetLessonParams> request = new()
@@ -407,18 +380,10 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response
-                    .Deserialize<Dictionary<string, JsonElement>>(token)
-                    .ConfigureAwait(false);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
+        return new(response, async ( token )=>{
+            return await response.Deserialize<Dictionary<string, JsonElement>>(token).ConfigureAwait(false);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Dictionary<string, JsonElement>>> GetLesson(
         string matchID,
         MatchGetLessonParams? parameters = null,
@@ -427,7 +392,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.GetLesson(parameters with { MatchID = matchID }, cancellationToken);
+        return this.GetLesson(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -438,7 +405,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         if (parameters.MatchID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MatchID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MatchID' cannot be null"
+            );
         }
 
         HttpRequest<MatchGetTurningPointsParams> request = new()
@@ -447,18 +416,10 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response
-                    .Deserialize<List<Dictionary<string, JsonElement>>>(token)
-                    .ConfigureAwait(false);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
+        return new(response, async ( token )=>{
+            return await response.Deserialize<List<Dictionary<string, JsonElement>>>(token).ConfigureAwait(false);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<List<Dictionary<string, JsonElement>>>> GetTurningPoints(
         string matchID,
         MatchGetTurningPointsParams? parameters = null,
@@ -467,7 +428,9 @@ public sealed class MatchServiceWithRawResponse : IMatchServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.GetTurningPoints(parameters with { MatchID = matchID }, cancellationToken);
+        return this.GetTurningPoints(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>

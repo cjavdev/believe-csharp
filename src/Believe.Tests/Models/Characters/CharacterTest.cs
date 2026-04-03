@@ -12,23 +12,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",GrowthArcs =
             [
                 new()
                 {
@@ -38,17 +34,14 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
-            ],
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
-            TeamID = "afc-richmond",
+            ],HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
+            ],TeamID = "afc-richmond",
         };
 
         string expectedID = "ted-lasso";
-        string expectedBackground =
-            "Former American football coach from Kansas who moved to London to coach AFC Richmond";
+        string expectedBackground = "Former American football coach from Kansas who moved to London to coach AFC Richmond";
         EmotionalStats expectedEmotionalStats = new()
         {
             Curiosity = 99,
@@ -58,7 +51,10 @@ public class CharacterTest : TestBase
             Vulnerability = 80,
         };
         string expectedName = "Ted Lasso";
-        List<string> expectedPersonalityTraits = ["optimistic", "kind", "folksy", "persistent"];
+        List<string> expectedPersonalityTraits =
+        [
+            "optimistic", "kind", "folksy", "persistent"
+        ];
         ApiEnum<string, CharacterRole> expectedRole = CharacterRole.Coach;
         string expectedDateOfBirth = "1970-09-22";
         string expectedEmail = "ted.lasso@afcrichmond.com";
@@ -78,8 +74,7 @@ public class CharacterTest : TestBase
         string expectedSalaryGbp = "150000.00";
         List<string> expectedSignatureQuotes =
         [
-            "I believe in believe.",
-            "Be curious, not judgmental.",
+            "I believe in believe.", "Be curious, not judgmental."
         ];
         string expectedTeamID = "afc-richmond";
 
@@ -118,23 +113,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",GrowthArcs =
             [
                 new()
                 {
@@ -144,12 +135,10 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
-            ],
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
-            TeamID = "afc-richmond",
+            ],HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
+            ],TeamID = "afc-richmond",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -163,23 +152,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",GrowthArcs =
             [
                 new()
                 {
@@ -189,24 +174,18 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
-            ],
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
-            TeamID = "afc-richmond",
+            ],HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
+            ],TeamID = "afc-richmond",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Character>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Character>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "ted-lasso";
-        string expectedBackground =
-            "Former American football coach from Kansas who moved to London to coach AFC Richmond";
+        string expectedBackground = "Former American football coach from Kansas who moved to London to coach AFC Richmond";
         EmotionalStats expectedEmotionalStats = new()
         {
             Curiosity = 99,
@@ -216,7 +195,10 @@ public class CharacterTest : TestBase
             Vulnerability = 80,
         };
         string expectedName = "Ted Lasso";
-        List<string> expectedPersonalityTraits = ["optimistic", "kind", "folksy", "persistent"];
+        List<string> expectedPersonalityTraits =
+        [
+            "optimistic", "kind", "folksy", "persistent"
+        ];
         ApiEnum<string, CharacterRole> expectedRole = CharacterRole.Coach;
         string expectedDateOfBirth = "1970-09-22";
         string expectedEmail = "ted.lasso@afcrichmond.com";
@@ -236,8 +218,7 @@ public class CharacterTest : TestBase
         string expectedSalaryGbp = "150000.00";
         List<string> expectedSignatureQuotes =
         [
-            "I believe in believe.",
-            "Be curious, not judgmental.",
+            "I believe in believe.", "Be curious, not judgmental."
         ];
         string expectedTeamID = "afc-richmond";
 
@@ -276,23 +257,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",GrowthArcs =
             [
                 new()
                 {
@@ -302,12 +279,10 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
-            ],
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
-            TeamID = "afc-richmond",
+            ],HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
+            ],TeamID = "afc-richmond",
         };
 
         model.Validate();
@@ -318,32 +293,25 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            TeamID = "afc-richmond",
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",TeamID = "afc-richmond",
         };
 
         Assert.Null(model.GrowthArcs);
-        Assert.False(model.RawData.ContainsKey("growth_arcs"));
-        Assert.Null(model.SignatureQuotes);
+        Assert.False(model.RawData.ContainsKey("growth_arcs"));Assert.Null(model.SignatureQuotes);
         Assert.False(model.RawData.ContainsKey("signature_quotes"));
+
     }
 
     [Fact]
@@ -351,26 +319,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            TeamID = "afc-richmond",
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",TeamID = "afc-richmond",
         };
 
         model.Validate();
@@ -381,36 +342,28 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            TeamID = "afc-richmond",
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",TeamID = "afc-richmond",
 
             // Null should be interpreted as omitted for these properties
-            GrowthArcs = null,
-            SignatureQuotes = null,
+            GrowthArcs = null,SignatureQuotes = null,
         };
 
         Assert.Null(model.GrowthArcs);
-        Assert.False(model.RawData.ContainsKey("growth_arcs"));
-        Assert.Null(model.SignatureQuotes);
+        Assert.False(model.RawData.ContainsKey("growth_arcs"));Assert.Null(model.SignatureQuotes);
         Assert.False(model.RawData.ContainsKey("signature_quotes"));
+
     }
 
     [Fact]
@@ -418,30 +371,22 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            TeamID = "afc-richmond",
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",TeamID = "afc-richmond",
 
             // Null should be interpreted as omitted for these properties
-            GrowthArcs = null,
-            SignatureQuotes = null,
+            GrowthArcs = null,SignatureQuotes = null,
         };
 
         model.Validate();
@@ -452,21 +397,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,GrowthArcs =
             [
                 new()
                 {
@@ -476,22 +419,20 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
+            ],SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
             ],
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
         };
 
         Assert.Null(model.DateOfBirth);
-        Assert.False(model.RawData.ContainsKey("date_of_birth"));
-        Assert.Null(model.Email);
-        Assert.False(model.RawData.ContainsKey("email"));
-        Assert.Null(model.HeightMeters);
-        Assert.False(model.RawData.ContainsKey("height_meters"));
-        Assert.Null(model.ProfileImageUrl);
-        Assert.False(model.RawData.ContainsKey("profile_image_url"));
-        Assert.Null(model.SalaryGbp);
-        Assert.False(model.RawData.ContainsKey("salary_gbp"));
-        Assert.Null(model.TeamID);
+        Assert.False(model.RawData.ContainsKey("date_of_birth"));Assert.Null(model.Email);
+        Assert.False(model.RawData.ContainsKey("email"));Assert.Null(model.HeightMeters);
+        Assert.False(model.RawData.ContainsKey("height_meters"));Assert.Null(model.ProfileImageUrl);
+        Assert.False(model.RawData.ContainsKey("profile_image_url"));Assert.Null(model.SalaryGbp);
+        Assert.False(model.RawData.ContainsKey("salary_gbp"));Assert.Null(model.TeamID);
         Assert.False(model.RawData.ContainsKey("team_id"));
+
     }
 
     [Fact]
@@ -499,21 +440,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,GrowthArcs =
             [
                 new()
                 {
@@ -523,8 +462,10 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
+            ],SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
             ],
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
         };
 
         model.Validate();
@@ -535,21 +476,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,GrowthArcs =
             [
                 new()
                 {
@@ -559,29 +498,22 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
+            ],SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
             ],
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
 
-            DateOfBirth = null,
-            Email = null,
-            HeightMeters = null,
-            ProfileImageUrl = null,
-            SalaryGbp = null,
-            TeamID = null,
+            DateOfBirth = null,Email = null,HeightMeters = null,ProfileImageUrl = null,SalaryGbp = null,TeamID = null,
         };
 
         Assert.Null(model.DateOfBirth);
-        Assert.True(model.RawData.ContainsKey("date_of_birth"));
-        Assert.Null(model.Email);
-        Assert.True(model.RawData.ContainsKey("email"));
-        Assert.Null(model.HeightMeters);
-        Assert.True(model.RawData.ContainsKey("height_meters"));
-        Assert.Null(model.ProfileImageUrl);
-        Assert.True(model.RawData.ContainsKey("profile_image_url"));
-        Assert.Null(model.SalaryGbp);
-        Assert.True(model.RawData.ContainsKey("salary_gbp"));
-        Assert.Null(model.TeamID);
+        Assert.True(model.RawData.ContainsKey("date_of_birth"));Assert.Null(model.Email);
+        Assert.True(model.RawData.ContainsKey("email"));Assert.Null(model.HeightMeters);
+        Assert.True(model.RawData.ContainsKey("height_meters"));Assert.Null(model.ProfileImageUrl);
+        Assert.True(model.RawData.ContainsKey("profile_image_url"));Assert.Null(model.SalaryGbp);
+        Assert.True(model.RawData.ContainsKey("salary_gbp"));Assert.Null(model.TeamID);
         Assert.True(model.RawData.ContainsKey("team_id"));
+
     }
 
     [Fact]
@@ -589,21 +521,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,GrowthArcs =
             [
                 new()
                 {
@@ -613,15 +543,12 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
+            ],SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
             ],
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
 
-            DateOfBirth = null,
-            Email = null,
-            HeightMeters = null,
-            ProfileImageUrl = null,
-            SalaryGbp = null,
-            TeamID = null,
+            DateOfBirth = null,Email = null,HeightMeters = null,ProfileImageUrl = null,SalaryGbp = null,TeamID = null,
         };
 
         model.Validate();
@@ -632,23 +559,19 @@ public class CharacterTest : TestBase
     {
         var model = new Character
         {
-            ID = "ted-lasso",
-            Background =
-                "Former American football coach from Kansas who moved to London to coach AFC Richmond",
-            EmotionalStats = new()
+            ID = "ted-lasso",Background = "Former American football coach from Kansas who moved to London to coach AFC Richmond",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            Name = "Ted Lasso",
-            PersonalityTraits = ["optimistic", "kind", "folksy", "persistent"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1970-09-22",
-            Email = "ted.lasso@afcrichmond.com",
-            GrowthArcs =
+            },Name = "Ted Lasso",PersonalityTraits =
+            [
+                "optimistic", "kind", "folksy", "persistent"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1970-09-22",Email = "ted.lasso@afcrichmond.com",GrowthArcs =
             [
                 new()
                 {
@@ -658,12 +581,10 @@ public class CharacterTest : TestBase
                     Season = 1,
                     StartingPoint = "Fish out of water, hiding pain with humor",
                 },
-            ],
-            HeightMeters = 1.83,
-            ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",
-            SalaryGbp = "150000.00",
-            SignatureQuotes = ["I believe in believe.", "Be curious, not judgmental."],
-            TeamID = "afc-richmond",
+            ],HeightMeters = 1.83,ProfileImageUrl = "https://afcrichmond.com/images/ted-lasso.jpg",SalaryGbp = "150000.00",SignatureQuotes =
+            [
+                "I believe in believe.", "Be curious, not judgmental."
+            ],TeamID = "afc-richmond",
         };
 
         Character copied = new(model);

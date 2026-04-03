@@ -8,7 +8,12 @@ public class MatchRetrieveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new MatchRetrieveParams { MatchID = "match_id" };
+
+
+        var parameters = new MatchRetrieveParams
+        {
+            MatchID = "match_id",
+        };
 
         string expectedMatchID = "match_id";
 
@@ -20,7 +25,12 @@ public class MatchRetrieveParamsTest : TestBase
     {
         MatchRetrieveParams parameters = new() { MatchID = "match_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/matches/match_id"), url);
     }
@@ -28,7 +38,10 @@ public class MatchRetrieveParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new MatchRetrieveParams { MatchID = "match_id" };
+        var parameters = new MatchRetrieveParams
+        {
+            MatchID = "match_id"
+        };
 
         MatchRetrieveParams copied = new(parameters);
 

@@ -11,11 +11,7 @@ public class GrowthArcTest : TestBase
     {
         var model = new GrowthArc
         {
-            Breakthrough = "breakthrough",
-            Challenge = "challenge",
-            EndingPoint = "ending_point",
-            Season = 1,
-            StartingPoint = "starting_point",
+            Breakthrough = "breakthrough",Challenge = "challenge",EndingPoint = "ending_point",Season = 1,StartingPoint = "starting_point",
         };
 
         string expectedBreakthrough = "breakthrough";
@@ -36,11 +32,7 @@ public class GrowthArcTest : TestBase
     {
         var model = new GrowthArc
         {
-            Breakthrough = "breakthrough",
-            Challenge = "challenge",
-            EndingPoint = "ending_point",
-            Season = 1,
-            StartingPoint = "starting_point",
+            Breakthrough = "breakthrough",Challenge = "challenge",EndingPoint = "ending_point",Season = 1,StartingPoint = "starting_point",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -54,18 +46,11 @@ public class GrowthArcTest : TestBase
     {
         var model = new GrowthArc
         {
-            Breakthrough = "breakthrough",
-            Challenge = "challenge",
-            EndingPoint = "ending_point",
-            Season = 1,
-            StartingPoint = "starting_point",
+            Breakthrough = "breakthrough",Challenge = "challenge",EndingPoint = "ending_point",Season = 1,StartingPoint = "starting_point",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<GrowthArc>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<GrowthArc>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedBreakthrough = "breakthrough";
@@ -86,11 +71,7 @@ public class GrowthArcTest : TestBase
     {
         var model = new GrowthArc
         {
-            Breakthrough = "breakthrough",
-            Challenge = "challenge",
-            EndingPoint = "ending_point",
-            Season = 1,
-            StartingPoint = "starting_point",
+            Breakthrough = "breakthrough",Challenge = "challenge",EndingPoint = "ending_point",Season = 1,StartingPoint = "starting_point",
         };
 
         model.Validate();
@@ -101,11 +82,7 @@ public class GrowthArcTest : TestBase
     {
         var model = new GrowthArc
         {
-            Breakthrough = "breakthrough",
-            Challenge = "challenge",
-            EndingPoint = "ending_point",
-            Season = 1,
-            StartingPoint = "starting_point",
+            Breakthrough = "breakthrough",Challenge = "challenge",EndingPoint = "ending_point",Season = 1,StartingPoint = "starting_point",
         };
 
         GrowthArc copied = new(model);

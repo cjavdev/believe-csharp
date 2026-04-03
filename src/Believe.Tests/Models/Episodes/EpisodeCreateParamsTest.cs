@@ -9,46 +9,36 @@ public class EpisodeCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new EpisodeCreateParams
         {
-            AirDate = "2020-10-02",
-            CharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"],
-            Director = "MJ Delaney",
-            EpisodeNumber = 8,
-            MainTheme = "The power of vulnerability and male friendship",
-            RuntimeMinutes = 29,
-            Season = 1,
-            Synopsis =
-                "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
-            TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",
-            Title = "The Diamond Dogs",
-            Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted and Rebecca have an honest conversation about trust.",
-            MemorableMoments =
+            AirDate = "2020-10-02",CharacterFocus =
+            [
+                "ted-lasso", "coach-beard", "higgins", "nate"
+            ],Director = "MJ Delaney",EpisodeNumber = 8,MainTheme = "The power of vulnerability and male friendship",RuntimeMinutes = 29,Season = 1,Synopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",Title = "The Diamond Dogs",Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted and Rebecca have an honest conversation about trust.",MemorableMoments =
             [
                 "First Diamond Dogs meeting",
                 "The famous dart scene with Rupert",
                 "Be curious, not judgmental speech",
-            ],
-            UsViewersMillions = 1.42,
-            ViewerRating = 9.1,
+            ],UsViewersMillions = 1.42,ViewerRating = 9.1,
         };
 
         string expectedAirDate = "2020-10-02";
-        List<string> expectedCharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"];
+        List<string> expectedCharacterFocus =
+        [
+            "ted-lasso", "coach-beard", "higgins", "nate"
+        ];
         string expectedDirector = "MJ Delaney";
         long expectedEpisodeNumber = 8;
         string expectedMainTheme = "The power of vulnerability and male friendship";
         long expectedRuntimeMinutes = 29;
         long expectedSeason = 1;
-        string expectedSynopsis =
-            "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.";
-        string expectedTedWisdom =
-            "There's two buttons I never like to hit: that's panic and snooze.";
+        string expectedSynopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.";
+        string expectedTedWisdom = "There's two buttons I never like to hit: that's panic and snooze.";
         string expectedTitle = "The Diamond Dogs";
         string expectedWriter = "Jason Sudeikis, Brendan Hunt, Joe Kelly";
-        string expectedBiscuitsWithBossMoment =
-            "Ted and Rebecca have an honest conversation about trust.";
+        string expectedBiscuitsWithBossMoment = "Ted and Rebecca have an honest conversation about trust.";
         List<string> expectedMemorableMoments =
         [
             "First Diamond Dogs meeting",
@@ -87,49 +77,32 @@ public class EpisodeCreateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new EpisodeCreateParams
         {
-            AirDate = "2020-10-02",
-            CharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"],
-            Director = "MJ Delaney",
-            EpisodeNumber = 8,
-            MainTheme = "The power of vulnerability and male friendship",
-            RuntimeMinutes = 29,
-            Season = 1,
-            Synopsis =
-                "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
-            TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",
-            Title = "The Diamond Dogs",
-            Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted and Rebecca have an honest conversation about trust.",
-            UsViewersMillions = 1.42,
-            ViewerRating = 9.1,
+            AirDate = "2020-10-02",CharacterFocus =
+            [
+                "ted-lasso", "coach-beard", "higgins", "nate"
+            ],Director = "MJ Delaney",EpisodeNumber = 8,MainTheme = "The power of vulnerability and male friendship",RuntimeMinutes = 29,Season = 1,Synopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",Title = "The Diamond Dogs",Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted and Rebecca have an honest conversation about trust.",UsViewersMillions = 1.42,ViewerRating = 9.1,
         };
 
         Assert.Null(parameters.MemorableMoments);
         Assert.False(parameters.RawBodyData.ContainsKey("memorable_moments"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new EpisodeCreateParams
         {
-            AirDate = "2020-10-02",
-            CharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"],
-            Director = "MJ Delaney",
-            EpisodeNumber = 8,
-            MainTheme = "The power of vulnerability and male friendship",
-            RuntimeMinutes = 29,
-            Season = 1,
-            Synopsis =
-                "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
-            TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",
-            Title = "The Diamond Dogs",
-            Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted and Rebecca have an honest conversation about trust.",
-            UsViewersMillions = 1.42,
-            ViewerRating = 9.1,
+            AirDate = "2020-10-02",CharacterFocus =
+            [
+                "ted-lasso", "coach-beard", "higgins", "nate"
+            ],Director = "MJ Delaney",EpisodeNumber = 8,MainTheme = "The power of vulnerability and male friendship",RuntimeMinutes = 29,Season = 1,Synopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",Title = "The Diamond Dogs",Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted and Rebecca have an honest conversation about trust.",UsViewersMillions = 1.42,ViewerRating = 9.1,
 
             // Null should be interpreted as omitted for these properties
             MemorableMoments = null,
@@ -137,26 +110,20 @@ public class EpisodeCreateParamsTest : TestBase
 
         Assert.Null(parameters.MemorableMoments);
         Assert.False(parameters.RawBodyData.ContainsKey("memorable_moments"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new EpisodeCreateParams
         {
-            AirDate = "2020-10-02",
-            CharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"],
-            Director = "MJ Delaney",
-            EpisodeNumber = 8,
-            MainTheme = "The power of vulnerability and male friendship",
-            RuntimeMinutes = 29,
-            Season = 1,
-            Synopsis =
-                "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
-            TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",
-            Title = "The Diamond Dogs",
-            Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",
-            MemorableMoments =
+            AirDate = "2020-10-02",CharacterFocus =
+            [
+                "ted-lasso", "coach-beard", "higgins", "nate"
+            ],Director = "MJ Delaney",EpisodeNumber = 8,MainTheme = "The power of vulnerability and male friendship",RuntimeMinutes = 29,Season = 1,Synopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",Title = "The Diamond Dogs",Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",MemorableMoments =
             [
                 "First Diamond Dogs meeting",
                 "The famous dart scene with Rupert",
@@ -165,48 +132,37 @@ public class EpisodeCreateParamsTest : TestBase
         };
 
         Assert.Null(parameters.BiscuitsWithBossMoment);
-        Assert.False(parameters.RawBodyData.ContainsKey("biscuits_with_boss_moment"));
-        Assert.Null(parameters.UsViewersMillions);
-        Assert.False(parameters.RawBodyData.ContainsKey("us_viewers_millions"));
-        Assert.Null(parameters.ViewerRating);
+        Assert.False(parameters.RawBodyData.ContainsKey("biscuits_with_boss_moment"));Assert.Null(parameters.UsViewersMillions);
+        Assert.False(parameters.RawBodyData.ContainsKey("us_viewers_millions"));Assert.Null(parameters.ViewerRating);
         Assert.False(parameters.RawBodyData.ContainsKey("viewer_rating"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new EpisodeCreateParams
         {
-            AirDate = "2020-10-02",
-            CharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"],
-            Director = "MJ Delaney",
-            EpisodeNumber = 8,
-            MainTheme = "The power of vulnerability and male friendship",
-            RuntimeMinutes = 29,
-            Season = 1,
-            Synopsis =
-                "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
-            TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",
-            Title = "The Diamond Dogs",
-            Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",
-            MemorableMoments =
+            AirDate = "2020-10-02",CharacterFocus =
+            [
+                "ted-lasso", "coach-beard", "higgins", "nate"
+            ],Director = "MJ Delaney",EpisodeNumber = 8,MainTheme = "The power of vulnerability and male friendship",RuntimeMinutes = 29,Season = 1,Synopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",Title = "The Diamond Dogs",Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",MemorableMoments =
             [
                 "First Diamond Dogs meeting",
                 "The famous dart scene with Rupert",
                 "Be curious, not judgmental speech",
             ],
 
-            BiscuitsWithBossMoment = null,
-            UsViewersMillions = null,
-            ViewerRating = null,
+            BiscuitsWithBossMoment = null,UsViewersMillions = null,ViewerRating = null,
         };
 
         Assert.Null(parameters.BiscuitsWithBossMoment);
-        Assert.True(parameters.RawBodyData.ContainsKey("biscuits_with_boss_moment"));
-        Assert.Null(parameters.UsViewersMillions);
-        Assert.True(parameters.RawBodyData.ContainsKey("us_viewers_millions"));
-        Assert.Null(parameters.ViewerRating);
+        Assert.True(parameters.RawBodyData.ContainsKey("biscuits_with_boss_moment"));Assert.Null(parameters.UsViewersMillions);
+        Assert.True(parameters.RawBodyData.ContainsKey("us_viewers_millions"));Assert.Null(parameters.ViewerRating);
         Assert.True(parameters.RawBodyData.ContainsKey("viewer_rating"));
+
     }
 
     [Fact]
@@ -215,20 +171,27 @@ public class EpisodeCreateParamsTest : TestBase
         EpisodeCreateParams parameters = new()
         {
             AirDate = "2020-10-02",
-            CharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"],
+            CharacterFocus =
+            [
+                "ted-lasso", "coach-beard", "higgins", "nate"
+            ],
             Director = "MJ Delaney",
             EpisodeNumber = 8,
             MainTheme = "The power of vulnerability and male friendship",
             RuntimeMinutes = 29,
             Season = 1,
-            Synopsis =
-                "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
+            Synopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
             TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",
             Title = "The Diamond Dogs",
             Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/episodes"), url);
     }
@@ -239,14 +202,16 @@ public class EpisodeCreateParamsTest : TestBase
         var parameters = new EpisodeCreateParams
         {
             AirDate = "2020-10-02",
-            CharacterFocus = ["ted-lasso", "coach-beard", "higgins", "nate"],
+            CharacterFocus =
+            [
+                "ted-lasso", "coach-beard", "higgins", "nate"
+            ],
             Director = "MJ Delaney",
             EpisodeNumber = 8,
             MainTheme = "The power of vulnerability and male friendship",
             RuntimeMinutes = 29,
             Season = 1,
-            Synopsis =
-                "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
+            Synopsis = "Ted creates a support group for the coaching staff while Rebecca faces a difficult decision about her future.",
             TedWisdom = "There's two buttons I never like to hit: that's panic and snooze.",
             Title = "The Diamond Dogs",
             Writer = "Jason Sudeikis, Brendan Hunt, Joe Kelly",

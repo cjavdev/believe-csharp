@@ -8,7 +8,12 @@ public class BiscuitRetrieveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new BiscuitRetrieveParams { BiscuitID = "biscuit_id" };
+
+
+        var parameters = new BiscuitRetrieveParams
+        {
+            BiscuitID = "biscuit_id",
+        };
 
         string expectedBiscuitID = "biscuit_id";
 
@@ -20,7 +25,12 @@ public class BiscuitRetrieveParamsTest : TestBase
     {
         BiscuitRetrieveParams parameters = new() { BiscuitID = "biscuit_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/biscuits/biscuit_id"), url);
     }
@@ -28,7 +38,10 @@ public class BiscuitRetrieveParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new BiscuitRetrieveParams { BiscuitID = "biscuit_id" };
+        var parameters = new BiscuitRetrieveParams
+        {
+            BiscuitID = "biscuit_id"
+        };
 
         BiscuitRetrieveParams copied = new(parameters);
 

@@ -11,10 +11,7 @@ namespace Believe.Models.TicketSales;
 [JsonConverter(typeof(PurchaseMethodConverter))]
 public enum PurchaseMethod
 {
-    Online,
-    BoxOffice,
-    WillCall,
-    Phone,
+    Online, BoxOffice, WillCall, Phone
 }
 
 sealed class PurchaseMethodConverter : JsonConverter<PurchaseMethod>
@@ -27,11 +24,11 @@ sealed class PurchaseMethodConverter : JsonConverter<PurchaseMethod>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "online" => PurchaseMethod.Online,
-            "box_office" => PurchaseMethod.BoxOffice,
-            "will_call" => PurchaseMethod.WillCall,
-            "phone" => PurchaseMethod.Phone,
-            _ => (PurchaseMethod)(-1),
+            "online"=>PurchaseMethod.Online,
+            "box_office"=>PurchaseMethod.BoxOffice,
+            "will_call"=>PurchaseMethod.WillCall,
+            "phone"=>PurchaseMethod.Phone,
+            _ =>(PurchaseMethod)(-1)
         };
     }
 
@@ -41,19 +38,15 @@ sealed class PurchaseMethodConverter : JsonConverter<PurchaseMethod>
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                PurchaseMethod.Online => "online",
-                PurchaseMethod.BoxOffice => "box_office",
-                PurchaseMethod.WillCall => "will_call",
-                PurchaseMethod.Phone => "phone",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            PurchaseMethod.Online=>"online",
+            PurchaseMethod.BoxOffice=>"box_office",
+            PurchaseMethod.WillCall=>"will_call",
+            PurchaseMethod.Phone=>"phone",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

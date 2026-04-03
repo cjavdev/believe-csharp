@@ -27,23 +27,24 @@ public interface ICommentaryService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ICommentaryService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICommentaryService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Stream live match commentary for a specific match. Uses Server-Sent Events (SSE)
-    /// to stream commentary events in real-time.
-    /// </summary>
+/// Stream live match commentary for a specific match. Uses Server-Sent Events (SSE)
+/// to stream commentary events in real-time.
+/// </summary>
     Task<JsonElement> Stream(
         CommentaryStreamParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Stream(CommentaryStreamParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Stream(CommentaryStreamParams, CancellationToken)"/>
     Task<JsonElement> Stream(
         string matchID,
         CommentaryStreamParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -57,21 +58,24 @@ public interface ICommentaryServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ICommentaryServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICommentaryServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /matches/{match_id}/commentary/stream</c>, but is otherwise the
-    /// same as <see cref="ICommentaryService.Stream(CommentaryStreamParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /matches/{match_id}/commentary/stream</c>, but is otherwise the
+/// same as <see cref="ICommentaryService.Stream(CommentaryStreamParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<JsonElement>> Stream(
         CommentaryStreamParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Stream(CommentaryStreamParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Stream(CommentaryStreamParams, CancellationToken)"/>
     Task<HttpResponse<JsonElement>> Stream(
         string matchID,
         CommentaryStreamParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

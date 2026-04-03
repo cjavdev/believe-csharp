@@ -17,15 +17,18 @@ namespace Believe.Models.Coaching.Principles;
 /// </summary>
 public record class PrincipleGetRandomParams : ParamsBase
 {
-    public PrincipleGetRandomParams() { }
+    public PrincipleGetRandomParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PrincipleGetRandomParams(PrincipleGetRandomParams principleGetRandomParams)
-        : base(principleGetRandomParams) { }
-#pragma warning restore CS8618
+    public PrincipleGetRandomParams (
+        PrincipleGetRandomParams principleGetRandomParams
+    ) : base(principleGetRandomParams)
+    {  }
+    #pragma warning restore CS8618
 
-    public PrincipleGetRandomParams(
+    public PrincipleGetRandomParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -34,9 +37,9 @@ public record class PrincipleGetRandomParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PrincipleGetRandomParams(
+    PrincipleGetRandomParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -44,7 +47,7 @@ public record class PrincipleGetRandomParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PrincipleGetRandomParams FromRawUnchecked(
@@ -55,24 +58,17 @@ public record class PrincipleGetRandomParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(PrincipleGetRandomParams? other)
     {
@@ -80,8 +76,7 @@ public record class PrincipleGetRandomParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
@@ -90,11 +85,13 @@ public record class PrincipleGetRandomParams : ParamsBase
             options.BaseUrl.ToString().TrimEnd('/') + "/coaching/principles/random"
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -104,7 +101,5 @@ public record class PrincipleGetRandomParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

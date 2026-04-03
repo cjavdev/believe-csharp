@@ -12,7 +12,10 @@ public class LogoUploadParamsTest : TestBase
     {
         BinaryContent file = Encoding.UTF8.GetBytes("Example data");
 
-        var parameters = new LogoUploadParams { TeamID = "team_id", File = file };
+        var parameters = new LogoUploadParams
+        {
+            TeamID = "team_id",File = file,
+        };
 
         string expectedTeamID = "team_id";
         BinaryContent expectedFile = file;
@@ -30,7 +33,12 @@ public class LogoUploadParamsTest : TestBase
             File = Encoding.UTF8.GetBytes("Example data"),
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/teams/team_id/logo"), url);
     }
@@ -40,8 +48,7 @@ public class LogoUploadParamsTest : TestBase
     {
         var parameters = new LogoUploadParams
         {
-            TeamID = "team_id",
-            File = Encoding.UTF8.GetBytes("Example data"),
+            TeamID = "team_id", File = Encoding.UTF8.GetBytes("Example data")
         };
 
         LogoUploadParams copied = new(parameters);

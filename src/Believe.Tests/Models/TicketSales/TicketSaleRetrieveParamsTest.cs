@@ -8,7 +8,12 @@ public class TicketSaleRetrieveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new TicketSaleRetrieveParams { TicketSaleID = "ticket_sale_id" };
+
+
+        var parameters = new TicketSaleRetrieveParams
+        {
+            TicketSaleID = "ticket_sale_id",
+        };
 
         string expectedTicketSaleID = "ticket_sale_id";
 
@@ -18,9 +23,17 @@ public class TicketSaleRetrieveParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        TicketSaleRetrieveParams parameters = new() { TicketSaleID = "ticket_sale_id" };
+        TicketSaleRetrieveParams parameters = new()
+        {
+            TicketSaleID = "ticket_sale_id"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/ticket-sales/ticket_sale_id"), url);
     }
@@ -28,7 +41,10 @@ public class TicketSaleRetrieveParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new TicketSaleRetrieveParams { TicketSaleID = "ticket_sale_id" };
+        var parameters = new TicketSaleRetrieveParams
+        {
+            TicketSaleID = "ticket_sale_id"
+        };
 
         TicketSaleRetrieveParams copied = new(parameters);
 

@@ -12,12 +12,7 @@ public class FileUploadTest : TestBase
     {
         var model = new FileUpload
         {
-            ChecksumSha256 = "checksum_sha256",
-            ContentType = "content_type",
-            FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Filename = "filename",
-            SizeBytes = 0,
-            UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ChecksumSha256 = "checksum_sha256",ContentType = "content_type",FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Filename = "filename",SizeBytes = 0,UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string expectedChecksumSha256 = "checksum_sha256";
@@ -40,19 +35,11 @@ public class FileUploadTest : TestBase
     {
         var model = new FileUpload
         {
-            ChecksumSha256 = "checksum_sha256",
-            ContentType = "content_type",
-            FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Filename = "filename",
-            SizeBytes = 0,
-            UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ChecksumSha256 = "checksum_sha256",ContentType = "content_type",FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Filename = "filename",SizeBytes = 0,UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FileUpload>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<FileUpload>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -62,19 +49,11 @@ public class FileUploadTest : TestBase
     {
         var model = new FileUpload
         {
-            ChecksumSha256 = "checksum_sha256",
-            ContentType = "content_type",
-            FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Filename = "filename",
-            SizeBytes = 0,
-            UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ChecksumSha256 = "checksum_sha256",ContentType = "content_type",FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Filename = "filename",SizeBytes = 0,UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<FileUpload>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<FileUpload>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedChecksumSha256 = "checksum_sha256";
@@ -97,12 +76,7 @@ public class FileUploadTest : TestBase
     {
         var model = new FileUpload
         {
-            ChecksumSha256 = "checksum_sha256",
-            ContentType = "content_type",
-            FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Filename = "filename",
-            SizeBytes = 0,
-            UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ChecksumSha256 = "checksum_sha256",ContentType = "content_type",FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Filename = "filename",SizeBytes = 0,UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         model.Validate();
@@ -113,12 +87,7 @@ public class FileUploadTest : TestBase
     {
         var model = new FileUpload
         {
-            ChecksumSha256 = "checksum_sha256",
-            ContentType = "content_type",
-            FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            Filename = "filename",
-            SizeBytes = 0,
-            UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            ChecksumSha256 = "checksum_sha256",ContentType = "content_type",FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",Filename = "filename",SizeBytes = 0,UploadedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
         FileUpload copied = new(model);

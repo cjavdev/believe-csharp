@@ -35,7 +35,10 @@ public class TeamMemberCreateResponseTest : TestBase
             Specialty = CoachSpecialty.HeadCoach,
             TeamID = "afc-richmond",
             YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
+            Certifications =
+            [
+                "NCAA Division II"
+            ],
             MemberType = TeamMemberCoachMemberType.Coach,
             WinRate = 0.55,
         };
@@ -54,7 +57,10 @@ public class TeamMemberCreateResponseTest : TestBase
             YearsWithTeam = 1,
             LicenseNumber = "PSY-12345",
             MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
         value.Validate();
     }
@@ -70,7 +76,10 @@ public class TeamMemberCreateResponseTest : TestBase
             YearsWithTeam = 5,
             IsHeadKitman = true,
             MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
         value.Validate();
     }
@@ -92,10 +101,7 @@ public class TeamMemberCreateResponseTest : TestBase
             MemberType = TeamMemberPlayerMemberType.Player,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -110,15 +116,15 @@ public class TeamMemberCreateResponseTest : TestBase
             Specialty = CoachSpecialty.HeadCoach,
             TeamID = "afc-richmond",
             YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
+            Certifications =
+            [
+                "NCAA Division II"
+            ],
             MemberType = TeamMemberCoachMemberType.Coach,
             WinRate = 0.55,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -135,13 +141,13 @@ public class TeamMemberCreateResponseTest : TestBase
             YearsWithTeam = 1,
             LicenseNumber = "PSY-12345",
             MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -157,13 +163,13 @@ public class TeamMemberCreateResponseTest : TestBase
             YearsWithTeam = 5,
             IsHeadKitman = true,
             MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberCreateResponse>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

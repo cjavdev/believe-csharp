@@ -8,7 +8,12 @@ public class CharacterRetrieveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new CharacterRetrieveParams { CharacterID = "character_id" };
+
+
+        var parameters = new CharacterRetrieveParams
+        {
+            CharacterID = "character_id",
+        };
 
         string expectedCharacterID = "character_id";
 
@@ -18,9 +23,17 @@ public class CharacterRetrieveParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        CharacterRetrieveParams parameters = new() { CharacterID = "character_id" };
+        CharacterRetrieveParams parameters = new()
+        {
+            CharacterID = "character_id"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/characters/character_id"), url);
     }
@@ -28,7 +41,10 @@ public class CharacterRetrieveParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new CharacterRetrieveParams { CharacterID = "character_id" };
+        var parameters = new CharacterRetrieveParams
+        {
+            CharacterID = "character_id"
+        };
 
         CharacterRetrieveParams copied = new(parameters);
 

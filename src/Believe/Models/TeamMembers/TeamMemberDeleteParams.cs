@@ -19,18 +19,18 @@ public record class TeamMemberDeleteParams : ParamsBase
 {
     public string? MemberID { get; init; }
 
-    public TeamMemberDeleteParams() { }
+    public TeamMemberDeleteParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamMemberDeleteParams(TeamMemberDeleteParams teamMemberDeleteParams)
-        : base(teamMemberDeleteParams)
-    {
-        this.MemberID = teamMemberDeleteParams.MemberID;
-    }
-#pragma warning restore CS8618
+    public TeamMemberDeleteParams (
+        TeamMemberDeleteParams teamMemberDeleteParams
+    ) : base(teamMemberDeleteParams)
+    { this.MemberID = teamMemberDeleteParams.MemberID; }
+    #pragma warning restore CS8618
 
-    public TeamMemberDeleteParams(
+    public TeamMemberDeleteParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -39,9 +39,9 @@ public record class TeamMemberDeleteParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamMemberDeleteParams(
+    TeamMemberDeleteParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string memberID
@@ -51,7 +51,7 @@ public record class TeamMemberDeleteParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.MemberID = memberID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TeamMemberDeleteParams FromRawUnchecked(
@@ -64,25 +64,18 @@ public record class TeamMemberDeleteParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             memberID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["MemberID"] = JsonSerializer.SerializeToElement(this.MemberID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["MemberID"] = JsonSerializer.SerializeToElement(this.MemberID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TeamMemberDeleteParams? other)
     {
@@ -90,23 +83,23 @@ public record class TeamMemberDeleteParams : ParamsBase
         {
             return false;
         }
-        return (this.MemberID?.Equals(other.MemberID) ?? other.MemberID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.MemberID?.Equals(other.MemberID) ?? other.MemberID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/team-members/{0}", this.MemberID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/team-members/{0}",
+            this.MemberID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -116,7 +109,5 @@ public record class TeamMemberDeleteParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

@@ -25,15 +25,17 @@ public interface IVersionService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IVersionService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IVersionService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Get detailed information about API versioning.
-    /// </summary>
+/// Get detailed information about API versioning.
+/// </summary>
     Task<JsonElement> Retrieve(
         VersionRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -47,14 +49,18 @@ public interface IVersionServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IVersionServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IVersionServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /version</c>, but is otherwise the
-    /// same as <see cref="IVersionService.Retrieve(VersionRetrieveParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /version</c>, but is otherwise the
+/// same as <see cref="IVersionService.Retrieve(VersionRetrieveParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<JsonElement>> Retrieve(
         VersionRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

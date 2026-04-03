@@ -11,38 +11,40 @@ namespace Believe.Models.Teams;
 [JsonConverter(typeof(JsonModelConverter<TeamListPageResponse, TeamListPageResponseFromRaw>))]
 public sealed record class TeamListPageResponse : JsonModel
 {
-    public required IReadOnlyList<Team> Data
-    {
-        get
-        {
+    public required IReadOnlyList<Team> Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<Team>>("data");
+            return this._rawData.GetNotNullStruct<ImmutableArray<Team>>(
+                "data"
+            );
         }
-        init
-        {
-            this._rawData.Set<ImmutableArray<Team>>("data", ImmutableArray.ToImmutableArray(value));
+        init {
+            this._rawData.Set<ImmutableArray<Team>>(
+                "data",
+                ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
     /// <summary>
     /// Whether there are more items after this page.
     /// </summary>
-    public required bool HasMore
-    {
-        get
-        {
+    public required bool HasMore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("has_more");
+            return this._rawData.GetNotNullStruct<bool>(
+                "has_more"
+            );
         }
         init { this._rawData.Set("has_more", value); }
     }
 
-    public required long Limit
-    {
-        get
-        {
+    public required long Limit {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("limit");
+            return this._rawData.GetNotNullStruct<long>(
+                "limit"
+            );
         }
         init { this._rawData.Set("limit", value); }
     }
@@ -50,12 +52,12 @@ public sealed record class TeamListPageResponse : JsonModel
     /// <summary>
     /// Current page number (1-indexed, for display purposes).
     /// </summary>
-    public required long Page
-    {
-        get
-        {
+    public required long Page {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("page");
+            return this._rawData.GetNotNullStruct<long>(
+                "page"
+            );
         }
         init { this._rawData.Set("page", value); }
     }
@@ -63,32 +65,32 @@ public sealed record class TeamListPageResponse : JsonModel
     /// <summary>
     /// Total number of pages.
     /// </summary>
-    public required long Pages
-    {
-        get
-        {
+    public required long Pages {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("pages");
+            return this._rawData.GetNotNullStruct<long>(
+                "pages"
+            );
         }
         init { this._rawData.Set("pages", value); }
     }
 
-    public required long Skip
-    {
-        get
-        {
+    public required long Skip {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("skip");
+            return this._rawData.GetNotNullStruct<long>(
+                "skip"
+            );
         }
         init { this._rawData.Set("skip", value); }
     }
 
-    public required long Total
-    {
-        get
-        {
+    public required long Total {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total");
+            return this._rawData.GetNotNullStruct<long>(
+                "total"
+            );
         }
         init { this._rawData.Set("total", value); }
     }
@@ -108,34 +110,33 @@ public sealed record class TeamListPageResponse : JsonModel
         _ = this.Total;
     }
 
-    public TeamListPageResponse() { }
+    public TeamListPageResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamListPageResponse(TeamListPageResponse teamListPageResponse)
-        : base(teamListPageResponse) { }
-#pragma warning restore CS8618
+    public TeamListPageResponse (
+        TeamListPageResponse teamListPageResponse
+    ) : base(teamListPageResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public TeamListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TeamListPageResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamListPageResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TeamListPageResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TeamListPageResponseFromRaw.FromRawUnchecked"/>
     public static TeamListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TeamListPageResponseFromRaw : IFromRawJson<TeamListPageResponse>
@@ -143,5 +144,6 @@ class TeamListPageResponseFromRaw : IFromRawJson<TeamListPageResponse>
     /// <inheritdoc/>
     public TeamListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TeamListPageResponse.FromRawUnchecked(rawData);
+    )
+    =>TeamListPageResponse.FromRawUnchecked(rawData);
 }

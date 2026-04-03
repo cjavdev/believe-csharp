@@ -12,47 +12,33 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
                 "Ted tastes his first 'garbage water' (English tea)",
-            ],
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ],UsViewersMillions = 1.25,ViewerRating = 8.7,
         };
 
         string expectedID = "s01e01";
         string expectedAirDate = "2020-08-14";
-        List<string> expectedCharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"];
+        List<string> expectedCharacterFocus =
+        [
+            "ted-lasso", "rebecca-welton", "coach-beard"
+        ];
         string expectedDirector = "Tom Marshall";
         long expectedEpisodeNumber = 1;
         string expectedMainTheme = "Taking chances and believing in yourself";
         long expectedRuntimeMinutes = 32;
         long expectedSeason = 1;
-        string expectedSynopsis =
-            "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.";
-        string expectedTedWisdom =
-            "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.";
+        string expectedSynopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.";
+        string expectedTedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.";
         string expectedTitle = "Pilot";
         string expectedWriter = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly";
-        string expectedBiscuitsWithBossMoment =
-            "Ted brings Rebecca homemade biscuits for the first time.";
+        string expectedBiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.";
         List<string> expectedMemorableMoments =
         [
             "Ted's first press conference",
@@ -94,29 +80,15 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
                 "Ted tastes his first 'garbage water' (English tea)",
-            ],
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ],UsViewersMillions = 1.25,ViewerRating = 8.7,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -130,54 +102,37 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
                 "Ted tastes his first 'garbage water' (English tea)",
-            ],
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ],UsViewersMillions = 1.25,ViewerRating = 8.7,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Episode>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Episode>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "s01e01";
         string expectedAirDate = "2020-08-14";
-        List<string> expectedCharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"];
+        List<string> expectedCharacterFocus =
+        [
+            "ted-lasso", "rebecca-welton", "coach-beard"
+        ];
         string expectedDirector = "Tom Marshall";
         long expectedEpisodeNumber = 1;
         string expectedMainTheme = "Taking chances and believing in yourself";
         long expectedRuntimeMinutes = 32;
         long expectedSeason = 1;
-        string expectedSynopsis =
-            "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.";
-        string expectedTedWisdom =
-            "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.";
+        string expectedSynopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.";
+        string expectedTedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.";
         string expectedTitle = "Pilot";
         string expectedWriter = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly";
-        string expectedBiscuitsWithBossMoment =
-            "Ted brings Rebecca homemade biscuits for the first time.";
+        string expectedBiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.";
         List<string> expectedMemorableMoments =
         [
             "Ted's first press conference",
@@ -219,29 +174,15 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
                 "Ted tastes his first 'garbage water' (English tea)",
-            ],
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ],UsViewersMillions = 1.25,ViewerRating = 8.7,
         };
 
         model.Validate();
@@ -252,27 +193,15 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",UsViewersMillions = 1.25,ViewerRating = 8.7,
         };
 
         Assert.Null(model.MemorableMoments);
         Assert.False(model.RawData.ContainsKey("memorable_moments"));
+
     }
 
     [Fact]
@@ -280,23 +209,10 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",UsViewersMillions = 1.25,ViewerRating = 8.7,
         };
 
         model.Validate();
@@ -307,23 +223,10 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",UsViewersMillions = 1.25,ViewerRating = 8.7,
 
             // Null should be interpreted as omitted for these properties
             MemorableMoments = null,
@@ -331,6 +234,7 @@ public class EpisodeTest : TestBase
 
         Assert.Null(model.MemorableMoments);
         Assert.False(model.RawData.ContainsKey("memorable_moments"));
+
     }
 
     [Fact]
@@ -338,23 +242,10 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",UsViewersMillions = 1.25,ViewerRating = 8.7,
 
             // Null should be interpreted as omitted for these properties
             MemorableMoments = null,
@@ -368,21 +259,10 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
@@ -391,11 +271,10 @@ public class EpisodeTest : TestBase
         };
 
         Assert.Null(model.BiscuitsWithBossMoment);
-        Assert.False(model.RawData.ContainsKey("biscuits_with_boss_moment"));
-        Assert.Null(model.UsViewersMillions);
-        Assert.False(model.RawData.ContainsKey("us_viewers_millions"));
-        Assert.Null(model.ViewerRating);
+        Assert.False(model.RawData.ContainsKey("biscuits_with_boss_moment"));Assert.Null(model.UsViewersMillions);
+        Assert.False(model.RawData.ContainsKey("us_viewers_millions"));Assert.Null(model.ViewerRating);
         Assert.False(model.RawData.ContainsKey("viewer_rating"));
+
     }
 
     [Fact]
@@ -403,21 +282,10 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
@@ -433,38 +301,24 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
                 "Ted tastes his first 'garbage water' (English tea)",
             ],
 
-            BiscuitsWithBossMoment = null,
-            UsViewersMillions = null,
-            ViewerRating = null,
+            BiscuitsWithBossMoment = null,UsViewersMillions = null,ViewerRating = null,
         };
 
         Assert.Null(model.BiscuitsWithBossMoment);
-        Assert.True(model.RawData.ContainsKey("biscuits_with_boss_moment"));
-        Assert.Null(model.UsViewersMillions);
-        Assert.True(model.RawData.ContainsKey("us_viewers_millions"));
-        Assert.Null(model.ViewerRating);
+        Assert.True(model.RawData.ContainsKey("biscuits_with_boss_moment"));Assert.Null(model.UsViewersMillions);
+        Assert.True(model.RawData.ContainsKey("us_viewers_millions"));Assert.Null(model.ViewerRating);
         Assert.True(model.RawData.ContainsKey("viewer_rating"));
+
     }
 
     [Fact]
@@ -472,30 +326,17 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
                 "Ted tastes his first 'garbage water' (English tea)",
             ],
 
-            BiscuitsWithBossMoment = null,
-            UsViewersMillions = null,
-            ViewerRating = null,
+            BiscuitsWithBossMoment = null,UsViewersMillions = null,ViewerRating = null,
         };
 
         model.Validate();
@@ -506,29 +347,15 @@ public class EpisodeTest : TestBase
     {
         var model = new Episode
         {
-            ID = "s01e01",
-            AirDate = "2020-08-14",
-            CharacterFocus = ["ted-lasso", "rebecca-welton", "coach-beard"],
-            Director = "Tom Marshall",
-            EpisodeNumber = 1,
-            MainTheme = "Taking chances and believing in yourself",
-            RuntimeMinutes = 32,
-            Season = 1,
-            Synopsis =
-                "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",
-            TedWisdom =
-                "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",
-            Title = "Pilot",
-            Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",
-            BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",
-            MemorableMoments =
+            ID = "s01e01",AirDate = "2020-08-14",CharacterFocus =
+            [
+                "ted-lasso", "rebecca-welton", "coach-beard"
+            ],Director = "Tom Marshall",EpisodeNumber = 1,MainTheme = "Taking chances and believing in yourself",RuntimeMinutes = 32,Season = 1,Synopsis = "American football coach Ted Lasso is hired to manage AFC Richmond, a struggling English Premier League team.",TedWisdom = "Taking on a challenge is a lot like riding a horse. If you're comfortable while you're doing it, you're probably doing it wrong.",Title = "Pilot",Writer = "Jason Sudeikis, Bill Lawrence, Brendan Hunt, Joe Kelly",BiscuitsWithBossMoment = "Ted brings Rebecca homemade biscuits for the first time.",MemorableMoments =
             [
                 "Ted's first press conference",
                 "The BELIEVE sign goes up",
                 "Ted tastes his first 'garbage water' (English tea)",
-            ],
-            UsViewersMillions = 1.25,
-            ViewerRating = 8.7,
+            ],UsViewersMillions = 1.25,ViewerRating = 8.7,
         };
 
         Episode copied = new(model);

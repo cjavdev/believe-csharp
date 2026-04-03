@@ -8,7 +8,12 @@ public class EpisodeGetWisdomParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new EpisodeGetWisdomParams { EpisodeID = "episode_id" };
+
+
+        var parameters = new EpisodeGetWisdomParams
+        {
+            EpisodeID = "episode_id",
+        };
 
         string expectedEpisodeID = "episode_id";
 
@@ -20,7 +25,12 @@ public class EpisodeGetWisdomParamsTest : TestBase
     {
         EpisodeGetWisdomParams parameters = new() { EpisodeID = "episode_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/episodes/episode_id/wisdom"), url);
     }
@@ -28,7 +38,10 @@ public class EpisodeGetWisdomParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new EpisodeGetWisdomParams { EpisodeID = "episode_id" };
+        var parameters = new EpisodeGetWisdomParams
+        {
+            EpisodeID = "episode_id"
+        };
 
         EpisodeGetWisdomParams copied = new(parameters);
 

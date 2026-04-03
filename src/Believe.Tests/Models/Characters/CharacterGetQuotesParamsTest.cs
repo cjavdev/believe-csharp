@@ -8,7 +8,12 @@ public class CharacterGetQuotesParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new CharacterGetQuotesParams { CharacterID = "character_id" };
+
+
+        var parameters = new CharacterGetQuotesParams
+        {
+            CharacterID = "character_id",
+        };
 
         string expectedCharacterID = "character_id";
 
@@ -18,9 +23,17 @@ public class CharacterGetQuotesParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        CharacterGetQuotesParams parameters = new() { CharacterID = "character_id" };
+        CharacterGetQuotesParams parameters = new()
+        {
+            CharacterID = "character_id"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/characters/character_id/quotes"), url);
     }
@@ -28,7 +41,10 @@ public class CharacterGetQuotesParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new CharacterGetQuotesParams { CharacterID = "character_id" };
+        var parameters = new CharacterGetQuotesParams
+        {
+            CharacterID = "character_id"
+        };
 
         CharacterGetQuotesParams copied = new(parameters);
 

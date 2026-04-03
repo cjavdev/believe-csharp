@@ -18,7 +18,10 @@ public class TeamMemberListStaffResponseTest : TestBase
             YearsWithTeam = 1,
             LicenseNumber = "PSY-12345",
             MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
         value.Validate();
     }
@@ -34,7 +37,10 @@ public class TeamMemberListStaffResponseTest : TestBase
             YearsWithTeam = 5,
             IsHeadKitman = true,
             MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
         value.Validate();
     }
@@ -51,13 +57,13 @@ public class TeamMemberListStaffResponseTest : TestBase
             YearsWithTeam = 1,
             LicenseNumber = "PSY-12345",
             MemberType = TeamMemberMedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology"],
+            Qualifications =
+            [
+                "PhD Clinical Psychology"
+            ],
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffResponse>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -73,13 +79,13 @@ public class TeamMemberListStaffResponseTest : TestBase
             YearsWithTeam = 5,
             IsHeadKitman = true,
             MemberType = TeamMemberEquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListStaffResponse>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

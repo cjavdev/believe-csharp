@@ -11,25 +11,14 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
-            DrSharonInsight =
-                "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",DrSharonInsight = "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
         };
 
-        string expectedDailyAffirmation =
-            "I am capable, I am learning, and I belong exactly where I am.";
+        string expectedDailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.";
         string expectedOriginalThought = "I'm not good enough for this job.";
-        string expectedReframedThought =
-            "I'm still learning and growing in this role, and that's exactly where I should be.";
-        string expectedTedPerspective =
-            "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.";
-        string expectedDrSharonInsight =
-            "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?";
+        string expectedReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.";
+        string expectedTedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.";
+        string expectedDrSharonInsight = "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?";
 
         Assert.Equal(expectedDailyAffirmation, model.DailyAffirmation);
         Assert.Equal(expectedOriginalThought, model.OriginalThought);
@@ -43,21 +32,11 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
-            DrSharonInsight =
-                "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",DrSharonInsight = "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ReframeTransformNegativeThoughtsResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ReframeTransformNegativeThoughtsResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -67,32 +46,18 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
-            DrSharonInsight =
-                "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",DrSharonInsight = "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ReframeTransformNegativeThoughtsResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ReframeTransformNegativeThoughtsResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        string expectedDailyAffirmation =
-            "I am capable, I am learning, and I belong exactly where I am.";
+        string expectedDailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.";
         string expectedOriginalThought = "I'm not good enough for this job.";
-        string expectedReframedThought =
-            "I'm still learning and growing in this role, and that's exactly where I should be.";
-        string expectedTedPerspective =
-            "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.";
-        string expectedDrSharonInsight =
-            "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?";
+        string expectedReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.";
+        string expectedTedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.";
+        string expectedDrSharonInsight = "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?";
 
         Assert.Equal(expectedDailyAffirmation, deserialized.DailyAffirmation);
         Assert.Equal(expectedOriginalThought, deserialized.OriginalThought);
@@ -106,14 +71,7 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
-            DrSharonInsight =
-                "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",DrSharonInsight = "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
         };
 
         model.Validate();
@@ -124,16 +82,12 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
         };
 
         Assert.Null(model.DrSharonInsight);
         Assert.False(model.RawData.ContainsKey("dr_sharon_insight"));
+
     }
 
     [Fact]
@@ -141,12 +95,7 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
         };
 
         model.Validate();
@@ -157,18 +106,14 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
 
             DrSharonInsight = null,
         };
 
         Assert.Null(model.DrSharonInsight);
         Assert.True(model.RawData.ContainsKey("dr_sharon_insight"));
+
     }
 
     [Fact]
@@ -176,12 +121,7 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
 
             DrSharonInsight = null,
         };
@@ -194,14 +134,7 @@ public class ReframeTransformNegativeThoughtsResponseTest : TestBase
     {
         var model = new ReframeTransformNegativeThoughtsResponse
         {
-            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",
-            OriginalThought = "I'm not good enough for this job.",
-            ReframedThought =
-                "I'm still learning and growing in this role, and that's exactly where I should be.",
-            TedPerspective =
-                "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",
-            DrSharonInsight =
-                "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
+            DailyAffirmation = "I am capable, I am learning, and I belong exactly where I am.",OriginalThought = "I'm not good enough for this job.",ReframedThought = "I'm still learning and growing in this role, and that's exactly where I should be.",TedPerspective = "You know what? Imposter syndrome is just your brain's way of telling you that you care. The folks who think they know everything? They're the ones you gotta worry about. You questioning yourself means you're paying attention.",DrSharonInsight = "This thought pattern often stems from comparing your internal experience to others' external presentations. Consider: what evidence do you have that contradicts this belief?",
         };
 
         ReframeTransformNegativeThoughtsResponse copied = new(model);

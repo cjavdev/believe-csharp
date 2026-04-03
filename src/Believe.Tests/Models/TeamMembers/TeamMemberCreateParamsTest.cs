@@ -12,6 +12,8 @@ public class TeamMemberCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TeamMemberCreateParams
         {
             Member = new Player()
@@ -63,7 +65,12 @@ public class TeamMemberCreateParamsTest : TestBase
             },
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/team-members"), url);
     }
@@ -122,7 +129,10 @@ public class MemberTest : TestBase
             Specialty = CoachSpecialty.HeadCoach,
             TeamID = "afc-richmond",
             YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
+            Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],
             MemberType = CoachMemberType.Coach,
             WinRate = 0.65,
         };
@@ -140,7 +150,10 @@ public class MemberTest : TestBase
             YearsWithTeam = 3,
             LicenseNumber = "PSY-12345",
             MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
         value.Validate();
     }
@@ -155,7 +168,10 @@ public class MemberTest : TestBase
             YearsWithTeam = 3,
             IsHeadKitman = true,
             MemberType = EquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
         value.Validate();
     }
@@ -190,7 +206,10 @@ public class MemberTest : TestBase
             Specialty = CoachSpecialty.HeadCoach,
             TeamID = "afc-richmond",
             YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
+            Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],
             MemberType = CoachMemberType.Coach,
             WinRate = 0.65,
         };
@@ -211,7 +230,10 @@ public class MemberTest : TestBase
             YearsWithTeam = 3,
             LicenseNumber = "PSY-12345",
             MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Member>(element, ModelBase.SerializerOptions);
@@ -229,7 +251,10 @@ public class MemberTest : TestBase
             YearsWithTeam = 3,
             IsHeadKitman = true,
             MemberType = EquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<Member>(element, ModelBase.SerializerOptions);
@@ -245,15 +270,7 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = MemberType.Player,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = MemberType.Player,
         };
 
         string expectedCharacterID = "jamie-tartt";
@@ -282,15 +299,7 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = MemberType.Player,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = MemberType.Player,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -304,15 +313,7 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = MemberType.Player,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = MemberType.Player,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -345,15 +346,7 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = MemberType.Player,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = MemberType.Player,
         };
 
         model.Validate();
@@ -364,21 +357,15 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
         };
 
         Assert.Null(model.Assists);
-        Assert.False(model.RawData.ContainsKey("assists"));
-        Assert.Null(model.GoalsScored);
-        Assert.False(model.RawData.ContainsKey("goals_scored"));
-        Assert.Null(model.IsCaptain);
-        Assert.False(model.RawData.ContainsKey("is_captain"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("assists"));Assert.Null(model.GoalsScored);
+        Assert.False(model.RawData.ContainsKey("goals_scored"));Assert.Null(model.IsCaptain);
+        Assert.False(model.RawData.ContainsKey("is_captain"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -386,11 +373,7 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
         };
 
         model.Validate();
@@ -401,27 +384,18 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
 
             // Null should be interpreted as omitted for these properties
-            Assists = null,
-            GoalsScored = null,
-            IsCaptain = null,
-            MemberType = null,
+            Assists = null,GoalsScored = null,IsCaptain = null,MemberType = null,
         };
 
         Assert.Null(model.Assists);
-        Assert.False(model.RawData.ContainsKey("assists"));
-        Assert.Null(model.GoalsScored);
-        Assert.False(model.RawData.ContainsKey("goals_scored"));
-        Assert.Null(model.IsCaptain);
-        Assert.False(model.RawData.ContainsKey("is_captain"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("assists"));Assert.Null(model.GoalsScored);
+        Assert.False(model.RawData.ContainsKey("goals_scored"));Assert.Null(model.IsCaptain);
+        Assert.False(model.RawData.ContainsKey("is_captain"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -429,17 +403,10 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
 
             // Null should be interpreted as omitted for these properties
-            Assists = null,
-            GoalsScored = null,
-            IsCaptain = null,
-            MemberType = null,
+            Assists = null,GoalsScored = null,IsCaptain = null,MemberType = null,
         };
 
         model.Validate();
@@ -450,15 +417,7 @@ public class PlayerTest : TestBase
     {
         var model = new Player
         {
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = MemberType.Player,
+            CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = MemberType.Player,
         };
 
         Player copied = new(model);
@@ -469,8 +428,7 @@ public class PlayerTest : TestBase
 
 public class MemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(MemberType.Player)]
+    [Theory][InlineData(MemberType.Player)]
     public void Validation_Works(MemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -481,27 +439,20 @@ public class MemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MemberType.Player)]
+    [Theory][InlineData(MemberType.Player)]
     public void SerializationRoundtrip_Works(MemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -509,15 +460,9 @@ public class MemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -530,20 +475,20 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,WinRate = 0.65,
         };
 
         string expectedCharacterID = "jamie-tartt";
         ApiEnum<string, CoachSpecialty> expectedSpecialty = CoachSpecialty.HeadCoach;
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 3;
-        List<string> expectedCertifications = ["UEFA Pro License", "FA Level 4"];
+        List<string> expectedCertifications =
+        [
+            "UEFA Pro License", "FA Level 4"
+        ];
         ApiEnum<string, CoachMemberType> expectedMemberType = CoachMemberType.Coach;
         double expectedWinRate = 0.65;
 
@@ -566,13 +511,10 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,WinRate = 0.65,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -586,13 +528,10 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,WinRate = 0.65,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -603,7 +542,10 @@ public class CoachTest : TestBase
         ApiEnum<string, CoachSpecialty> expectedSpecialty = CoachSpecialty.HeadCoach;
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 3;
-        List<string> expectedCertifications = ["UEFA Pro License", "FA Level 4"];
+        List<string> expectedCertifications =
+        [
+            "UEFA Pro License", "FA Level 4"
+        ];
         ApiEnum<string, CoachMemberType> expectedMemberType = CoachMemberType.Coach;
         double expectedWinRate = 0.65;
 
@@ -626,13 +568,10 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,WinRate = 0.65,
         };
 
         model.Validate();
@@ -643,17 +582,13 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,WinRate = 0.65,
         };
 
         Assert.Null(model.Certifications);
-        Assert.False(model.RawData.ContainsKey("certifications"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("certifications"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -661,11 +596,7 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,WinRate = 0.65,
         };
 
         model.Validate();
@@ -676,21 +607,16 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,WinRate = 0.65,
 
             // Null should be interpreted as omitted for these properties
-            Certifications = null,
-            MemberType = null,
+            Certifications = null,MemberType = null,
         };
 
         Assert.Null(model.Certifications);
-        Assert.False(model.RawData.ContainsKey("certifications"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("certifications"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -698,15 +624,10 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,WinRate = 0.65,
 
             // Null should be interpreted as omitted for these properties
-            Certifications = null,
-            MemberType = null,
+            Certifications = null,MemberType = null,
         };
 
         model.Validate();
@@ -717,16 +638,15 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,
         };
 
         Assert.Null(model.WinRate);
         Assert.False(model.RawData.ContainsKey("win_rate"));
+
     }
 
     [Fact]
@@ -734,12 +654,10 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,
         };
 
         model.Validate();
@@ -750,18 +668,17 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,
 
             WinRate = null,
         };
 
         Assert.Null(model.WinRate);
         Assert.True(model.RawData.ContainsKey("win_rate"));
+
     }
 
     [Fact]
@@ -769,12 +686,10 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,
 
             WinRate = null,
         };
@@ -787,13 +702,10 @@ public class CoachTest : TestBase
     {
         var model = new Coach
         {
-            CharacterID = "jamie-tartt",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Certifications = ["UEFA Pro License", "FA Level 4"],
-            MemberType = CoachMemberType.Coach,
-            WinRate = 0.65,
+            CharacterID = "jamie-tartt",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 3,Certifications =
+            [
+                "UEFA Pro License", "FA Level 4"
+            ],MemberType = CoachMemberType.Coach,WinRate = 0.65,
         };
 
         Coach copied = new(model);
@@ -804,8 +716,7 @@ public class CoachTest : TestBase
 
 public class CoachMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(CoachMemberType.Coach)]
+    [Theory][InlineData(CoachMemberType.Coach)]
     public void Validation_Works(CoachMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -816,27 +727,20 @@ public class CoachMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(CoachMemberType.Coach)]
+    [Theory][InlineData(CoachMemberType.Coach)]
     public void SerializationRoundtrip_Works(CoachMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, CoachMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -844,15 +748,9 @@ public class CoachMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, CoachMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -865,13 +763,10 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
 
         string expectedCharacterID = "jamie-tartt";
@@ -879,12 +774,10 @@ public class MedicalStaffTest : TestBase
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 3;
         string expectedLicenseNumber = "PSY-12345";
-        ApiEnum<string, MedicalStaffMemberType> expectedMemberType =
-            MedicalStaffMemberType.MedicalStaff;
+        ApiEnum<string, MedicalStaffMemberType> expectedMemberType = MedicalStaffMemberType.MedicalStaff;
         List<string> expectedQualifications =
         [
-            "PhD Clinical Psychology",
-            "Sports Psychology Certification",
+            "PhD Clinical Psychology", "Sports Psychology Certification"
         ];
 
         Assert.Equal(expectedCharacterID, model.CharacterID);
@@ -906,20 +799,14 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MedicalStaff>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MedicalStaff>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -929,20 +816,14 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MedicalStaff>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MedicalStaff>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCharacterID = "jamie-tartt";
@@ -950,12 +831,10 @@ public class MedicalStaffTest : TestBase
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 3;
         string expectedLicenseNumber = "PSY-12345";
-        ApiEnum<string, MedicalStaffMemberType> expectedMemberType =
-            MedicalStaffMemberType.MedicalStaff;
+        ApiEnum<string, MedicalStaffMemberType> expectedMemberType = MedicalStaffMemberType.MedicalStaff;
         List<string> expectedQualifications =
         [
-            "PhD Clinical Psychology",
-            "Sports Psychology Certification",
+            "PhD Clinical Psychology", "Sports Psychology Certification"
         ];
 
         Assert.Equal(expectedCharacterID, deserialized.CharacterID);
@@ -977,13 +856,10 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
 
         model.Validate();
@@ -994,17 +870,13 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",
         };
 
         Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Qualifications);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Qualifications);
         Assert.False(model.RawData.ContainsKey("qualifications"));
+
     }
 
     [Fact]
@@ -1012,11 +884,7 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",
         };
 
         model.Validate();
@@ -1027,21 +895,16 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",
 
             // Null should be interpreted as omitted for these properties
-            MemberType = null,
-            Qualifications = null,
+            MemberType = null,Qualifications = null,
         };
 
         Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Qualifications);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Qualifications);
         Assert.False(model.RawData.ContainsKey("qualifications"));
+
     }
 
     [Fact]
@@ -1049,15 +912,10 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",
 
             // Null should be interpreted as omitted for these properties
-            MemberType = null,
-            Qualifications = null,
+            MemberType = null,Qualifications = null,
         };
 
         model.Validate();
@@ -1068,16 +926,15 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
 
         Assert.Null(model.LicenseNumber);
         Assert.False(model.RawData.ContainsKey("license_number"));
+
     }
 
     [Fact]
@@ -1085,12 +942,10 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
 
         model.Validate();
@@ -1101,18 +956,17 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
 
             LicenseNumber = null,
         };
 
         Assert.Null(model.LicenseNumber);
         Assert.True(model.RawData.ContainsKey("license_number"));
+
     }
 
     [Fact]
@@ -1120,12 +974,10 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
 
             LicenseNumber = null,
         };
@@ -1138,13 +990,10 @@ public class MedicalStaffTest : TestBase
     {
         var model = new MedicalStaff
         {
-            CharacterID = "jamie-tartt",
-            Specialty = MedicalSpecialty.SportsPsychologist,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            LicenseNumber = "PSY-12345",
-            MemberType = MedicalStaffMemberType.MedicalStaff,
-            Qualifications = ["PhD Clinical Psychology", "Sports Psychology Certification"],
+            CharacterID = "jamie-tartt",Specialty = MedicalSpecialty.SportsPsychologist,TeamID = "afc-richmond",YearsWithTeam = 3,LicenseNumber = "PSY-12345",MemberType = MedicalStaffMemberType.MedicalStaff,Qualifications =
+            [
+                "PhD Clinical Psychology", "Sports Psychology Certification"
+            ],
         };
 
         MedicalStaff copied = new(model);
@@ -1155,8 +1004,7 @@ public class MedicalStaffTest : TestBase
 
 public class MedicalStaffMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(MedicalStaffMemberType.MedicalStaff)]
+    [Theory][InlineData(MedicalStaffMemberType.MedicalStaff)]
     public void Validation_Works(MedicalStaffMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -1167,27 +1015,20 @@ public class MedicalStaffMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MedicalStaffMemberType.MedicalStaff)]
+    [Theory][InlineData(MedicalStaffMemberType.MedicalStaff)]
     public void SerializationRoundtrip_Works(MedicalStaffMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MedicalStaffMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1195,15 +1036,9 @@ public class MedicalStaffMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MedicalStaffMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1216,21 +1051,21 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            IsHeadKitman = true,
-            MemberType = EquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,IsHeadKitman = true,MemberType = EquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         string expectedCharacterID = "jamie-tartt";
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 3;
         bool expectedIsHeadKitman = true;
-        ApiEnum<string, EquipmentManagerMemberType> expectedMemberType =
-            EquipmentManagerMemberType.EquipmentManager;
-        List<string> expectedResponsibilities = ["Kit preparation", "Equipment maintenance"];
+        ApiEnum<string, EquipmentManagerMemberType> expectedMemberType = EquipmentManagerMemberType.EquipmentManager;
+        List<string> expectedResponsibilities =
+        [
+            "Kit preparation", "Equipment maintenance"
+        ];
 
         Assert.Equal(expectedCharacterID, model.CharacterID);
         Assert.Equal(expectedTeamID, model.TeamID);
@@ -1250,19 +1085,14 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            IsHeadKitman = true,
-            MemberType = EquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,IsHeadKitman = true,MemberType = EquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EquipmentManager>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EquipmentManager>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1272,28 +1102,25 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            IsHeadKitman = true,
-            MemberType = EquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,IsHeadKitman = true,MemberType = EquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EquipmentManager>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EquipmentManager>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCharacterID = "jamie-tartt";
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 3;
         bool expectedIsHeadKitman = true;
-        ApiEnum<string, EquipmentManagerMemberType> expectedMemberType =
-            EquipmentManagerMemberType.EquipmentManager;
-        List<string> expectedResponsibilities = ["Kit preparation", "Equipment maintenance"];
+        ApiEnum<string, EquipmentManagerMemberType> expectedMemberType = EquipmentManagerMemberType.EquipmentManager;
+        List<string> expectedResponsibilities =
+        [
+            "Kit preparation", "Equipment maintenance"
+        ];
 
         Assert.Equal(expectedCharacterID, deserialized.CharacterID);
         Assert.Equal(expectedTeamID, deserialized.TeamID);
@@ -1313,12 +1140,10 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            IsHeadKitman = true,
-            MemberType = EquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,IsHeadKitman = true,MemberType = EquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         model.Validate();
@@ -1329,17 +1154,14 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,
         };
 
         Assert.Null(model.IsHeadKitman);
-        Assert.False(model.RawData.ContainsKey("is_head_kitman"));
-        Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Responsibilities);
+        Assert.False(model.RawData.ContainsKey("is_head_kitman"));Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Responsibilities);
         Assert.False(model.RawData.ContainsKey("responsibilities"));
+
     }
 
     [Fact]
@@ -1347,9 +1169,7 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,
         };
 
         model.Validate();
@@ -1360,22 +1180,17 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,
 
             // Null should be interpreted as omitted for these properties
-            IsHeadKitman = null,
-            MemberType = null,
-            Responsibilities = null,
+            IsHeadKitman = null,MemberType = null,Responsibilities = null,
         };
 
         Assert.Null(model.IsHeadKitman);
-        Assert.False(model.RawData.ContainsKey("is_head_kitman"));
-        Assert.Null(model.MemberType);
-        Assert.False(model.RawData.ContainsKey("member_type"));
-        Assert.Null(model.Responsibilities);
+        Assert.False(model.RawData.ContainsKey("is_head_kitman"));Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("member_type"));Assert.Null(model.Responsibilities);
         Assert.False(model.RawData.ContainsKey("responsibilities"));
+
     }
 
     [Fact]
@@ -1383,14 +1198,10 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,
 
             // Null should be interpreted as omitted for these properties
-            IsHeadKitman = null,
-            MemberType = null,
-            Responsibilities = null,
+            IsHeadKitman = null,MemberType = null,Responsibilities = null,
         };
 
         model.Validate();
@@ -1401,12 +1212,10 @@ public class EquipmentManagerTest : TestBase
     {
         var model = new EquipmentManager
         {
-            CharacterID = "jamie-tartt",
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            IsHeadKitman = true,
-            MemberType = EquipmentManagerMemberType.EquipmentManager,
-            Responsibilities = ["Kit preparation", "Equipment maintenance"],
+            CharacterID = "jamie-tartt",TeamID = "afc-richmond",YearsWithTeam = 3,IsHeadKitman = true,MemberType = EquipmentManagerMemberType.EquipmentManager,Responsibilities =
+            [
+                "Kit preparation", "Equipment maintenance"
+            ],
         };
 
         EquipmentManager copied = new(model);
@@ -1417,8 +1226,7 @@ public class EquipmentManagerTest : TestBase
 
 public class EquipmentManagerMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(EquipmentManagerMemberType.EquipmentManager)]
+    [Theory][InlineData(EquipmentManagerMemberType.EquipmentManager)]
     public void Validation_Works(EquipmentManagerMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -1429,27 +1237,22 @@ public class EquipmentManagerMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(EquipmentManagerMemberType.EquipmentManager)]
-    public void SerializationRoundtrip_Works(EquipmentManagerMemberType rawValue)
+    [Theory][InlineData(EquipmentManagerMemberType.EquipmentManager)]
+    public void SerializationRoundtrip_Works(
+        EquipmentManagerMemberType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, EquipmentManagerMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1457,15 +1260,9 @@ public class EquipmentManagerMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EquipmentManagerMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

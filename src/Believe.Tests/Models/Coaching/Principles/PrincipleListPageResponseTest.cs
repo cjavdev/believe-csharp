@@ -17,22 +17,13 @@ public class PrincipleListPageResponseTest : TestBase
                 new()
                 {
                     ID = "be-curious",
-                    Application =
-                        "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-                    ExampleFromShow =
-                        "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-                    Explanation =
-                        "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
+                    Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
+                    ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
+                    Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
                     Principle = "Be curious, not judgmental",
                     TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<CoachingPrinciple> expectedData =
@@ -40,12 +31,9 @@ public class PrincipleListPageResponseTest : TestBase
             new()
             {
                 ID = "be-curious",
-                Application =
-                    "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-                ExampleFromShow =
-                    "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-                Explanation =
-                    "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
+                Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
+                ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
+                Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
                 Principle = "Be curious, not judgmental",
                 TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
             },
@@ -80,29 +68,17 @@ public class PrincipleListPageResponseTest : TestBase
                 new()
                 {
                     ID = "be-curious",
-                    Application =
-                        "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-                    ExampleFromShow =
-                        "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-                    Explanation =
-                        "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
+                    Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
+                    ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
+                    Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
                     Principle = "Be curious, not judgmental",
                     TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PrincipleListPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PrincipleListPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -117,29 +93,17 @@ public class PrincipleListPageResponseTest : TestBase
                 new()
                 {
                     ID = "be-curious",
-                    Application =
-                        "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-                    ExampleFromShow =
-                        "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-                    Explanation =
-                        "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
+                    Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
+                    ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
+                    Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
                     Principle = "Be curious, not judgmental",
                     TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PrincipleListPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PrincipleListPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<CoachingPrinciple> expectedData =
@@ -147,12 +111,9 @@ public class PrincipleListPageResponseTest : TestBase
             new()
             {
                 ID = "be-curious",
-                Application =
-                    "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-                ExampleFromShow =
-                    "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-                Explanation =
-                    "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
+                Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
+                ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
+                Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
                 Principle = "Be curious, not judgmental",
                 TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
             },
@@ -187,22 +148,13 @@ public class PrincipleListPageResponseTest : TestBase
                 new()
                 {
                     ID = "be-curious",
-                    Application =
-                        "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-                    ExampleFromShow =
-                        "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-                    Explanation =
-                        "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
+                    Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
+                    ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
+                    Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
                     Principle = "Be curious, not judgmental",
                     TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -218,22 +170,13 @@ public class PrincipleListPageResponseTest : TestBase
                 new()
                 {
                     ID = "be-curious",
-                    Application =
-                        "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
-                    ExampleFromShow =
-                        "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
-                    Explanation =
-                        "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
+                    Application = "When someone frustrates you, ask questions before making assumptions. Seek to understand their perspective and motivations.",
+                    ExampleFromShow = "Ted uses this principle during the dart game with Rupert, explaining how people underestimated him his whole life because they judged before being curious.",
+                    Explanation = "Approach people and situations with genuine curiosity rather than preconceived judgments. Everyone has a story worth understanding.",
                     Principle = "Be curious, not judgmental",
                     TedQuote = "Be curious, not judgmental. - Walt Whitman... I think.",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         PrincipleListPageResponse copied = new(model);

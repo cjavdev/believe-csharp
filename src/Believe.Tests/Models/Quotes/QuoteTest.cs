@@ -12,24 +12,15 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            IsFunny = false,
-            IsInspirational = true,
-            PopularityScore = 95.5,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",IsFunny = false,IsInspirational = true,PopularityScore = 95.5,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],TimesShared = 150000,
         };
 
         string expectedID = "quote-001";
         string expectedCharacterID = "ted-lasso";
-        string expectedContext =
-            "Ted playing darts against Rupert in the pub, explaining his philosophy";
+        string expectedContext = "Ted playing darts against Rupert in the pub, explaining his philosophy";
         ApiEnum<string, QuoteMoment> expectedMomentType = QuoteMoment.Pub;
         string expectedText = "Be curious, not judgmental.";
         ApiEnum<string, QuoteTheme> expectedTheme = QuoteTheme.Curiosity;
@@ -39,8 +30,7 @@ public class QuoteTest : TestBase
         double expectedPopularityScore = 95.5;
         List<ApiEnum<string, QuoteTheme>> expectedSecondaryThemes =
         [
-            QuoteTheme.Wisdom,
-            QuoteTheme.Kindness,
+            QuoteTheme.Wisdom, QuoteTheme.Kindness
         ];
         long expectedTimesShared = 150000;
 
@@ -68,18 +58,10 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            IsFunny = false,
-            IsInspirational = true,
-            PopularityScore = 95.5,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",IsFunny = false,IsInspirational = true,PopularityScore = 95.5,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],TimesShared = 150000,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -93,18 +75,10 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            IsFunny = false,
-            IsInspirational = true,
-            PopularityScore = 95.5,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",IsFunny = false,IsInspirational = true,PopularityScore = 95.5,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],TimesShared = 150000,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -113,8 +87,7 @@ public class QuoteTest : TestBase
 
         string expectedID = "quote-001";
         string expectedCharacterID = "ted-lasso";
-        string expectedContext =
-            "Ted playing darts against Rupert in the pub, explaining his philosophy";
+        string expectedContext = "Ted playing darts against Rupert in the pub, explaining his philosophy";
         ApiEnum<string, QuoteMoment> expectedMomentType = QuoteMoment.Pub;
         string expectedText = "Be curious, not judgmental.";
         ApiEnum<string, QuoteTheme> expectedTheme = QuoteTheme.Curiosity;
@@ -124,8 +97,7 @@ public class QuoteTest : TestBase
         double expectedPopularityScore = 95.5;
         List<ApiEnum<string, QuoteTheme>> expectedSecondaryThemes =
         [
-            QuoteTheme.Wisdom,
-            QuoteTheme.Kindness,
+            QuoteTheme.Wisdom, QuoteTheme.Kindness
         ];
         long expectedTimesShared = 150000;
 
@@ -153,18 +125,10 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            IsFunny = false,
-            IsInspirational = true,
-            PopularityScore = 95.5,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",IsFunny = false,IsInspirational = true,PopularityScore = 95.5,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],TimesShared = 150000,
         };
 
         model.Validate();
@@ -175,23 +139,14 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            PopularityScore = 95.5,
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",PopularityScore = 95.5,TimesShared = 150000,
         };
 
         Assert.Null(model.IsFunny);
-        Assert.False(model.RawData.ContainsKey("is_funny"));
-        Assert.Null(model.IsInspirational);
-        Assert.False(model.RawData.ContainsKey("is_inspirational"));
-        Assert.Null(model.SecondaryThemes);
+        Assert.False(model.RawData.ContainsKey("is_funny"));Assert.Null(model.IsInspirational);
+        Assert.False(model.RawData.ContainsKey("is_inspirational"));Assert.Null(model.SecondaryThemes);
         Assert.False(model.RawData.ContainsKey("secondary_themes"));
+
     }
 
     [Fact]
@@ -199,15 +154,7 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            PopularityScore = 95.5,
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",PopularityScore = 95.5,TimesShared = 150000,
         };
 
         model.Validate();
@@ -218,28 +165,17 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            PopularityScore = 95.5,
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",PopularityScore = 95.5,TimesShared = 150000,
 
             // Null should be interpreted as omitted for these properties
-            IsFunny = null,
-            IsInspirational = null,
-            SecondaryThemes = null,
+            IsFunny = null,IsInspirational = null,SecondaryThemes = null,
         };
 
         Assert.Null(model.IsFunny);
-        Assert.False(model.RawData.ContainsKey("is_funny"));
-        Assert.Null(model.IsInspirational);
-        Assert.False(model.RawData.ContainsKey("is_inspirational"));
-        Assert.Null(model.SecondaryThemes);
+        Assert.False(model.RawData.ContainsKey("is_funny"));Assert.Null(model.IsInspirational);
+        Assert.False(model.RawData.ContainsKey("is_inspirational"));Assert.Null(model.SecondaryThemes);
         Assert.False(model.RawData.ContainsKey("secondary_themes"));
+
     }
 
     [Fact]
@@ -247,20 +183,10 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            PopularityScore = 95.5,
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",PopularityScore = 95.5,TimesShared = 150000,
 
             // Null should be interpreted as omitted for these properties
-            IsFunny = null,
-            IsInspirational = null,
-            SecondaryThemes = null,
+            IsFunny = null,IsInspirational = null,SecondaryThemes = null,
         };
 
         model.Validate();
@@ -271,23 +197,17 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            IsFunny = false,
-            IsInspirational = true,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,IsFunny = false,IsInspirational = true,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],
         };
 
         Assert.Null(model.EpisodeID);
-        Assert.False(model.RawData.ContainsKey("episode_id"));
-        Assert.Null(model.PopularityScore);
-        Assert.False(model.RawData.ContainsKey("popularity_score"));
-        Assert.Null(model.TimesShared);
+        Assert.False(model.RawData.ContainsKey("episode_id"));Assert.Null(model.PopularityScore);
+        Assert.False(model.RawData.ContainsKey("popularity_score"));Assert.Null(model.TimesShared);
         Assert.False(model.RawData.ContainsKey("times_shared"));
+
     }
 
     [Fact]
@@ -295,15 +215,10 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            IsFunny = false,
-            IsInspirational = true,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,IsFunny = false,IsInspirational = true,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],
         };
 
         model.Validate();
@@ -314,27 +229,19 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            IsFunny = false,
-            IsInspirational = true,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,IsFunny = false,IsInspirational = true,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],
 
-            EpisodeID = null,
-            PopularityScore = null,
-            TimesShared = null,
+            EpisodeID = null,PopularityScore = null,TimesShared = null,
         };
 
         Assert.Null(model.EpisodeID);
-        Assert.True(model.RawData.ContainsKey("episode_id"));
-        Assert.Null(model.PopularityScore);
-        Assert.True(model.RawData.ContainsKey("popularity_score"));
-        Assert.Null(model.TimesShared);
+        Assert.True(model.RawData.ContainsKey("episode_id"));Assert.Null(model.PopularityScore);
+        Assert.True(model.RawData.ContainsKey("popularity_score"));Assert.Null(model.TimesShared);
         Assert.True(model.RawData.ContainsKey("times_shared"));
+
     }
 
     [Fact]
@@ -342,19 +249,12 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            IsFunny = false,
-            IsInspirational = true,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,IsFunny = false,IsInspirational = true,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],
 
-            EpisodeID = null,
-            PopularityScore = null,
-            TimesShared = null,
+            EpisodeID = null,PopularityScore = null,TimesShared = null,
         };
 
         model.Validate();
@@ -365,18 +265,10 @@ public class QuoteTest : TestBase
     {
         var model = new Quote
         {
-            ID = "quote-001",
-            CharacterID = "ted-lasso",
-            Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",
-            MomentType = QuoteMoment.Pub,
-            Text = "Be curious, not judgmental.",
-            Theme = QuoteTheme.Curiosity,
-            EpisodeID = "s01e08",
-            IsFunny = false,
-            IsInspirational = true,
-            PopularityScore = 95.5,
-            SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
-            TimesShared = 150000,
+            ID = "quote-001",CharacterID = "ted-lasso",Context = "Ted playing darts against Rupert in the pub, explaining his philosophy",MomentType = QuoteMoment.Pub,Text = "Be curious, not judgmental.",Theme = QuoteTheme.Curiosity,EpisodeID = "s01e08",IsFunny = false,IsInspirational = true,PopularityScore = 95.5,SecondaryThemes =
+            [
+                QuoteTheme.Wisdom, QuoteTheme.Kindness
+            ],TimesShared = 150000,
         };
 
         Quote copied = new(model);

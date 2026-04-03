@@ -8,7 +8,12 @@ public class TeamMemberDeleteParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new TeamMemberDeleteParams { MemberID = "member_id" };
+
+
+        var parameters = new TeamMemberDeleteParams
+        {
+            MemberID = "member_id",
+        };
 
         string expectedMemberID = "member_id";
 
@@ -20,7 +25,12 @@ public class TeamMemberDeleteParamsTest : TestBase
     {
         TeamMemberDeleteParams parameters = new() { MemberID = "member_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/team-members/member_id"), url);
     }
@@ -28,7 +38,10 @@ public class TeamMemberDeleteParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new TeamMemberDeleteParams { MemberID = "member_id" };
+        var parameters = new TeamMemberDeleteParams
+        {
+            MemberID = "member_id"
+        };
 
         TeamMemberDeleteParams copied = new(parameters);
 

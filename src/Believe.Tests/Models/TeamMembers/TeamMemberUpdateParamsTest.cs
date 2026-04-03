@@ -11,10 +11,11 @@ public class TeamMemberUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TeamMemberUpdateParams
         {
-            MemberID = "member_id",
-            Updates = new PlayerUpdate()
+            MemberID = "member_id",Updates = new PlayerUpdate()
             {
                 Assists = 0,
                 GoalsScored = 0,
@@ -60,7 +61,12 @@ public class TeamMemberUpdateParamsTest : TestBase
             },
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/team-members/member_id"), url);
     }
@@ -112,7 +118,10 @@ public class UpdatesTest : TestBase
     {
         Updates value = new CoachUpdate()
         {
-            Certifications = ["string"],
+            Certifications =
+            [
+                "string"
+            ],
             Specialty = CoachSpecialty.HeadCoach,
             TeamID = "team_id",
             WinRate = 0,
@@ -127,7 +136,10 @@ public class UpdatesTest : TestBase
         Updates value = new MedicalStaffUpdate()
         {
             LicenseNumber = "license_number",
-            Qualifications = ["string"],
+            Qualifications =
+            [
+                "string"
+            ],
             Specialty = MedicalSpecialty.TeamDoctor,
             TeamID = "team_id",
             YearsWithTeam = 0,
@@ -141,7 +153,10 @@ public class UpdatesTest : TestBase
         Updates value = new EquipmentManagerUpdate()
         {
             IsHeadKitman = true,
-            Responsibilities = ["string"],
+            Responsibilities =
+            [
+                "string"
+            ],
             TeamID = "team_id",
             YearsWithTeam = 0,
         };
@@ -162,10 +177,7 @@ public class UpdatesTest : TestBase
             YearsWithTeam = 0,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Updates>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Updates>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -175,17 +187,17 @@ public class UpdatesTest : TestBase
     {
         Updates value = new CoachUpdate()
         {
-            Certifications = ["string"],
+            Certifications =
+            [
+                "string"
+            ],
             Specialty = CoachSpecialty.HeadCoach,
             TeamID = "team_id",
             WinRate = 0,
             YearsWithTeam = 0,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Updates>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Updates>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -196,16 +208,16 @@ public class UpdatesTest : TestBase
         Updates value = new MedicalStaffUpdate()
         {
             LicenseNumber = "license_number",
-            Qualifications = ["string"],
+            Qualifications =
+            [
+                "string"
+            ],
             Specialty = MedicalSpecialty.TeamDoctor,
             TeamID = "team_id",
             YearsWithTeam = 0,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Updates>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Updates>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -216,15 +228,15 @@ public class UpdatesTest : TestBase
         Updates value = new EquipmentManagerUpdate()
         {
             IsHeadKitman = true,
-            Responsibilities = ["string"],
+            Responsibilities =
+            [
+                "string"
+            ],
             TeamID = "team_id",
             YearsWithTeam = 0,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Updates>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Updates>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -237,13 +249,7 @@ public class PlayerUpdateTest : TestBase
     {
         var model = new PlayerUpdate
         {
-            Assists = 0,
-            GoalsScored = 0,
-            IsCaptain = true,
-            JerseyNumber = 1,
-            Position = Position.Goalkeeper,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            Assists = 0,GoalsScored = 0,IsCaptain = true,JerseyNumber = 1,Position = Position.Goalkeeper,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         long expectedAssists = 0;
@@ -268,20 +274,11 @@ public class PlayerUpdateTest : TestBase
     {
         var model = new PlayerUpdate
         {
-            Assists = 0,
-            GoalsScored = 0,
-            IsCaptain = true,
-            JerseyNumber = 1,
-            Position = Position.Goalkeeper,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            Assists = 0,GoalsScored = 0,IsCaptain = true,JerseyNumber = 1,Position = Position.Goalkeeper,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PlayerUpdate>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PlayerUpdate>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -291,20 +288,11 @@ public class PlayerUpdateTest : TestBase
     {
         var model = new PlayerUpdate
         {
-            Assists = 0,
-            GoalsScored = 0,
-            IsCaptain = true,
-            JerseyNumber = 1,
-            Position = Position.Goalkeeper,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            Assists = 0,GoalsScored = 0,IsCaptain = true,JerseyNumber = 1,Position = Position.Goalkeeper,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<PlayerUpdate>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<PlayerUpdate>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         long expectedAssists = 0;
@@ -329,13 +317,7 @@ public class PlayerUpdateTest : TestBase
     {
         var model = new PlayerUpdate
         {
-            Assists = 0,
-            GoalsScored = 0,
-            IsCaptain = true,
-            JerseyNumber = 1,
-            Position = Position.Goalkeeper,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            Assists = 0,GoalsScored = 0,IsCaptain = true,JerseyNumber = 1,Position = Position.Goalkeeper,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         model.Validate();
@@ -344,28 +326,29 @@ public class PlayerUpdateTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new PlayerUpdate { };
+        var model = new PlayerUpdate
+        {
+
+        };
 
         Assert.Null(model.Assists);
-        Assert.False(model.RawData.ContainsKey("assists"));
-        Assert.Null(model.GoalsScored);
-        Assert.False(model.RawData.ContainsKey("goals_scored"));
-        Assert.Null(model.IsCaptain);
-        Assert.False(model.RawData.ContainsKey("is_captain"));
-        Assert.Null(model.JerseyNumber);
-        Assert.False(model.RawData.ContainsKey("jersey_number"));
-        Assert.Null(model.Position);
-        Assert.False(model.RawData.ContainsKey("position"));
-        Assert.Null(model.TeamID);
-        Assert.False(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.False(model.RawData.ContainsKey("assists"));Assert.Null(model.GoalsScored);
+        Assert.False(model.RawData.ContainsKey("goals_scored"));Assert.Null(model.IsCaptain);
+        Assert.False(model.RawData.ContainsKey("is_captain"));Assert.Null(model.JerseyNumber);
+        Assert.False(model.RawData.ContainsKey("jersey_number"));Assert.Null(model.Position);
+        Assert.False(model.RawData.ContainsKey("position"));Assert.Null(model.TeamID);
+        Assert.False(model.RawData.ContainsKey("team_id"));Assert.Null(model.YearsWithTeam);
         Assert.False(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new PlayerUpdate { };
+        var model = new PlayerUpdate
+        {
+
+        };
 
         model.Validate();
     }
@@ -375,29 +358,20 @@ public class PlayerUpdateTest : TestBase
     {
         var model = new PlayerUpdate
         {
-            Assists = null,
-            GoalsScored = null,
-            IsCaptain = null,
-            JerseyNumber = null,
-            Position = null,
-            TeamID = null,
-            YearsWithTeam = null,
+
+
+            Assists = null,GoalsScored = null,IsCaptain = null,JerseyNumber = null,Position = null,TeamID = null,YearsWithTeam = null,
         };
 
         Assert.Null(model.Assists);
-        Assert.True(model.RawData.ContainsKey("assists"));
-        Assert.Null(model.GoalsScored);
-        Assert.True(model.RawData.ContainsKey("goals_scored"));
-        Assert.Null(model.IsCaptain);
-        Assert.True(model.RawData.ContainsKey("is_captain"));
-        Assert.Null(model.JerseyNumber);
-        Assert.True(model.RawData.ContainsKey("jersey_number"));
-        Assert.Null(model.Position);
-        Assert.True(model.RawData.ContainsKey("position"));
-        Assert.Null(model.TeamID);
-        Assert.True(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.True(model.RawData.ContainsKey("assists"));Assert.Null(model.GoalsScored);
+        Assert.True(model.RawData.ContainsKey("goals_scored"));Assert.Null(model.IsCaptain);
+        Assert.True(model.RawData.ContainsKey("is_captain"));Assert.Null(model.JerseyNumber);
+        Assert.True(model.RawData.ContainsKey("jersey_number"));Assert.Null(model.Position);
+        Assert.True(model.RawData.ContainsKey("position"));Assert.Null(model.TeamID);
+        Assert.True(model.RawData.ContainsKey("team_id"));Assert.Null(model.YearsWithTeam);
         Assert.True(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
@@ -405,13 +379,9 @@ public class PlayerUpdateTest : TestBase
     {
         var model = new PlayerUpdate
         {
-            Assists = null,
-            GoalsScored = null,
-            IsCaptain = null,
-            JerseyNumber = null,
-            Position = null,
-            TeamID = null,
-            YearsWithTeam = null,
+
+
+            Assists = null,GoalsScored = null,IsCaptain = null,JerseyNumber = null,Position = null,TeamID = null,YearsWithTeam = null,
         };
 
         model.Validate();
@@ -422,13 +392,7 @@ public class PlayerUpdateTest : TestBase
     {
         var model = new PlayerUpdate
         {
-            Assists = 0,
-            GoalsScored = 0,
-            IsCaptain = true,
-            JerseyNumber = 1,
-            Position = Position.Goalkeeper,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            Assists = 0,GoalsScored = 0,IsCaptain = true,JerseyNumber = 1,Position = Position.Goalkeeper,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         PlayerUpdate copied = new(model);
@@ -444,14 +408,16 @@ public class CoachUpdateTest : TestBase
     {
         var model = new CoachUpdate
         {
-            Certifications = ["string"],
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
-            WinRate = 0,
-            YearsWithTeam = 0,
+            Certifications =
+            [
+                "string"
+            ],Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",WinRate = 0,YearsWithTeam = 0,
         };
 
-        List<string> expectedCertifications = ["string"];
+        List<string> expectedCertifications =
+        [
+            "string"
+        ];
         ApiEnum<string, CoachSpecialty> expectedSpecialty = CoachSpecialty.HeadCoach;
         string expectedTeamID = "team_id";
         double expectedWinRate = 0;
@@ -474,18 +440,14 @@ public class CoachUpdateTest : TestBase
     {
         var model = new CoachUpdate
         {
-            Certifications = ["string"],
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
-            WinRate = 0,
-            YearsWithTeam = 0,
+            Certifications =
+            [
+                "string"
+            ],Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",WinRate = 0,YearsWithTeam = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CoachUpdate>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CoachUpdate>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -495,21 +457,20 @@ public class CoachUpdateTest : TestBase
     {
         var model = new CoachUpdate
         {
-            Certifications = ["string"],
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
-            WinRate = 0,
-            YearsWithTeam = 0,
+            Certifications =
+            [
+                "string"
+            ],Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",WinRate = 0,YearsWithTeam = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CoachUpdate>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CoachUpdate>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
-        List<string> expectedCertifications = ["string"];
+        List<string> expectedCertifications =
+        [
+            "string"
+        ];
         ApiEnum<string, CoachSpecialty> expectedSpecialty = CoachSpecialty.HeadCoach;
         string expectedTeamID = "team_id";
         double expectedWinRate = 0;
@@ -532,11 +493,10 @@ public class CoachUpdateTest : TestBase
     {
         var model = new CoachUpdate
         {
-            Certifications = ["string"],
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
-            WinRate = 0,
-            YearsWithTeam = 0,
+            Certifications =
+            [
+                "string"
+            ],Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",WinRate = 0,YearsWithTeam = 0,
         };
 
         model.Validate();
@@ -545,24 +505,27 @@ public class CoachUpdateTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CoachUpdate { };
+        var model = new CoachUpdate
+        {
+
+        };
 
         Assert.Null(model.Certifications);
-        Assert.False(model.RawData.ContainsKey("certifications"));
-        Assert.Null(model.Specialty);
-        Assert.False(model.RawData.ContainsKey("specialty"));
-        Assert.Null(model.TeamID);
-        Assert.False(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.WinRate);
-        Assert.False(model.RawData.ContainsKey("win_rate"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.False(model.RawData.ContainsKey("certifications"));Assert.Null(model.Specialty);
+        Assert.False(model.RawData.ContainsKey("specialty"));Assert.Null(model.TeamID);
+        Assert.False(model.RawData.ContainsKey("team_id"));Assert.Null(model.WinRate);
+        Assert.False(model.RawData.ContainsKey("win_rate"));Assert.Null(model.YearsWithTeam);
         Assert.False(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CoachUpdate { };
+        var model = new CoachUpdate
+        {
+
+        };
 
         model.Validate();
     }
@@ -572,23 +535,18 @@ public class CoachUpdateTest : TestBase
     {
         var model = new CoachUpdate
         {
-            Certifications = null,
-            Specialty = null,
-            TeamID = null,
-            WinRate = null,
-            YearsWithTeam = null,
+
+
+            Certifications = null,Specialty = null,TeamID = null,WinRate = null,YearsWithTeam = null,
         };
 
         Assert.Null(model.Certifications);
-        Assert.True(model.RawData.ContainsKey("certifications"));
-        Assert.Null(model.Specialty);
-        Assert.True(model.RawData.ContainsKey("specialty"));
-        Assert.Null(model.TeamID);
-        Assert.True(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.WinRate);
-        Assert.True(model.RawData.ContainsKey("win_rate"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.True(model.RawData.ContainsKey("certifications"));Assert.Null(model.Specialty);
+        Assert.True(model.RawData.ContainsKey("specialty"));Assert.Null(model.TeamID);
+        Assert.True(model.RawData.ContainsKey("team_id"));Assert.Null(model.WinRate);
+        Assert.True(model.RawData.ContainsKey("win_rate"));Assert.Null(model.YearsWithTeam);
         Assert.True(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
@@ -596,11 +554,9 @@ public class CoachUpdateTest : TestBase
     {
         var model = new CoachUpdate
         {
-            Certifications = null,
-            Specialty = null,
-            TeamID = null,
-            WinRate = null,
-            YearsWithTeam = null,
+
+
+            Certifications = null,Specialty = null,TeamID = null,WinRate = null,YearsWithTeam = null,
         };
 
         model.Validate();
@@ -611,11 +567,10 @@ public class CoachUpdateTest : TestBase
     {
         var model = new CoachUpdate
         {
-            Certifications = ["string"],
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
-            WinRate = 0,
-            YearsWithTeam = 0,
+            Certifications =
+            [
+                "string"
+            ],Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",WinRate = 0,YearsWithTeam = 0,
         };
 
         CoachUpdate copied = new(model);
@@ -631,15 +586,17 @@ public class MedicalStaffUpdateTest : TestBase
     {
         var model = new MedicalStaffUpdate
         {
-            LicenseNumber = "license_number",
-            Qualifications = ["string"],
-            Specialty = MedicalSpecialty.TeamDoctor,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            LicenseNumber = "license_number",Qualifications =
+            [
+                "string"
+            ],Specialty = MedicalSpecialty.TeamDoctor,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         string expectedLicenseNumber = "license_number";
-        List<string> expectedQualifications = ["string"];
+        List<string> expectedQualifications =
+        [
+            "string"
+        ];
         ApiEnum<string, MedicalSpecialty> expectedSpecialty = MedicalSpecialty.TeamDoctor;
         string expectedTeamID = "team_id";
         long expectedYearsWithTeam = 0;
@@ -661,18 +618,14 @@ public class MedicalStaffUpdateTest : TestBase
     {
         var model = new MedicalStaffUpdate
         {
-            LicenseNumber = "license_number",
-            Qualifications = ["string"],
-            Specialty = MedicalSpecialty.TeamDoctor,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            LicenseNumber = "license_number",Qualifications =
+            [
+                "string"
+            ],Specialty = MedicalSpecialty.TeamDoctor,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MedicalStaffUpdate>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MedicalStaffUpdate>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -682,22 +635,21 @@ public class MedicalStaffUpdateTest : TestBase
     {
         var model = new MedicalStaffUpdate
         {
-            LicenseNumber = "license_number",
-            Qualifications = ["string"],
-            Specialty = MedicalSpecialty.TeamDoctor,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            LicenseNumber = "license_number",Qualifications =
+            [
+                "string"
+            ],Specialty = MedicalSpecialty.TeamDoctor,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MedicalStaffUpdate>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MedicalStaffUpdate>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedLicenseNumber = "license_number";
-        List<string> expectedQualifications = ["string"];
+        List<string> expectedQualifications =
+        [
+            "string"
+        ];
         ApiEnum<string, MedicalSpecialty> expectedSpecialty = MedicalSpecialty.TeamDoctor;
         string expectedTeamID = "team_id";
         long expectedYearsWithTeam = 0;
@@ -719,11 +671,10 @@ public class MedicalStaffUpdateTest : TestBase
     {
         var model = new MedicalStaffUpdate
         {
-            LicenseNumber = "license_number",
-            Qualifications = ["string"],
-            Specialty = MedicalSpecialty.TeamDoctor,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            LicenseNumber = "license_number",Qualifications =
+            [
+                "string"
+            ],Specialty = MedicalSpecialty.TeamDoctor,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         model.Validate();
@@ -732,24 +683,27 @@ public class MedicalStaffUpdateTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new MedicalStaffUpdate { };
+        var model = new MedicalStaffUpdate
+        {
+
+        };
 
         Assert.Null(model.LicenseNumber);
-        Assert.False(model.RawData.ContainsKey("license_number"));
-        Assert.Null(model.Qualifications);
-        Assert.False(model.RawData.ContainsKey("qualifications"));
-        Assert.Null(model.Specialty);
-        Assert.False(model.RawData.ContainsKey("specialty"));
-        Assert.Null(model.TeamID);
-        Assert.False(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.False(model.RawData.ContainsKey("license_number"));Assert.Null(model.Qualifications);
+        Assert.False(model.RawData.ContainsKey("qualifications"));Assert.Null(model.Specialty);
+        Assert.False(model.RawData.ContainsKey("specialty"));Assert.Null(model.TeamID);
+        Assert.False(model.RawData.ContainsKey("team_id"));Assert.Null(model.YearsWithTeam);
         Assert.False(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new MedicalStaffUpdate { };
+        var model = new MedicalStaffUpdate
+        {
+
+        };
 
         model.Validate();
     }
@@ -759,23 +713,18 @@ public class MedicalStaffUpdateTest : TestBase
     {
         var model = new MedicalStaffUpdate
         {
-            LicenseNumber = null,
-            Qualifications = null,
-            Specialty = null,
-            TeamID = null,
-            YearsWithTeam = null,
+
+
+            LicenseNumber = null,Qualifications = null,Specialty = null,TeamID = null,YearsWithTeam = null,
         };
 
         Assert.Null(model.LicenseNumber);
-        Assert.True(model.RawData.ContainsKey("license_number"));
-        Assert.Null(model.Qualifications);
-        Assert.True(model.RawData.ContainsKey("qualifications"));
-        Assert.Null(model.Specialty);
-        Assert.True(model.RawData.ContainsKey("specialty"));
-        Assert.Null(model.TeamID);
-        Assert.True(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.True(model.RawData.ContainsKey("license_number"));Assert.Null(model.Qualifications);
+        Assert.True(model.RawData.ContainsKey("qualifications"));Assert.Null(model.Specialty);
+        Assert.True(model.RawData.ContainsKey("specialty"));Assert.Null(model.TeamID);
+        Assert.True(model.RawData.ContainsKey("team_id"));Assert.Null(model.YearsWithTeam);
         Assert.True(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
@@ -783,11 +732,9 @@ public class MedicalStaffUpdateTest : TestBase
     {
         var model = new MedicalStaffUpdate
         {
-            LicenseNumber = null,
-            Qualifications = null,
-            Specialty = null,
-            TeamID = null,
-            YearsWithTeam = null,
+
+
+            LicenseNumber = null,Qualifications = null,Specialty = null,TeamID = null,YearsWithTeam = null,
         };
 
         model.Validate();
@@ -798,11 +745,10 @@ public class MedicalStaffUpdateTest : TestBase
     {
         var model = new MedicalStaffUpdate
         {
-            LicenseNumber = "license_number",
-            Qualifications = ["string"],
-            Specialty = MedicalSpecialty.TeamDoctor,
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            LicenseNumber = "license_number",Qualifications =
+            [
+                "string"
+            ],Specialty = MedicalSpecialty.TeamDoctor,TeamID = "team_id",YearsWithTeam = 0,
         };
 
         MedicalStaffUpdate copied = new(model);
@@ -818,14 +764,17 @@ public class EquipmentManagerUpdateTest : TestBase
     {
         var model = new EquipmentManagerUpdate
         {
-            IsHeadKitman = true,
-            Responsibilities = ["string"],
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            IsHeadKitman = true,Responsibilities =
+            [
+                "string"
+            ],TeamID = "team_id",YearsWithTeam = 0,
         };
 
         bool expectedIsHeadKitman = true;
-        List<string> expectedResponsibilities = ["string"];
+        List<string> expectedResponsibilities =
+        [
+            "string"
+        ];
         string expectedTeamID = "team_id";
         long expectedYearsWithTeam = 0;
 
@@ -845,17 +794,14 @@ public class EquipmentManagerUpdateTest : TestBase
     {
         var model = new EquipmentManagerUpdate
         {
-            IsHeadKitman = true,
-            Responsibilities = ["string"],
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            IsHeadKitman = true,Responsibilities =
+            [
+                "string"
+            ],TeamID = "team_id",YearsWithTeam = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EquipmentManagerUpdate>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EquipmentManagerUpdate>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -865,21 +811,21 @@ public class EquipmentManagerUpdateTest : TestBase
     {
         var model = new EquipmentManagerUpdate
         {
-            IsHeadKitman = true,
-            Responsibilities = ["string"],
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            IsHeadKitman = true,Responsibilities =
+            [
+                "string"
+            ],TeamID = "team_id",YearsWithTeam = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EquipmentManagerUpdate>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EquipmentManagerUpdate>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         bool expectedIsHeadKitman = true;
-        List<string> expectedResponsibilities = ["string"];
+        List<string> expectedResponsibilities =
+        [
+            "string"
+        ];
         string expectedTeamID = "team_id";
         long expectedYearsWithTeam = 0;
 
@@ -899,10 +845,10 @@ public class EquipmentManagerUpdateTest : TestBase
     {
         var model = new EquipmentManagerUpdate
         {
-            IsHeadKitman = true,
-            Responsibilities = ["string"],
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            IsHeadKitman = true,Responsibilities =
+            [
+                "string"
+            ],TeamID = "team_id",YearsWithTeam = 0,
         };
 
         model.Validate();
@@ -911,22 +857,26 @@ public class EquipmentManagerUpdateTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new EquipmentManagerUpdate { };
+        var model = new EquipmentManagerUpdate
+        {
+
+        };
 
         Assert.Null(model.IsHeadKitman);
-        Assert.False(model.RawData.ContainsKey("is_head_kitman"));
-        Assert.Null(model.Responsibilities);
-        Assert.False(model.RawData.ContainsKey("responsibilities"));
-        Assert.Null(model.TeamID);
-        Assert.False(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.False(model.RawData.ContainsKey("is_head_kitman"));Assert.Null(model.Responsibilities);
+        Assert.False(model.RawData.ContainsKey("responsibilities"));Assert.Null(model.TeamID);
+        Assert.False(model.RawData.ContainsKey("team_id"));Assert.Null(model.YearsWithTeam);
         Assert.False(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new EquipmentManagerUpdate { };
+        var model = new EquipmentManagerUpdate
+        {
+
+        };
 
         model.Validate();
     }
@@ -936,20 +886,17 @@ public class EquipmentManagerUpdateTest : TestBase
     {
         var model = new EquipmentManagerUpdate
         {
-            IsHeadKitman = null,
-            Responsibilities = null,
-            TeamID = null,
-            YearsWithTeam = null,
+
+
+            IsHeadKitman = null,Responsibilities = null,TeamID = null,YearsWithTeam = null,
         };
 
         Assert.Null(model.IsHeadKitman);
-        Assert.True(model.RawData.ContainsKey("is_head_kitman"));
-        Assert.Null(model.Responsibilities);
-        Assert.True(model.RawData.ContainsKey("responsibilities"));
-        Assert.Null(model.TeamID);
-        Assert.True(model.RawData.ContainsKey("team_id"));
-        Assert.Null(model.YearsWithTeam);
+        Assert.True(model.RawData.ContainsKey("is_head_kitman"));Assert.Null(model.Responsibilities);
+        Assert.True(model.RawData.ContainsKey("responsibilities"));Assert.Null(model.TeamID);
+        Assert.True(model.RawData.ContainsKey("team_id"));Assert.Null(model.YearsWithTeam);
         Assert.True(model.RawData.ContainsKey("years_with_team"));
+
     }
 
     [Fact]
@@ -957,10 +904,9 @@ public class EquipmentManagerUpdateTest : TestBase
     {
         var model = new EquipmentManagerUpdate
         {
-            IsHeadKitman = null,
-            Responsibilities = null,
-            TeamID = null,
-            YearsWithTeam = null,
+
+
+            IsHeadKitman = null,Responsibilities = null,TeamID = null,YearsWithTeam = null,
         };
 
         model.Validate();
@@ -971,10 +917,10 @@ public class EquipmentManagerUpdateTest : TestBase
     {
         var model = new EquipmentManagerUpdate
         {
-            IsHeadKitman = true,
-            Responsibilities = ["string"],
-            TeamID = "team_id",
-            YearsWithTeam = 0,
+            IsHeadKitman = true,Responsibilities =
+            [
+                "string"
+            ],TeamID = "team_id",YearsWithTeam = 0,
         };
 
         EquipmentManagerUpdate copied = new(model);

@@ -9,38 +9,29 @@ public class MatchServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var match = await this.client.Matches.Create(
-            new()
-            {
-                AwayTeamID = "tottenham",
-                Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),
-                HomeTeamID = "afc-richmond",
-                MatchType = MatchType.Cup,
-            },
-            TestContext.Current.CancellationToken
-        );
+        var match = await this.client.Matches.Create(new()
+        {
+            AwayTeamID = "tottenham",
+            Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),
+            HomeTeamID = "afc-richmond",
+            MatchType = MatchType.Cup,
+        }, TestContext.Current.CancellationToken);
         match.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var match = await this.client.Matches.Retrieve(
-            "match_id",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var match = await this.client.Matches.Retrieve("match_id",
+        new(), TestContext.Current.CancellationToken);
         match.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var match = await this.client.Matches.Update(
-            "match_id",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var match = await this.client.Matches.Update("match_id",
+        new(), TestContext.Current.CancellationToken);
         match.Validate();
     }
 
@@ -54,27 +45,22 @@ public class MatchServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
-        await this.client.Matches.Delete("match_id", new(), TestContext.Current.CancellationToken);
+        await this.client.Matches.Delete("match_id",
+        new(), TestContext.Current.CancellationToken);
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetLesson_Works()
     {
-        await this.client.Matches.GetLesson(
-            "match_id",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        await this.client.Matches.GetLesson("match_id",
+        new(), TestContext.Current.CancellationToken);
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetTurningPoints_Works()
     {
-        await this.client.Matches.GetTurningPoints(
-            "match_id",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        await this.client.Matches.GetTurningPoints("match_id",
+        new(), TestContext.Current.CancellationToken);
     }
 
     [Fact(Skip = "Mock server tests are disabled")]

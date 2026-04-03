@@ -16,12 +16,12 @@ public sealed record class WebhookCreateResponse : JsonModel
     /// <summary>
     /// The registered webhook details
     /// </summary>
-    public required RegisteredWebhook Webhook
-    {
-        get
-        {
+    public required RegisteredWebhook Webhook {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<RegisteredWebhook>("webhook");
+            return this._rawData.GetNotNullClass<RegisteredWebhook>(
+                "webhook"
+            );
         }
         init { this._rawData.Set("webhook", value); }
     }
@@ -29,17 +29,15 @@ public sealed record class WebhookCreateResponse : JsonModel
     /// <summary>
     /// Status message
     /// </summary>
-    public string? Message
-    {
-        get
-        {
+    public string? Message {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("message");
+            return this._rawData.GetNullableClass<string>(
+                "message"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -50,17 +48,15 @@ public sealed record class WebhookCreateResponse : JsonModel
     /// <summary>
     /// Ted's reaction
     /// </summary>
-    public string? TedSays
-    {
-        get
-        {
+    public string? TedSays {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("ted_says");
+            return this._rawData.GetNullableClass<string>(
+                "ted_says"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -76,41 +72,37 @@ public sealed record class WebhookCreateResponse : JsonModel
         _ = this.TedSays;
     }
 
-    public WebhookCreateResponse() { }
+    public WebhookCreateResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookCreateResponse(WebhookCreateResponse webhookCreateResponse)
-        : base(webhookCreateResponse) { }
-#pragma warning restore CS8618
+    public WebhookCreateResponse (
+        WebhookCreateResponse webhookCreateResponse
+    ) : base(webhookCreateResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public WebhookCreateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public WebhookCreateResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookCreateResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    WebhookCreateResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="WebhookCreateResponseFromRaw.FromRawUnchecked"/>
     public static WebhookCreateResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public WebhookCreateResponse(RegisteredWebhook webhook)
-        : this()
-    {
-        this.Webhook = webhook;
-    }
+    public WebhookCreateResponse (RegisteredWebhook webhook) : this()
+    { this.Webhook = webhook; }
 }
 
 class WebhookCreateResponseFromRaw : IFromRawJson<WebhookCreateResponse>
@@ -118,5 +110,6 @@ class WebhookCreateResponseFromRaw : IFromRawJson<WebhookCreateResponse>
     /// <inheritdoc/>
     public WebhookCreateResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => WebhookCreateResponse.FromRawUnchecked(rawData);
+    )
+    =>WebhookCreateResponse.FromRawUnchecked(rawData);
 }

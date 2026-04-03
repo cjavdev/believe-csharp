@@ -26,15 +26,17 @@ public interface IReframeService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IReframeService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IReframeService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Transform negative thoughts into positive perspectives with Ted's help.
-    /// </summary>
+/// Transform negative thoughts into positive perspectives with Ted's help.
+/// </summary>
     Task<ReframeTransformNegativeThoughtsResponse> TransformNegativeThoughts(
         ReframeTransformNegativeThoughtsParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -48,14 +50,18 @@ public interface IReframeServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IReframeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IReframeServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /reframe</c>, but is otherwise the
-    /// same as <see cref="IReframeService.TransformNegativeThoughts(ReframeTransformNegativeThoughtsParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /reframe</c>, but is otherwise the
+/// same as <see cref="IReframeService.TransformNegativeThoughts(ReframeTransformNegativeThoughtsParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ReframeTransformNegativeThoughtsResponse>> TransformNegativeThoughts(
         ReframeTransformNegativeThoughtsParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

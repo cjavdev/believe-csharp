@@ -21,19 +21,15 @@ namespace Believe.Models.Conflicts;
 /// </summary>
 public record class ConflictResolveParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     /// <summary>
     /// Type of conflict
     /// </summary>
-    public required ApiEnum<string, ConflictType> ConflictType
-    {
-        get
-        {
+    public required ApiEnum<string, ConflictType> ConflictType {
+        get {
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNotNullClass<ApiEnum<string, ConflictType>>(
                 "conflict_type"
@@ -45,12 +41,12 @@ public record class ConflictResolveParams : ParamsBase
     /// <summary>
     /// Describe the conflict
     /// </summary>
-    public required string Description
-    {
-        get
-        {
+    public required string Description {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("description");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "description"
+            );
         }
         init { this._rawBodyData.Set("description", value); }
     }
@@ -58,15 +54,14 @@ public record class ConflictResolveParams : ParamsBase
     /// <summary>
     /// Who is involved in the conflict
     /// </summary>
-    public required IReadOnlyList<string> PartiesInvolved
-    {
-        get
-        {
+    public required IReadOnlyList<string> PartiesInvolved {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("parties_involved");
+            return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>(
+                "parties_involved"
+            );
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<ImmutableArray<string>>(
                 "parties_involved",
                 ImmutableArray.ToImmutableArray(value)
@@ -77,15 +72,14 @@ public record class ConflictResolveParams : ParamsBase
     /// <summary>
     /// What you've already tried
     /// </summary>
-    public IReadOnlyList<string>? AttemptsMade
-    {
-        get
-        {
+    public IReadOnlyList<string>? AttemptsMade {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("attempts_made");
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>(
+                "attempts_made"
+            );
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<ImmutableArray<string>?>(
                 "attempts_made",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -93,18 +87,18 @@ public record class ConflictResolveParams : ParamsBase
         }
     }
 
-    public ConflictResolveParams() { }
+    public ConflictResolveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ConflictResolveParams(ConflictResolveParams conflictResolveParams)
-        : base(conflictResolveParams)
-    {
-        this._rawBodyData = new(conflictResolveParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public ConflictResolveParams (
+        ConflictResolveParams conflictResolveParams
+    ) : base(conflictResolveParams)
+    { this._rawBodyData = new(conflictResolveParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public ConflictResolveParams(
+    public ConflictResolveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -115,9 +109,9 @@ public record class ConflictResolveParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ConflictResolveParams(
+    ConflictResolveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -127,7 +121,7 @@ public record class ConflictResolveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ConflictResolveParams FromRawUnchecked(
@@ -140,25 +134,18 @@ public record class ConflictResolveParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(ConflictResolveParams? other)
     {
@@ -166,17 +153,19 @@ public record class ConflictResolveParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/conflicts/resolve")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/conflicts/resolve"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -185,10 +174,12 @@ public record class ConflictResolveParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -198,9 +189,7 @@ public record class ConflictResolveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 /// <summary>
@@ -209,12 +198,7 @@ public record class ConflictResolveParams : ParamsBase
 [JsonConverter(typeof(ConflictTypeConverter))]
 public enum ConflictType
 {
-    Interpersonal,
-    TeamDynamics,
-    Leadership,
-    Ego,
-    Miscommunication,
-    Competition,
+    Interpersonal, TeamDynamics, Leadership, Ego, Miscommunication, Competition
 }
 
 sealed class ConflictTypeConverter : JsonConverter<ConflictType>
@@ -227,37 +211,31 @@ sealed class ConflictTypeConverter : JsonConverter<ConflictType>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "interpersonal" => ConflictType.Interpersonal,
-            "team_dynamics" => ConflictType.TeamDynamics,
-            "leadership" => ConflictType.Leadership,
-            "ego" => ConflictType.Ego,
-            "miscommunication" => ConflictType.Miscommunication,
-            "competition" => ConflictType.Competition,
-            _ => (ConflictType)(-1),
+            "interpersonal"=>ConflictType.Interpersonal,
+            "team_dynamics"=>ConflictType.TeamDynamics,
+            "leadership"=>ConflictType.Leadership,
+            "ego"=>ConflictType.Ego,
+            "miscommunication"=>ConflictType.Miscommunication,
+            "competition"=>ConflictType.Competition,
+            _ =>(ConflictType)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        ConflictType value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, ConflictType value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                ConflictType.Interpersonal => "interpersonal",
-                ConflictType.TeamDynamics => "team_dynamics",
-                ConflictType.Leadership => "leadership",
-                ConflictType.Ego => "ego",
-                ConflictType.Miscommunication => "miscommunication",
-                ConflictType.Competition => "competition",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            ConflictType.Interpersonal=>"interpersonal",
+            ConflictType.TeamDynamics=>"team_dynamics",
+            ConflictType.Leadership=>"leadership",
+            ConflictType.Ego=>"ego",
+            ConflictType.Miscommunication=>"miscommunication",
+            ConflictType.Competition=>"competition",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

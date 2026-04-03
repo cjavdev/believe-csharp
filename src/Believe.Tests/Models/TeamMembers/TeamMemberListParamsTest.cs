@@ -11,17 +11,15 @@ public class TeamMemberListParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TeamMemberListParams
         {
-            Limit = 10,
-            MemberType = TeamMemberListParamsMemberType.Player,
-            Skip = 0,
-            TeamID = "team_id",
+            Limit = 10,MemberType = TeamMemberListParamsMemberType.Player,Skip = 0,TeamID = "team_id",
         };
 
         long expectedLimit = 10;
-        ApiEnum<string, TeamMemberListParamsMemberType> expectedMemberType =
-            TeamMemberListParamsMemberType.Player;
+        ApiEnum<string, TeamMemberListParamsMemberType> expectedMemberType = TeamMemberListParamsMemberType.Player;
         long expectedSkip = 0;
         string expectedTeamID = "team_id";
 
@@ -34,64 +32,70 @@ public class TeamMemberListParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new TeamMemberListParams
         {
-            MemberType = TeamMemberListParamsMemberType.Player,
-            TeamID = "team_id",
+            MemberType = TeamMemberListParamsMemberType.Player,TeamID = "team_id",
         };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new TeamMemberListParams
         {
-            MemberType = TeamMemberListParamsMemberType.Player,
-            TeamID = "team_id",
+            MemberType = TeamMemberListParamsMemberType.Player,TeamID = "team_id",
 
             // Null should be interpreted as omitted for these properties
-            Limit = null,
-            Skip = null,
+            Limit = null,Skip = null,
         };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new TeamMemberListParams { Limit = 10, Skip = 0 };
+
+
+        var parameters = new TeamMemberListParams
+        {
+            Limit = 10,Skip = 0,
+        };
 
         Assert.Null(parameters.MemberType);
-        Assert.False(parameters.RawQueryData.ContainsKey("member_type"));
-        Assert.Null(parameters.TeamID);
+        Assert.False(parameters.RawQueryData.ContainsKey("member_type"));Assert.Null(parameters.TeamID);
         Assert.False(parameters.RawQueryData.ContainsKey("team_id"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new TeamMemberListParams
         {
-            Limit = 10,
-            Skip = 0,
+            Limit = 10,Skip = 0,
 
-            MemberType = null,
-            TeamID = null,
+            MemberType = null,TeamID = null,
         };
 
         Assert.Null(parameters.MemberType);
-        Assert.True(parameters.RawQueryData.ContainsKey("member_type"));
-        Assert.Null(parameters.TeamID);
+        Assert.True(parameters.RawQueryData.ContainsKey("member_type"));Assert.Null(parameters.TeamID);
         Assert.True(parameters.RawQueryData.ContainsKey("team_id"));
+
     }
 
     [Fact]
@@ -105,14 +109,14 @@ public class TeamMemberListParamsTest : TestBase
             TeamID = "team_id",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/team-members?limit=10&member_type=player&skip=0&team_id=team_id"
-            ),
-            url
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(new Uri("https://believe.cjav.dev/team-members?limit=10&member_type=player&skip=0&team_id=team_id"), url);
     }
 
     [Fact]
@@ -134,11 +138,7 @@ public class TeamMemberListParamsTest : TestBase
 
 public class TeamMemberListParamsMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(TeamMemberListParamsMemberType.Player)]
-    [InlineData(TeamMemberListParamsMemberType.Coach)]
-    [InlineData(TeamMemberListParamsMemberType.MedicalStaff)]
-    [InlineData(TeamMemberListParamsMemberType.EquipmentManager)]
+    [Theory][InlineData(TeamMemberListParamsMemberType.Player)][InlineData(TeamMemberListParamsMemberType.Coach)][InlineData(TeamMemberListParamsMemberType.MedicalStaff)][InlineData(TeamMemberListParamsMemberType.EquipmentManager)]
     public void Validation_Works(TeamMemberListParamsMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -149,29 +149,22 @@ public class TeamMemberListParamsMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberListParamsMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberListParamsMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(TeamMemberListParamsMemberType.Player)]
-    [InlineData(TeamMemberListParamsMemberType.Coach)]
-    [InlineData(TeamMemberListParamsMemberType.MedicalStaff)]
-    [InlineData(TeamMemberListParamsMemberType.EquipmentManager)]
-    public void SerializationRoundtrip_Works(TeamMemberListParamsMemberType rawValue)
+    [Theory][InlineData(TeamMemberListParamsMemberType.Player)][InlineData(TeamMemberListParamsMemberType.Coach)][InlineData(TeamMemberListParamsMemberType.MedicalStaff)][InlineData(TeamMemberListParamsMemberType.EquipmentManager)]
+    public void SerializationRoundtrip_Works(
+        TeamMemberListParamsMemberType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, TeamMemberListParamsMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberListParamsMemberType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberListParamsMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -179,14 +172,9 @@ public class TeamMemberListParamsMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberListParamsMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberListParamsMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberListParamsMemberType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberListParamsMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

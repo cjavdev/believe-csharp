@@ -11,10 +11,7 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
-            CharacterInvolved = "jamie-tartt",
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,CharacterInvolved = "jamie-tartt",
         };
 
         string expectedDescription = "description";
@@ -33,17 +30,11 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
-            CharacterInvolved = "jamie-tartt",
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,CharacterInvolved = "jamie-tartt",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TurningPoint>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TurningPoint>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -53,17 +44,11 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
-            CharacterInvolved = "jamie-tartt",
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,CharacterInvolved = "jamie-tartt",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TurningPoint>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TurningPoint>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedDescription = "description";
@@ -82,10 +67,7 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
-            CharacterInvolved = "jamie-tartt",
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,CharacterInvolved = "jamie-tartt",
         };
 
         model.Validate();
@@ -96,13 +78,12 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,
         };
 
         Assert.Null(model.CharacterInvolved);
         Assert.False(model.RawData.ContainsKey("character_involved"));
+
     }
 
     [Fact]
@@ -110,9 +91,7 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,
         };
 
         model.Validate();
@@ -123,15 +102,14 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,
 
             CharacterInvolved = null,
         };
 
         Assert.Null(model.CharacterInvolved);
         Assert.True(model.RawData.ContainsKey("character_involved"));
+
     }
 
     [Fact]
@@ -139,9 +117,7 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,
 
             CharacterInvolved = null,
         };
@@ -154,10 +130,7 @@ public class TurningPointTest : TestBase
     {
         var model = new TurningPoint
         {
-            Description = "description",
-            EmotionalImpact = "Galvanized the team's fighting spirit",
-            Minute = 0,
-            CharacterInvolved = "jamie-tartt",
+            Description = "description",EmotionalImpact = "Galvanized the team's fighting spirit",Minute = 0,CharacterInvolved = "jamie-tartt",
         };
 
         TurningPoint copied = new(model);

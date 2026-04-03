@@ -15,24 +15,25 @@ public sealed class CommentaryService : ICommentaryService
     readonly Lazy<ICommentaryServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ICommentaryServiceWithRawResponse WithRawResponse
-    {
+    public ICommentaryServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public ICommentaryService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new CommentaryService(this._client.WithOptions(modifier));
-    }
+    public ICommentaryService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new CommentaryService(this._client.WithOptions(modifier)); }
 
-    public CommentaryService(IBelieveClient client)
+    public CommentaryService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new CommentaryServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new CommentaryServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -41,13 +42,9 @@ public sealed class CommentaryService : ICommentaryService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Stream(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Stream(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<JsonElement> Stream(
         string matchID,
         CommentaryStreamParams? parameters = null,
@@ -56,7 +53,9 @@ public sealed class CommentaryService : ICommentaryService
     {
         parameters ??= new();
 
-        return this.Stream(parameters with { MatchID = matchID }, cancellationToken);
+        return this.Stream(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 }
 
@@ -73,10 +72,10 @@ public sealed class CommentaryServiceWithRawResponse : ICommentaryServiceWithRaw
         return new CommentaryServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public CommentaryServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public CommentaryServiceWithRawResponse (
+        IBelieveClientWithRawResponse client
+    )
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<JsonElement>> Stream(
@@ -86,7 +85,9 @@ public sealed class CommentaryServiceWithRawResponse : ICommentaryServiceWithRaw
     {
         if (parameters.MatchID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MatchID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MatchID' cannot be null"
+            );
         }
 
         HttpRequest<CommentaryStreamParams> request = new()
@@ -95,16 +96,10 @@ public sealed class CommentaryServiceWithRawResponse : ICommentaryServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
+        return new(response, async ( token )=>{
+            return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<JsonElement>> Stream(
         string matchID,
         CommentaryStreamParams? parameters = null,
@@ -113,6 +108,8 @@ public sealed class CommentaryServiceWithRawResponse : ICommentaryServiceWithRaw
     {
         parameters ??= new();
 
-        return this.Stream(parameters with { MatchID = matchID }, cancellationToken);
+        return this.Stream(parameters with{
+            MatchID = matchID
+        }, cancellationToken);
     }
 }

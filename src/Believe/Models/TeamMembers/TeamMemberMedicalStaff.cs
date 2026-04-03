@@ -19,12 +19,12 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// Unique identifier for this team membership
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -32,12 +32,12 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// ID of the character (references /characters/{id})
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -45,12 +45,12 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// Medical specialty
     /// </summary>
-    public required ApiEnum<string, MedicalSpecialty> Specialty
-    {
-        get
-        {
+    public required ApiEnum<string, MedicalSpecialty> Specialty {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, MedicalSpecialty>>("specialty");
+            return this._rawData.GetNotNullClass<ApiEnum<string, MedicalSpecialty>>(
+                "specialty"
+            );
         }
         init { this._rawData.Set("specialty", value); }
     }
@@ -58,12 +58,12 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// ID of the team they belong to
     /// </summary>
-    public required string TeamID
-    {
-        get
-        {
+    public required string TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -71,12 +71,12 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// Number of years with the current team
     /// </summary>
-    public required long YearsWithTeam
-    {
-        get
-        {
+    public required long YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("years_with_team");
+            return this._rawData.GetNotNullStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -84,12 +84,12 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// Professional license number
     /// </summary>
-    public string? LicenseNumber
-    {
-        get
-        {
+    public string? LicenseNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("license_number");
+            return this._rawData.GetNullableClass<string>(
+                "license_number"
+            );
         }
         init { this._rawData.Set("license_number", value); }
     }
@@ -97,19 +97,15 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// Discriminator field indicating this is medical staff
     /// </summary>
-    public ApiEnum<string, TeamMemberMedicalStaffMemberType>? MemberType
-    {
-        get
-        {
+    public ApiEnum<string, TeamMemberMedicalStaffMemberType>? MemberType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<
-                ApiEnum<string, TeamMemberMedicalStaffMemberType>
-            >("member_type");
+            return this._rawData.GetNullableClass<ApiEnum<string, TeamMemberMedicalStaffMemberType>>(
+                "member_type"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -120,17 +116,15 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
     /// <summary>
     /// Medical qualifications and degrees
     /// </summary>
-    public IReadOnlyList<string>? Qualifications
-    {
-        get
-        {
+    public IReadOnlyList<string>? Qualifications {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("qualifications");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "qualifications"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -154,34 +148,33 @@ public sealed record class TeamMemberMedicalStaff : JsonModel
         _ = this.Qualifications;
     }
 
-    public TeamMemberMedicalStaff() { }
+    public TeamMemberMedicalStaff ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamMemberMedicalStaff(TeamMemberMedicalStaff teamMemberMedicalStaff)
-        : base(teamMemberMedicalStaff) { }
-#pragma warning restore CS8618
+    public TeamMemberMedicalStaff (
+        TeamMemberMedicalStaff teamMemberMedicalStaff
+    ) : base(teamMemberMedicalStaff)
+    {  }
+    #pragma warning restore CS8618
 
-    public TeamMemberMedicalStaff(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TeamMemberMedicalStaff (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamMemberMedicalStaff(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TeamMemberMedicalStaff (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TeamMemberMedicalStaffFromRaw.FromRawUnchecked"/>
     public static TeamMemberMedicalStaff FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TeamMemberMedicalStaffFromRaw : IFromRawJson<TeamMemberMedicalStaff>
@@ -189,7 +182,8 @@ class TeamMemberMedicalStaffFromRaw : IFromRawJson<TeamMemberMedicalStaff>
     /// <inheritdoc/>
     public TeamMemberMedicalStaff FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TeamMemberMedicalStaff.FromRawUnchecked(rawData);
+    )
+    =>TeamMemberMedicalStaff.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -198,11 +192,8 @@ class TeamMemberMedicalStaffFromRaw : IFromRawJson<TeamMemberMedicalStaff>
 [JsonConverter(typeof(TeamMemberMedicalStaffMemberTypeConverter))]
 public enum TeamMemberMedicalStaffMemberType
 {
-    MedicalStaff,
-}
-
-sealed class TeamMemberMedicalStaffMemberTypeConverter
-    : JsonConverter<TeamMemberMedicalStaffMemberType>
+    MedicalStaff
+}sealed class TeamMemberMedicalStaffMemberTypeConverter : JsonConverter<TeamMemberMedicalStaffMemberType>
 {
     public override TeamMemberMedicalStaffMemberType Read(
         ref Utf8JsonReader reader,
@@ -212,8 +203,8 @@ sealed class TeamMemberMedicalStaffMemberTypeConverter
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "medical_staff" => TeamMemberMedicalStaffMemberType.MedicalStaff,
-            _ => (TeamMemberMedicalStaffMemberType)(-1),
+            "medical_staff"=>TeamMemberMedicalStaffMemberType.MedicalStaff,
+            _ =>(TeamMemberMedicalStaffMemberType)(-1)
         };
     }
 
@@ -223,16 +214,12 @@ sealed class TeamMemberMedicalStaffMemberTypeConverter
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TeamMemberMedicalStaffMemberType.MedicalStaff => "medical_staff",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            TeamMemberMedicalStaffMemberType.MedicalStaff=>"medical_staff",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

@@ -14,19 +14,17 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
-            Description = "description",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",Description = "description",
         };
 
         string expectedID = "wh_abc123";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         List<ApiEnum<string, RegisteredWebhookEventType>> expectedEventTypes =
         [
-            RegisteredWebhookEventType.MatchCompleted,
+            RegisteredWebhookEventType.MatchCompleted
         ];
         string expectedSecret = "whsec_abc123def456...";
         string expectedUrl = "https://example.com";
@@ -49,19 +47,14 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
-            Description = "description",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",Description = "description",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<RegisteredWebhook>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<RegisteredWebhook>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -71,26 +64,21 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
-            Description = "description",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",Description = "description",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<RegisteredWebhook>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<RegisteredWebhook>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "wh_abc123";
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
         List<ApiEnum<string, RegisteredWebhookEventType>> expectedEventTypes =
         [
-            RegisteredWebhookEventType.MatchCompleted,
+            RegisteredWebhookEventType.MatchCompleted
         ];
         string expectedSecret = "whsec_abc123def456...";
         string expectedUrl = "https://example.com";
@@ -113,12 +101,10 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
-            Description = "description",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",Description = "description",
         };
 
         model.Validate();
@@ -129,15 +115,15 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",
         };
 
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
+
     }
 
     [Fact]
@@ -145,11 +131,10 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",
         };
 
         model.Validate();
@@ -160,17 +145,17 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",
 
             Description = null,
         };
 
         Assert.Null(model.Description);
         Assert.True(model.RawData.ContainsKey("description"));
+
     }
 
     [Fact]
@@ -178,11 +163,10 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",
 
             Description = null,
         };
@@ -195,12 +179,10 @@ public class RegisteredWebhookTest : TestBase
     {
         var model = new RegisteredWebhook
         {
-            ID = "wh_abc123",
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
-            Secret = "whsec_abc123def456...",
-            Url = "https://example.com",
-            Description = "description",
+            ID = "wh_abc123",CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],Secret = "whsec_abc123def456...",Url = "https://example.com",Description = "description",
         };
 
         RegisteredWebhook copied = new(model);
@@ -211,9 +193,7 @@ public class RegisteredWebhookTest : TestBase
 
 public class RegisteredWebhookEventTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(RegisteredWebhookEventType.MatchCompleted)]
-    [InlineData(RegisteredWebhookEventType.TeamMemberTransferred)]
+    [Theory][InlineData(RegisteredWebhookEventType.MatchCompleted)][InlineData(RegisteredWebhookEventType.TeamMemberTransferred)]
     public void Validation_Works(RegisteredWebhookEventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -224,28 +204,22 @@ public class RegisteredWebhookEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(RegisteredWebhookEventType.MatchCompleted)]
-    [InlineData(RegisteredWebhookEventType.TeamMemberTransferred)]
-    public void SerializationRoundtrip_Works(RegisteredWebhookEventType rawValue)
+    [Theory][InlineData(RegisteredWebhookEventType.MatchCompleted)][InlineData(RegisteredWebhookEventType.TeamMemberTransferred)]
+    public void SerializationRoundtrip_Works(
+        RegisteredWebhookEventType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, RegisteredWebhookEventType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -253,15 +227,9 @@ public class RegisteredWebhookEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, RegisteredWebhookEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

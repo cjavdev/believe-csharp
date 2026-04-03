@@ -11,24 +11,23 @@ public class CharacterCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new CharacterCreateParams
         {
-            Background =
-                "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
-            EmotionalStats = new()
+            Background = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 40,
                 Empathy = 85,
                 Optimism = 45,
                 Resilience = 95,
                 Vulnerability = 60,
-            },
-            Name = "Roy Kent",
-            PersonalityTraits = ["intense", "loyal", "secretly caring", "profane"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1977-03-15",
-            Email = "roy.kent@afcrichmond.com",
-            GrowthArcs =
+            },Name = "Roy Kent",PersonalityTraits =
+            [
+                "intense", "loyal", "secretly caring", "profane"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1977-03-15",Email = "roy.kent@afcrichmond.com",GrowthArcs =
             [
                 new()
                 {
@@ -38,20 +37,14 @@ public class CharacterCreateParamsTest : TestBase
                     Season = 1,
                     StartingPoint = "Aging footballer facing retirement",
                 },
-            ],
-            HeightMeters = 1.78,
-            ProfileImageUrl = "https://afcrichmond.com/images/roy-kent.jpg",
-            SalaryGbp = "175000.00",
-            SignatureQuotes =
+            ],HeightMeters = 1.78,ProfileImageUrl = "https://afcrichmond.com/images/roy-kent.jpg",SalaryGbp = "175000.00",SignatureQuotes =
             [
                 "He's here, he's there, he's every-f***ing-where, Roy Kent!",
                 "Whistle!",
-            ],
-            TeamID = "afc-richmond",
+            ],TeamID = "afc-richmond",
         };
 
-        string expectedBackground =
-            "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.";
+        string expectedBackground = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.";
         EmotionalStats expectedEmotionalStats = new()
         {
             Curiosity = 40,
@@ -61,7 +54,10 @@ public class CharacterCreateParamsTest : TestBase
             Vulnerability = 60,
         };
         string expectedName = "Roy Kent";
-        List<string> expectedPersonalityTraits = ["intense", "loyal", "secretly caring", "profane"];
+        List<string> expectedPersonalityTraits =
+        [
+            "intense", "loyal", "secretly caring", "profane"
+        ];
         ApiEnum<string, CharacterRole> expectedRole = CharacterRole.Coach;
         string expectedDateOfBirth = "1977-03-15";
         string expectedEmail = "roy.kent@afcrichmond.com";
@@ -118,90 +114,82 @@ public class CharacterCreateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new CharacterCreateParams
         {
-            Background =
-                "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
-            EmotionalStats = new()
+            Background = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 40,
                 Empathy = 85,
                 Optimism = 45,
                 Resilience = 95,
                 Vulnerability = 60,
-            },
-            Name = "Roy Kent",
-            PersonalityTraits = ["intense", "loyal", "secretly caring", "profane"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1977-03-15",
-            Email = "roy.kent@afcrichmond.com",
-            HeightMeters = 1.78,
-            ProfileImageUrl = "https://afcrichmond.com/images/roy-kent.jpg",
-            SalaryGbp = "175000.00",
-            TeamID = "afc-richmond",
+            },Name = "Roy Kent",PersonalityTraits =
+            [
+                "intense", "loyal", "secretly caring", "profane"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1977-03-15",Email = "roy.kent@afcrichmond.com",HeightMeters = 1.78,ProfileImageUrl = "https://afcrichmond.com/images/roy-kent.jpg",SalaryGbp = "175000.00",TeamID = "afc-richmond",
         };
 
         Assert.Null(parameters.GrowthArcs);
-        Assert.False(parameters.RawBodyData.ContainsKey("growth_arcs"));
-        Assert.Null(parameters.SignatureQuotes);
+        Assert.False(parameters.RawBodyData.ContainsKey("growth_arcs"));Assert.Null(parameters.SignatureQuotes);
         Assert.False(parameters.RawBodyData.ContainsKey("signature_quotes"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new CharacterCreateParams
         {
-            Background =
-                "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
-            EmotionalStats = new()
+            Background = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 40,
                 Empathy = 85,
                 Optimism = 45,
                 Resilience = 95,
                 Vulnerability = 60,
-            },
-            Name = "Roy Kent",
-            PersonalityTraits = ["intense", "loyal", "secretly caring", "profane"],
-            Role = CharacterRole.Coach,
-            DateOfBirth = "1977-03-15",
-            Email = "roy.kent@afcrichmond.com",
-            HeightMeters = 1.78,
-            ProfileImageUrl = "https://afcrichmond.com/images/roy-kent.jpg",
-            SalaryGbp = "175000.00",
-            TeamID = "afc-richmond",
+            },Name = "Roy Kent",PersonalityTraits =
+            [
+                "intense", "loyal", "secretly caring", "profane"
+            ],Role = CharacterRole.Coach,DateOfBirth = "1977-03-15",Email = "roy.kent@afcrichmond.com",HeightMeters = 1.78,ProfileImageUrl = "https://afcrichmond.com/images/roy-kent.jpg",SalaryGbp = "175000.00",TeamID = "afc-richmond",
 
             // Null should be interpreted as omitted for these properties
-            GrowthArcs = null,
-            SignatureQuotes = null,
+            GrowthArcs = null,SignatureQuotes = null,
         };
 
         Assert.Null(parameters.GrowthArcs);
-        Assert.False(parameters.RawBodyData.ContainsKey("growth_arcs"));
-        Assert.Null(parameters.SignatureQuotes);
+        Assert.False(parameters.RawBodyData.ContainsKey("growth_arcs"));Assert.Null(parameters.SignatureQuotes);
         Assert.False(parameters.RawBodyData.ContainsKey("signature_quotes"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new CharacterCreateParams
         {
-            Background =
-                "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
-            EmotionalStats = new()
+            Background = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 40,
                 Empathy = 85,
                 Optimism = 45,
                 Resilience = 95,
                 Vulnerability = 60,
-            },
-            Name = "Roy Kent",
-            PersonalityTraits = ["intense", "loyal", "secretly caring", "profane"],
-            Role = CharacterRole.Coach,
-            GrowthArcs =
+            },Name = "Roy Kent",PersonalityTraits =
+            [
+                "intense", "loyal", "secretly caring", "profane"
+            ],Role = CharacterRole.Coach,GrowthArcs =
             [
                 new()
                 {
@@ -211,8 +199,7 @@ public class CharacterCreateParamsTest : TestBase
                     Season = 1,
                     StartingPoint = "Aging footballer facing retirement",
                 },
-            ],
-            SignatureQuotes =
+            ],SignatureQuotes =
             [
                 "He's here, he's there, he's every-f***ing-where, Roy Kent!",
                 "Whistle!",
@@ -220,38 +207,35 @@ public class CharacterCreateParamsTest : TestBase
         };
 
         Assert.Null(parameters.DateOfBirth);
-        Assert.False(parameters.RawBodyData.ContainsKey("date_of_birth"));
-        Assert.Null(parameters.Email);
-        Assert.False(parameters.RawBodyData.ContainsKey("email"));
-        Assert.Null(parameters.HeightMeters);
-        Assert.False(parameters.RawBodyData.ContainsKey("height_meters"));
-        Assert.Null(parameters.ProfileImageUrl);
-        Assert.False(parameters.RawBodyData.ContainsKey("profile_image_url"));
-        Assert.Null(parameters.SalaryGbp);
-        Assert.False(parameters.RawBodyData.ContainsKey("salary_gbp"));
-        Assert.Null(parameters.TeamID);
+        Assert.False(parameters.RawBodyData.ContainsKey("date_of_birth"));Assert.Null(parameters.Email);
+        Assert.False(parameters.RawBodyData.ContainsKey("email"));Assert.Null(parameters.HeightMeters);
+        Assert.False(parameters.RawBodyData.ContainsKey("height_meters"));Assert.Null(parameters.ProfileImageUrl);
+        Assert.False(parameters.RawBodyData.ContainsKey("profile_image_url"));Assert.Null(parameters.SalaryGbp);
+        Assert.False(parameters.RawBodyData.ContainsKey("salary_gbp"));Assert.Null(parameters.TeamID);
         Assert.False(parameters.RawBodyData.ContainsKey("team_id"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new CharacterCreateParams
         {
-            Background =
-                "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
-            EmotionalStats = new()
+            Background = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 40,
                 Empathy = 85,
                 Optimism = 45,
                 Resilience = 95,
                 Vulnerability = 60,
-            },
-            Name = "Roy Kent",
-            PersonalityTraits = ["intense", "loyal", "secretly caring", "profane"],
-            Role = CharacterRole.Coach,
-            GrowthArcs =
+            },Name = "Roy Kent",PersonalityTraits =
+            [
+                "intense", "loyal", "secretly caring", "profane"
+            ],Role = CharacterRole.Coach,GrowthArcs =
             [
                 new()
                 {
@@ -261,33 +245,23 @@ public class CharacterCreateParamsTest : TestBase
                     Season = 1,
                     StartingPoint = "Aging footballer facing retirement",
                 },
-            ],
-            SignatureQuotes =
+            ],SignatureQuotes =
             [
                 "He's here, he's there, he's every-f***ing-where, Roy Kent!",
                 "Whistle!",
             ],
 
-            DateOfBirth = null,
-            Email = null,
-            HeightMeters = null,
-            ProfileImageUrl = null,
-            SalaryGbp = null,
-            TeamID = null,
+            DateOfBirth = null,Email = null,HeightMeters = null,ProfileImageUrl = null,SalaryGbp = null,TeamID = null,
         };
 
         Assert.Null(parameters.DateOfBirth);
-        Assert.True(parameters.RawBodyData.ContainsKey("date_of_birth"));
-        Assert.Null(parameters.Email);
-        Assert.True(parameters.RawBodyData.ContainsKey("email"));
-        Assert.Null(parameters.HeightMeters);
-        Assert.True(parameters.RawBodyData.ContainsKey("height_meters"));
-        Assert.Null(parameters.ProfileImageUrl);
-        Assert.True(parameters.RawBodyData.ContainsKey("profile_image_url"));
-        Assert.Null(parameters.SalaryGbp);
-        Assert.True(parameters.RawBodyData.ContainsKey("salary_gbp"));
-        Assert.Null(parameters.TeamID);
+        Assert.True(parameters.RawBodyData.ContainsKey("date_of_birth"));Assert.Null(parameters.Email);
+        Assert.True(parameters.RawBodyData.ContainsKey("email"));Assert.Null(parameters.HeightMeters);
+        Assert.True(parameters.RawBodyData.ContainsKey("height_meters"));Assert.Null(parameters.ProfileImageUrl);
+        Assert.True(parameters.RawBodyData.ContainsKey("profile_image_url"));Assert.Null(parameters.SalaryGbp);
+        Assert.True(parameters.RawBodyData.ContainsKey("salary_gbp"));Assert.Null(parameters.TeamID);
         Assert.True(parameters.RawBodyData.ContainsKey("team_id"));
+
     }
 
     [Fact]
@@ -295,8 +269,7 @@ public class CharacterCreateParamsTest : TestBase
     {
         CharacterCreateParams parameters = new()
         {
-            Background =
-                "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
+            Background = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
             EmotionalStats = new()
             {
                 Curiosity = 40,
@@ -306,11 +279,19 @@ public class CharacterCreateParamsTest : TestBase
                 Vulnerability = 60,
             },
             Name = "Roy Kent",
-            PersonalityTraits = ["intense", "loyal", "secretly caring", "profane"],
+            PersonalityTraits =
+            [
+                "intense", "loyal", "secretly caring", "profane"
+            ],
             Role = CharacterRole.Coach,
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/characters"), url);
     }
@@ -320,8 +301,7 @@ public class CharacterCreateParamsTest : TestBase
     {
         var parameters = new CharacterCreateParams
         {
-            Background =
-                "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
+            Background = "Legendary midfielder for Chelsea and AFC Richmond, now assistant coach. Known for his gruff exterior hiding a heart of gold.",
             EmotionalStats = new()
             {
                 Curiosity = 40,
@@ -331,7 +311,10 @@ public class CharacterCreateParamsTest : TestBase
                 Vulnerability = 60,
             },
             Name = "Roy Kent",
-            PersonalityTraits = ["intense", "loyal", "secretly caring", "profane"],
+            PersonalityTraits =
+            [
+                "intense", "loyal", "secretly caring", "profane"
+            ],
             Role = CharacterRole.Coach,
             DateOfBirth = "1977-03-15",
             Email = "roy.kent@afcrichmond.com",
@@ -384,10 +367,7 @@ public class SalaryGbpTest : TestBase
     {
         SalaryGbp value = 0;
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<SalaryGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<SalaryGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -397,10 +377,7 @@ public class SalaryGbpTest : TestBase
     {
         SalaryGbp value = "string";
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<SalaryGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<SalaryGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

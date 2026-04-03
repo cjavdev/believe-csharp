@@ -14,24 +14,25 @@ public sealed class TicketSaleService : ITicketSaleService
     readonly Lazy<ITicketSaleServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ITicketSaleServiceWithRawResponse WithRawResponse
-    {
+    public ITicketSaleServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public ITicketSaleService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new TicketSaleService(this._client.WithOptions(modifier));
-    }
+    public ITicketSaleService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new TicketSaleService(this._client.WithOptions(modifier)); }
 
-    public TicketSaleService(IBelieveClient client)
+    public TicketSaleService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new TicketSaleServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new TicketSaleServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,9 +41,7 @@ public sealed class TicketSaleService : ITicketSaleService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -52,13 +51,9 @@ public sealed class TicketSaleService : ITicketSaleService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<TicketSale> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
@@ -67,7 +62,9 @@ public sealed class TicketSaleService : ITicketSaleService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { TicketSaleID = ticketSaleID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            TicketSaleID = ticketSaleID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -76,13 +73,9 @@ public sealed class TicketSaleService : ITicketSaleService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<TicketSale> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
@@ -91,7 +84,9 @@ public sealed class TicketSaleService : ITicketSaleService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { TicketSaleID = ticketSaleID }, cancellationToken);
+        return this.Update(parameters with{
+            TicketSaleID = ticketSaleID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -100,9 +95,7 @@ public sealed class TicketSaleService : ITicketSaleService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -113,9 +106,7 @@ public sealed class TicketSaleService : ITicketSaleService
     )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string ticketSaleID,
         TicketSaleDeleteParams? parameters = null,
@@ -124,8 +115,9 @@ public sealed class TicketSaleService : ITicketSaleService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { TicketSaleID = ticketSaleID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            TicketSaleID = ticketSaleID
+        }, cancellationToken).ConfigureAwait(false);
     }
 }
 
@@ -142,10 +134,10 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
         return new TicketSaleServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public TicketSaleServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public TicketSaleServiceWithRawResponse (
+        IBelieveClientWithRawResponse client
+    )
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<TicketSale>> Create(
@@ -159,20 +151,13 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var ticketSale = await response
-                    .Deserialize<TicketSale>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    ticketSale.Validate();
-                }
-                return ticketSale;
+        return new(response, async ( token )=>{
+            var ticketSale = await response.Deserialize<TicketSale>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                ticketSale.Validate();
             }
-        );
+            return ticketSale;
+        });
     }
 
     /// <inheritdoc/>
@@ -183,7 +168,9 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     {
         if (parameters.TicketSaleID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TicketSaleID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TicketSaleID' cannot be null"
+            );
         }
 
         HttpRequest<TicketSaleRetrieveParams> request = new()
@@ -192,23 +179,14 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var ticketSale = await response
-                    .Deserialize<TicketSale>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    ticketSale.Validate();
-                }
-                return ticketSale;
+        return new(response, async ( token )=>{
+            var ticketSale = await response.Deserialize<TicketSale>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                ticketSale.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return ticketSale;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<TicketSale>> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
@@ -217,7 +195,9 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { TicketSaleID = ticketSaleID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            TicketSaleID = ticketSaleID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -228,7 +208,9 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     {
         if (parameters.TicketSaleID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TicketSaleID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TicketSaleID' cannot be null"
+            );
         }
 
         HttpRequest<TicketSaleUpdateParams> request = new()
@@ -237,23 +219,14 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var ticketSale = await response
-                    .Deserialize<TicketSale>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    ticketSale.Validate();
-                }
-                return ticketSale;
+        return new(response, async ( token )=>{
+            var ticketSale = await response.Deserialize<TicketSale>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                ticketSale.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return ticketSale;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<TicketSale>> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
@@ -262,7 +235,9 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     {
         parameters ??= new();
 
-        return this.Update(parameters with { TicketSaleID = ticketSaleID }, cancellationToken);
+        return this.Update(parameters with{
+            TicketSaleID = ticketSaleID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -279,20 +254,13 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<TicketSaleListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new TicketSaleListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<TicketSaleListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new TicketSaleListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -303,7 +271,9 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     {
         if (parameters.TicketSaleID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TicketSaleID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TicketSaleID' cannot be null"
+            );
         }
 
         HttpRequest<TicketSaleDeleteParams> request = new()
@@ -312,9 +282,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string ticketSaleID,
         TicketSaleDeleteParams? parameters = null,
@@ -323,6 +291,8 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { TicketSaleID = ticketSaleID }, cancellationToken);
+        return this.Delete(parameters with{
+            TicketSaleID = ticketSaleID
+        }, cancellationToken);
     }
 }

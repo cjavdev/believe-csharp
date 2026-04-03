@@ -10,23 +10,18 @@ namespace Believe.Models.Reframe;
 /// <summary>
 /// Reframed perspective response.
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        ReframeTransformNegativeThoughtsResponse,
-        ReframeTransformNegativeThoughtsResponseFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<ReframeTransformNegativeThoughtsResponse, ReframeTransformNegativeThoughtsResponseFromRaw>))]
 public sealed record class ReframeTransformNegativeThoughtsResponse : JsonModel
 {
     /// <summary>
     /// A daily affirmation to practice
     /// </summary>
-    public required string DailyAffirmation
-    {
-        get
-        {
+    public required string DailyAffirmation {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("daily_affirmation");
+            return this._rawData.GetNotNullClass<string>(
+                "daily_affirmation"
+            );
         }
         init { this._rawData.Set("daily_affirmation", value); }
     }
@@ -34,12 +29,12 @@ public sealed record class ReframeTransformNegativeThoughtsResponse : JsonModel
     /// <summary>
     /// The original negative thought
     /// </summary>
-    public required string OriginalThought
-    {
-        get
-        {
+    public required string OriginalThought {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("original_thought");
+            return this._rawData.GetNotNullClass<string>(
+                "original_thought"
+            );
         }
         init { this._rawData.Set("original_thought", value); }
     }
@@ -47,12 +42,12 @@ public sealed record class ReframeTransformNegativeThoughtsResponse : JsonModel
     /// <summary>
     /// The thought reframed positively
     /// </summary>
-    public required string ReframedThought
-    {
-        get
-        {
+    public required string ReframedThought {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("reframed_thought");
+            return this._rawData.GetNotNullClass<string>(
+                "reframed_thought"
+            );
         }
         init { this._rawData.Set("reframed_thought", value); }
     }
@@ -60,12 +55,12 @@ public sealed record class ReframeTransformNegativeThoughtsResponse : JsonModel
     /// <summary>
     /// Ted's take on this thought
     /// </summary>
-    public required string TedPerspective
-    {
-        get
-        {
+    public required string TedPerspective {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("ted_perspective");
+            return this._rawData.GetNotNullClass<string>(
+                "ted_perspective"
+            );
         }
         init { this._rawData.Set("ted_perspective", value); }
     }
@@ -73,12 +68,12 @@ public sealed record class ReframeTransformNegativeThoughtsResponse : JsonModel
     /// <summary>
     /// Dr. Sharon's therapeutic insight
     /// </summary>
-    public string? DrSharonInsight
-    {
-        get
-        {
+    public string? DrSharonInsight {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("dr_sharon_insight");
+            return this._rawData.GetNullableClass<string>(
+                "dr_sharon_insight"
+            );
         }
         init { this._rawData.Set("dr_sharon_insight", value); }
     }
@@ -93,45 +88,42 @@ public sealed record class ReframeTransformNegativeThoughtsResponse : JsonModel
         _ = this.DrSharonInsight;
     }
 
-    public ReframeTransformNegativeThoughtsResponse() { }
+    public ReframeTransformNegativeThoughtsResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ReframeTransformNegativeThoughtsResponse(
+    public ReframeTransformNegativeThoughtsResponse (
         ReframeTransformNegativeThoughtsResponse reframeTransformNegativeThoughtsResponse
-    )
-        : base(reframeTransformNegativeThoughtsResponse) { }
-#pragma warning restore CS8618
+    ) : base(reframeTransformNegativeThoughtsResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public ReframeTransformNegativeThoughtsResponse(
+    public ReframeTransformNegativeThoughtsResponse (
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        this._rawData = new(rawData);
-    }
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ReframeTransformNegativeThoughtsResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ReframeTransformNegativeThoughtsResponse (
+        FrozenDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ReframeTransformNegativeThoughtsResponseFromRaw.FromRawUnchecked"/>
     public static ReframeTransformNegativeThoughtsResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
-class ReframeTransformNegativeThoughtsResponseFromRaw
-    : IFromRawJson<ReframeTransformNegativeThoughtsResponse>
+class ReframeTransformNegativeThoughtsResponseFromRaw : IFromRawJson<ReframeTransformNegativeThoughtsResponse>
 {
     /// <inheritdoc/>
     public ReframeTransformNegativeThoughtsResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ReframeTransformNegativeThoughtsResponse.FromRawUnchecked(rawData);
+    )
+    =>ReframeTransformNegativeThoughtsResponse.FromRawUnchecked(rawData);
 }

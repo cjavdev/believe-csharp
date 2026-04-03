@@ -10,11 +10,11 @@ namespace Believe.Core;
 
 /// <summary>
 /// A dictionary that holds mixed JSON and binary content.
-///
+/// 
 /// <para>It can be mutated and then frozen once no more mutations are expected.
 /// This is useful for allowing the dictionary to be modified by a class's
 /// <c>init</c> properties, but then preventing it from being modified afterwards.</para>
-///
+/// 
 /// <para>It also caches data deserialization for performance.</para>
 /// </summary>
 sealed class MultipartJsonDictionary
@@ -23,10 +23,8 @@ sealed class MultipartJsonDictionary
 
     readonly ConcurrentDictionary<string, object?> _deserializedData;
 
-    Dictionary<string, MultipartJsonElement> MutableRawData
-    {
-        get
-        {
+    Dictionary<string, MultipartJsonElement> MutableRawData {
+        get {
             if (_rawData is Dictionary<string, MultipartJsonElement> dictionary)
             {
                 return dictionary;
@@ -35,36 +33,48 @@ sealed class MultipartJsonDictionary
         }
     }
 
-    public MultipartJsonDictionary()
+    public MultipartJsonDictionary ()
     {
         _rawData = new Dictionary<string, MultipartJsonElement>();
         _deserializedData = new();
     }
 
-    public MultipartJsonDictionary(IReadOnlyDictionary<string, MultipartJsonElement> dictionary)
+    public MultipartJsonDictionary (
+        IReadOnlyDictionary<string, MultipartJsonElement> dictionary
+    )
     {
-        _rawData = Enumerable.ToDictionary(dictionary, (e) => e.Key, (e) => e.Value);
+        _rawData = Enumerable.ToDictionary(
+            dictionary,
+            ( e )=>e.Key,
+            ( e )=>e.Value
+        );
         _deserializedData = new();
     }
 
-    public MultipartJsonDictionary(FrozenDictionary<string, MultipartJsonElement> dictionary)
+    public MultipartJsonDictionary (
+        FrozenDictionary<string, MultipartJsonElement> dictionary
+    )
     {
         _rawData = dictionary;
         _deserializedData = new();
     }
 
-    public MultipartJsonDictionary(MultipartJsonDictionary dictionary)
+    public MultipartJsonDictionary (MultipartJsonDictionary dictionary)
     {
-        _rawData = Enumerable.ToDictionary(dictionary._rawData, (e) => e.Key, (e) => e.Value);
+        _rawData = Enumerable.ToDictionary(
+            dictionary._rawData,
+            ( e )=>e.Key,
+            ( e )=>e.Value
+        );
         _deserializedData = new(dictionary._deserializedData);
     }
 
     /// <summary>
-    /// Freezes this dictionary and returns a readonly view of it.
-    ///
-    /// <para>Future calls to mutating methods on this class will throw
-    /// <see cref="InvalidOperationException"/></para>.
-    /// </summary>
+/// Freezes this dictionary and returns a readonly view of it.
+/// 
+/// <para>Future calls to mutating methods on this class will throw
+/// <see cref="InvalidOperationException"/></para>.
+/// </summary>
     public IReadOnlyDictionary<string, MultipartJsonElement> Freeze()
     {
         if (_rawData is FrozenDictionary<string, MultipartJsonElement> dictionary)
@@ -77,7 +87,8 @@ sealed class MultipartJsonDictionary
         return frozenRawData;
     }
 
-    public void Set<T>(string key, T value)
+    public void Set<T>
+    (string key, T value)
     {
         MutableRawData[key] = MultipartJsonSerializer.SerializeToElement(
             value,
@@ -86,8 +97,8 @@ sealed class MultipartJsonDictionary
         _deserializedData[key] = value;
     }
 
-    public T GetNotNullClass<T>(string key)
-        where T : class
+    public T GetNotNullClass<T>
+    (string key) where T: class
     {
         if (_deserializedData.TryGetValue(key, out var cached) && cached is T t)
         {
@@ -102,8 +113,8 @@ sealed class MultipartJsonDictionary
         return deserialized;
     }
 
-    public T GetNotNullStruct<T>(string key)
-        where T : struct
+    public T GetNotNullStruct<T>
+    (string key) where T: struct
     {
         if (_deserializedData.TryGetValue(key, out var cached) && cached is T t)
         {
@@ -118,8 +129,8 @@ sealed class MultipartJsonDictionary
         return deserialized;
     }
 
-    public T? GetNullableClass<T>(string key)
-        where T : class
+    public T? GetNullableClass<T>
+    (string key) where T: class
     {
         if (_deserializedData.TryGetValue(key, out var cached) && (cached == null || cached is T))
         {
@@ -135,8 +146,8 @@ sealed class MultipartJsonDictionary
         return deserialized;
     }
 
-    public T? GetNullableStruct<T>(string key)
-        where T : struct
+    public T? GetNullableStruct<T>
+    (string key) where T: struct
     {
         if (_deserializedData.TryGetValue(key, out var cached) && (cached == null || cached is T))
         {
@@ -152,11 +163,8 @@ sealed class MultipartJsonDictionary
         return deserialized;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(this._rawData),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(this._rawData), ModelBase.ToStringSerializerOptions);
 
     public override bool Equals(object? obj)
     {
@@ -182,7 +190,5 @@ sealed class MultipartJsonDictionary
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

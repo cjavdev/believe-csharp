@@ -26,15 +26,17 @@ public interface IBelieveService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IBelieveService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IBelieveService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Submit your situation and receive Ted Lasso-style motivational guidance.
-    /// </summary>
+/// Submit your situation and receive Ted Lasso-style motivational guidance.
+/// </summary>
     Task<BelieveSubmitResponse> Submit(
         BelieveSubmitParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -48,14 +50,18 @@ public interface IBelieveServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IBelieveServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IBelieveServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /believe</c>, but is otherwise the
-    /// same as <see cref="IBelieveService.Submit(BelieveSubmitParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /believe</c>, but is otherwise the
+/// same as <see cref="IBelieveService.Submit(BelieveSubmitParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<BelieveSubmitResponse>> Submit(
         BelieveSubmitParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

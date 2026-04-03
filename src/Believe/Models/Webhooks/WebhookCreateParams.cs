@@ -37,21 +37,19 @@ namespace Believe.Models.Webhooks;
 /// </summary>
 public record class WebhookCreateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     /// <summary>
     /// The URL to send webhook events to
     /// </summary>
-    public required string UrlValue
-    {
-        get
-        {
+    public required string UrlValue {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("url");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "url"
+            );
         }
         init { this._rawBodyData.Set("url", value); }
     }
@@ -59,12 +57,12 @@ public record class WebhookCreateParams : ParamsBase
     /// <summary>
     /// Optional description for this webhook
     /// </summary>
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("description");
+            return this._rawBodyData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawBodyData.Set("description", value); }
     }
@@ -72,17 +70,14 @@ public record class WebhookCreateParams : ParamsBase
     /// <summary>
     /// List of event types to subscribe to. If not provided, subscribes to all events.
     /// </summary>
-    public IReadOnlyList<ApiEnum<string, EventType>>? EventTypes
-    {
-        get
-        {
+    public IReadOnlyList<ApiEnum<string, EventType>>? EventTypes {
+        get {
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableStruct<ImmutableArray<ApiEnum<string, EventType>>>(
                 "event_types"
             );
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<ImmutableArray<ApiEnum<string, EventType>>?>(
                 "event_types",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -90,18 +85,18 @@ public record class WebhookCreateParams : ParamsBase
         }
     }
 
-    public WebhookCreateParams() { }
+    public WebhookCreateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookCreateParams(WebhookCreateParams webhookCreateParams)
-        : base(webhookCreateParams)
-    {
-        this._rawBodyData = new(webhookCreateParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public WebhookCreateParams (WebhookCreateParams webhookCreateParams) : base(
+        webhookCreateParams
+    )
+    { this._rawBodyData = new(webhookCreateParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public WebhookCreateParams(
+    public WebhookCreateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -112,9 +107,9 @@ public record class WebhookCreateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookCreateParams(
+    WebhookCreateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -124,7 +119,7 @@ public record class WebhookCreateParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static WebhookCreateParams FromRawUnchecked(
@@ -137,25 +132,18 @@ public record class WebhookCreateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(WebhookCreateParams? other)
     {
@@ -163,17 +151,19 @@ public record class WebhookCreateParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/webhooks")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/webhooks"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -182,10 +172,12 @@ public record class WebhookCreateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -195,16 +187,13 @@ public record class WebhookCreateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 [JsonConverter(typeof(EventTypeConverter))]
 public enum EventType
 {
-    MatchCompleted,
-    TeamMemberTransferred,
+    MatchCompleted, TeamMemberTransferred
 }
 
 sealed class EventTypeConverter : JsonConverter<EventType>
@@ -217,29 +206,23 @@ sealed class EventTypeConverter : JsonConverter<EventType>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "match.completed" => EventType.MatchCompleted,
-            "team_member.transferred" => EventType.TeamMemberTransferred,
-            _ => (EventType)(-1),
+            "match.completed"=>EventType.MatchCompleted,
+            "team_member.transferred"=>EventType.TeamMemberTransferred,
+            _ =>(EventType)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        EventType value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, EventType value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                EventType.MatchCompleted => "match.completed",
-                EventType.TeamMemberTransferred => "team_member.transferred",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            EventType.MatchCompleted=>"match.completed",
+            EventType.TeamMemberTransferred=>"team_member.transferred",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

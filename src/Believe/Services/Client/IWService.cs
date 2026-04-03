@@ -26,21 +26,26 @@ public interface IWService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IWService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IWService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Simple WebSocket test endpoint for connectivity testing.
-    ///
-    /// <para>Connect to test WebSocket functionality. The server will: 1. Send a
-    /// welcome message on connection 2. Echo back any message you send</para>
-    ///
-    /// <para>## Example</para>
-    ///
-    /// <para>```javascript const ws = new WebSocket('ws://localhost:8000/ws/test');
-    /// ws.onmessage = (event) => console.log(event.data); ws.send('Hello!');  // Server
-    /// responds with echo ``` </para>
-    /// </summary>
-    Task Test(WTestParams? parameters = null, CancellationToken cancellationToken = default);
+/// Simple WebSocket test endpoint for connectivity testing.
+/// 
+/// <para>Connect to test WebSocket functionality. The server will: 1. Send a
+/// welcome message on connection 2. Echo back any message you send</para>
+/// 
+/// <para>## Example</para>
+/// 
+/// <para>```javascript const ws = new WebSocket('ws://localhost:8000/ws/test');
+/// ws.onmessage = (event) => console.log(event.data); ws.send('Hello!');  // Server
+/// responds with echo ``` </para>
+/// </summary>
+    Task Test(
+        WTestParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    ;
 }
 
 /// <summary>
@@ -54,14 +59,18 @@ public interface IWServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IWServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IWServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /ws/test</c>, but is otherwise the
-    /// same as <see cref="IWService.Test(WTestParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /ws/test</c>, but is otherwise the
+/// same as <see cref="IWService.Test(WTestParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse> Test(
         WTestParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

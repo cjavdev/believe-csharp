@@ -13,24 +13,25 @@ public sealed class PepTalkService : IPepTalkService
     readonly Lazy<IPepTalkServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IPepTalkServiceWithRawResponse WithRawResponse
-    {
+    public IPepTalkServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IPepTalkService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new PepTalkService(this._client.WithOptions(modifier));
-    }
+    public IPepTalkService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new PepTalkService(this._client.WithOptions(modifier)); }
 
-    public PepTalkService(IBelieveClient client)
+    public PepTalkService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new PepTalkServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new PepTalkServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -39,9 +40,7 @@ public sealed class PepTalkService : IPepTalkService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -52,15 +51,15 @@ public sealed class PepTalkServiceWithRawResponse : IPepTalkServiceWithRawRespon
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IPepTalkServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IPepTalkServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new PepTalkServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public PepTalkServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public PepTalkServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<PepTalkRetrieveResponse>> Retrieve(
@@ -76,19 +75,12 @@ public sealed class PepTalkServiceWithRawResponse : IPepTalkServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var pepTalk = await response
-                    .Deserialize<PepTalkRetrieveResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    pepTalk.Validate();
-                }
-                return pepTalk;
+        return new(response, async ( token )=>{
+            var pepTalk = await response.Deserialize<PepTalkRetrieveResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                pepTalk.Validate();
             }
-        );
+            return pepTalk;
+        });
     }
 }

@@ -84,10 +84,7 @@ public class UnwrapWebhookEventTest : TestBase
             EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UnwrapWebhookEvent>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<UnwrapWebhookEvent>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -117,10 +114,7 @@ public class UnwrapWebhookEventTest : TestBase
             EventType = TeamMemberTransferredWebhookEventEventType.TeamMemberTransferred,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<UnwrapWebhookEvent>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<UnwrapWebhookEvent>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

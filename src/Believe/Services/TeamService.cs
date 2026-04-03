@@ -18,8 +18,7 @@ public sealed class TeamService : ITeamService
     readonly Lazy<ITeamServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ITeamServiceWithRawResponse WithRawResponse
-    {
+    public ITeamServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
@@ -27,23 +26,20 @@ public sealed class TeamService : ITeamService
 
     /// <inheritdoc/>
     public ITeamService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new TeamService(this._client.WithOptions(modifier));
-    }
+    { return new TeamService(this._client.WithOptions(modifier)); }
 
-    public TeamService(IBelieveClient client)
+    public TeamService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new TeamServiceWithRawResponse(client.WithRawResponse));
-        _logo = new(() => new LogoService(client));
+        _withRawResponse =new(
+            () => new TeamServiceWithRawResponse(client.WithRawResponse)
+        ) ;
+        _logo =new(() => new LogoService(client)) ;
     }
 
     readonly Lazy<ILogoService> _logo;
-    public ILogoService Logo
-    {
-        get { return _logo.Value; }
-    }
+    public ILogoService Logo { get { return _logo.Value; } }
 
     /// <inheritdoc/>
     public async Task<Team> Create(
@@ -51,9 +47,7 @@ public sealed class TeamService : ITeamService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -63,13 +57,9 @@ public sealed class TeamService : ITeamService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Team> Retrieve(
         string teamID,
         TeamRetrieveParams? parameters = null,
@@ -78,7 +68,9 @@ public sealed class TeamService : ITeamService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { TeamID = teamID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -87,13 +79,9 @@ public sealed class TeamService : ITeamService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Team> Update(
         string teamID,
         TeamUpdateParams? parameters = null,
@@ -102,7 +90,9 @@ public sealed class TeamService : ITeamService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { TeamID = teamID }, cancellationToken);
+        return this.Update(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -111,19 +101,18 @@ public sealed class TeamService : ITeamService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task Delete(TeamDeleteParams parameters, CancellationToken cancellationToken = default)
+    public Task Delete(
+        TeamDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string teamID,
         TeamDeleteParams? parameters = null,
@@ -132,8 +121,9 @@ public sealed class TeamService : ITeamService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { TeamID = teamID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            TeamID = teamID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -142,13 +132,9 @@ public sealed class TeamService : ITeamService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetCulture(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetCulture(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Dictionary<string, JsonElement>> GetCulture(
         string teamID,
         TeamGetCultureParams? parameters = null,
@@ -157,7 +143,9 @@ public sealed class TeamService : ITeamService
     {
         parameters ??= new();
 
-        return this.GetCulture(parameters with { TeamID = teamID }, cancellationToken);
+        return this.GetCulture(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -166,13 +154,9 @@ public sealed class TeamService : ITeamService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetRivals(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetRivals(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<List<Team>> GetRivals(
         string teamID,
         TeamGetRivalsParams? parameters = null,
@@ -181,7 +165,9 @@ public sealed class TeamService : ITeamService
     {
         parameters ??= new();
 
-        return this.GetRivals(parameters with { TeamID = teamID }, cancellationToken);
+        return this.GetRivals(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -190,13 +176,9 @@ public sealed class TeamService : ITeamService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.ListLogos(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.ListLogos(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<List<FileUpload>> ListLogos(
         string teamID,
         TeamListLogosParams? parameters = null,
@@ -205,7 +187,9 @@ public sealed class TeamService : ITeamService
     {
         parameters ??= new();
 
-        return this.ListLogos(parameters with { TeamID = teamID }, cancellationToken);
+        return this.ListLogos(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 }
 
@@ -215,23 +199,22 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public ITeamServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ITeamServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new TeamServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public TeamServiceWithRawResponse(IBelieveClientWithRawResponse client)
+    public TeamServiceWithRawResponse (IBelieveClientWithRawResponse client)
     {
-        _client = client;
+        _client =client ;
 
-        _logo = new(() => new LogoServiceWithRawResponse(client));
+        _logo =new(() => new LogoServiceWithRawResponse(client)) ;
     }
 
     readonly Lazy<ILogoServiceWithRawResponse> _logo;
-    public ILogoServiceWithRawResponse Logo
-    {
-        get { return _logo.Value; }
-    }
+    public ILogoServiceWithRawResponse Logo { get { return _logo.Value; } }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<Team>> Create(
@@ -245,18 +228,13 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var team = await response.Deserialize<Team>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    team.Validate();
-                }
-                return team;
+        return new(response, async ( token )=>{
+            var team = await response.Deserialize<Team>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                team.Validate();
             }
-        );
+            return team;
+        });
     }
 
     /// <inheritdoc/>
@@ -267,7 +245,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         if (parameters.TeamID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TeamID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TeamID' cannot be null"
+            );
         }
 
         HttpRequest<TeamRetrieveParams> request = new()
@@ -276,21 +256,14 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var team = await response.Deserialize<Team>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    team.Validate();
-                }
-                return team;
+        return new(response, async ( token )=>{
+            var team = await response.Deserialize<Team>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                team.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return team;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Team>> Retrieve(
         string teamID,
         TeamRetrieveParams? parameters = null,
@@ -299,7 +272,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { TeamID = teamID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -310,7 +285,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         if (parameters.TeamID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TeamID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TeamID' cannot be null"
+            );
         }
 
         HttpRequest<TeamUpdateParams> request = new()
@@ -319,21 +296,14 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var team = await response.Deserialize<Team>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    team.Validate();
-                }
-                return team;
+        return new(response, async ( token )=>{
+            var team = await response.Deserialize<Team>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                team.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return team;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Team>> Update(
         string teamID,
         TeamUpdateParams? parameters = null,
@@ -342,7 +312,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Update(parameters with { TeamID = teamID }, cancellationToken);
+        return this.Update(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -359,20 +331,13 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<TeamListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new TeamListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<TeamListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new TeamListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -383,7 +348,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         if (parameters.TeamID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TeamID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TeamID' cannot be null"
+            );
         }
 
         HttpRequest<TeamDeleteParams> request = new()
@@ -392,9 +359,7 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string teamID,
         TeamDeleteParams? parameters = null,
@@ -403,7 +368,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { TeamID = teamID }, cancellationToken);
+        return this.Delete(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -414,7 +381,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         if (parameters.TeamID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TeamID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TeamID' cannot be null"
+            );
         }
 
         HttpRequest<TeamGetCultureParams> request = new()
@@ -423,18 +392,10 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response
-                    .Deserialize<Dictionary<string, JsonElement>>(token)
-                    .ConfigureAwait(false);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
+        return new(response, async ( token )=>{
+            return await response.Deserialize<Dictionary<string, JsonElement>>(token).ConfigureAwait(false);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Dictionary<string, JsonElement>>> GetCulture(
         string teamID,
         TeamGetCultureParams? parameters = null,
@@ -443,7 +404,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.GetCulture(parameters with { TeamID = teamID }, cancellationToken);
+        return this.GetCulture(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -454,7 +417,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         if (parameters.TeamID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TeamID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TeamID' cannot be null"
+            );
         }
 
         HttpRequest<TeamGetRivalsParams> request = new()
@@ -463,24 +428,17 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var teams = await response.Deserialize<List<Team>>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
+        return new(response, async ( token )=>{
+            var teams = await response.Deserialize<List<Team>>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                foreach (var item in teams)
                 {
-                    foreach (var item in teams)
-                    {
-                        item.Validate();
-                    }
+                    item.Validate();
                 }
-                return teams;
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return teams;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<List<Team>>> GetRivals(
         string teamID,
         TeamGetRivalsParams? parameters = null,
@@ -489,7 +447,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.GetRivals(parameters with { TeamID = teamID }, cancellationToken);
+        return this.GetRivals(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -500,7 +460,9 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         if (parameters.TeamID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TeamID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TeamID' cannot be null"
+            );
         }
 
         HttpRequest<TeamListLogosParams> request = new()
@@ -509,26 +471,17 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var fileUploads = await response
-                    .Deserialize<List<FileUpload>>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
+        return new(response, async ( token )=>{
+            var fileUploads = await response.Deserialize<List<FileUpload>>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                foreach (var item in fileUploads)
                 {
-                    foreach (var item in fileUploads)
-                    {
-                        item.Validate();
-                    }
+                    item.Validate();
                 }
-                return fileUploads;
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return fileUploads;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<List<FileUpload>>> ListLogos(
         string teamID,
         TeamListLogosParams? parameters = null,
@@ -537,6 +490,8 @@ public sealed class TeamServiceWithRawResponse : ITeamServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.ListLogos(parameters with { TeamID = teamID }, cancellationToken);
+        return this.ListLogos(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 }

@@ -40,27 +40,25 @@ public record class TeamMemberCreateParams : ParamsBase
     /// <summary>
     /// A football player on the team.
     /// </summary>
-    public required Member Member
-    {
-        get
-        {
+    public required Member Member {
+        get {
             return WrappedJsonSerializer.GetNotNullClass<Member>(this.RawBodyData, "RawBodyData");
         }
         init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
-    public TeamMemberCreateParams() { }
+    public TeamMemberCreateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamMemberCreateParams(TeamMemberCreateParams teamMemberCreateParams)
-        : base(teamMemberCreateParams)
-    {
-        this.RawBodyData = teamMemberCreateParams.RawBodyData;
-    }
-#pragma warning restore CS8618
+    public TeamMemberCreateParams (
+        TeamMemberCreateParams teamMemberCreateParams
+    ) : base(teamMemberCreateParams)
+    { this.RawBodyData = teamMemberCreateParams.RawBodyData; }
+    #pragma warning restore CS8618
 
-    public TeamMemberCreateParams(
+    public TeamMemberCreateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         JsonElement rawBodyData
@@ -71,9 +69,9 @@ public record class TeamMemberCreateParams : ParamsBase
         this.RawBodyData = rawBodyData;
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamMemberCreateParams(
+    TeamMemberCreateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         JsonElement rawBodyData
@@ -83,7 +81,7 @@ public record class TeamMemberCreateParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.RawBodyData = rawBodyData;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TeamMemberCreateParams FromRawUnchecked(
@@ -96,25 +94,18 @@ public record class TeamMemberCreateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             rawBodyData
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TeamMemberCreateParams? other)
     {
@@ -122,17 +113,19 @@ public record class TeamMemberCreateParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this.RawBodyData.Equals(other.RawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this.RawBodyData.Equals(
+            other.RawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/team-members")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/team-members"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -141,10 +134,12 @@ public record class TeamMemberCreateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -154,9 +149,7 @@ public record class TeamMemberCreateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 /// <summary>
@@ -169,191 +162,174 @@ public record class Member : ModelBase
 
     JsonElement? _element = null;
 
-    public JsonElement Json
-    {
-        get
-        {
-            return this._element ??= JsonSerializer.SerializeToElement(
-                this.Value,
-                ModelBase.SerializerOptions
-            );
+    public JsonElement Json {
+        get {
+            return this._element ??= JsonSerializer.SerializeToElement(this.Value, ModelBase.SerializerOptions);
         }
     }
 
-    public string CharacterID
-    {
-        get
-        {
-            return Match(
-                player: (x) => x.CharacterID,
-                coach: (x) => x.CharacterID,
-                medicalStaff: (x) => x.CharacterID,
-                equipmentManager: (x) => x.CharacterID
-            );
+    public string CharacterID {
+        get {
+            return Match(player: ( x )=>x.CharacterID,
+            coach: ( x )=>x.CharacterID,
+            medicalStaff: ( x )=>x.CharacterID,
+            equipmentManager: ( x )=>x.CharacterID);
         }
     }
 
-    public string TeamID
-    {
-        get
-        {
-            return Match(
-                player: (x) => x.TeamID,
-                coach: (x) => x.TeamID,
-                medicalStaff: (x) => x.TeamID,
-                equipmentManager: (x) => x.TeamID
-            );
+    public string TeamID {
+        get {
+            return Match(player: ( x )=>x.TeamID,
+            coach: ( x )=>x.TeamID,
+            medicalStaff: ( x )=>x.TeamID,
+            equipmentManager: ( x )=>x.TeamID);
         }
     }
 
-    public long YearsWithTeam
-    {
-        get
-        {
-            return Match(
-                player: (x) => x.YearsWithTeam,
-                coach: (x) => x.YearsWithTeam,
-                medicalStaff: (x) => x.YearsWithTeam,
-                equipmentManager: (x) => x.YearsWithTeam
-            );
+    public long YearsWithTeam {
+        get {
+            return Match(player: ( x )=>x.YearsWithTeam,
+            coach: ( x )=>x.YearsWithTeam,
+            medicalStaff: ( x )=>x.YearsWithTeam,
+            equipmentManager: ( x )=>x.YearsWithTeam);
         }
     }
 
-    public Member(Player value, JsonElement? element = null)
+    public Member (Player value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Member(Coach value, JsonElement? element = null)
+    public Member (Coach value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Member(MedicalStaff value, JsonElement? element = null)
+    public Member (MedicalStaff value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Member(EquipmentManager value, JsonElement? element = null)
+    public Member (EquipmentManager value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Member(JsonElement element)
-    {
-        this._element = element;
-    }
+    public Member (JsonElement element)
+    { this._element = element; }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="Player"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickPlayer(out var value)) {
-    ///     // `value` is of type `Player`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="Player"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickPlayer(out var value)) {
+///     // `value` is of type `Player`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
     public bool TryPickPlayer([NotNullWhen(true)] out Player? value)
     {
-        value = this.Value as Player;
-        return value != null;
+        value =this.Value as Player ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="Coach"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickCoach(out var value)) {
-    ///     // `value` is of type `Coach`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="Coach"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickCoach(out var value)) {
+///     // `value` is of type `Coach`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
     public bool TryPickCoach([NotNullWhen(true)] out Coach? value)
     {
-        value = this.Value as Coach;
-        return value != null;
+        value =this.Value as Coach ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="MedicalStaff"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickMedicalStaff(out var value)) {
-    ///     // `value` is of type `MedicalStaff`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="MedicalStaff"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickMedicalStaff(out var value)) {
+///     // `value` is of type `MedicalStaff`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
     public bool TryPickMedicalStaff([NotNullWhen(true)] out MedicalStaff? value)
     {
-        value = this.Value as MedicalStaff;
-        return value != null;
+        value =this.Value as MedicalStaff ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="EquipmentManager"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickEquipmentManager(out var value)) {
-    ///     // `value` is of type `EquipmentManager`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
-    public bool TryPickEquipmentManager([NotNullWhen(true)] out EquipmentManager? value)
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="EquipmentManager"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickEquipmentManager(out var value)) {
+///     // `value` is of type `EquipmentManager`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
+    public bool TryPickEquipmentManager(
+        [NotNullWhen(true)] out EquipmentManager? value
+    )
     {
-        value = this.Value as EquipmentManager;
-        return value != null;
+        value =this.Value as EquipmentManager ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Calls the function parameter corresponding to the variant the instance was constructed with.
-    ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
-    /// if you need your function parameters to return something.</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
-    /// that doesn't match any variant's expected shape).
-    /// </exception>
-    ///
-    /// <example>
-    /// <code>
-    /// instance.Switch(
-    ///     (Player value) =&gt; {...},
-    ///     (Coach value) =&gt; {...},
-    ///     (MedicalStaff value) =&gt; {...},
-    ///     (EquipmentManager value) =&gt; {...}
-    /// );
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Calls the function parameter corresponding to the variant the instance was constructed with.
+/// 
+/// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
+/// if you need your function parameters to return something.</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+/// that doesn't match any variant's expected shape).
+/// </exception>
+/// 
+/// <example>
+/// <code>
+/// instance.Switch(
+///     (Player value) =&gt; {...},
+///     (Coach value) =&gt; {...},
+///     (MedicalStaff value) =&gt; {...},
+///     (EquipmentManager value) =&gt; {...}
+/// );
+/// </code>
+/// </example>
+/// </summary>
     public void Switch(
         Action<Player> player,
         Action<Coach> coach,
@@ -377,33 +353,35 @@ public record class Member : ModelBase
                 break;
             default:
                 throw new BelieveInvalidDataException("Data did not match any variant of Member");
+
         }
     }
 
     /// <summary>
-    /// Calls the function parameter corresponding to the variant the instance was constructed with and
-    /// returns its result.
-    ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
-    /// if you don't need your function parameters to return a value.</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
-    /// that doesn't match any variant's expected shape).
-    /// </exception>
-    ///
-    /// <example>
-    /// <code>
-    /// var result = instance.Match(
-    ///     (Player value) =&gt; {...},
-    ///     (Coach value) =&gt; {...},
-    ///     (MedicalStaff value) =&gt; {...},
-    ///     (EquipmentManager value) =&gt; {...}
-    /// );
-    /// </code>
-    /// </example>
-    /// </summary>
-    public T Match<T>(
+/// Calls the function parameter corresponding to the variant the instance was constructed with and
+/// returns its result.
+/// 
+/// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
+/// if you don't need your function parameters to return a value.</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+/// that doesn't match any variant's expected shape).
+/// </exception>
+/// 
+/// <example>
+/// <code>
+/// var result = instance.Match(
+///     (Player value) =&gt; {...},
+///     (Coach value) =&gt; {...},
+///     (MedicalStaff value) =&gt; {...},
+///     (EquipmentManager value) =&gt; {...}
+/// );
+/// </code>
+/// </example>
+/// </summary>
+    public T Match<T>
+    (
         Func<Player, T> player,
         Func<Coach, T> coach,
         Func<MedicalStaff, T> medicalStaff,
@@ -412,72 +390,67 @@ public record class Member : ModelBase
     {
         return this.Value switch
         {
-            Player value => player(value),
-            Coach value => coach(value),
-            MedicalStaff value => medicalStaff(value),
-            EquipmentManager value => equipmentManager(value),
-            _ => throw new BelieveInvalidDataException("Data did not match any variant of Member"),
-        };
+            Player value=>player(value),
+            Coach value=>coach(value),
+            MedicalStaff value=>medicalStaff(value),
+            EquipmentManager value=>equipmentManager(value),
+            _ =>throw new BelieveInvalidDataException("Data did not match any variant of Member")
+        } ;
     }
 
-    public static implicit operator Member(Player value) => new(value);
+    public static implicit operator Member (Player value)=> new(value) ;
 
-    public static implicit operator Member(Coach value) => new(value);
+    public static implicit operator Member (Coach value)=> new(value) ;
 
-    public static implicit operator Member(MedicalStaff value) => new(value);
+    public static implicit operator Member (MedicalStaff value)=> new(value) ;
 
-    public static implicit operator Member(EquipmentManager value) => new(value);
+    public static implicit operator Member (
+        EquipmentManager value
+    )=> new(value) ;
 
     /// <summary>
-    /// Validates that the instance was constructed with a known variant and that this variant is valid
-    /// (based on its own <c>Validate</c> method).
-    ///
-    /// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance does not pass validation.
-    /// </exception>
-    /// </summary>
+/// Validates that the instance was constructed with a known variant and that this variant is valid
+/// (based on its own <c>Validate</c> method).
+/// 
+/// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance does not pass validation.
+/// </exception>
+/// </summary>
     public override void Validate()
     {
         if (this.Value == null)
         {
             throw new BelieveInvalidDataException("Data did not match any variant of Member");
         }
-        this.Switch(
-            (player) => player.Validate(),
-            (coach) => coach.Validate(),
-            (medicalStaff) => medicalStaff.Validate(),
-            (equipmentManager) => equipmentManager.Validate()
-        );
+        this.Switch((player) => player.Validate(),
+        (coach) => coach.Validate(),
+        (medicalStaff) => medicalStaff.Validate(),
+        (equipmentManager) => equipmentManager.Validate());
     }
 
-    public virtual bool Equals(Member? other) =>
-        other != null
-        && this.VariantIndex() == other.VariantIndex()
-        && JsonElement.DeepEquals(this.Json, other.Json);
+    public virtual bool Equals(Member? other)
+    =>other != null &&
+    this.VariantIndex() == other.VariantIndex() &&
+    JsonElement.DeepEquals(this.Json, other.Json);
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(this.Json),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(this.Json), ModelBase.ToStringSerializerOptions);
 
     int VariantIndex()
     {
         return this.Value switch
         {
-            Player _ => 0,
-            Coach _ => 1,
-            MedicalStaff _ => 2,
-            EquipmentManager _ => 3,
-            _ => -1,
-        };
+            Player _=>0,
+            Coach _=>1,
+            MedicalStaff _=>2,
+            EquipmentManager _=>3,
+            _ =>-1
+        } ;
     }
 }
 
@@ -491,99 +464,84 @@ sealed class MemberConverter : JsonConverter<Member>
     {
         var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
         string? memberType;
-        try
-        {
+        try {
             memberType = element.GetProperty("member_type").GetString();
-        }
-        catch
-        {
+        } catch {
             memberType = null;
         }
 
         switch (memberType)
         {
-            case "player":
-            {
+            case "player":{
                 try
                 {
                     var deserialized = JsonSerializer.Deserialize<Player>(element, options);
-                    if (deserialized != null)
-                    {
+                    if (deserialized != null) {
+
                         return new(deserialized, element);
                     }
                 }
-                catch (JsonException)
+                catch (JsonException )
                 {
                     // ignore
                 }
 
                 return new(element);
-            }
-            case "coach":
-            {
+            }case "coach":{
                 try
                 {
                     var deserialized = JsonSerializer.Deserialize<Coach>(element, options);
-                    if (deserialized != null)
-                    {
+                    if (deserialized != null) {
+
                         return new(deserialized, element);
                     }
                 }
-                catch (JsonException)
+                catch (JsonException )
                 {
                     // ignore
                 }
 
                 return new(element);
-            }
-            case "medical_staff":
-            {
+            }case "medical_staff":{
                 try
                 {
                     var deserialized = JsonSerializer.Deserialize<MedicalStaff>(element, options);
-                    if (deserialized != null)
-                    {
+                    if (deserialized != null) {
+
                         return new(deserialized, element);
                     }
                 }
-                catch (JsonException)
+                catch (JsonException )
                 {
                     // ignore
                 }
 
                 return new(element);
-            }
-            case "equipment_manager":
-            {
+            }case "equipment_manager":{
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<EquipmentManager>(
-                        element,
-                        options
-                    );
-                    if (deserialized != null)
-                    {
+                    var deserialized = JsonSerializer.Deserialize<EquipmentManager>(element, options);
+                    if (deserialized != null) {
+
                         return new(deserialized, element);
                     }
                 }
-                catch (JsonException)
+                catch (JsonException )
                 {
                     // ignore
                 }
 
                 return new(element);
-            }
-            default:
-            {
-                return new Member(element);
-            }
+            }default:
+                { return new Member(element); }
+
         }
     }
 
-    public override void Write(Utf8JsonWriter writer, Member value, JsonSerializerOptions options)
-    {
-        JsonSerializer.Serialize(writer, value.Json, options);
-    }
+    public override void Write(
+        Utf8JsonWriter writer, Member value, JsonSerializerOptions options
+    )
+    { JsonSerializer.Serialize(writer, value.Json, options); }
 }
 
 /// <summary>
@@ -595,12 +553,12 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// ID of the character (references /characters/{id})
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -608,12 +566,12 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// Jersey/shirt number
     /// </summary>
-    public required long JerseyNumber
-    {
-        get
-        {
+    public required long JerseyNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("jersey_number");
+            return this._rawData.GetNotNullStruct<long>(
+                "jersey_number"
+            );
         }
         init { this._rawData.Set("jersey_number", value); }
     }
@@ -621,12 +579,12 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// Playing position on the field
     /// </summary>
-    public required ApiEnum<string, Position> Position
-    {
-        get
-        {
+    public required ApiEnum<string, Position> Position {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, Position>>("position");
+            return this._rawData.GetNotNullClass<ApiEnum<string, Position>>(
+                "position"
+            );
         }
         init { this._rawData.Set("position", value); }
     }
@@ -634,12 +592,12 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// ID of the team they belong to
     /// </summary>
-    public required string TeamID
-    {
-        get
-        {
+    public required string TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -647,12 +605,12 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// Number of years with the current team
     /// </summary>
-    public required long YearsWithTeam
-    {
-        get
-        {
+    public required long YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("years_with_team");
+            return this._rawData.GetNotNullStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -660,17 +618,15 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// Total assists for the team
     /// </summary>
-    public long? Assists
-    {
-        get
-        {
+    public long? Assists {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("assists");
+            return this._rawData.GetNullableStruct<long>(
+                "assists"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -681,17 +637,15 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// Total goals scored for the team
     /// </summary>
-    public long? GoalsScored
-    {
-        get
-        {
+    public long? GoalsScored {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("goals_scored");
+            return this._rawData.GetNullableStruct<long>(
+                "goals_scored"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -702,17 +656,15 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// Whether this player is team captain
     /// </summary>
-    public bool? IsCaptain
-    {
-        get
-        {
+    public bool? IsCaptain {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_captain");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_captain"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -723,17 +675,15 @@ public sealed record class Player : JsonModel
     /// <summary>
     /// Discriminator field indicating this is a player
     /// </summary>
-    public ApiEnum<string, MemberType>? MemberType
-    {
-        get
-        {
+    public ApiEnum<string, MemberType>? MemberType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, MemberType>>("member_type");
+            return this._rawData.GetNullableClass<ApiEnum<string, MemberType>>(
+                "member_type"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -755,39 +705,38 @@ public sealed record class Player : JsonModel
         this.MemberType?.Validate();
     }
 
-    public Player() { }
+    public Player ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Player(Player player)
-        : base(player) { }
-#pragma warning restore CS8618
+    public Player (Player player) : base(player)
+    {  }
+    #pragma warning restore CS8618
 
-    public Player(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Player (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Player(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Player (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="PlayerFromRaw.FromRawUnchecked"/>
-    public static Player FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Player FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class PlayerFromRaw : IFromRawJson<Player>
 {
     /// <inheritdoc/>
-    public Player FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Player.FromRawUnchecked(rawData);
+    public Player FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Player.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -796,7 +745,7 @@ class PlayerFromRaw : IFromRawJson<Player>
 [JsonConverter(typeof(MemberTypeConverter))]
 public enum MemberType
 {
-    Player,
+    Player
 }
 
 sealed class MemberTypeConverter : JsonConverter<MemberType>
@@ -808,29 +757,20 @@ sealed class MemberTypeConverter : JsonConverter<MemberType>
     )
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "player" => MemberType.Player,
-            _ => (MemberType)(-1),
-        };
+        { "player"=>MemberType.Player, _ =>(MemberType)(-1) };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        MemberType value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, MemberType value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MemberType.Player => "player",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MemberType.Player=>"player",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -843,12 +783,12 @@ public sealed record class Coach : JsonModel
     /// <summary>
     /// ID of the character (references /characters/{id})
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -856,12 +796,12 @@ public sealed record class Coach : JsonModel
     /// <summary>
     /// Coaching specialty/role
     /// </summary>
-    public required ApiEnum<string, CoachSpecialty> Specialty
-    {
-        get
-        {
+    public required ApiEnum<string, CoachSpecialty> Specialty {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, CoachSpecialty>>("specialty");
+            return this._rawData.GetNotNullClass<ApiEnum<string, CoachSpecialty>>(
+                "specialty"
+            );
         }
         init { this._rawData.Set("specialty", value); }
     }
@@ -869,12 +809,12 @@ public sealed record class Coach : JsonModel
     /// <summary>
     /// ID of the team they belong to
     /// </summary>
-    public required string TeamID
-    {
-        get
-        {
+    public required string TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -882,12 +822,12 @@ public sealed record class Coach : JsonModel
     /// <summary>
     /// Number of years with the current team
     /// </summary>
-    public required long YearsWithTeam
-    {
-        get
-        {
+    public required long YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("years_with_team");
+            return this._rawData.GetNotNullStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -895,17 +835,15 @@ public sealed record class Coach : JsonModel
     /// <summary>
     /// Coaching certifications and licenses
     /// </summary>
-    public IReadOnlyList<string>? Certifications
-    {
-        get
-        {
+    public IReadOnlyList<string>? Certifications {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("certifications");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "certifications"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -919,17 +857,15 @@ public sealed record class Coach : JsonModel
     /// <summary>
     /// Discriminator field indicating this is a coach
     /// </summary>
-    public ApiEnum<string, CoachMemberType>? MemberType
-    {
-        get
-        {
+    public ApiEnum<string, CoachMemberType>? MemberType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, CoachMemberType>>("member_type");
+            return this._rawData.GetNullableClass<ApiEnum<string, CoachMemberType>>(
+                "member_type"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -940,12 +876,12 @@ public sealed record class Coach : JsonModel
     /// <summary>
     /// Career win rate (0.0 to 1.0)
     /// </summary>
-    public double? WinRate
-    {
-        get
-        {
+    public double? WinRate {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("win_rate");
+            return this._rawData.GetNullableStruct<double>(
+                "win_rate"
+            );
         }
         init { this._rawData.Set("win_rate", value); }
     }
@@ -962,39 +898,38 @@ public sealed record class Coach : JsonModel
         _ = this.WinRate;
     }
 
-    public Coach() { }
+    public Coach ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Coach(Coach coach)
-        : base(coach) { }
-#pragma warning restore CS8618
+    public Coach (Coach coach) : base(coach)
+    {  }
+    #pragma warning restore CS8618
 
-    public Coach(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Coach (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Coach(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Coach (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CoachFromRaw.FromRawUnchecked"/>
-    public static Coach FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Coach FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CoachFromRaw : IFromRawJson<Coach>
 {
     /// <inheritdoc/>
-    public Coach FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Coach.FromRawUnchecked(rawData);
+    public Coach FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Coach.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -1003,7 +938,7 @@ class CoachFromRaw : IFromRawJson<Coach>
 [JsonConverter(typeof(CoachMemberTypeConverter))]
 public enum CoachMemberType
 {
-    Coach,
+    Coach
 }
 
 sealed class CoachMemberTypeConverter : JsonConverter<CoachMemberType>
@@ -1015,10 +950,7 @@ sealed class CoachMemberTypeConverter : JsonConverter<CoachMemberType>
     )
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "coach" => CoachMemberType.Coach,
-            _ => (CoachMemberType)(-1),
-        };
+        { "coach"=>CoachMemberType.Coach, _ =>(CoachMemberType)(-1) };
     }
 
     public override void Write(
@@ -1027,17 +959,13 @@ sealed class CoachMemberTypeConverter : JsonConverter<CoachMemberType>
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                CoachMemberType.Coach => "coach",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            CoachMemberType.Coach=>"coach",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -1050,12 +978,12 @@ public sealed record class MedicalStaff : JsonModel
     /// <summary>
     /// ID of the character (references /characters/{id})
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -1063,12 +991,12 @@ public sealed record class MedicalStaff : JsonModel
     /// <summary>
     /// Medical specialty
     /// </summary>
-    public required ApiEnum<string, MedicalSpecialty> Specialty
-    {
-        get
-        {
+    public required ApiEnum<string, MedicalSpecialty> Specialty {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, MedicalSpecialty>>("specialty");
+            return this._rawData.GetNotNullClass<ApiEnum<string, MedicalSpecialty>>(
+                "specialty"
+            );
         }
         init { this._rawData.Set("specialty", value); }
     }
@@ -1076,12 +1004,12 @@ public sealed record class MedicalStaff : JsonModel
     /// <summary>
     /// ID of the team they belong to
     /// </summary>
-    public required string TeamID
-    {
-        get
-        {
+    public required string TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -1089,12 +1017,12 @@ public sealed record class MedicalStaff : JsonModel
     /// <summary>
     /// Number of years with the current team
     /// </summary>
-    public required long YearsWithTeam
-    {
-        get
-        {
+    public required long YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("years_with_team");
+            return this._rawData.GetNotNullStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -1102,12 +1030,12 @@ public sealed record class MedicalStaff : JsonModel
     /// <summary>
     /// Professional license number
     /// </summary>
-    public string? LicenseNumber
-    {
-        get
-        {
+    public string? LicenseNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("license_number");
+            return this._rawData.GetNullableClass<string>(
+                "license_number"
+            );
         }
         init { this._rawData.Set("license_number", value); }
     }
@@ -1115,19 +1043,15 @@ public sealed record class MedicalStaff : JsonModel
     /// <summary>
     /// Discriminator field indicating this is medical staff
     /// </summary>
-    public ApiEnum<string, MedicalStaffMemberType>? MemberType
-    {
-        get
-        {
+    public ApiEnum<string, MedicalStaffMemberType>? MemberType {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<ApiEnum<string, MedicalStaffMemberType>>(
                 "member_type"
             );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -1138,17 +1062,15 @@ public sealed record class MedicalStaff : JsonModel
     /// <summary>
     /// Medical qualifications and degrees
     /// </summary>
-    public IReadOnlyList<string>? Qualifications
-    {
-        get
-        {
+    public IReadOnlyList<string>? Qualifications {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("qualifications");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "qualifications"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -1171,39 +1093,38 @@ public sealed record class MedicalStaff : JsonModel
         _ = this.Qualifications;
     }
 
-    public MedicalStaff() { }
+    public MedicalStaff ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MedicalStaff(MedicalStaff medicalStaff)
-        : base(medicalStaff) { }
-#pragma warning restore CS8618
+    public MedicalStaff (MedicalStaff medicalStaff) : base(medicalStaff)
+    {  }
+    #pragma warning restore CS8618
 
-    public MedicalStaff(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public MedicalStaff (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MedicalStaff(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MedicalStaff (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MedicalStaffFromRaw.FromRawUnchecked"/>
-    public static MedicalStaff FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static MedicalStaff FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class MedicalStaffFromRaw : IFromRawJson<MedicalStaff>
 {
     /// <inheritdoc/>
-    public MedicalStaff FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MedicalStaff.FromRawUnchecked(rawData);
+    public MedicalStaff FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>MedicalStaff.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -1212,7 +1133,7 @@ class MedicalStaffFromRaw : IFromRawJson<MedicalStaff>
 [JsonConverter(typeof(MedicalStaffMemberTypeConverter))]
 public enum MedicalStaffMemberType
 {
-    MedicalStaff,
+    MedicalStaff
 }
 
 sealed class MedicalStaffMemberTypeConverter : JsonConverter<MedicalStaffMemberType>
@@ -1225,8 +1146,8 @@ sealed class MedicalStaffMemberTypeConverter : JsonConverter<MedicalStaffMemberT
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "medical_staff" => MedicalStaffMemberType.MedicalStaff,
-            _ => (MedicalStaffMemberType)(-1),
+            "medical_staff"=>MedicalStaffMemberType.MedicalStaff,
+            _ =>(MedicalStaffMemberType)(-1)
         };
     }
 
@@ -1236,17 +1157,13 @@ sealed class MedicalStaffMemberTypeConverter : JsonConverter<MedicalStaffMemberT
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MedicalStaffMemberType.MedicalStaff => "medical_staff",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MedicalStaffMemberType.MedicalStaff=>"medical_staff",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -1259,12 +1176,12 @@ public sealed record class EquipmentManager : JsonModel
     /// <summary>
     /// ID of the character (references /characters/{id})
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -1272,12 +1189,12 @@ public sealed record class EquipmentManager : JsonModel
     /// <summary>
     /// ID of the team they belong to
     /// </summary>
-    public required string TeamID
-    {
-        get
-        {
+    public required string TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -1285,12 +1202,12 @@ public sealed record class EquipmentManager : JsonModel
     /// <summary>
     /// Number of years with the current team
     /// </summary>
-    public required long YearsWithTeam
-    {
-        get
-        {
+    public required long YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("years_with_team");
+            return this._rawData.GetNotNullStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -1298,17 +1215,15 @@ public sealed record class EquipmentManager : JsonModel
     /// <summary>
     /// Whether this is the head equipment manager
     /// </summary>
-    public bool? IsHeadKitman
-    {
-        get
-        {
+    public bool? IsHeadKitman {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_head_kitman");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_head_kitman"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -1319,19 +1234,15 @@ public sealed record class EquipmentManager : JsonModel
     /// <summary>
     /// Discriminator field indicating this is an equipment manager
     /// </summary>
-    public ApiEnum<string, EquipmentManagerMemberType>? MemberType
-    {
-        get
-        {
+    public ApiEnum<string, EquipmentManagerMemberType>? MemberType {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<ApiEnum<string, EquipmentManagerMemberType>>(
                 "member_type"
             );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -1342,17 +1253,15 @@ public sealed record class EquipmentManager : JsonModel
     /// <summary>
     /// List of responsibilities
     /// </summary>
-    public IReadOnlyList<string>? Responsibilities
-    {
-        get
-        {
+    public IReadOnlyList<string>? Responsibilities {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("responsibilities");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "responsibilities"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -1374,41 +1283,40 @@ public sealed record class EquipmentManager : JsonModel
         _ = this.Responsibilities;
     }
 
-    public EquipmentManager() { }
+    public EquipmentManager ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public EquipmentManager(EquipmentManager equipmentManager)
-        : base(equipmentManager) { }
-#pragma warning restore CS8618
+    public EquipmentManager (EquipmentManager equipmentManager) : base(
+        equipmentManager
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public EquipmentManager(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public EquipmentManager (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    EquipmentManager(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    EquipmentManager (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="EquipmentManagerFromRaw.FromRawUnchecked"/>
     public static EquipmentManager FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class EquipmentManagerFromRaw : IFromRawJson<EquipmentManager>
 {
     /// <inheritdoc/>
-    public EquipmentManager FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        EquipmentManager.FromRawUnchecked(rawData);
+    public EquipmentManager FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>EquipmentManager.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -1417,7 +1325,7 @@ class EquipmentManagerFromRaw : IFromRawJson<EquipmentManager>
 [JsonConverter(typeof(EquipmentManagerMemberTypeConverter))]
 public enum EquipmentManagerMemberType
 {
-    EquipmentManager,
+    EquipmentManager
 }
 
 sealed class EquipmentManagerMemberTypeConverter : JsonConverter<EquipmentManagerMemberType>
@@ -1430,8 +1338,8 @@ sealed class EquipmentManagerMemberTypeConverter : JsonConverter<EquipmentManage
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "equipment_manager" => EquipmentManagerMemberType.EquipmentManager,
-            _ => (EquipmentManagerMemberType)(-1),
+            "equipment_manager"=>EquipmentManagerMemberType.EquipmentManager,
+            _ =>(EquipmentManagerMemberType)(-1)
         };
     }
 
@@ -1441,16 +1349,12 @@ sealed class EquipmentManagerMemberTypeConverter : JsonConverter<EquipmentManage
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                EquipmentManagerMemberType.EquipmentManager => "equipment_manager",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            EquipmentManagerMemberType.EquipmentManager=>"equipment_manager",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

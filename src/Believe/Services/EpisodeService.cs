@@ -16,24 +16,25 @@ public sealed class EpisodeService : IEpisodeService
     readonly Lazy<IEpisodeServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IEpisodeServiceWithRawResponse WithRawResponse
-    {
+    public IEpisodeServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IEpisodeService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new EpisodeService(this._client.WithOptions(modifier));
-    }
+    public IEpisodeService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new EpisodeService(this._client.WithOptions(modifier)); }
 
-    public EpisodeService(IBelieveClient client)
+    public EpisodeService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new EpisodeServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new EpisodeServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -42,9 +43,7 @@ public sealed class EpisodeService : IEpisodeService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -54,13 +53,9 @@ public sealed class EpisodeService : IEpisodeService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Episode> Retrieve(
         string episodeID,
         EpisodeRetrieveParams? parameters = null,
@@ -69,7 +64,9 @@ public sealed class EpisodeService : IEpisodeService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { EpisodeID = episodeID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -78,13 +75,9 @@ public sealed class EpisodeService : IEpisodeService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Episode> Update(
         string episodeID,
         EpisodeUpdateParams? parameters = null,
@@ -93,7 +86,9 @@ public sealed class EpisodeService : IEpisodeService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { EpisodeID = episodeID }, cancellationToken);
+        return this.Update(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -102,9 +97,7 @@ public sealed class EpisodeService : IEpisodeService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -115,9 +108,7 @@ public sealed class EpisodeService : IEpisodeService
     )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string episodeID,
         EpisodeDeleteParams? parameters = null,
@@ -126,8 +117,9 @@ public sealed class EpisodeService : IEpisodeService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { EpisodeID = episodeID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -136,13 +128,9 @@ public sealed class EpisodeService : IEpisodeService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetWisdom(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetWisdom(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Dictionary<string, JsonElement>> GetWisdom(
         string episodeID,
         EpisodeGetWisdomParams? parameters = null,
@@ -151,7 +139,9 @@ public sealed class EpisodeService : IEpisodeService
     {
         parameters ??= new();
 
-        return this.GetWisdom(parameters with { EpisodeID = episodeID }, cancellationToken);
+        return this.GetWisdom(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken);
     }
 }
 
@@ -161,15 +151,15 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IEpisodeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IEpisodeServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new EpisodeServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public EpisodeServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public EpisodeServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<Episode>> Create(
@@ -183,18 +173,13 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var episode = await response.Deserialize<Episode>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    episode.Validate();
-                }
-                return episode;
+        return new(response, async ( token )=>{
+            var episode = await response.Deserialize<Episode>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                episode.Validate();
             }
-        );
+            return episode;
+        });
     }
 
     /// <inheritdoc/>
@@ -205,7 +190,9 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         if (parameters.EpisodeID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.EpisodeID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.EpisodeID' cannot be null"
+            );
         }
 
         HttpRequest<EpisodeRetrieveParams> request = new()
@@ -214,21 +201,14 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var episode = await response.Deserialize<Episode>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    episode.Validate();
-                }
-                return episode;
+        return new(response, async ( token )=>{
+            var episode = await response.Deserialize<Episode>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                episode.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return episode;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Episode>> Retrieve(
         string episodeID,
         EpisodeRetrieveParams? parameters = null,
@@ -237,7 +217,9 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { EpisodeID = episodeID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -248,7 +230,9 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         if (parameters.EpisodeID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.EpisodeID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.EpisodeID' cannot be null"
+            );
         }
 
         HttpRequest<EpisodeUpdateParams> request = new()
@@ -257,21 +241,14 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var episode = await response.Deserialize<Episode>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    episode.Validate();
-                }
-                return episode;
+        return new(response, async ( token )=>{
+            var episode = await response.Deserialize<Episode>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                episode.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return episode;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Episode>> Update(
         string episodeID,
         EpisodeUpdateParams? parameters = null,
@@ -280,7 +257,9 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Update(parameters with { EpisodeID = episodeID }, cancellationToken);
+        return this.Update(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -297,20 +276,13 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<PaginatedResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new EpisodeListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<PaginatedResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new EpisodeListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -321,7 +293,9 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         if (parameters.EpisodeID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.EpisodeID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.EpisodeID' cannot be null"
+            );
         }
 
         HttpRequest<EpisodeDeleteParams> request = new()
@@ -330,9 +304,7 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string episodeID,
         EpisodeDeleteParams? parameters = null,
@@ -341,7 +313,9 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { EpisodeID = episodeID }, cancellationToken);
+        return this.Delete(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -352,7 +326,9 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         if (parameters.EpisodeID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.EpisodeID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.EpisodeID' cannot be null"
+            );
         }
 
         HttpRequest<EpisodeGetWisdomParams> request = new()
@@ -361,18 +337,10 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response
-                    .Deserialize<Dictionary<string, JsonElement>>(token)
-                    .ConfigureAwait(false);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
+        return new(response, async ( token )=>{
+            return await response.Deserialize<Dictionary<string, JsonElement>>(token).ConfigureAwait(false);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Dictionary<string, JsonElement>>> GetWisdom(
         string episodeID,
         EpisodeGetWisdomParams? parameters = null,
@@ -381,6 +349,8 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.GetWisdom(parameters with { EpisodeID = episodeID }, cancellationToken);
+        return this.GetWisdom(parameters with{
+            EpisodeID = episodeID
+        }, cancellationToken);
     }
 }

@@ -26,38 +26,41 @@ public interface IPrincipleService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IPrincipleService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IPrincipleService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Get details about a specific coaching principle.
-    /// </summary>
+/// Get details about a specific coaching principle.
+/// </summary>
     Task<CoachingPrinciple> Retrieve(
         PrincipleRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(PrincipleRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(PrincipleRetrieveParams, CancellationToken)"/>
     Task<CoachingPrinciple> Retrieve(
         string principleID,
         PrincipleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a paginated list of Ted Lasso's core coaching principles and philosophy.
-    /// </summary>
+/// Get a paginated list of Ted Lasso's core coaching principles and philosophy.
+/// </summary>
     Task<PrincipleListPage> List(
         PrincipleListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a random coaching principle to inspire your day.
-    /// </summary>
+/// Get a random coaching principle to inspire your day.
+/// </summary>
     Task<CoachingPrinciple> GetRandom(
         PrincipleGetRandomParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -71,39 +74,44 @@ public interface IPrincipleServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IPrincipleServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IPrincipleServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /coaching/principles/{principle_id}</c>, but is otherwise the
-    /// same as <see cref="IPrincipleService.Retrieve(PrincipleRetrieveParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /coaching/principles/{principle_id}</c>, but is otherwise the
+/// same as <see cref="IPrincipleService.Retrieve(PrincipleRetrieveParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<CoachingPrinciple>> Retrieve(
         PrincipleRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(PrincipleRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(PrincipleRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<CoachingPrinciple>> Retrieve(
         string principleID,
         PrincipleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /coaching/principles</c>, but is otherwise the
-    /// same as <see cref="IPrincipleService.List(PrincipleListParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /coaching/principles</c>, but is otherwise the
+/// same as <see cref="IPrincipleService.List(PrincipleListParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<PrincipleListPage>> List(
         PrincipleListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /coaching/principles/random</c>, but is otherwise the
-    /// same as <see cref="IPrincipleService.GetRandom(PrincipleGetRandomParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /coaching/principles/random</c>, but is otherwise the
+/// same as <see cref="IPrincipleService.GetRandom(PrincipleGetRandomParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<CoachingPrinciple>> GetRandom(
         PrincipleGetRandomParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

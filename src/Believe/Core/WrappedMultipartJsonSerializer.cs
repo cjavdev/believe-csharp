@@ -9,8 +9,8 @@ namespace Believe.Core;
 /// </summary>
 sealed class WrappedMultipartJsonSerializer
 {
-    public static T GetNotNullClass<T>(MultipartJsonElement element, string name)
-        where T : class
+    public static T GetNotNullClass<T>
+    (MultipartJsonElement element, string name) where T: class
     {
         T deserialized;
         try
@@ -29,8 +29,8 @@ sealed class WrappedMultipartJsonSerializer
         return deserialized;
     }
 
-    public static T GetNotNullStruct<T>(MultipartJsonElement element, string name)
-        where T : struct
+    public static T GetNotNullStruct<T>
+    (MultipartJsonElement element, string name) where T: struct
     {
         T deserialized;
         try
@@ -49,16 +49,13 @@ sealed class WrappedMultipartJsonSerializer
         return deserialized;
     }
 
-    public static T? GetNullableClass<T>(MultipartJsonElement element, string name)
-        where T : class
+    public static T? GetNullableClass<T>
+    (MultipartJsonElement element, string name) where T: class
     {
         T? deserialized;
         try
         {
-            deserialized = MultipartJsonSerializer.Deserialize<T?>(
-                element,
-                ModelBase.SerializerOptions
-            );
+            deserialized = MultipartJsonSerializer.Deserialize<T?>(element, ModelBase.SerializerOptions);
         }
         catch (JsonException e)
         {
@@ -70,16 +67,13 @@ sealed class WrappedMultipartJsonSerializer
         return deserialized;
     }
 
-    public static T? GetNullableStruct<T>(MultipartJsonElement element, string name)
-        where T : struct
+    public static T? GetNullableStruct<T>
+    (MultipartJsonElement element, string name) where T: struct
     {
         T? deserialized;
         try
         {
-            deserialized = MultipartJsonSerializer.Deserialize<T?>(
-                element,
-                ModelBase.SerializerOptions
-            );
+            deserialized = MultipartJsonSerializer.Deserialize<T?>(element, ModelBase.SerializerOptions);
         }
         catch (JsonException e)
         {

@@ -13,8 +13,7 @@ public sealed class WService : IWService
     readonly Lazy<IWServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IWServiceWithRawResponse WithRawResponse
-    {
+    public IWServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
@@ -22,22 +21,23 @@ public sealed class WService : IWService
 
     /// <inheritdoc/>
     public IWService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new WService(this._client.WithOptions(modifier));
-    }
+    { return new WService(this._client.WithOptions(modifier)); }
 
-    public WService(IBelieveClient client)
+    public WService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new WServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new WServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
-    public Task Test(WTestParams? parameters = null, CancellationToken cancellationToken = default)
-    {
-        return this.WithRawResponse.Test(parameters, cancellationToken);
-    }
+    public Task Test(
+        WTestParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    { return this.WithRawResponse.Test(parameters, cancellationToken); }
 }
 
 /// <inheritdoc/>
@@ -46,15 +46,13 @@ public sealed class WServiceWithRawResponse : IWServiceWithRawResponse
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IWServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new WServiceWithRawResponse(this._client.WithOptions(modifier));
-    }
+    public IWServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new WServiceWithRawResponse(this._client.WithOptions(modifier)); }
 
-    public WServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public WServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public Task<HttpResponse> Test(
@@ -64,7 +62,11 @@ public sealed class WServiceWithRawResponse : IWServiceWithRawResponse
     {
         parameters ??= new();
 
-        HttpRequest<WTestParams> request = new() { Method = HttpMethod.Get, Params = parameters };
+        HttpRequest<WTestParams> request = new()
+        {
+            Method = HttpMethod.Get,
+            Params = parameters,
+        };
         return this._client.Execute(request, cancellationToken);
     }
 }

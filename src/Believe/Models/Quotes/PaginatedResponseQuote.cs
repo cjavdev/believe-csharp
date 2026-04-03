@@ -11,15 +11,14 @@ namespace Believe.Models.Quotes;
 [JsonConverter(typeof(JsonModelConverter<PaginatedResponseQuote, PaginatedResponseQuoteFromRaw>))]
 public sealed record class PaginatedResponseQuote : JsonModel
 {
-    public required IReadOnlyList<Quote> Data
-    {
-        get
-        {
+    public required IReadOnlyList<Quote> Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<Quote>>("data");
+            return this._rawData.GetNotNullStruct<ImmutableArray<Quote>>(
+                "data"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<Quote>>(
                 "data",
                 ImmutableArray.ToImmutableArray(value)
@@ -30,22 +29,22 @@ public sealed record class PaginatedResponseQuote : JsonModel
     /// <summary>
     /// Whether there are more items after this page.
     /// </summary>
-    public required bool HasMore
-    {
-        get
-        {
+    public required bool HasMore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("has_more");
+            return this._rawData.GetNotNullStruct<bool>(
+                "has_more"
+            );
         }
         init { this._rawData.Set("has_more", value); }
     }
 
-    public required long Limit
-    {
-        get
-        {
+    public required long Limit {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("limit");
+            return this._rawData.GetNotNullStruct<long>(
+                "limit"
+            );
         }
         init { this._rawData.Set("limit", value); }
     }
@@ -53,12 +52,12 @@ public sealed record class PaginatedResponseQuote : JsonModel
     /// <summary>
     /// Current page number (1-indexed, for display purposes).
     /// </summary>
-    public required long Page
-    {
-        get
-        {
+    public required long Page {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("page");
+            return this._rawData.GetNotNullStruct<long>(
+                "page"
+            );
         }
         init { this._rawData.Set("page", value); }
     }
@@ -66,32 +65,32 @@ public sealed record class PaginatedResponseQuote : JsonModel
     /// <summary>
     /// Total number of pages.
     /// </summary>
-    public required long Pages
-    {
-        get
-        {
+    public required long Pages {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("pages");
+            return this._rawData.GetNotNullStruct<long>(
+                "pages"
+            );
         }
         init { this._rawData.Set("pages", value); }
     }
 
-    public required long Skip
-    {
-        get
-        {
+    public required long Skip {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("skip");
+            return this._rawData.GetNotNullStruct<long>(
+                "skip"
+            );
         }
         init { this._rawData.Set("skip", value); }
     }
 
-    public required long Total
-    {
-        get
-        {
+    public required long Total {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total");
+            return this._rawData.GetNotNullStruct<long>(
+                "total"
+            );
         }
         init { this._rawData.Set("total", value); }
     }
@@ -111,34 +110,33 @@ public sealed record class PaginatedResponseQuote : JsonModel
         _ = this.Total;
     }
 
-    public PaginatedResponseQuote() { }
+    public PaginatedResponseQuote ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PaginatedResponseQuote(PaginatedResponseQuote paginatedResponseQuote)
-        : base(paginatedResponseQuote) { }
-#pragma warning restore CS8618
+    public PaginatedResponseQuote (
+        PaginatedResponseQuote paginatedResponseQuote
+    ) : base(paginatedResponseQuote)
+    {  }
+    #pragma warning restore CS8618
 
-    public PaginatedResponseQuote(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public PaginatedResponseQuote (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PaginatedResponseQuote(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    PaginatedResponseQuote (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="PaginatedResponseQuoteFromRaw.FromRawUnchecked"/>
     public static PaginatedResponseQuote FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class PaginatedResponseQuoteFromRaw : IFromRawJson<PaginatedResponseQuote>
@@ -146,5 +144,6 @@ class PaginatedResponseQuoteFromRaw : IFromRawJson<PaginatedResponseQuote>
     /// <inheritdoc/>
     public PaginatedResponseQuote FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => PaginatedResponseQuote.FromRawUnchecked(rawData);
+    )
+    =>PaginatedResponseQuote.FromRawUnchecked(rawData);
 }

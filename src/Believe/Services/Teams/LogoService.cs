@@ -15,8 +15,7 @@ public sealed class LogoService : ILogoService
     readonly Lazy<ILogoServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ILogoServiceWithRawResponse WithRawResponse
-    {
+    public ILogoServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
@@ -24,32 +23,34 @@ public sealed class LogoService : ILogoService
 
     /// <inheritdoc/>
     public ILogoService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new LogoService(this._client.WithOptions(modifier));
-    }
+    { return new LogoService(this._client.WithOptions(modifier)); }
 
-    public LogoService(IBelieveClient client)
+    public LogoService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new LogoServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new LogoServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
-    public Task Delete(LogoDeleteParams parameters, CancellationToken cancellationToken = default)
+    public Task Delete(
+        LogoDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string fileID,
         LogoDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        await this.Delete(parameters with { FileID = fileID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            FileID = fileID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -58,20 +59,18 @@ public sealed class LogoService : ILogoService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Download(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Download(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<JsonElement> Download(
         string fileID,
         LogoDownloadParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Download(parameters with { FileID = fileID }, cancellationToken);
+        return this.Download(parameters with{
+            FileID = fileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -80,20 +79,18 @@ public sealed class LogoService : ILogoService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Upload(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Upload(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<FileUpload> Upload(
         string teamID,
         LogoUploadParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Upload(parameters with { TeamID = teamID }, cancellationToken);
+        return this.Upload(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 }
 
@@ -103,15 +100,15 @@ public sealed class LogoServiceWithRawResponse : ILogoServiceWithRawResponse
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public ILogoServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ILogoServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new LogoServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public LogoServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public LogoServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public Task<HttpResponse> Delete(
@@ -121,7 +118,9 @@ public sealed class LogoServiceWithRawResponse : ILogoServiceWithRawResponse
     {
         if (parameters.FileID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.FileID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.FileID' cannot be null"
+            );
         }
 
         HttpRequest<LogoDeleteParams> request = new()
@@ -130,16 +129,16 @@ public sealed class LogoServiceWithRawResponse : ILogoServiceWithRawResponse
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string fileID,
         LogoDeleteParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Delete(parameters with { FileID = fileID }, cancellationToken);
+        return this.Delete(parameters with{
+            FileID = fileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -150,7 +149,9 @@ public sealed class LogoServiceWithRawResponse : ILogoServiceWithRawResponse
     {
         if (parameters.FileID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.FileID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.FileID' cannot be null"
+            );
         }
 
         HttpRequest<LogoDownloadParams> request = new()
@@ -159,23 +160,19 @@ public sealed class LogoServiceWithRawResponse : ILogoServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
+        return new(response, async ( token )=>{
+            return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<JsonElement>> Download(
         string fileID,
         LogoDownloadParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Download(parameters with { FileID = fileID }, cancellationToken);
+        return this.Download(parameters with{
+            FileID = fileID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -186,7 +183,9 @@ public sealed class LogoServiceWithRawResponse : ILogoServiceWithRawResponse
     {
         if (parameters.TeamID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.TeamID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.TeamID' cannot be null"
+            );
         }
 
         HttpRequest<LogoUploadParams> request = new()
@@ -195,29 +194,22 @@ public sealed class LogoServiceWithRawResponse : ILogoServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var fileUpload = await response
-                    .Deserialize<FileUpload>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    fileUpload.Validate();
-                }
-                return fileUpload;
+        return new(response, async ( token )=>{
+            var fileUpload = await response.Deserialize<FileUpload>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                fileUpload.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return fileUpload;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<FileUpload>> Upload(
         string teamID,
         LogoUploadParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Upload(parameters with { TeamID = teamID }, cancellationToken);
+        return this.Upload(parameters with{
+            TeamID = teamID
+        }, cancellationToken);
     }
 }

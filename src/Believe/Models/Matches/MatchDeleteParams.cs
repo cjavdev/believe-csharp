@@ -19,18 +19,18 @@ public record class MatchDeleteParams : ParamsBase
 {
     public string? MatchID { get; init; }
 
-    public MatchDeleteParams() { }
+    public MatchDeleteParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MatchDeleteParams(MatchDeleteParams matchDeleteParams)
-        : base(matchDeleteParams)
-    {
-        this.MatchID = matchDeleteParams.MatchID;
-    }
-#pragma warning restore CS8618
+    public MatchDeleteParams (MatchDeleteParams matchDeleteParams) : base(
+        matchDeleteParams
+    )
+    { this.MatchID = matchDeleteParams.MatchID; }
+    #pragma warning restore CS8618
 
-    public MatchDeleteParams(
+    public MatchDeleteParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -39,9 +39,9 @@ public record class MatchDeleteParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MatchDeleteParams(
+    MatchDeleteParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string matchID
@@ -51,7 +51,7 @@ public record class MatchDeleteParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.MatchID = matchID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static MatchDeleteParams FromRawUnchecked(
@@ -64,25 +64,18 @@ public record class MatchDeleteParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             matchID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["MatchID"] = JsonSerializer.SerializeToElement(this.MatchID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["MatchID"] = JsonSerializer.SerializeToElement(this.MatchID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(MatchDeleteParams? other)
     {
@@ -90,22 +83,23 @@ public record class MatchDeleteParams : ParamsBase
         {
             return false;
         }
-        return (this.MatchID?.Equals(other.MatchID) ?? other.MatchID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.MatchID?.Equals(other.MatchID) ?? other.MatchID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/matches/{0}", this.MatchID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/matches/{0}",
+            this.MatchID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -115,7 +109,5 @@ public record class MatchDeleteParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

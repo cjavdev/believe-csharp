@@ -16,12 +16,12 @@ public sealed record class EmotionalStats : JsonModel
     /// <summary>
     /// Level of curiosity over judgment (0-100)
     /// </summary>
-    public required long Curiosity
-    {
-        get
-        {
+    public required long Curiosity {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("curiosity");
+            return this._rawData.GetNotNullStruct<long>(
+                "curiosity"
+            );
         }
         init { this._rawData.Set("curiosity", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class EmotionalStats : JsonModel
     /// <summary>
     /// Capacity for empathy (0-100)
     /// </summary>
-    public required long Empathy
-    {
-        get
-        {
+    public required long Empathy {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("empathy");
+            return this._rawData.GetNotNullStruct<long>(
+                "empathy"
+            );
         }
         init { this._rawData.Set("empathy", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class EmotionalStats : JsonModel
     /// <summary>
     /// Level of optimism (0-100)
     /// </summary>
-    public required long Optimism
-    {
-        get
-        {
+    public required long Optimism {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("optimism");
+            return this._rawData.GetNotNullStruct<long>(
+                "optimism"
+            );
         }
         init { this._rawData.Set("optimism", value); }
     }
@@ -55,12 +55,12 @@ public sealed record class EmotionalStats : JsonModel
     /// <summary>
     /// Bounce-back ability (0-100)
     /// </summary>
-    public required long Resilience
-    {
-        get
-        {
+    public required long Resilience {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("resilience");
+            return this._rawData.GetNotNullStruct<long>(
+                "resilience"
+            );
         }
         init { this._rawData.Set("resilience", value); }
     }
@@ -68,12 +68,12 @@ public sealed record class EmotionalStats : JsonModel
     /// <summary>
     /// Willingness to be vulnerable (0-100)
     /// </summary>
-    public required long Vulnerability
-    {
-        get
-        {
+    public required long Vulnerability {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("vulnerability");
+            return this._rawData.GetNotNullStruct<long>(
+                "vulnerability"
+            );
         }
         init { this._rawData.Set("vulnerability", value); }
     }
@@ -88,37 +88,36 @@ public sealed record class EmotionalStats : JsonModel
         _ = this.Vulnerability;
     }
 
-    public EmotionalStats() { }
+    public EmotionalStats ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public EmotionalStats(EmotionalStats emotionalStats)
-        : base(emotionalStats) { }
-#pragma warning restore CS8618
+    public EmotionalStats (EmotionalStats emotionalStats) : base(emotionalStats)
+    {  }
+    #pragma warning restore CS8618
 
-    public EmotionalStats(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public EmotionalStats (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    EmotionalStats(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    EmotionalStats (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="EmotionalStatsFromRaw.FromRawUnchecked"/>
-    public static EmotionalStats FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static EmotionalStats FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class EmotionalStatsFromRaw : IFromRawJson<EmotionalStats>
 {
     /// <inheritdoc/>
-    public EmotionalStats FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        EmotionalStats.FromRawUnchecked(rawData);
+    public EmotionalStats FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>EmotionalStats.FromRawUnchecked(rawData);
 }

@@ -9,20 +9,11 @@ public class TicketSaleCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TicketSaleCreateParams
         {
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
-            BuyerEmail = "mae.green@example.com",
-            CouponCode = "BELIEVE10",
+            BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",BuyerEmail = "mae.green@example.com",CouponCode = "BELIEVE10",
         };
 
         string expectedBuyerName = "Mae Green";
@@ -55,50 +46,35 @@ public class TicketSaleCreateParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new TicketSaleCreateParams
         {
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
+            BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",
         };
 
         Assert.Null(parameters.BuyerEmail);
-        Assert.False(parameters.RawBodyData.ContainsKey("buyer_email"));
-        Assert.Null(parameters.CouponCode);
+        Assert.False(parameters.RawBodyData.ContainsKey("buyer_email"));Assert.Null(parameters.CouponCode);
         Assert.False(parameters.RawBodyData.ContainsKey("coupon_code"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new TicketSaleCreateParams
         {
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
+            BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",
 
-            BuyerEmail = null,
-            CouponCode = null,
+            BuyerEmail = null,CouponCode = null,
         };
 
         Assert.Null(parameters.BuyerEmail);
-        Assert.True(parameters.RawBodyData.ContainsKey("buyer_email"));
-        Assert.Null(parameters.CouponCode);
+        Assert.True(parameters.RawBodyData.ContainsKey("buyer_email"));Assert.Null(parameters.CouponCode);
         Assert.True(parameters.RawBodyData.ContainsKey("coupon_code"));
+
     }
 
     [Fact]
@@ -118,7 +94,12 @@ public class TicketSaleCreateParamsTest : TestBase
             UnitPrice = "45.00",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/ticket-sales"), url);
     }

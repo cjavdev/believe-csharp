@@ -11,11 +11,7 @@ namespace Believe.Models.TeamMembers;
 [JsonConverter(typeof(CoachSpecialtyConverter))]
 public enum CoachSpecialty
 {
-    HeadCoach,
-    AssistantCoach,
-    GoalkeepingCoach,
-    FitnessCoach,
-    TacticalAnalyst,
+    HeadCoach, AssistantCoach, GoalkeepingCoach, FitnessCoach, TacticalAnalyst
 }
 
 sealed class CoachSpecialtyConverter : JsonConverter<CoachSpecialty>
@@ -28,12 +24,12 @@ sealed class CoachSpecialtyConverter : JsonConverter<CoachSpecialty>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "head_coach" => CoachSpecialty.HeadCoach,
-            "assistant_coach" => CoachSpecialty.AssistantCoach,
-            "goalkeeping_coach" => CoachSpecialty.GoalkeepingCoach,
-            "fitness_coach" => CoachSpecialty.FitnessCoach,
-            "tactical_analyst" => CoachSpecialty.TacticalAnalyst,
-            _ => (CoachSpecialty)(-1),
+            "head_coach"=>CoachSpecialty.HeadCoach,
+            "assistant_coach"=>CoachSpecialty.AssistantCoach,
+            "goalkeeping_coach"=>CoachSpecialty.GoalkeepingCoach,
+            "fitness_coach"=>CoachSpecialty.FitnessCoach,
+            "tactical_analyst"=>CoachSpecialty.TacticalAnalyst,
+            _ =>(CoachSpecialty)(-1)
         };
     }
 
@@ -43,20 +39,16 @@ sealed class CoachSpecialtyConverter : JsonConverter<CoachSpecialty>
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                CoachSpecialty.HeadCoach => "head_coach",
-                CoachSpecialty.AssistantCoach => "assistant_coach",
-                CoachSpecialty.GoalkeepingCoach => "goalkeeping_coach",
-                CoachSpecialty.FitnessCoach => "fitness_coach",
-                CoachSpecialty.TacticalAnalyst => "tactical_analyst",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            CoachSpecialty.HeadCoach=>"head_coach",
+            CoachSpecialty.AssistantCoach=>"assistant_coach",
+            CoachSpecialty.GoalkeepingCoach=>"goalkeeping_coach",
+            CoachSpecialty.FitnessCoach=>"fitness_coach",
+            CoachSpecialty.TacticalAnalyst=>"tactical_analyst",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

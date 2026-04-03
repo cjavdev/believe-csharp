@@ -16,20 +16,24 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
-            },
-            Message = "message",
-            TedSays = "ted_says",
+            },Message = "message",TedSays = "ted_says",
         };
 
         RegisteredWebhook expectedWebhook = new()
         {
             ID = "wh_abc123",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+            EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],
             Secret = "whsec_abc123def456...",
             Url = "https://example.com",
             Description = "description",
@@ -51,20 +55,18 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
-            },
-            Message = "message",
-            TedSays = "ted_says",
+            },Message = "message",TedSays = "ted_says",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookCreateResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookCreateResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -78,27 +80,28 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
-            },
-            Message = "message",
-            TedSays = "ted_says",
+            },Message = "message",TedSays = "ted_says",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<WebhookCreateResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<WebhookCreateResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         RegisteredWebhook expectedWebhook = new()
         {
             ID = "wh_abc123",
             CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+            EventTypes =
+            [
+                RegisteredWebhookEventType.MatchCompleted
+            ],
             Secret = "whsec_abc123def456...",
             Url = "https://example.com",
             Description = "description",
@@ -120,13 +123,14 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
-            },
-            Message = "message",
-            TedSays = "ted_says",
+            },Message = "message",TedSays = "ted_says",
         };
 
         model.Validate();
@@ -141,7 +145,10 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
@@ -149,9 +156,9 @@ public class WebhookCreateResponseTest : TestBase
         };
 
         Assert.Null(model.Message);
-        Assert.False(model.RawData.ContainsKey("message"));
-        Assert.Null(model.TedSays);
+        Assert.False(model.RawData.ContainsKey("message"));Assert.Null(model.TedSays);
         Assert.False(model.RawData.ContainsKey("ted_says"));
+
     }
 
     [Fact]
@@ -163,7 +170,10 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
@@ -182,21 +192,23 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
             },
 
             // Null should be interpreted as omitted for these properties
-            Message = null,
-            TedSays = null,
+            Message = null,TedSays = null,
         };
 
         Assert.Null(model.Message);
-        Assert.False(model.RawData.ContainsKey("message"));
-        Assert.Null(model.TedSays);
+        Assert.False(model.RawData.ContainsKey("message"));Assert.Null(model.TedSays);
         Assert.False(model.RawData.ContainsKey("ted_says"));
+
     }
 
     [Fact]
@@ -208,15 +220,17 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
             },
 
             // Null should be interpreted as omitted for these properties
-            Message = null,
-            TedSays = null,
+            Message = null,TedSays = null,
         };
 
         model.Validate();
@@ -231,13 +245,14 @@ public class WebhookCreateResponseTest : TestBase
             {
                 ID = "wh_abc123",
                 CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-                EventTypes = [RegisteredWebhookEventType.MatchCompleted],
+                EventTypes =
+                [
+                    RegisteredWebhookEventType.MatchCompleted
+                ],
                 Secret = "whsec_abc123def456...",
                 Url = "https://example.com",
                 Description = "description",
-            },
-            Message = "message",
-            TedSays = "ted_says",
+            },Message = "message",TedSays = "ted_says",
         };
 
         WebhookCreateResponse copied = new(model);

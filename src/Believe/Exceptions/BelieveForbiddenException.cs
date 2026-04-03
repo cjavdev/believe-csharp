@@ -4,6 +4,8 @@ namespace Believe.Exceptions;
 
 public class BelieveForbiddenException : Believe4xxException
 {
-    public BelieveForbiddenException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public BelieveForbiddenException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

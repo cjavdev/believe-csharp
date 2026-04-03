@@ -14,24 +14,25 @@ public sealed class QuoteService : IQuoteService
     readonly Lazy<IQuoteServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IQuoteServiceWithRawResponse WithRawResponse
-    {
+    public IQuoteServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IQuoteService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new QuoteService(this._client.WithOptions(modifier));
-    }
+    public IQuoteService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new QuoteService(this._client.WithOptions(modifier)); }
 
-    public QuoteService(IBelieveClient client)
+    public QuoteService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new QuoteServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new QuoteServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,9 +41,7 @@ public sealed class QuoteService : IQuoteService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -52,13 +51,9 @@ public sealed class QuoteService : IQuoteService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Quote> Retrieve(
         string quoteID,
         QuoteRetrieveParams? parameters = null,
@@ -67,7 +62,9 @@ public sealed class QuoteService : IQuoteService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { QuoteID = quoteID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            QuoteID = quoteID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -76,13 +73,9 @@ public sealed class QuoteService : IQuoteService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Quote> Update(
         string quoteID,
         QuoteUpdateParams? parameters = null,
@@ -91,7 +84,9 @@ public sealed class QuoteService : IQuoteService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { QuoteID = quoteID }, cancellationToken);
+        return this.Update(parameters with{
+            QuoteID = quoteID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -100,19 +95,18 @@ public sealed class QuoteService : IQuoteService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task Delete(QuoteDeleteParams parameters, CancellationToken cancellationToken = default)
+    public Task Delete(
+        QuoteDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string quoteID,
         QuoteDeleteParams? parameters = null,
@@ -121,8 +115,9 @@ public sealed class QuoteService : IQuoteService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { QuoteID = quoteID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            QuoteID = quoteID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -131,9 +126,7 @@ public sealed class QuoteService : IQuoteService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetRandom(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetRandom(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -143,13 +136,9 @@ public sealed class QuoteService : IQuoteService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.ListByCharacter(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.ListByCharacter(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<QuoteListByCharacterPage> ListByCharacter(
         string characterID,
         QuoteListByCharacterParams? parameters = null,
@@ -158,13 +147,9 @@ public sealed class QuoteService : IQuoteService
     {
         parameters ??= new();
 
-        return this.ListByCharacter(
-            parameters with
-            {
-                CharacterID = characterID,
-            },
-            cancellationToken
-        );
+        return this.ListByCharacter(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -173,13 +158,9 @@ public sealed class QuoteService : IQuoteService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.ListByTheme(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.ListByTheme(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<QuoteListByThemePage> ListByTheme(
         ApiEnum<string, QuoteTheme> theme,
         QuoteListByThemeParams? parameters = null,
@@ -188,7 +169,9 @@ public sealed class QuoteService : IQuoteService
     {
         parameters ??= new();
 
-        return this.ListByTheme(parameters with { Theme = theme }, cancellationToken);
+        return this.ListByTheme(parameters with{
+            Theme = theme
+        }, cancellationToken);
     }
 }
 
@@ -198,15 +181,15 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IQuoteServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IQuoteServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new QuoteServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public QuoteServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public QuoteServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<Quote>> Create(
@@ -220,18 +203,13 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    quote.Validate();
-                }
-                return quote;
+        return new(response, async ( token )=>{
+            var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                quote.Validate();
             }
-        );
+            return quote;
+        });
     }
 
     /// <inheritdoc/>
@@ -242,7 +220,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         if (parameters.QuoteID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.QuoteID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.QuoteID' cannot be null"
+            );
         }
 
         HttpRequest<QuoteRetrieveParams> request = new()
@@ -251,21 +231,14 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    quote.Validate();
-                }
-                return quote;
+        return new(response, async ( token )=>{
+            var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                quote.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return quote;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Quote>> Retrieve(
         string quoteID,
         QuoteRetrieveParams? parameters = null,
@@ -274,7 +247,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { QuoteID = quoteID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            QuoteID = quoteID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -285,7 +260,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         if (parameters.QuoteID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.QuoteID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.QuoteID' cannot be null"
+            );
         }
 
         HttpRequest<QuoteUpdateParams> request = new()
@@ -294,21 +271,14 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    quote.Validate();
-                }
-                return quote;
+        return new(response, async ( token )=>{
+            var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                quote.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return quote;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Quote>> Update(
         string quoteID,
         QuoteUpdateParams? parameters = null,
@@ -317,7 +287,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Update(parameters with { QuoteID = quoteID }, cancellationToken);
+        return this.Update(parameters with{
+            QuoteID = quoteID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -334,20 +306,13 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<PaginatedResponseQuote>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new QuoteListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<PaginatedResponseQuote>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new QuoteListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -358,7 +323,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         if (parameters.QuoteID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.QuoteID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.QuoteID' cannot be null"
+            );
         }
 
         HttpRequest<QuoteDeleteParams> request = new()
@@ -367,9 +334,7 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string quoteID,
         QuoteDeleteParams? parameters = null,
@@ -378,7 +343,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { QuoteID = quoteID }, cancellationToken);
+        return this.Delete(parameters with{
+            QuoteID = quoteID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -395,18 +362,13 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    quote.Validate();
-                }
-                return quote;
+        return new(response, async ( token )=>{
+            var quote = await response.Deserialize<Quote>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                quote.Validate();
             }
-        );
+            return quote;
+        });
     }
 
     /// <inheritdoc/>
@@ -417,7 +379,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         if (parameters.CharacterID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.CharacterID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.CharacterID' cannot be null"
+            );
         }
 
         HttpRequest<QuoteListByCharacterParams> request = new()
@@ -426,23 +390,14 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<PaginatedResponseQuote>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new QuoteListByCharacterPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<PaginatedResponseQuote>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return new QuoteListByCharacterPage(this, parameters, page);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<QuoteListByCharacterPage>> ListByCharacter(
         string characterID,
         QuoteListByCharacterParams? parameters = null,
@@ -451,13 +406,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.ListByCharacter(
-            parameters with
-            {
-                CharacterID = characterID,
-            },
-            cancellationToken
-        );
+        return this.ListByCharacter(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -468,7 +419,9 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         if (parameters.Theme == null)
         {
-            throw new BelieveInvalidDataException("'parameters.Theme' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.Theme' cannot be null"
+            );
         }
 
         HttpRequest<QuoteListByThemeParams> request = new()
@@ -477,23 +430,14 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<PaginatedResponseQuote>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new QuoteListByThemePage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<PaginatedResponseQuote>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return new QuoteListByThemePage(this, parameters, page);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<QuoteListByThemePage>> ListByTheme(
         ApiEnum<string, QuoteTheme> theme,
         QuoteListByThemeParams? parameters = null,
@@ -502,6 +446,8 @@ public sealed class QuoteServiceWithRawResponse : IQuoteServiceWithRawResponse
     {
         parameters ??= new();
 
-        return this.ListByTheme(parameters with { Theme = theme }, cancellationToken);
+        return this.ListByTheme(parameters with{
+            Theme = theme
+        }, cancellationToken);
     }
 }

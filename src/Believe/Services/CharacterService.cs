@@ -15,24 +15,25 @@ public sealed class CharacterService : ICharacterService
     readonly Lazy<ICharacterServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ICharacterServiceWithRawResponse WithRawResponse
-    {
+    public ICharacterServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public ICharacterService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new CharacterService(this._client.WithOptions(modifier));
-    }
+    public ICharacterService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new CharacterService(this._client.WithOptions(modifier)); }
 
-    public CharacterService(IBelieveClient client)
+    public CharacterService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new CharacterServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new CharacterServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -41,9 +42,7 @@ public sealed class CharacterService : ICharacterService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -53,13 +52,9 @@ public sealed class CharacterService : ICharacterService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Character> Retrieve(
         string characterID,
         CharacterRetrieveParams? parameters = null,
@@ -68,7 +63,9 @@ public sealed class CharacterService : ICharacterService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { CharacterID = characterID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -77,13 +74,9 @@ public sealed class CharacterService : ICharacterService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Character> Update(
         string characterID,
         CharacterUpdateParams? parameters = null,
@@ -92,7 +85,9 @@ public sealed class CharacterService : ICharacterService
     {
         parameters ??= new();
 
-        return this.Update(parameters with { CharacterID = characterID }, cancellationToken);
+        return this.Update(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -101,9 +96,7 @@ public sealed class CharacterService : ICharacterService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -114,9 +107,7 @@ public sealed class CharacterService : ICharacterService
     )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string characterID,
         CharacterDeleteParams? parameters = null,
@@ -125,8 +116,9 @@ public sealed class CharacterService : ICharacterService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { CharacterID = characterID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            CharacterID = characterID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -135,13 +127,9 @@ public sealed class CharacterService : ICharacterService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetQuotes(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetQuotes(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<List<string>> GetQuotes(
         string characterID,
         CharacterGetQuotesParams? parameters = null,
@@ -150,7 +138,9 @@ public sealed class CharacterService : ICharacterService
     {
         parameters ??= new();
 
-        return this.GetQuotes(parameters with { CharacterID = characterID }, cancellationToken);
+        return this.GetQuotes(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 }
 
@@ -160,15 +150,17 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public ICharacterServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public ICharacterServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new CharacterServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public CharacterServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public CharacterServiceWithRawResponse (
+        IBelieveClientWithRawResponse client
+    )
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<Character>> Create(
@@ -182,18 +174,13 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    character.Validate();
-                }
-                return character;
+        return new(response, async ( token )=>{
+            var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                character.Validate();
             }
-        );
+            return character;
+        });
     }
 
     /// <inheritdoc/>
@@ -204,7 +191,9 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         if (parameters.CharacterID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.CharacterID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.CharacterID' cannot be null"
+            );
         }
 
         HttpRequest<CharacterRetrieveParams> request = new()
@@ -213,21 +202,14 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    character.Validate();
-                }
-                return character;
+        return new(response, async ( token )=>{
+            var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                character.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return character;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Character>> Retrieve(
         string characterID,
         CharacterRetrieveParams? parameters = null,
@@ -236,7 +218,9 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { CharacterID = characterID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -247,7 +231,9 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         if (parameters.CharacterID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.CharacterID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.CharacterID' cannot be null"
+            );
         }
 
         HttpRequest<CharacterUpdateParams> request = new()
@@ -256,21 +242,14 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    character.Validate();
-                }
-                return character;
+        return new(response, async ( token )=>{
+            var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                character.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return character;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Character>> Update(
         string characterID,
         CharacterUpdateParams? parameters = null,
@@ -279,7 +258,9 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         parameters ??= new();
 
-        return this.Update(parameters with { CharacterID = characterID }, cancellationToken);
+        return this.Update(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -296,20 +277,13 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<CharacterListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new CharacterListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<CharacterListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new CharacterListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -320,7 +294,9 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         if (parameters.CharacterID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.CharacterID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.CharacterID' cannot be null"
+            );
         }
 
         HttpRequest<CharacterDeleteParams> request = new()
@@ -329,9 +305,7 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string characterID,
         CharacterDeleteParams? parameters = null,
@@ -340,7 +314,9 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { CharacterID = characterID }, cancellationToken);
+        return this.Delete(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -351,7 +327,9 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         if (parameters.CharacterID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.CharacterID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.CharacterID' cannot be null"
+            );
         }
 
         HttpRequest<CharacterGetQuotesParams> request = new()
@@ -360,16 +338,10 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response.Deserialize<List<string>>(token).ConfigureAwait(false);
-            }
-        );
-    }
-
-    /// <inheritdoc/>
+        return new(response, async ( token )=>{
+            return await response.Deserialize<List<string>>(token).ConfigureAwait(false);
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<List<string>>> GetQuotes(
         string characterID,
         CharacterGetQuotesParams? parameters = null,
@@ -378,6 +350,8 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     {
         parameters ??= new();
 
-        return this.GetQuotes(parameters with { CharacterID = characterID }, cancellationToken);
+        return this.GetQuotes(parameters with{
+            CharacterID = characterID
+        }, cancellationToken);
     }
 }

@@ -11,30 +11,28 @@ public class TeamCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TeamCreateParams
         {
-            CultureScore = 70,
-            FoundedYear = 1895,
-            League = League.PremierLeague,
-            Name = "West Ham United",
-            Stadium = "London Stadium",
-            Values = new()
+            CultureScore = 70,FoundedYear = 1895,League = League.PremierLeague,Name = "West Ham United",Stadium = "London Stadium",Values = new(
+
+            )
             {
                 PrimaryValue = "Pride",
-                SecondaryValues = ["History", "Community", "Passion"],
+                SecondaryValues =
+                [
+                    "History", "Community", "Passion"
+                ],
                 TeamMotto = "Forever Blowing Bubbles",
-            },
-            AnnualBudgetGbp = "150000000.00",
-            AverageAttendance = 59988,
-            ContactEmail = "info@westhamunited.co.uk",
-            IsActive = true,
-            Nickname = "The Hammers",
-            PrimaryColor = "#7A263A",
-            RivalTeams = ["afc-richmond", "tottenham"],
-            SecondaryColor = "#1BB1E7",
-            StadiumLocation = new() { Latitude = 51.5387, Longitude = -0.0166 },
-            Website = "https://www.whufc.com",
-            WinPercentage = 52.3,
+            },AnnualBudgetGbp = "150000000.00",AverageAttendance = 59988,ContactEmail = "info@westhamunited.co.uk",IsActive = true,Nickname = "The Hammers",PrimaryColor = "#7A263A",RivalTeams =
+            [
+                "afc-richmond", "tottenham"
+            ],SecondaryColor = "#1BB1E7",StadiumLocation = new()
+            {
+                Latitude = 51.5387,
+                Longitude = -0.0166,
+            },Website = "https://www.whufc.com",WinPercentage = 52.3,
         };
 
         long expectedCultureScore = 70;
@@ -45,7 +43,10 @@ public class TeamCreateParamsTest : TestBase
         TeamValues expectedValues = new()
         {
             PrimaryValue = "Pride",
-            SecondaryValues = ["History", "Community", "Passion"],
+            SecondaryValues =
+            [
+                "History", "Community", "Passion"
+            ],
             TeamMotto = "Forever Blowing Bubbles",
         };
         AnnualBudgetGbp expectedAnnualBudgetGbp = "150000000.00";
@@ -54,9 +55,16 @@ public class TeamCreateParamsTest : TestBase
         bool expectedIsActive = true;
         string expectedNickname = "The Hammers";
         string expectedPrimaryColor = "#7A263A";
-        List<string> expectedRivalTeams = ["afc-richmond", "tottenham"];
+        List<string> expectedRivalTeams =
+        [
+            "afc-richmond", "tottenham"
+        ];
         string expectedSecondaryColor = "#1BB1E7";
-        GeoLocation expectedStadiumLocation = new() { Latitude = 51.5387, Longitude = -0.0166 };
+        GeoLocation expectedStadiumLocation = new()
+        {
+            Latitude = 51.5387,
+            Longitude = -0.0166,
+        };
         string expectedWebsite = "https://www.whufc.com";
         double expectedWinPercentage = 52.3;
 
@@ -87,161 +95,142 @@ public class TeamCreateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new TeamCreateParams
         {
-            CultureScore = 70,
-            FoundedYear = 1895,
-            League = League.PremierLeague,
-            Name = "West Ham United",
-            Stadium = "London Stadium",
-            Values = new()
+            CultureScore = 70,FoundedYear = 1895,League = League.PremierLeague,Name = "West Ham United",Stadium = "London Stadium",Values = new(
+
+            )
             {
                 PrimaryValue = "Pride",
-                SecondaryValues = ["History", "Community", "Passion"],
+                SecondaryValues =
+                [
+                    "History", "Community", "Passion"
+                ],
                 TeamMotto = "Forever Blowing Bubbles",
-            },
-            AnnualBudgetGbp = "150000000.00",
-            AverageAttendance = 59988,
-            ContactEmail = "info@westhamunited.co.uk",
-            Nickname = "The Hammers",
-            PrimaryColor = "#7A263A",
-            SecondaryColor = "#1BB1E7",
-            StadiumLocation = new() { Latitude = 51.5387, Longitude = -0.0166 },
-            Website = "https://www.whufc.com",
-            WinPercentage = 52.3,
+            },AnnualBudgetGbp = "150000000.00",AverageAttendance = 59988,ContactEmail = "info@westhamunited.co.uk",Nickname = "The Hammers",PrimaryColor = "#7A263A",SecondaryColor = "#1BB1E7",StadiumLocation = new(
+
+            )
+            {
+                Latitude = 51.5387,
+                Longitude = -0.0166,
+            },Website = "https://www.whufc.com",WinPercentage = 52.3,
         };
 
         Assert.Null(parameters.IsActive);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));
-        Assert.Null(parameters.RivalTeams);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));Assert.Null(parameters.RivalTeams);
         Assert.False(parameters.RawBodyData.ContainsKey("rival_teams"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new TeamCreateParams
         {
-            CultureScore = 70,
-            FoundedYear = 1895,
-            League = League.PremierLeague,
-            Name = "West Ham United",
-            Stadium = "London Stadium",
-            Values = new()
+            CultureScore = 70,FoundedYear = 1895,League = League.PremierLeague,Name = "West Ham United",Stadium = "London Stadium",Values = new(
+
+            )
             {
                 PrimaryValue = "Pride",
-                SecondaryValues = ["History", "Community", "Passion"],
+                SecondaryValues =
+                [
+                    "History", "Community", "Passion"
+                ],
                 TeamMotto = "Forever Blowing Bubbles",
-            },
-            AnnualBudgetGbp = "150000000.00",
-            AverageAttendance = 59988,
-            ContactEmail = "info@westhamunited.co.uk",
-            Nickname = "The Hammers",
-            PrimaryColor = "#7A263A",
-            SecondaryColor = "#1BB1E7",
-            StadiumLocation = new() { Latitude = 51.5387, Longitude = -0.0166 },
-            Website = "https://www.whufc.com",
-            WinPercentage = 52.3,
+            },AnnualBudgetGbp = "150000000.00",AverageAttendance = 59988,ContactEmail = "info@westhamunited.co.uk",Nickname = "The Hammers",PrimaryColor = "#7A263A",SecondaryColor = "#1BB1E7",StadiumLocation = new(
+
+            )
+            {
+                Latitude = 51.5387,
+                Longitude = -0.0166,
+            },Website = "https://www.whufc.com",WinPercentage = 52.3,
 
             // Null should be interpreted as omitted for these properties
-            IsActive = null,
-            RivalTeams = null,
+            IsActive = null,RivalTeams = null,
         };
 
         Assert.Null(parameters.IsActive);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));
-        Assert.Null(parameters.RivalTeams);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));Assert.Null(parameters.RivalTeams);
         Assert.False(parameters.RawBodyData.ContainsKey("rival_teams"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new TeamCreateParams
         {
-            CultureScore = 70,
-            FoundedYear = 1895,
-            League = League.PremierLeague,
-            Name = "West Ham United",
-            Stadium = "London Stadium",
-            Values = new()
+            CultureScore = 70,FoundedYear = 1895,League = League.PremierLeague,Name = "West Ham United",Stadium = "London Stadium",Values = new(
+
+            )
             {
                 PrimaryValue = "Pride",
-                SecondaryValues = ["History", "Community", "Passion"],
+                SecondaryValues =
+                [
+                    "History", "Community", "Passion"
+                ],
                 TeamMotto = "Forever Blowing Bubbles",
-            },
-            IsActive = true,
-            RivalTeams = ["afc-richmond", "tottenham"],
+            },IsActive = true,RivalTeams =
+            [
+                "afc-richmond", "tottenham"
+            ],
         };
 
         Assert.Null(parameters.AnnualBudgetGbp);
-        Assert.False(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));
-        Assert.Null(parameters.AverageAttendance);
-        Assert.False(parameters.RawBodyData.ContainsKey("average_attendance"));
-        Assert.Null(parameters.ContactEmail);
-        Assert.False(parameters.RawBodyData.ContainsKey("contact_email"));
-        Assert.Null(parameters.Nickname);
-        Assert.False(parameters.RawBodyData.ContainsKey("nickname"));
-        Assert.Null(parameters.PrimaryColor);
-        Assert.False(parameters.RawBodyData.ContainsKey("primary_color"));
-        Assert.Null(parameters.SecondaryColor);
-        Assert.False(parameters.RawBodyData.ContainsKey("secondary_color"));
-        Assert.Null(parameters.StadiumLocation);
-        Assert.False(parameters.RawBodyData.ContainsKey("stadium_location"));
-        Assert.Null(parameters.Website);
-        Assert.False(parameters.RawBodyData.ContainsKey("website"));
-        Assert.Null(parameters.WinPercentage);
+        Assert.False(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));Assert.Null(parameters.AverageAttendance);
+        Assert.False(parameters.RawBodyData.ContainsKey("average_attendance"));Assert.Null(parameters.ContactEmail);
+        Assert.False(parameters.RawBodyData.ContainsKey("contact_email"));Assert.Null(parameters.Nickname);
+        Assert.False(parameters.RawBodyData.ContainsKey("nickname"));Assert.Null(parameters.PrimaryColor);
+        Assert.False(parameters.RawBodyData.ContainsKey("primary_color"));Assert.Null(parameters.SecondaryColor);
+        Assert.False(parameters.RawBodyData.ContainsKey("secondary_color"));Assert.Null(parameters.StadiumLocation);
+        Assert.False(parameters.RawBodyData.ContainsKey("stadium_location"));Assert.Null(parameters.Website);
+        Assert.False(parameters.RawBodyData.ContainsKey("website"));Assert.Null(parameters.WinPercentage);
         Assert.False(parameters.RawBodyData.ContainsKey("win_percentage"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new TeamCreateParams
         {
-            CultureScore = 70,
-            FoundedYear = 1895,
-            League = League.PremierLeague,
-            Name = "West Ham United",
-            Stadium = "London Stadium",
-            Values = new()
+            CultureScore = 70,FoundedYear = 1895,League = League.PremierLeague,Name = "West Ham United",Stadium = "London Stadium",Values = new(
+
+            )
             {
                 PrimaryValue = "Pride",
-                SecondaryValues = ["History", "Community", "Passion"],
+                SecondaryValues =
+                [
+                    "History", "Community", "Passion"
+                ],
                 TeamMotto = "Forever Blowing Bubbles",
-            },
-            IsActive = true,
-            RivalTeams = ["afc-richmond", "tottenham"],
+            },IsActive = true,RivalTeams =
+            [
+                "afc-richmond", "tottenham"
+            ],
 
-            AnnualBudgetGbp = null,
-            AverageAttendance = null,
-            ContactEmail = null,
-            Nickname = null,
-            PrimaryColor = null,
-            SecondaryColor = null,
-            StadiumLocation = null,
-            Website = null,
-            WinPercentage = null,
+            AnnualBudgetGbp = null,AverageAttendance = null,ContactEmail = null,Nickname = null,PrimaryColor = null,SecondaryColor = null,StadiumLocation = null,Website = null,WinPercentage = null,
         };
 
         Assert.Null(parameters.AnnualBudgetGbp);
-        Assert.True(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));
-        Assert.Null(parameters.AverageAttendance);
-        Assert.True(parameters.RawBodyData.ContainsKey("average_attendance"));
-        Assert.Null(parameters.ContactEmail);
-        Assert.True(parameters.RawBodyData.ContainsKey("contact_email"));
-        Assert.Null(parameters.Nickname);
-        Assert.True(parameters.RawBodyData.ContainsKey("nickname"));
-        Assert.Null(parameters.PrimaryColor);
-        Assert.True(parameters.RawBodyData.ContainsKey("primary_color"));
-        Assert.Null(parameters.SecondaryColor);
-        Assert.True(parameters.RawBodyData.ContainsKey("secondary_color"));
-        Assert.Null(parameters.StadiumLocation);
-        Assert.True(parameters.RawBodyData.ContainsKey("stadium_location"));
-        Assert.Null(parameters.Website);
-        Assert.True(parameters.RawBodyData.ContainsKey("website"));
-        Assert.Null(parameters.WinPercentage);
+        Assert.True(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));Assert.Null(parameters.AverageAttendance);
+        Assert.True(parameters.RawBodyData.ContainsKey("average_attendance"));Assert.Null(parameters.ContactEmail);
+        Assert.True(parameters.RawBodyData.ContainsKey("contact_email"));Assert.Null(parameters.Nickname);
+        Assert.True(parameters.RawBodyData.ContainsKey("nickname"));Assert.Null(parameters.PrimaryColor);
+        Assert.True(parameters.RawBodyData.ContainsKey("primary_color"));Assert.Null(parameters.SecondaryColor);
+        Assert.True(parameters.RawBodyData.ContainsKey("secondary_color"));Assert.Null(parameters.StadiumLocation);
+        Assert.True(parameters.RawBodyData.ContainsKey("stadium_location"));Assert.Null(parameters.Website);
+        Assert.True(parameters.RawBodyData.ContainsKey("website"));Assert.Null(parameters.WinPercentage);
         Assert.True(parameters.RawBodyData.ContainsKey("win_percentage"));
+
     }
 
     [Fact]
@@ -257,12 +246,20 @@ public class TeamCreateParamsTest : TestBase
             Values = new()
             {
                 PrimaryValue = "Pride",
-                SecondaryValues = ["History", "Community", "Passion"],
+                SecondaryValues =
+                [
+                    "History", "Community", "Passion"
+                ],
                 TeamMotto = "Forever Blowing Bubbles",
             },
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/teams"), url);
     }
@@ -280,7 +277,10 @@ public class TeamCreateParamsTest : TestBase
             Values = new()
             {
                 PrimaryValue = "Pride",
-                SecondaryValues = ["History", "Community", "Passion"],
+                SecondaryValues =
+                [
+                    "History", "Community", "Passion"
+                ],
                 TeamMotto = "Forever Blowing Bubbles",
             },
             AnnualBudgetGbp = "150000000.00",
@@ -289,9 +289,16 @@ public class TeamCreateParamsTest : TestBase
             IsActive = true,
             Nickname = "The Hammers",
             PrimaryColor = "#7A263A",
-            RivalTeams = ["afc-richmond", "tottenham"],
+            RivalTeams =
+            [
+                "afc-richmond", "tottenham"
+            ],
             SecondaryColor = "#1BB1E7",
-            StadiumLocation = new() { Latitude = 51.5387, Longitude = -0.0166 },
+            StadiumLocation = new()
+            {
+                Latitude = 51.5387,
+                Longitude = -0.0166,
+            },
             Website = "https://www.whufc.com",
             WinPercentage = 52.3,
         };
@@ -323,10 +330,7 @@ public class AnnualBudgetGbpTest : TestBase
     {
         AnnualBudgetGbp value = 0;
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<AnnualBudgetGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<AnnualBudgetGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -336,10 +340,7 @@ public class AnnualBudgetGbpTest : TestBase
     {
         AnnualBudgetGbp value = "string";
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<AnnualBudgetGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<AnnualBudgetGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

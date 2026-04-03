@@ -38,23 +38,19 @@ namespace Believe.Models.Webhooks;
 /// </summary>
 public record class WebhookTriggerEventParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     /// <summary>
     /// The type of event to trigger
     /// </summary>
-    public required ApiEnum<string, WebhookTriggerEventParamsEventType> EventType
-    {
-        get
-        {
+    public required ApiEnum<string, WebhookTriggerEventParamsEventType> EventType {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<
-                ApiEnum<string, WebhookTriggerEventParamsEventType>
-            >("event_type");
+            return this._rawBodyData.GetNotNullClass<ApiEnum<string, WebhookTriggerEventParamsEventType>>(
+                "event_type"
+            );
         }
         init { this._rawBodyData.Set("event_type", value); }
     }
@@ -62,28 +58,28 @@ public record class WebhookTriggerEventParams : ParamsBase
     /// <summary>
     /// Optional event payload. If not provided, a sample payload will be generated.
     /// </summary>
-    public Payload? Payload
-    {
-        get
-        {
+    public Payload? Payload {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<Payload>("payload");
+            return this._rawBodyData.GetNullableClass<Payload>(
+                "payload"
+            );
         }
         init { this._rawBodyData.Set("payload", value); }
     }
 
-    public WebhookTriggerEventParams() { }
+    public WebhookTriggerEventParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookTriggerEventParams(WebhookTriggerEventParams webhookTriggerEventParams)
-        : base(webhookTriggerEventParams)
-    {
-        this._rawBodyData = new(webhookTriggerEventParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public WebhookTriggerEventParams (
+        WebhookTriggerEventParams webhookTriggerEventParams
+    ) : base(webhookTriggerEventParams)
+    { this._rawBodyData = new(webhookTriggerEventParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public WebhookTriggerEventParams(
+    public WebhookTriggerEventParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -94,9 +90,9 @@ public record class WebhookTriggerEventParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookTriggerEventParams(
+    WebhookTriggerEventParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -106,7 +102,7 @@ public record class WebhookTriggerEventParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static WebhookTriggerEventParams FromRawUnchecked(
@@ -119,25 +115,18 @@ public record class WebhookTriggerEventParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(WebhookTriggerEventParams? other)
     {
@@ -145,17 +134,19 @@ public record class WebhookTriggerEventParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/webhooks/trigger")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/webhooks/trigger"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -164,10 +155,12 @@ public record class WebhookTriggerEventParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -177,9 +170,7 @@ public record class WebhookTriggerEventParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 /// <summary>
@@ -188,12 +179,10 @@ public record class WebhookTriggerEventParams : ParamsBase
 [JsonConverter(typeof(WebhookTriggerEventParamsEventTypeConverter))]
 public enum WebhookTriggerEventParamsEventType
 {
-    MatchCompleted,
-    TeamMemberTransferred,
+    MatchCompleted, TeamMemberTransferred
 }
 
-sealed class WebhookTriggerEventParamsEventTypeConverter
-    : JsonConverter<WebhookTriggerEventParamsEventType>
+sealed class WebhookTriggerEventParamsEventTypeConverter : JsonConverter<WebhookTriggerEventParamsEventType>
 {
     public override WebhookTriggerEventParamsEventType Read(
         ref Utf8JsonReader reader,
@@ -203,9 +192,9 @@ sealed class WebhookTriggerEventParamsEventTypeConverter
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "match.completed" => WebhookTriggerEventParamsEventType.MatchCompleted,
-            "team_member.transferred" => WebhookTriggerEventParamsEventType.TeamMemberTransferred,
-            _ => (WebhookTriggerEventParamsEventType)(-1),
+            "match.completed"=>WebhookTriggerEventParamsEventType.MatchCompleted,
+            "team_member.transferred"=>WebhookTriggerEventParamsEventType.TeamMemberTransferred,
+            _ =>(WebhookTriggerEventParamsEventType)(-1)
         };
     }
 
@@ -215,19 +204,14 @@ sealed class WebhookTriggerEventParamsEventTypeConverter
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                WebhookTriggerEventParamsEventType.MatchCompleted => "match.completed",
-                WebhookTriggerEventParamsEventType.TeamMemberTransferred =>
-                    "team_member.transferred",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            WebhookTriggerEventParamsEventType.MatchCompleted=>"match.completed",
+            WebhookTriggerEventParamsEventType.TeamMemberTransferred=>"team_member.transferred",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -241,96 +225,93 @@ public record class Payload : ModelBase
 
     JsonElement? _element = null;
 
-    public JsonElement Json
-    {
-        get
-        {
-            return this._element ??= JsonSerializer.SerializeToElement(
-                this.Value,
-                ModelBase.SerializerOptions
-            );
+    public JsonElement Json {
+        get {
+            return this._element ??= JsonSerializer.SerializeToElement(this.Value, ModelBase.SerializerOptions);
         }
     }
 
-    public Payload(MatchCompleted value, JsonElement? element = null)
+    public Payload (MatchCompleted value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Payload(TeamMemberTransferred value, JsonElement? element = null)
+    public Payload (TeamMemberTransferred value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Payload(JsonElement element)
+    public Payload (JsonElement element)
+    { this._element = element; }
+
+    /// <summary>
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="MatchCompleted"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickMatchCompleted(out var value)) {
+///     // `value` is of type `MatchCompleted`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
+    public bool TryPickMatchCompleted(
+        [NotNullWhen(true)] out MatchCompleted? value
+    )
     {
-        this._element = element;
+        value =this.Value as MatchCompleted ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="MatchCompleted"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickMatchCompleted(out var value)) {
-    ///     // `value` is of type `MatchCompleted`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
-    public bool TryPickMatchCompleted([NotNullWhen(true)] out MatchCompleted? value)
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="TeamMemberTransferred"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickTeamMemberTransferred(out var value)) {
+///     // `value` is of type `TeamMemberTransferred`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
+    public bool TryPickTeamMemberTransferred(
+        [NotNullWhen(true)] out TeamMemberTransferred? value
+    )
     {
-        value = this.Value as MatchCompleted;
-        return value != null;
+        value =this.Value as TeamMemberTransferred ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="TeamMemberTransferred"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickTeamMemberTransferred(out var value)) {
-    ///     // `value` is of type `TeamMemberTransferred`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
-    public bool TryPickTeamMemberTransferred([NotNullWhen(true)] out TeamMemberTransferred? value)
-    {
-        value = this.Value as TeamMemberTransferred;
-        return value != null;
-    }
-
-    /// <summary>
-    /// Calls the function parameter corresponding to the variant the instance was constructed with.
-    ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
-    /// if you need your function parameters to return something.</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
-    /// that doesn't match any variant's expected shape).
-    /// </exception>
-    ///
-    /// <example>
-    /// <code>
-    /// instance.Switch(
-    ///     (MatchCompleted value) =&gt; {...},
-    ///     (TeamMemberTransferred value) =&gt; {...}
-    /// );
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Calls the function parameter corresponding to the variant the instance was constructed with.
+/// 
+/// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
+/// if you need your function parameters to return something.</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+/// that doesn't match any variant's expected shape).
+/// </exception>
+/// 
+/// <example>
+/// <code>
+/// instance.Switch(
+///     (MatchCompleted value) =&gt; {...},
+///     (TeamMemberTransferred value) =&gt; {...}
+/// );
+/// </code>
+/// </example>
+/// </summary>
     public void Switch(
         Action<MatchCompleted> matchCompleted,
         Action<TeamMemberTransferred> teamMemberTransferred
@@ -346,93 +327,88 @@ public record class Payload : ModelBase
                 break;
             default:
                 throw new BelieveInvalidDataException("Data did not match any variant of Payload");
+
         }
     }
 
     /// <summary>
-    /// Calls the function parameter corresponding to the variant the instance was constructed with and
-    /// returns its result.
-    ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
-    /// if you don't need your function parameters to return a value.</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
-    /// that doesn't match any variant's expected shape).
-    /// </exception>
-    ///
-    /// <example>
-    /// <code>
-    /// var result = instance.Match(
-    ///     (MatchCompleted value) =&gt; {...},
-    ///     (TeamMemberTransferred value) =&gt; {...}
-    /// );
-    /// </code>
-    /// </example>
-    /// </summary>
-    public T Match<T>(
+/// Calls the function parameter corresponding to the variant the instance was constructed with and
+/// returns its result.
+/// 
+/// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
+/// if you don't need your function parameters to return a value.</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+/// that doesn't match any variant's expected shape).
+/// </exception>
+/// 
+/// <example>
+/// <code>
+/// var result = instance.Match(
+///     (MatchCompleted value) =&gt; {...},
+///     (TeamMemberTransferred value) =&gt; {...}
+/// );
+/// </code>
+/// </example>
+/// </summary>
+    public T Match<T>
+    (
         Func<MatchCompleted, T> matchCompleted,
         Func<TeamMemberTransferred, T> teamMemberTransferred
     )
     {
         return this.Value switch
         {
-            MatchCompleted value => matchCompleted(value),
-            TeamMemberTransferred value => teamMemberTransferred(value),
-            _ => throw new BelieveInvalidDataException("Data did not match any variant of Payload"),
-        };
+            MatchCompleted value=>matchCompleted(value),
+            TeamMemberTransferred value=>teamMemberTransferred(value),
+            _ =>throw new BelieveInvalidDataException("Data did not match any variant of Payload")
+        } ;
     }
 
-    public static implicit operator Payload(MatchCompleted value) => new(value);
+    public static implicit operator Payload (
+        MatchCompleted value
+    )=> new(value) ;
 
-    public static implicit operator Payload(TeamMemberTransferred value) => new(value);
+    public static implicit operator Payload (
+        TeamMemberTransferred value
+    )=> new(value) ;
 
     /// <summary>
-    /// Validates that the instance was constructed with a known variant and that this variant is valid
-    /// (based on its own <c>Validate</c> method).
-    ///
-    /// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance does not pass validation.
-    /// </exception>
-    /// </summary>
+/// Validates that the instance was constructed with a known variant and that this variant is valid
+/// (based on its own <c>Validate</c> method).
+/// 
+/// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance does not pass validation.
+/// </exception>
+/// </summary>
     public override void Validate()
     {
         if (this.Value == null)
         {
             throw new BelieveInvalidDataException("Data did not match any variant of Payload");
         }
-        this.Switch(
-            (matchCompleted) => matchCompleted.Validate(),
-            (teamMemberTransferred) => teamMemberTransferred.Validate()
-        );
+        this.Switch((matchCompleted) => matchCompleted.Validate(),
+        (teamMemberTransferred) => teamMemberTransferred.Validate());
     }
 
-    public virtual bool Equals(Payload? other) =>
-        other != null
-        && this.VariantIndex() == other.VariantIndex()
-        && JsonElement.DeepEquals(this.Json, other.Json);
+    public virtual bool Equals(Payload? other)
+    =>other != null &&
+    this.VariantIndex() == other.VariantIndex() &&
+    JsonElement.DeepEquals(this.Json, other.Json);
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(this.Json),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(this.Json), ModelBase.ToStringSerializerOptions);
 
     int VariantIndex()
     {
         return this.Value switch
-        {
-            MatchCompleted _ => 0,
-            TeamMemberTransferred _ => 1,
-            _ => -1,
-        };
+        { MatchCompleted _=>0, TeamMemberTransferred _=>1, _ =>-1 } ;
     }
 }
 
@@ -446,65 +422,54 @@ sealed class PayloadConverter : JsonConverter<Payload?>
     {
         var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
         string? eventType;
-        try
-        {
+        try {
             eventType = element.GetProperty("event_type").GetString();
-        }
-        catch
-        {
+        } catch {
             eventType = null;
         }
 
         switch (eventType)
         {
-            case "match.completed":
-            {
+            case "match.completed":{
                 try
                 {
                     var deserialized = JsonSerializer.Deserialize<MatchCompleted>(element, options);
-                    if (deserialized != null)
-                    {
+                    if (deserialized != null) {
+
                         return new(deserialized, element);
                     }
                 }
-                catch (JsonException)
+                catch (JsonException )
                 {
                     // ignore
                 }
 
                 return new(element);
-            }
-            case "team_member.transferred":
-            {
+            }case "team_member.transferred":{
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<TeamMemberTransferred>(
-                        element,
-                        options
-                    );
-                    if (deserialized != null)
-                    {
+                    var deserialized = JsonSerializer.Deserialize<TeamMemberTransferred>(element, options);
+                    if (deserialized != null) {
+
                         return new(deserialized, element);
                     }
                 }
-                catch (JsonException)
+                catch (JsonException )
                 {
                     // ignore
                 }
 
                 return new(element);
-            }
-            default:
-            {
-                return new Payload(element);
-            }
+            }default:
+                { return new Payload(element); }
+
         }
     }
 
-    public override void Write(Utf8JsonWriter writer, Payload? value, JsonSerializerOptions options)
-    {
-        JsonSerializer.Serialize(writer, value?.Json, options);
-    }
+    public override void Write(
+        Utf8JsonWriter writer, Payload? value, JsonSerializerOptions options
+    )
+    { JsonSerializer.Serialize(writer, value?.Json, options); }
 }
 
 /// <summary>
@@ -516,12 +481,12 @@ public sealed record class MatchCompleted : JsonModel
     /// <summary>
     /// Event data
     /// </summary>
-    public required Data Data
-    {
-        get
-        {
+    public required Data Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<Data>("data");
+            return this._rawData.GetNotNullClass<Data>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -529,19 +494,15 @@ public sealed record class MatchCompleted : JsonModel
     /// <summary>
     /// The type of webhook event
     /// </summary>
-    public ApiEnum<string, MatchCompletedEventType>? EventType
-    {
-        get
-        {
+    public ApiEnum<string, MatchCompletedEventType>? EventType {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<ApiEnum<string, MatchCompletedEventType>>(
                 "event_type"
             );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -556,46 +517,42 @@ public sealed record class MatchCompleted : JsonModel
         this.EventType?.Validate();
     }
 
-    public MatchCompleted() { }
+    public MatchCompleted ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MatchCompleted(MatchCompleted matchCompleted)
-        : base(matchCompleted) { }
-#pragma warning restore CS8618
+    public MatchCompleted (MatchCompleted matchCompleted) : base(matchCompleted)
+    {  }
+    #pragma warning restore CS8618
 
-    public MatchCompleted(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public MatchCompleted (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MatchCompleted(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MatchCompleted (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MatchCompletedFromRaw.FromRawUnchecked"/>
-    public static MatchCompleted FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static MatchCompleted FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public MatchCompleted(Data data)
-        : this()
-    {
-        this.Data = data;
-    }
+    public MatchCompleted (Data data) : this()
+    { this.Data = data; }
 }
 
 class MatchCompletedFromRaw : IFromRawJson<MatchCompleted>
 {
     /// <inheritdoc/>
-    public MatchCompleted FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MatchCompleted.FromRawUnchecked(rawData);
+    public MatchCompleted FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>MatchCompleted.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -607,12 +564,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Final away team score
     /// </summary>
-    public required long AwayScore
-    {
-        get
-        {
+    public required long AwayScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("away_score");
+            return this._rawData.GetNotNullStruct<long>(
+                "away_score"
+            );
         }
         init { this._rawData.Set("away_score", value); }
     }
@@ -620,12 +577,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Away team ID
     /// </summary>
-    public required string AwayTeamID
-    {
-        get
-        {
+    public required string AwayTeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("away_team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "away_team_id"
+            );
         }
         init { this._rawData.Set("away_team_id", value); }
     }
@@ -633,12 +590,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// When the match completed
     /// </summary>
-    public required DateTimeOffset CompletedAt
-    {
-        get
-        {
+    public required DateTimeOffset CompletedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<DateTimeOffset>("completed_at");
+            return this._rawData.GetNotNullStruct<DateTimeOffset>(
+                "completed_at"
+            );
         }
         init { this._rawData.Set("completed_at", value); }
     }
@@ -646,12 +603,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Final home team score
     /// </summary>
-    public required long HomeScore
-    {
-        get
-        {
+    public required long HomeScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("home_score");
+            return this._rawData.GetNotNullStruct<long>(
+                "home_score"
+            );
         }
         init { this._rawData.Set("home_score", value); }
     }
@@ -659,12 +616,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Home team ID
     /// </summary>
-    public required string HomeTeamID
-    {
-        get
-        {
+    public required string HomeTeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("home_team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "home_team_id"
+            );
         }
         init { this._rawData.Set("home_team_id", value); }
     }
@@ -672,12 +629,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Unique match identifier
     /// </summary>
-    public required string MatchID
-    {
-        get
-        {
+    public required string MatchID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("match_id");
+            return this._rawData.GetNotNullClass<string>(
+                "match_id"
+            );
         }
         init { this._rawData.Set("match_id", value); }
     }
@@ -685,12 +642,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Type of match
     /// </summary>
-    public required ApiEnum<string, MatchType> MatchType
-    {
-        get
-        {
+    public required ApiEnum<string, MatchType> MatchType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, MatchType>>("match_type");
+            return this._rawData.GetNotNullClass<ApiEnum<string, MatchType>>(
+                "match_type"
+            );
         }
         init { this._rawData.Set("match_type", value); }
     }
@@ -698,12 +655,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Match result from home team perspective
     /// </summary>
-    public required ApiEnum<string, Result> Result
-    {
-        get
-        {
+    public required ApiEnum<string, Result> Result {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, Result>>("result");
+            return this._rawData.GetNotNullClass<ApiEnum<string, Result>>(
+                "result"
+            );
         }
         init { this._rawData.Set("result", value); }
     }
@@ -711,12 +668,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Ted's post-match wisdom
     /// </summary>
-    public required string TedPostMatchQuote
-    {
-        get
-        {
+    public required string TedPostMatchQuote {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("ted_post_match_quote");
+            return this._rawData.GetNotNullClass<string>(
+                "ted_post_match_quote"
+            );
         }
         init { this._rawData.Set("ted_post_match_quote", value); }
     }
@@ -724,12 +681,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Ted's lesson from the match
     /// </summary>
-    public string? LessonLearned
-    {
-        get
-        {
+    public string? LessonLearned {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("lesson_learned");
+            return this._rawData.GetNullableClass<string>(
+                "lesson_learned"
+            );
         }
         init { this._rawData.Set("lesson_learned", value); }
     }
@@ -737,12 +694,12 @@ public sealed record class Data : JsonModel
     /// <summary>
     /// Player of the match (if awarded)
     /// </summary>
-    public string? ManOfTheMatch
-    {
-        get
-        {
+    public string? ManOfTheMatch {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("man_of_the_match");
+            return this._rawData.GetNullableClass<string>(
+                "man_of_the_match"
+            );
         }
         init { this._rawData.Set("man_of_the_match", value); }
     }
@@ -763,39 +720,38 @@ public sealed record class Data : JsonModel
         _ = this.ManOfTheMatch;
     }
 
-    public Data() { }
+    public Data ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Data(Data data)
-        : base(data) { }
-#pragma warning restore CS8618
+    public Data (Data data) : base(data)
+    {  }
+    #pragma warning restore CS8618
 
-    public Data(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Data (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Data(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Data (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="DataFromRaw.FromRawUnchecked"/>
-    public static Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class DataFromRaw : IFromRawJson<Data>
 {
     /// <inheritdoc/>
-    public Data FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Data.FromRawUnchecked(rawData);
+    public Data FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Data.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -804,11 +760,7 @@ class DataFromRaw : IFromRawJson<Data>
 [JsonConverter(typeof(MatchTypeConverter))]
 public enum MatchType
 {
-    League,
-    Cup,
-    Friendly,
-    Playoff,
-    Final,
+    League, Cup, Friendly, Playoff, Final
 }
 
 sealed class MatchTypeConverter : JsonConverter<MatchType>
@@ -821,36 +773,30 @@ sealed class MatchTypeConverter : JsonConverter<MatchType>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "league" => MatchType.League,
-            "cup" => MatchType.Cup,
-            "friendly" => MatchType.Friendly,
-            "playoff" => MatchType.Playoff,
-            "final" => MatchType.Final,
-            _ => (MatchType)(-1),
+            "league"=>MatchType.League,
+            "cup"=>MatchType.Cup,
+            "friendly"=>MatchType.Friendly,
+            "playoff"=>MatchType.Playoff,
+            "final"=>MatchType.Final,
+            _ =>(MatchType)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        MatchType value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, MatchType value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MatchType.League => "league",
-                MatchType.Cup => "cup",
-                MatchType.Friendly => "friendly",
-                MatchType.Playoff => "playoff",
-                MatchType.Final => "final",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MatchType.League=>"league",
+            MatchType.Cup=>"cup",
+            MatchType.Friendly=>"friendly",
+            MatchType.Playoff=>"playoff",
+            MatchType.Final=>"final",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -860,9 +806,7 @@ sealed class MatchTypeConverter : JsonConverter<MatchType>
 [JsonConverter(typeof(ResultConverter))]
 public enum Result
 {
-    HomeWin,
-    AwayWin,
-    Draw,
+    HomeWin, AwayWin, Draw
 }
 
 sealed class ResultConverter : JsonConverter<Result>
@@ -875,28 +819,26 @@ sealed class ResultConverter : JsonConverter<Result>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "home_win" => Result.HomeWin,
-            "away_win" => Result.AwayWin,
-            "draw" => Result.Draw,
-            _ => (Result)(-1),
+            "home_win"=>Result.HomeWin,
+            "away_win"=>Result.AwayWin,
+            "draw"=>Result.Draw,
+            _ =>(Result)(-1)
         };
     }
 
-    public override void Write(Utf8JsonWriter writer, Result value, JsonSerializerOptions options)
+    public override void Write(
+        Utf8JsonWriter writer, Result value, JsonSerializerOptions options
+    )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                Result.HomeWin => "home_win",
-                Result.AwayWin => "away_win",
-                Result.Draw => "draw",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            Result.HomeWin=>"home_win",
+            Result.AwayWin=>"away_win",
+            Result.Draw=>"draw",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -906,7 +848,7 @@ sealed class ResultConverter : JsonConverter<Result>
 [JsonConverter(typeof(MatchCompletedEventTypeConverter))]
 public enum MatchCompletedEventType
 {
-    MatchCompleted,
+    MatchCompleted
 }
 
 sealed class MatchCompletedEventTypeConverter : JsonConverter<MatchCompletedEventType>
@@ -919,8 +861,8 @@ sealed class MatchCompletedEventTypeConverter : JsonConverter<MatchCompletedEven
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "match.completed" => MatchCompletedEventType.MatchCompleted,
-            _ => (MatchCompletedEventType)(-1),
+            "match.completed"=>MatchCompletedEventType.MatchCompleted,
+            _ =>(MatchCompletedEventType)(-1)
         };
     }
 
@@ -930,17 +872,13 @@ sealed class MatchCompletedEventTypeConverter : JsonConverter<MatchCompletedEven
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MatchCompletedEventType.MatchCompleted => "match.completed",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MatchCompletedEventType.MatchCompleted=>"match.completed",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -953,12 +891,12 @@ public sealed record class TeamMemberTransferred : JsonModel
     /// <summary>
     /// Event data
     /// </summary>
-    public required TeamMemberTransferredData Data
-    {
-        get
-        {
+    public required TeamMemberTransferredData Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<TeamMemberTransferredData>("data");
+            return this._rawData.GetNotNullClass<TeamMemberTransferredData>(
+                "data"
+            );
         }
         init { this._rawData.Set("data", value); }
     }
@@ -966,19 +904,15 @@ public sealed record class TeamMemberTransferred : JsonModel
     /// <summary>
     /// The type of webhook event
     /// </summary>
-    public ApiEnum<string, TeamMemberTransferredEventType>? EventType
-    {
-        get
-        {
+    public ApiEnum<string, TeamMemberTransferredEventType>? EventType {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<ApiEnum<string, TeamMemberTransferredEventType>>(
                 "event_type"
             );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -993,41 +927,37 @@ public sealed record class TeamMemberTransferred : JsonModel
         this.EventType?.Validate();
     }
 
-    public TeamMemberTransferred() { }
+    public TeamMemberTransferred ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamMemberTransferred(TeamMemberTransferred teamMemberTransferred)
-        : base(teamMemberTransferred) { }
-#pragma warning restore CS8618
+    public TeamMemberTransferred (
+        TeamMemberTransferred teamMemberTransferred
+    ) : base(teamMemberTransferred)
+    {  }
+    #pragma warning restore CS8618
 
-    public TeamMemberTransferred(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TeamMemberTransferred (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamMemberTransferred(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TeamMemberTransferred (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TeamMemberTransferredFromRaw.FromRawUnchecked"/>
     public static TeamMemberTransferred FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 
     [SetsRequiredMembers]
-    public TeamMemberTransferred(TeamMemberTransferredData data)
-        : this()
-    {
-        this.Data = data;
-    }
+    public TeamMemberTransferred (TeamMemberTransferredData data) : this()
+    { this.Data = data; }
 }
 
 class TeamMemberTransferredFromRaw : IFromRawJson<TeamMemberTransferred>
@@ -1035,26 +965,25 @@ class TeamMemberTransferredFromRaw : IFromRawJson<TeamMemberTransferred>
     /// <inheritdoc/>
     public TeamMemberTransferred FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TeamMemberTransferred.FromRawUnchecked(rawData);
+    )
+    =>TeamMemberTransferred.FromRawUnchecked(rawData);
 }
 
 /// <summary>
 /// Event data
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<TeamMemberTransferredData, TeamMemberTransferredDataFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<TeamMemberTransferredData, TeamMemberTransferredDataFromRaw>))]
 public sealed record class TeamMemberTransferredData : JsonModel
 {
     /// <summary>
     /// ID of the character (links to /characters)
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -1062,12 +991,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Name of the character
     /// </summary>
-    public required string CharacterName
-    {
-        get
-        {
+    public required string CharacterName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_name");
+            return this._rawData.GetNotNullClass<string>(
+                "character_name"
+            );
         }
         init { this._rawData.Set("character_name", value); }
     }
@@ -1075,12 +1004,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Type of team member
     /// </summary>
-    public required ApiEnum<string, MemberType> MemberType
-    {
-        get
-        {
+    public required ApiEnum<string, MemberType> MemberType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, MemberType>>("member_type");
+            return this._rawData.GetNotNullClass<ApiEnum<string, MemberType>>(
+                "member_type"
+            );
         }
         init { this._rawData.Set("member_type", value); }
     }
@@ -1088,12 +1017,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// ID of the team involved
     /// </summary>
-    public required string TeamID
-    {
-        get
-        {
+    public required string TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -1101,12 +1030,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// ID of the team member
     /// </summary>
-    public required string TeamMemberID
-    {
-        get
-        {
+    public required string TeamMemberID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_member_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_member_id"
+            );
         }
         init { this._rawData.Set("team_member_id", value); }
     }
@@ -1114,12 +1043,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Name of the team involved
     /// </summary>
-    public required string TeamName
-    {
-        get
-        {
+    public required string TeamName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_name");
+            return this._rawData.GetNotNullClass<string>(
+                "team_name"
+            );
         }
         init { this._rawData.Set("team_name", value); }
     }
@@ -1127,12 +1056,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Ted's reaction to the transfer
     /// </summary>
-    public required string TedReaction
-    {
-        get
-        {
+    public required string TedReaction {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("ted_reaction");
+            return this._rawData.GetNotNullClass<string>(
+                "ted_reaction"
+            );
         }
         init { this._rawData.Set("ted_reaction", value); }
     }
@@ -1140,12 +1069,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Whether the member joined or departed
     /// </summary>
-    public required ApiEnum<string, TransferType> TransferType
-    {
-        get
-        {
+    public required ApiEnum<string, TransferType> TransferType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, TransferType>>("transfer_type");
+            return this._rawData.GetNotNullClass<ApiEnum<string, TransferType>>(
+                "transfer_type"
+            );
         }
         init { this._rawData.Set("transfer_type", value); }
     }
@@ -1153,12 +1082,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Previous team ID (for joins from another team)
     /// </summary>
-    public string? PreviousTeamID
-    {
-        get
-        {
+    public string? PreviousTeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("previous_team_id");
+            return this._rawData.GetNullableClass<string>(
+                "previous_team_id"
+            );
         }
         init { this._rawData.Set("previous_team_id", value); }
     }
@@ -1166,12 +1095,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Previous team name (for joins from another team)
     /// </summary>
-    public string? PreviousTeamName
-    {
-        get
-        {
+    public string? PreviousTeamName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("previous_team_name");
+            return this._rawData.GetNullableClass<string>(
+                "previous_team_name"
+            );
         }
         init { this._rawData.Set("previous_team_name", value); }
     }
@@ -1179,12 +1108,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Transfer fee in GBP (for players)
     /// </summary>
-    public string? TransferFeeGbp
-    {
-        get
-        {
+    public string? TransferFeeGbp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("transfer_fee_gbp");
+            return this._rawData.GetNullableClass<string>(
+                "transfer_fee_gbp"
+            );
         }
         init { this._rawData.Set("transfer_fee_gbp", value); }
     }
@@ -1192,12 +1121,12 @@ public sealed record class TeamMemberTransferredData : JsonModel
     /// <summary>
     /// Years spent with previous team
     /// </summary>
-    public long? YearsWithPreviousTeam
-    {
-        get
-        {
+    public long? YearsWithPreviousTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("years_with_previous_team");
+            return this._rawData.GetNullableStruct<long>(
+                "years_with_previous_team"
+            );
         }
         init { this._rawData.Set("years_with_previous_team", value); }
     }
@@ -1219,34 +1148,33 @@ public sealed record class TeamMemberTransferredData : JsonModel
         _ = this.YearsWithPreviousTeam;
     }
 
-    public TeamMemberTransferredData() { }
+    public TeamMemberTransferredData ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamMemberTransferredData(TeamMemberTransferredData teamMemberTransferredData)
-        : base(teamMemberTransferredData) { }
-#pragma warning restore CS8618
+    public TeamMemberTransferredData (
+        TeamMemberTransferredData teamMemberTransferredData
+    ) : base(teamMemberTransferredData)
+    {  }
+    #pragma warning restore CS8618
 
-    public TeamMemberTransferredData(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TeamMemberTransferredData (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamMemberTransferredData(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TeamMemberTransferredData (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TeamMemberTransferredDataFromRaw.FromRawUnchecked"/>
     public static TeamMemberTransferredData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TeamMemberTransferredDataFromRaw : IFromRawJson<TeamMemberTransferredData>
@@ -1254,7 +1182,8 @@ class TeamMemberTransferredDataFromRaw : IFromRawJson<TeamMemberTransferredData>
     /// <inheritdoc/>
     public TeamMemberTransferredData FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => TeamMemberTransferredData.FromRawUnchecked(rawData);
+    )
+    =>TeamMemberTransferredData.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -1263,10 +1192,7 @@ class TeamMemberTransferredDataFromRaw : IFromRawJson<TeamMemberTransferredData>
 [JsonConverter(typeof(MemberTypeConverter))]
 public enum MemberType
 {
-    Player,
-    Coach,
-    MedicalStaff,
-    EquipmentManager,
+    Player, Coach, MedicalStaff, EquipmentManager
 }
 
 sealed class MemberTypeConverter : JsonConverter<MemberType>
@@ -1279,34 +1205,28 @@ sealed class MemberTypeConverter : JsonConverter<MemberType>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "player" => MemberType.Player,
-            "coach" => MemberType.Coach,
-            "medical_staff" => MemberType.MedicalStaff,
-            "equipment_manager" => MemberType.EquipmentManager,
-            _ => (MemberType)(-1),
+            "player"=>MemberType.Player,
+            "coach"=>MemberType.Coach,
+            "medical_staff"=>MemberType.MedicalStaff,
+            "equipment_manager"=>MemberType.EquipmentManager,
+            _ =>(MemberType)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        MemberType value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, MemberType value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MemberType.Player => "player",
-                MemberType.Coach => "coach",
-                MemberType.MedicalStaff => "medical_staff",
-                MemberType.EquipmentManager => "equipment_manager",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MemberType.Player=>"player",
+            MemberType.Coach=>"coach",
+            MemberType.MedicalStaff=>"medical_staff",
+            MemberType.EquipmentManager=>"equipment_manager",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -1316,8 +1236,7 @@ sealed class MemberTypeConverter : JsonConverter<MemberType>
 [JsonConverter(typeof(TransferTypeConverter))]
 public enum TransferType
 {
-    Joined,
-    Departed,
+    Joined, Departed
 }
 
 sealed class TransferTypeConverter : JsonConverter<TransferType>
@@ -1330,30 +1249,24 @@ sealed class TransferTypeConverter : JsonConverter<TransferType>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "joined" => TransferType.Joined,
-            "departed" => TransferType.Departed,
-            _ => (TransferType)(-1),
+            "joined"=>TransferType.Joined,
+            "departed"=>TransferType.Departed,
+            _ =>(TransferType)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        TransferType value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, TransferType value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TransferType.Joined => "joined",
-                TransferType.Departed => "departed",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            TransferType.Joined=>"joined",
+            TransferType.Departed=>"departed",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }
 
@@ -1363,7 +1276,7 @@ sealed class TransferTypeConverter : JsonConverter<TransferType>
 [JsonConverter(typeof(TeamMemberTransferredEventTypeConverter))]
 public enum TeamMemberTransferredEventType
 {
-    TeamMemberTransferred,
+    TeamMemberTransferred
 }
 
 sealed class TeamMemberTransferredEventTypeConverter : JsonConverter<TeamMemberTransferredEventType>
@@ -1376,8 +1289,8 @@ sealed class TeamMemberTransferredEventTypeConverter : JsonConverter<TeamMemberT
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "team_member.transferred" => TeamMemberTransferredEventType.TeamMemberTransferred,
-            _ => (TeamMemberTransferredEventType)(-1),
+            "team_member.transferred"=>TeamMemberTransferredEventType.TeamMemberTransferred,
+            _ =>(TeamMemberTransferredEventType)(-1)
         };
     }
 
@@ -1387,16 +1300,12 @@ sealed class TeamMemberTransferredEventTypeConverter : JsonConverter<TeamMemberT
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TeamMemberTransferredEventType.TeamMemberTransferred => "team_member.transferred",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            TeamMemberTransferredEventType.TeamMemberTransferred=>"team_member.transferred",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

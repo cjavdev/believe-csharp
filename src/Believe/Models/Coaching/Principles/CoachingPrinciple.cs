@@ -16,12 +16,12 @@ public sealed record class CoachingPrinciple : JsonModel
     /// <summary>
     /// Principle identifier
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class CoachingPrinciple : JsonModel
     /// <summary>
     /// How to apply this principle
     /// </summary>
-    public required string Application
-    {
-        get
-        {
+    public required string Application {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("application");
+            return this._rawData.GetNotNullClass<string>(
+                "application"
+            );
         }
         init { this._rawData.Set("application", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class CoachingPrinciple : JsonModel
     /// <summary>
     /// Example from the show
     /// </summary>
-    public required string ExampleFromShow
-    {
-        get
-        {
+    public required string ExampleFromShow {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("example_from_show");
+            return this._rawData.GetNotNullClass<string>(
+                "example_from_show"
+            );
         }
         init { this._rawData.Set("example_from_show", value); }
     }
@@ -55,12 +55,12 @@ public sealed record class CoachingPrinciple : JsonModel
     /// <summary>
     /// What this principle means
     /// </summary>
-    public required string Explanation
-    {
-        get
-        {
+    public required string Explanation {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("explanation");
+            return this._rawData.GetNotNullClass<string>(
+                "explanation"
+            );
         }
         init { this._rawData.Set("explanation", value); }
     }
@@ -68,12 +68,12 @@ public sealed record class CoachingPrinciple : JsonModel
     /// <summary>
     /// The coaching principle
     /// </summary>
-    public required string Principle
-    {
-        get
-        {
+    public required string Principle {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("principle");
+            return this._rawData.GetNotNullClass<string>(
+                "principle"
+            );
         }
         init { this._rawData.Set("principle", value); }
     }
@@ -81,12 +81,12 @@ public sealed record class CoachingPrinciple : JsonModel
     /// <summary>
     /// Related Ted quote
     /// </summary>
-    public required string TedQuote
-    {
-        get
-        {
+    public required string TedQuote {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("ted_quote");
+            return this._rawData.GetNotNullClass<string>(
+                "ted_quote"
+            );
         }
         init { this._rawData.Set("ted_quote", value); }
     }
@@ -102,39 +102,38 @@ public sealed record class CoachingPrinciple : JsonModel
         _ = this.TedQuote;
     }
 
-    public CoachingPrinciple() { }
+    public CoachingPrinciple ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CoachingPrinciple(CoachingPrinciple coachingPrinciple)
-        : base(coachingPrinciple) { }
-#pragma warning restore CS8618
+    public CoachingPrinciple (CoachingPrinciple coachingPrinciple) : base(
+        coachingPrinciple
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public CoachingPrinciple(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public CoachingPrinciple (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CoachingPrinciple(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    CoachingPrinciple (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CoachingPrincipleFromRaw.FromRawUnchecked"/>
     public static CoachingPrinciple FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CoachingPrincipleFromRaw : IFromRawJson<CoachingPrinciple>
 {
     /// <inheritdoc/>
-    public CoachingPrinciple FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        CoachingPrinciple.FromRawUnchecked(rawData);
+    public CoachingPrinciple FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>CoachingPrinciple.FromRawUnchecked(rawData);
 }

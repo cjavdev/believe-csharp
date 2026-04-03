@@ -11,10 +11,7 @@ namespace Believe.Models.Matches;
 [JsonConverter(typeof(MatchResultConverter))]
 public enum MatchResult
 {
-    Win,
-    Loss,
-    Draw,
-    Pending,
+    Win, Loss, Draw, Pending
 }
 
 sealed class MatchResultConverter : JsonConverter<MatchResult>
@@ -27,33 +24,27 @@ sealed class MatchResultConverter : JsonConverter<MatchResult>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "win" => MatchResult.Win,
-            "loss" => MatchResult.Loss,
-            "draw" => MatchResult.Draw,
-            "pending" => MatchResult.Pending,
-            _ => (MatchResult)(-1),
+            "win"=>MatchResult.Win,
+            "loss"=>MatchResult.Loss,
+            "draw"=>MatchResult.Draw,
+            "pending"=>MatchResult.Pending,
+            _ =>(MatchResult)(-1)
         };
     }
 
     public override void Write(
-        Utf8JsonWriter writer,
-        MatchResult value,
-        JsonSerializerOptions options
+        Utf8JsonWriter writer, MatchResult value, JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MatchResult.Win => "win",
-                MatchResult.Loss => "loss",
-                MatchResult.Draw => "draw",
-                MatchResult.Pending => "pending",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MatchResult.Win=>"win",
+            MatchResult.Loss=>"loss",
+            MatchResult.Draw=>"draw",
+            MatchResult.Pending=>"pending",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

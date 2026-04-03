@@ -12,20 +12,29 @@ public class ConflictResolveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new ConflictResolveParams
         {
-            ConflictType = ConflictType.Interpersonal,
-            Description =
-                "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",
-            PartiesInvolved = ["Me", "My teammate Alex"],
-            AttemptsMade = ["Mentioned it casually", "Avoided them"],
+            ConflictType = ConflictType.Interpersonal,Description = "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",PartiesInvolved =
+            [
+                "Me", "My teammate Alex"
+            ],AttemptsMade =
+            [
+                "Mentioned it casually", "Avoided them"
+            ],
         };
 
         ApiEnum<string, ConflictType> expectedConflictType = ConflictType.Interpersonal;
-        string expectedDescription =
-            "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.";
-        List<string> expectedPartiesInvolved = ["Me", "My teammate Alex"];
-        List<string> expectedAttemptsMade = ["Mentioned it casually", "Avoided them"];
+        string expectedDescription = "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.";
+        List<string> expectedPartiesInvolved =
+        [
+            "Me", "My teammate Alex"
+        ];
+        List<string> expectedAttemptsMade =
+        [
+            "Mentioned it casually", "Avoided them"
+        ];
 
         Assert.Equal(expectedConflictType, parameters.ConflictType);
         Assert.Equal(expectedDescription, parameters.Description);
@@ -45,33 +54,39 @@ public class ConflictResolveParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new ConflictResolveParams
         {
-            ConflictType = ConflictType.Interpersonal,
-            Description =
-                "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",
-            PartiesInvolved = ["Me", "My teammate Alex"],
+            ConflictType = ConflictType.Interpersonal,Description = "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",PartiesInvolved =
+            [
+                "Me", "My teammate Alex"
+            ],
         };
 
         Assert.Null(parameters.AttemptsMade);
         Assert.False(parameters.RawBodyData.ContainsKey("attempts_made"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new ConflictResolveParams
         {
-            ConflictType = ConflictType.Interpersonal,
-            Description =
-                "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",
-            PartiesInvolved = ["Me", "My teammate Alex"],
+            ConflictType = ConflictType.Interpersonal,Description = "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",PartiesInvolved =
+            [
+                "Me", "My teammate Alex"
+            ],
 
             AttemptsMade = null,
         };
 
         Assert.Null(parameters.AttemptsMade);
         Assert.True(parameters.RawBodyData.ContainsKey("attempts_made"));
+
     }
 
     [Fact]
@@ -80,12 +95,19 @@ public class ConflictResolveParamsTest : TestBase
         ConflictResolveParams parameters = new()
         {
             ConflictType = ConflictType.Interpersonal,
-            Description =
-                "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",
-            PartiesInvolved = ["Me", "My teammate Alex"],
+            Description = "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",
+            PartiesInvolved =
+            [
+                "Me", "My teammate Alex"
+            ],
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/conflicts/resolve"), url);
     }
@@ -96,10 +118,15 @@ public class ConflictResolveParamsTest : TestBase
         var parameters = new ConflictResolveParams
         {
             ConflictType = ConflictType.Interpersonal,
-            Description =
-                "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",
-            PartiesInvolved = ["Me", "My teammate Alex"],
-            AttemptsMade = ["Mentioned it casually", "Avoided them"],
+            Description = "Alex keeps taking credit for my ideas in meetings and I'm getting resentful.",
+            PartiesInvolved =
+            [
+                "Me", "My teammate Alex"
+            ],
+            AttemptsMade =
+            [
+                "Mentioned it casually", "Avoided them"
+            ],
         };
 
         ConflictResolveParams copied = new(parameters);
@@ -110,13 +137,7 @@ public class ConflictResolveParamsTest : TestBase
 
 public class ConflictTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(ConflictType.Interpersonal)]
-    [InlineData(ConflictType.TeamDynamics)]
-    [InlineData(ConflictType.Leadership)]
-    [InlineData(ConflictType.Ego)]
-    [InlineData(ConflictType.Miscommunication)]
-    [InlineData(ConflictType.Competition)]
+    [Theory][InlineData(ConflictType.Interpersonal)][InlineData(ConflictType.TeamDynamics)][InlineData(ConflictType.Leadership)][InlineData(ConflictType.Ego)][InlineData(ConflictType.Miscommunication)][InlineData(ConflictType.Competition)]
     public void Validation_Works(ConflictType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -127,32 +148,20 @@ public class ConflictTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(ConflictType.Interpersonal)]
-    [InlineData(ConflictType.TeamDynamics)]
-    [InlineData(ConflictType.Leadership)]
-    [InlineData(ConflictType.Ego)]
-    [InlineData(ConflictType.Miscommunication)]
-    [InlineData(ConflictType.Competition)]
+    [Theory][InlineData(ConflictType.Interpersonal)][InlineData(ConflictType.TeamDynamics)][InlineData(ConflictType.Leadership)][InlineData(ConflictType.Ego)][InlineData(ConflictType.Miscommunication)][InlineData(ConflictType.Competition)]
     public void SerializationRoundtrip_Works(ConflictType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, ConflictType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -160,15 +169,9 @@ public class ConflictTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, ConflictType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

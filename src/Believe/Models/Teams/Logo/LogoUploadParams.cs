@@ -17,9 +17,7 @@ namespace Believe.Models.Teams.Logo;
 /// </summary>
 public record class LogoUploadParams : ParamsBase
 {
-    readonly MultipartJsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, MultipartJsonElement> RawBodyData
-    {
+    readonly MultipartJsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, MultipartJsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
@@ -28,30 +26,32 @@ public record class LogoUploadParams : ParamsBase
     /// <summary>
     /// Logo image file
     /// </summary>
-    public required BinaryContent File
-    {
-        get
-        {
+    public required BinaryContent File {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<BinaryContent>("file");
+            return this._rawBodyData.GetNotNullClass<BinaryContent>(
+                "file"
+            );
         }
         init { this._rawBodyData.Set("file", value); }
     }
 
-    public LogoUploadParams() { }
+    public LogoUploadParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public LogoUploadParams(LogoUploadParams logoUploadParams)
-        : base(logoUploadParams)
+    public LogoUploadParams (LogoUploadParams logoUploadParams) : base(
+        logoUploadParams
+    )
     {
         this.TeamID = logoUploadParams.TeamID;
 
         this._rawBodyData = new(logoUploadParams._rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public LogoUploadParams(
+    public LogoUploadParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, MultipartJsonElement> rawBodyData
@@ -62,9 +62,9 @@ public record class LogoUploadParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    LogoUploadParams(
+    LogoUploadParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, MultipartJsonElement> rawBodyData,
@@ -76,7 +76,7 @@ public record class LogoUploadParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
         this.TeamID = teamID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static LogoUploadParams FromRawUnchecked(
@@ -91,26 +91,19 @@ public record class LogoUploadParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData),
             teamID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, MultipartJsonElement>()
-                {
-                    ["TeamID"] = JsonSerializer.SerializeToElement(this.TeamID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, MultipartJsonElement>(
+
+    )
+    {
+        ["TeamID"] = JsonSerializer.SerializeToElement(this.TeamID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(LogoUploadParams? other)
     {
@@ -118,28 +111,28 @@ public record class LogoUploadParams : ParamsBase
         {
             return false;
         }
-        return (this.TeamID?.Equals(other.TeamID) ?? other.TeamID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return (this.TeamID?.Equals(other.TeamID) ?? other.TeamID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/teams/{0}/logo", this.TeamID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/teams/{0}/logo",
+            this.TeamID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
-    {
-        return MultipartJsonSerializer.Serialize(RawBodyData);
-    }
+    { return MultipartJsonSerializer.Serialize(RawBodyData) ; }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -149,7 +142,5 @@ public record class LogoUploadParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

@@ -21,8 +21,8 @@ namespace Believe;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public interface IBelieveClient : IDisposable
-{
+public interface IBelieveClient
+: IDisposable{
     /// <inheritdoc cref="ClientOptions.HttpClient" />
     HttpClient HttpClient { get; init; }
 
@@ -51,7 +51,8 @@ public interface IBelieveClient : IDisposable
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IBelieveClient WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IBelieveClient WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     ICharacterService Characters { get; }
 
@@ -92,19 +93,20 @@ public interface IBelieveClient : IDisposable
     IClientService Client { get; }
 
     /// <summary>
-    /// Get a warm welcome and overview of available endpoints.
-    /// </summary>
+/// Get a warm welcome and overview of available endpoints.
+/// </summary>
     Task<JsonElement> GetWelcome(
         ClientGetWelcomeParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
 /// A view of <see cref="IBelieveClient"/> that provides access to raw HTTP responses for each method.
 /// </summary>
-public interface IBelieveClientWithRawResponse : IDisposable
-{
+public interface IBelieveClientWithRawResponse
+: IDisposable{
     /// <inheritdoc cref="ClientOptions.HttpClient" />
     HttpClient HttpClient { get; init; }
 
@@ -127,7 +129,10 @@ public interface IBelieveClientWithRawResponse : IDisposable
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IBelieveClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IBelieveClientWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     ICharacterServiceWithRawResponse Characters { get; }
 
@@ -168,20 +173,21 @@ public interface IBelieveClientWithRawResponse : IDisposable
     IClientServiceWithRawResponse Client { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /</c>, but is otherwise the
-    /// same as <see cref="IBelieveClient.GetWelcome(ClientGetWelcomeParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /</c>, but is otherwise the
+/// same as <see cref="IBelieveClient.GetWelcome(ClientGetWelcomeParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<JsonElement>> GetWelcome(
         ClientGetWelcomeParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
     /// Sends a request to the Believe REST API.
     /// </summary>
-    Task<HttpResponse> Execute<T>(
-        HttpRequest<T> request,
-        CancellationToken cancellationToken = default
-    )
-        where T : ParamsBase;
+    Task<HttpResponse> Execute<T>
+    (
+        HttpRequest<T> request, CancellationToken cancellationToken = default
+    ) where T: ParamsBase
+    ;
 }

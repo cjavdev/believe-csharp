@@ -11,19 +11,7 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
-            BuyerEmail = "mae.green@example.com",
-            CouponCode = "BELIEVE10",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",BuyerEmail = "mae.green@example.com",CouponCode = "BELIEVE10",
         };
 
         string expectedID = "ts-001";
@@ -60,26 +48,11 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
-            BuyerEmail = "mae.green@example.com",
-            CouponCode = "BELIEVE10",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",BuyerEmail = "mae.green@example.com",CouponCode = "BELIEVE10",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketSale>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TicketSale>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -89,26 +62,11 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
-            BuyerEmail = "mae.green@example.com",
-            CouponCode = "BELIEVE10",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",BuyerEmail = "mae.green@example.com",CouponCode = "BELIEVE10",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketSale>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TicketSale>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "ts-001";
@@ -145,19 +103,7 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
-            BuyerEmail = "mae.green@example.com",
-            CouponCode = "BELIEVE10",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",BuyerEmail = "mae.green@example.com",CouponCode = "BELIEVE10",
         };
 
         model.Validate();
@@ -168,23 +114,13 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",
         };
 
         Assert.Null(model.BuyerEmail);
-        Assert.False(model.RawData.ContainsKey("buyer_email"));
-        Assert.Null(model.CouponCode);
+        Assert.False(model.RawData.ContainsKey("buyer_email"));Assert.Null(model.CouponCode);
         Assert.False(model.RawData.ContainsKey("coupon_code"));
+
     }
 
     [Fact]
@@ -192,17 +128,7 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",
         };
 
         model.Validate();
@@ -213,26 +139,15 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",
 
-            BuyerEmail = null,
-            CouponCode = null,
+            BuyerEmail = null,CouponCode = null,
         };
 
         Assert.Null(model.BuyerEmail);
-        Assert.True(model.RawData.ContainsKey("buyer_email"));
-        Assert.Null(model.CouponCode);
+        Assert.True(model.RawData.ContainsKey("buyer_email"));Assert.Null(model.CouponCode);
         Assert.True(model.RawData.ContainsKey("coupon_code"));
+
     }
 
     [Fact]
@@ -240,20 +155,9 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",
 
-            BuyerEmail = null,
-            CouponCode = null,
+            BuyerEmail = null,CouponCode = null,
         };
 
         model.Validate();
@@ -264,19 +168,7 @@ public class TicketSaleTest : TestBase
     {
         var model = new TicketSale
         {
-            ID = "ts-001",
-            BuyerName = "Mae Green",
-            Currency = "GBP",
-            Discount = "9.00",
-            MatchID = "match-001",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 2,
-            Subtotal = "90.00",
-            Tax = "16.20",
-            Total = "97.20",
-            UnitPrice = "45.00",
-            BuyerEmail = "mae.green@example.com",
-            CouponCode = "BELIEVE10",
+            ID = "ts-001",BuyerName = "Mae Green",Currency = "GBP",Discount = "9.00",MatchID = "match-001",PurchaseMethod = PurchaseMethod.Online,Quantity = 2,Subtotal = "90.00",Tax = "16.20",Total = "97.20",UnitPrice = "45.00",BuyerEmail = "mae.green@example.com",CouponCode = "BELIEVE10",
         };
 
         TicketSale copied = new(model);

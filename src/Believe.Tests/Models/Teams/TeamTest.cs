@@ -12,29 +12,24 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            IsActive = true,
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            RivalTeams = ["west-ham", "rupert-fc"],
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",IsActive = true,Nickname = "The Greyhounds",PrimaryColor = "#0033A0",RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],SecondaryColor = "#FFFFFF",StadiumLocation = new()
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
         };
 
         string expectedID = "afc-richmond";
@@ -46,7 +41,10 @@ public class TeamTest : TestBase
         TeamValues expectedValues = new()
         {
             PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
+            SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],
             TeamMotto = "Football is life!",
         };
         string expectedAnnualBudgetGbp = "50000000.00";
@@ -55,9 +53,16 @@ public class TeamTest : TestBase
         bool expectedIsActive = true;
         string expectedNickname = "The Greyhounds";
         string expectedPrimaryColor = "#0033A0";
-        List<string> expectedRivalTeams = ["west-ham", "rupert-fc"];
+        List<string> expectedRivalTeams =
+        [
+            "west-ham", "rupert-fc"
+        ];
         string expectedSecondaryColor = "#FFFFFF";
-        GeoLocation expectedStadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 };
+        GeoLocation expectedStadiumLocation = new()
+        {
+            Latitude = 51.4816,
+            Longitude = -0.191,
+        };
         string expectedWebsite = "https://www.afcrichmond.com";
         double expectedWinPercentage = 45.5;
 
@@ -91,29 +96,24 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            IsActive = true,
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            RivalTeams = ["west-ham", "rupert-fc"],
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",IsActive = true,Nickname = "The Greyhounds",PrimaryColor = "#0033A0",RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],SecondaryColor = "#FFFFFF",StadiumLocation = new()
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -127,29 +127,24 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            IsActive = true,
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            RivalTeams = ["west-ham", "rupert-fc"],
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",IsActive = true,Nickname = "The Greyhounds",PrimaryColor = "#0033A0",RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],SecondaryColor = "#FFFFFF",StadiumLocation = new()
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -165,7 +160,10 @@ public class TeamTest : TestBase
         TeamValues expectedValues = new()
         {
             PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
+            SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],
             TeamMotto = "Football is life!",
         };
         string expectedAnnualBudgetGbp = "50000000.00";
@@ -174,9 +172,16 @@ public class TeamTest : TestBase
         bool expectedIsActive = true;
         string expectedNickname = "The Greyhounds";
         string expectedPrimaryColor = "#0033A0";
-        List<string> expectedRivalTeams = ["west-ham", "rupert-fc"];
+        List<string> expectedRivalTeams =
+        [
+            "west-ham", "rupert-fc"
+        ];
         string expectedSecondaryColor = "#FFFFFF";
-        GeoLocation expectedStadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 };
+        GeoLocation expectedStadiumLocation = new()
+        {
+            Latitude = 51.4816,
+            Longitude = -0.191,
+        };
         string expectedWebsite = "https://www.afcrichmond.com";
         double expectedWinPercentage = 45.5;
 
@@ -210,29 +215,24 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            IsActive = true,
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            RivalTeams = ["west-ham", "rupert-fc"],
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",IsActive = true,Nickname = "The Greyhounds",PrimaryColor = "#0033A0",RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],SecondaryColor = "#FFFFFF",StadiumLocation = new()
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
         };
 
         model.Validate();
@@ -243,33 +243,29 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",Nickname = "The Greyhounds",PrimaryColor = "#0033A0",SecondaryColor = "#FFFFFF",StadiumLocation = new(
+
+            )
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
         };
 
         Assert.Null(model.IsActive);
-        Assert.False(model.RawData.ContainsKey("is_active"));
-        Assert.Null(model.RivalTeams);
+        Assert.False(model.RawData.ContainsKey("is_active"));Assert.Null(model.RivalTeams);
         Assert.False(model.RawData.ContainsKey("rival_teams"));
+
     }
 
     [Fact]
@@ -277,27 +273,23 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",Nickname = "The Greyhounds",PrimaryColor = "#0033A0",SecondaryColor = "#FFFFFF",StadiumLocation = new(
+
+            )
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
         };
 
         model.Validate();
@@ -308,37 +300,32 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",Nickname = "The Greyhounds",PrimaryColor = "#0033A0",SecondaryColor = "#FFFFFF",StadiumLocation = new(
+
+            )
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
 
             // Null should be interpreted as omitted for these properties
-            IsActive = null,
-            RivalTeams = null,
+            IsActive = null,RivalTeams = null,
         };
 
         Assert.Null(model.IsActive);
-        Assert.False(model.RawData.ContainsKey("is_active"));
-        Assert.Null(model.RivalTeams);
+        Assert.False(model.RawData.ContainsKey("is_active"));Assert.Null(model.RivalTeams);
         Assert.False(model.RawData.ContainsKey("rival_teams"));
+
     }
 
     [Fact]
@@ -346,31 +333,26 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",Nickname = "The Greyhounds",PrimaryColor = "#0033A0",SecondaryColor = "#FFFFFF",StadiumLocation = new(
+
+            )
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
 
             // Null should be interpreted as omitted for these properties
-            IsActive = null,
-            RivalTeams = null,
+            IsActive = null,RivalTeams = null,
         };
 
         model.Validate();
@@ -381,40 +363,33 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            IsActive = true,
-            RivalTeams = ["west-ham", "rupert-fc"],
+            },IsActive = true,RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],
         };
 
         Assert.Null(model.AnnualBudgetGbp);
-        Assert.False(model.RawData.ContainsKey("annual_budget_gbp"));
-        Assert.Null(model.AverageAttendance);
-        Assert.False(model.RawData.ContainsKey("average_attendance"));
-        Assert.Null(model.ContactEmail);
-        Assert.False(model.RawData.ContainsKey("contact_email"));
-        Assert.Null(model.Nickname);
-        Assert.False(model.RawData.ContainsKey("nickname"));
-        Assert.Null(model.PrimaryColor);
-        Assert.False(model.RawData.ContainsKey("primary_color"));
-        Assert.Null(model.SecondaryColor);
-        Assert.False(model.RawData.ContainsKey("secondary_color"));
-        Assert.Null(model.StadiumLocation);
-        Assert.False(model.RawData.ContainsKey("stadium_location"));
-        Assert.Null(model.Website);
-        Assert.False(model.RawData.ContainsKey("website"));
-        Assert.Null(model.WinPercentage);
+        Assert.False(model.RawData.ContainsKey("annual_budget_gbp"));Assert.Null(model.AverageAttendance);
+        Assert.False(model.RawData.ContainsKey("average_attendance"));Assert.Null(model.ContactEmail);
+        Assert.False(model.RawData.ContainsKey("contact_email"));Assert.Null(model.Nickname);
+        Assert.False(model.RawData.ContainsKey("nickname"));Assert.Null(model.PrimaryColor);
+        Assert.False(model.RawData.ContainsKey("primary_color"));Assert.Null(model.SecondaryColor);
+        Assert.False(model.RawData.ContainsKey("secondary_color"));Assert.Null(model.StadiumLocation);
+        Assert.False(model.RawData.ContainsKey("stadium_location"));Assert.Null(model.Website);
+        Assert.False(model.RawData.ContainsKey("website"));Assert.Null(model.WinPercentage);
         Assert.False(model.RawData.ContainsKey("win_percentage"));
+
     }
 
     [Fact]
@@ -422,20 +397,20 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            IsActive = true,
-            RivalTeams = ["west-ham", "rupert-fc"],
+            },IsActive = true,RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],
         };
 
         model.Validate();
@@ -446,50 +421,35 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            IsActive = true,
-            RivalTeams = ["west-ham", "rupert-fc"],
+            },IsActive = true,RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],
 
-            AnnualBudgetGbp = null,
-            AverageAttendance = null,
-            ContactEmail = null,
-            Nickname = null,
-            PrimaryColor = null,
-            SecondaryColor = null,
-            StadiumLocation = null,
-            Website = null,
-            WinPercentage = null,
+            AnnualBudgetGbp = null,AverageAttendance = null,ContactEmail = null,Nickname = null,PrimaryColor = null,SecondaryColor = null,StadiumLocation = null,Website = null,WinPercentage = null,
         };
 
         Assert.Null(model.AnnualBudgetGbp);
-        Assert.True(model.RawData.ContainsKey("annual_budget_gbp"));
-        Assert.Null(model.AverageAttendance);
-        Assert.True(model.RawData.ContainsKey("average_attendance"));
-        Assert.Null(model.ContactEmail);
-        Assert.True(model.RawData.ContainsKey("contact_email"));
-        Assert.Null(model.Nickname);
-        Assert.True(model.RawData.ContainsKey("nickname"));
-        Assert.Null(model.PrimaryColor);
-        Assert.True(model.RawData.ContainsKey("primary_color"));
-        Assert.Null(model.SecondaryColor);
-        Assert.True(model.RawData.ContainsKey("secondary_color"));
-        Assert.Null(model.StadiumLocation);
-        Assert.True(model.RawData.ContainsKey("stadium_location"));
-        Assert.Null(model.Website);
-        Assert.True(model.RawData.ContainsKey("website"));
-        Assert.Null(model.WinPercentage);
+        Assert.True(model.RawData.ContainsKey("annual_budget_gbp"));Assert.Null(model.AverageAttendance);
+        Assert.True(model.RawData.ContainsKey("average_attendance"));Assert.Null(model.ContactEmail);
+        Assert.True(model.RawData.ContainsKey("contact_email"));Assert.Null(model.Nickname);
+        Assert.True(model.RawData.ContainsKey("nickname"));Assert.Null(model.PrimaryColor);
+        Assert.True(model.RawData.ContainsKey("primary_color"));Assert.Null(model.SecondaryColor);
+        Assert.True(model.RawData.ContainsKey("secondary_color"));Assert.Null(model.StadiumLocation);
+        Assert.True(model.RawData.ContainsKey("stadium_location"));Assert.Null(model.Website);
+        Assert.True(model.RawData.ContainsKey("website"));Assert.Null(model.WinPercentage);
         Assert.True(model.RawData.ContainsKey("win_percentage"));
+
     }
 
     [Fact]
@@ -497,30 +457,22 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            IsActive = true,
-            RivalTeams = ["west-ham", "rupert-fc"],
+            },IsActive = true,RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],
 
-            AnnualBudgetGbp = null,
-            AverageAttendance = null,
-            ContactEmail = null,
-            Nickname = null,
-            PrimaryColor = null,
-            SecondaryColor = null,
-            StadiumLocation = null,
-            Website = null,
-            WinPercentage = null,
+            AnnualBudgetGbp = null,AverageAttendance = null,ContactEmail = null,Nickname = null,PrimaryColor = null,SecondaryColor = null,StadiumLocation = null,Website = null,WinPercentage = null,
         };
 
         model.Validate();
@@ -531,29 +483,24 @@ public class TeamTest : TestBase
     {
         var model = new Team
         {
-            ID = "afc-richmond",
-            CultureScore = 85,
-            FoundedYear = 1897,
-            League = League.PremierLeague,
-            Name = "AFC Richmond",
-            Stadium = "Nelson Road",
-            Values = new()
+            ID = "afc-richmond",CultureScore = 85,FoundedYear = 1897,League = League.PremierLeague,Name = "AFC Richmond",Stadium = "Nelson Road",Values = new(
+
+            )
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            AnnualBudgetGbp = "50000000.00",
-            AverageAttendance = 24500.5,
-            ContactEmail = "info@afcrichmond.com",
-            IsActive = true,
-            Nickname = "The Greyhounds",
-            PrimaryColor = "#0033A0",
-            RivalTeams = ["west-ham", "rupert-fc"],
-            SecondaryColor = "#FFFFFF",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Website = "https://www.afcrichmond.com",
-            WinPercentage = 45.5,
+            },AnnualBudgetGbp = "50000000.00",AverageAttendance = 24500.5,ContactEmail = "info@afcrichmond.com",IsActive = true,Nickname = "The Greyhounds",PrimaryColor = "#0033A0",RivalTeams =
+            [
+                "west-ham", "rupert-fc"
+            ],SecondaryColor = "#FFFFFF",StadiumLocation = new()
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Website = "https://www.afcrichmond.com",WinPercentage = 45.5,
         };
 
         Team copied = new(model);

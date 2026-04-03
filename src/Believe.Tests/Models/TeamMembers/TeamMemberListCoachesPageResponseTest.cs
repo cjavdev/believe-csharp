@@ -21,17 +21,14 @@ public class TeamMemberListCoachesPageResponseTest : TestBase
                     Specialty = CoachSpecialty.HeadCoach,
                     TeamID = "afc-richmond",
                     YearsWithTeam = 2,
-                    Certifications = ["NCAA Division II"],
+                    Certifications =
+                    [
+                        "NCAA Division II"
+                    ],
                     MemberType = TeamMemberCoachMemberType.Coach,
                     WinRate = 0.55,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<TeamMemberCoach> expectedData =
@@ -43,7 +40,10 @@ public class TeamMemberListCoachesPageResponseTest : TestBase
                 Specialty = CoachSpecialty.HeadCoach,
                 TeamID = "afc-richmond",
                 YearsWithTeam = 2,
-                Certifications = ["NCAA Division II"],
+                Certifications =
+                [
+                    "NCAA Division II"
+                ],
                 MemberType = TeamMemberCoachMemberType.Coach,
                 WinRate = 0.55,
             },
@@ -82,24 +82,18 @@ public class TeamMemberListCoachesPageResponseTest : TestBase
                     Specialty = CoachSpecialty.HeadCoach,
                     TeamID = "afc-richmond",
                     YearsWithTeam = 2,
-                    Certifications = ["NCAA Division II"],
+                    Certifications =
+                    [
+                        "NCAA Division II"
+                    ],
                     MemberType = TeamMemberCoachMemberType.Coach,
                     WinRate = 0.55,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListCoachesPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListCoachesPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -118,24 +112,18 @@ public class TeamMemberListCoachesPageResponseTest : TestBase
                     Specialty = CoachSpecialty.HeadCoach,
                     TeamID = "afc-richmond",
                     YearsWithTeam = 2,
-                    Certifications = ["NCAA Division II"],
+                    Certifications =
+                    [
+                        "NCAA Division II"
+                    ],
                     MemberType = TeamMemberCoachMemberType.Coach,
                     WinRate = 0.55,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListCoachesPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListCoachesPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<TeamMemberCoach> expectedData =
@@ -147,7 +135,10 @@ public class TeamMemberListCoachesPageResponseTest : TestBase
                 Specialty = CoachSpecialty.HeadCoach,
                 TeamID = "afc-richmond",
                 YearsWithTeam = 2,
-                Certifications = ["NCAA Division II"],
+                Certifications =
+                [
+                    "NCAA Division II"
+                ],
                 MemberType = TeamMemberCoachMemberType.Coach,
                 WinRate = 0.55,
             },
@@ -186,17 +177,14 @@ public class TeamMemberListCoachesPageResponseTest : TestBase
                     Specialty = CoachSpecialty.HeadCoach,
                     TeamID = "afc-richmond",
                     YearsWithTeam = 2,
-                    Certifications = ["NCAA Division II"],
+                    Certifications =
+                    [
+                        "NCAA Division II"
+                    ],
                     MemberType = TeamMemberCoachMemberType.Coach,
                     WinRate = 0.55,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -216,17 +204,14 @@ public class TeamMemberListCoachesPageResponseTest : TestBase
                     Specialty = CoachSpecialty.HeadCoach,
                     TeamID = "afc-richmond",
                     YearsWithTeam = 2,
-                    Certifications = ["NCAA Division II"],
+                    Certifications =
+                    [
+                        "NCAA Division II"
+                    ],
                     MemberType = TeamMemberCoachMemberType.Coach,
                     WinRate = 0.55,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         TeamMemberListCoachesPageResponse copied = new(model);

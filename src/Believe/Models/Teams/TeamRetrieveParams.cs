@@ -19,18 +19,18 @@ public record class TeamRetrieveParams : ParamsBase
 {
     public string? TeamID { get; init; }
 
-    public TeamRetrieveParams() { }
+    public TeamRetrieveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamRetrieveParams(TeamRetrieveParams teamRetrieveParams)
-        : base(teamRetrieveParams)
-    {
-        this.TeamID = teamRetrieveParams.TeamID;
-    }
-#pragma warning restore CS8618
+    public TeamRetrieveParams (TeamRetrieveParams teamRetrieveParams) : base(
+        teamRetrieveParams
+    )
+    { this.TeamID = teamRetrieveParams.TeamID; }
+    #pragma warning restore CS8618
 
-    public TeamRetrieveParams(
+    public TeamRetrieveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -39,9 +39,9 @@ public record class TeamRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamRetrieveParams(
+    TeamRetrieveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string teamID
@@ -51,7 +51,7 @@ public record class TeamRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.TeamID = teamID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TeamRetrieveParams FromRawUnchecked(
@@ -64,25 +64,18 @@ public record class TeamRetrieveParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             teamID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["TeamID"] = JsonSerializer.SerializeToElement(this.TeamID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["TeamID"] = JsonSerializer.SerializeToElement(this.TeamID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TeamRetrieveParams? other)
     {
@@ -90,22 +83,23 @@ public record class TeamRetrieveParams : ParamsBase
         {
             return false;
         }
-        return (this.TeamID?.Equals(other.TeamID) ?? other.TeamID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.TeamID?.Equals(other.TeamID) ?? other.TeamID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/teams/{0}", this.TeamID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/teams/{0}",
+            this.TeamID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -115,7 +109,5 @@ public record class TeamRetrieveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

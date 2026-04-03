@@ -19,18 +19,18 @@ public record class WebhookDeleteParams : ParamsBase
 {
     public string? WebhookID { get; init; }
 
-    public WebhookDeleteParams() { }
+    public WebhookDeleteParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public WebhookDeleteParams(WebhookDeleteParams webhookDeleteParams)
-        : base(webhookDeleteParams)
-    {
-        this.WebhookID = webhookDeleteParams.WebhookID;
-    }
-#pragma warning restore CS8618
+    public WebhookDeleteParams (WebhookDeleteParams webhookDeleteParams) : base(
+        webhookDeleteParams
+    )
+    { this.WebhookID = webhookDeleteParams.WebhookID; }
+    #pragma warning restore CS8618
 
-    public WebhookDeleteParams(
+    public WebhookDeleteParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -39,9 +39,9 @@ public record class WebhookDeleteParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    WebhookDeleteParams(
+    WebhookDeleteParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string webhookID
@@ -51,7 +51,7 @@ public record class WebhookDeleteParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.WebhookID = webhookID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static WebhookDeleteParams FromRawUnchecked(
@@ -64,25 +64,18 @@ public record class WebhookDeleteParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             webhookID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["WebhookID"] = JsonSerializer.SerializeToElement(this.WebhookID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["WebhookID"] = JsonSerializer.SerializeToElement(this.WebhookID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(WebhookDeleteParams? other)
     {
@@ -90,22 +83,23 @@ public record class WebhookDeleteParams : ParamsBase
         {
             return false;
         }
-        return (this.WebhookID?.Equals(other.WebhookID) ?? other.WebhookID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.WebhookID?.Equals(other.WebhookID) ?? other.WebhookID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/webhooks/{0}", this.WebhookID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/webhooks/{0}",
+            this.WebhookID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -115,7 +109,5 @@ public record class WebhookDeleteParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

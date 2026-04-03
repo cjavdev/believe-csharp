@@ -8,7 +8,12 @@ public class QuoteRetrieveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new QuoteRetrieveParams { QuoteID = "quote_id" };
+
+
+        var parameters = new QuoteRetrieveParams
+        {
+            QuoteID = "quote_id",
+        };
 
         string expectedQuoteID = "quote_id";
 
@@ -20,7 +25,12 @@ public class QuoteRetrieveParamsTest : TestBase
     {
         QuoteRetrieveParams parameters = new() { QuoteID = "quote_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/quotes/quote_id"), url);
     }
@@ -28,7 +38,10 @@ public class QuoteRetrieveParamsTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var parameters = new QuoteRetrieveParams { QuoteID = "quote_id" };
+        var parameters = new QuoteRetrieveParams
+        {
+            QuoteID = "quote_id"
+        };
 
         QuoteRetrieveParams copied = new(parameters);
 

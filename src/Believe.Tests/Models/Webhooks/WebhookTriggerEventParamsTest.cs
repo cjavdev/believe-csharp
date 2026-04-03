@@ -11,10 +11,13 @@ public class WebhookTriggerEventParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new WebhookTriggerEventParams
         {
-            EventType = WebhookTriggerEventParamsEventType.MatchCompleted,
-            Payload = new MatchCompleted()
+            EventType = WebhookTriggerEventParamsEventType.MatchCompleted,Payload = new MatchCompleted(
+
+            )
             {
                 Data = new()
                 {
@@ -34,8 +37,7 @@ public class WebhookTriggerEventParamsTest : TestBase
             },
         };
 
-        ApiEnum<string, WebhookTriggerEventParamsEventType> expectedEventType =
-            WebhookTriggerEventParamsEventType.MatchCompleted;
+        ApiEnum<string, WebhookTriggerEventParamsEventType> expectedEventType = WebhookTriggerEventParamsEventType.MatchCompleted;
         Payload expectedPayload = new MatchCompleted()
         {
             Data = new()
@@ -62,6 +64,8 @@ public class WebhookTriggerEventParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new WebhookTriggerEventParams
         {
             EventType = WebhookTriggerEventParamsEventType.MatchCompleted,
@@ -69,11 +73,14 @@ public class WebhookTriggerEventParamsTest : TestBase
 
         Assert.Null(parameters.Payload);
         Assert.False(parameters.RawBodyData.ContainsKey("payload"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new WebhookTriggerEventParams
         {
             EventType = WebhookTriggerEventParamsEventType.MatchCompleted,
@@ -83,6 +90,7 @@ public class WebhookTriggerEventParamsTest : TestBase
 
         Assert.Null(parameters.Payload);
         Assert.True(parameters.RawBodyData.ContainsKey("payload"));
+
     }
 
     [Fact]
@@ -90,10 +98,15 @@ public class WebhookTriggerEventParamsTest : TestBase
     {
         WebhookTriggerEventParams parameters = new()
         {
-            EventType = WebhookTriggerEventParamsEventType.MatchCompleted,
+            EventType = WebhookTriggerEventParamsEventType.MatchCompleted
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/webhooks/trigger"), url);
     }
@@ -132,9 +145,7 @@ public class WebhookTriggerEventParamsTest : TestBase
 
 public class WebhookTriggerEventParamsEventTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(WebhookTriggerEventParamsEventType.MatchCompleted)]
-    [InlineData(WebhookTriggerEventParamsEventType.TeamMemberTransferred)]
+    [Theory][InlineData(WebhookTriggerEventParamsEventType.MatchCompleted)][InlineData(WebhookTriggerEventParamsEventType.TeamMemberTransferred)]
     public void Validation_Works(WebhookTriggerEventParamsEventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -145,27 +156,22 @@ public class WebhookTriggerEventParamsEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, WebhookTriggerEventParamsEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, WebhookTriggerEventParamsEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(WebhookTriggerEventParamsEventType.MatchCompleted)]
-    [InlineData(WebhookTriggerEventParamsEventType.TeamMemberTransferred)]
-    public void SerializationRoundtrip_Works(WebhookTriggerEventParamsEventType rawValue)
+    [Theory][InlineData(WebhookTriggerEventParamsEventType.MatchCompleted)][InlineData(WebhookTriggerEventParamsEventType.TeamMemberTransferred)]
+    public void SerializationRoundtrip_Works(
+        WebhookTriggerEventParamsEventType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, WebhookTriggerEventParamsEventType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, WebhookTriggerEventParamsEventType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, WebhookTriggerEventParamsEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -173,14 +179,9 @@ public class WebhookTriggerEventParamsEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, WebhookTriggerEventParamsEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, WebhookTriggerEventParamsEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, WebhookTriggerEventParamsEventType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, WebhookTriggerEventParamsEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -259,10 +260,7 @@ public class PayloadTest : TestBase
             EventType = MatchCompletedEventType.MatchCompleted,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Payload>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Payload>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -290,10 +288,7 @@ public class PayloadTest : TestBase
             EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Payload>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Payload>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -319,8 +314,7 @@ public class MatchCompletedTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventType = MatchCompletedEventType.MatchCompleted,
+            },EventType = MatchCompletedEventType.MatchCompleted,
         };
 
         Data expectedData = new()
@@ -337,8 +331,7 @@ public class MatchCompletedTest : TestBase
             LessonLearned = "lesson_learned",
             ManOfTheMatch = "man_of_the_match",
         };
-        ApiEnum<string, MatchCompletedEventType> expectedEventType =
-            MatchCompletedEventType.MatchCompleted;
+        ApiEnum<string, MatchCompletedEventType> expectedEventType = MatchCompletedEventType.MatchCompleted;
 
         Assert.Equal(expectedData, model.Data);
         Assert.Equal(expectedEventType, model.EventType);
@@ -362,15 +355,11 @@ public class MatchCompletedTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventType = MatchCompletedEventType.MatchCompleted,
+            },EventType = MatchCompletedEventType.MatchCompleted,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchCompleted>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchCompleted>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -393,15 +382,11 @@ public class MatchCompletedTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventType = MatchCompletedEventType.MatchCompleted,
+            },EventType = MatchCompletedEventType.MatchCompleted,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchCompleted>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchCompleted>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         Data expectedData = new()
@@ -418,8 +403,7 @@ public class MatchCompletedTest : TestBase
             LessonLearned = "lesson_learned",
             ManOfTheMatch = "man_of_the_match",
         };
-        ApiEnum<string, MatchCompletedEventType> expectedEventType =
-            MatchCompletedEventType.MatchCompleted;
+        ApiEnum<string, MatchCompletedEventType> expectedEventType = MatchCompletedEventType.MatchCompleted;
 
         Assert.Equal(expectedData, deserialized.Data);
         Assert.Equal(expectedEventType, deserialized.EventType);
@@ -443,8 +427,7 @@ public class MatchCompletedTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventType = MatchCompletedEventType.MatchCompleted,
+            },EventType = MatchCompletedEventType.MatchCompleted,
         };
 
         model.Validate();
@@ -473,6 +456,7 @@ public class MatchCompletedTest : TestBase
 
         Assert.Null(model.EventType);
         Assert.False(model.RawData.ContainsKey("event_type"));
+
     }
 
     [Fact]
@@ -525,6 +509,7 @@ public class MatchCompletedTest : TestBase
 
         Assert.Null(model.EventType);
         Assert.False(model.RawData.ContainsKey("event_type"));
+
     }
 
     [Fact]
@@ -572,8 +557,7 @@ public class MatchCompletedTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventType = MatchCompletedEventType.MatchCompleted,
+            },EventType = MatchCompletedEventType.MatchCompleted,
         };
 
         MatchCompleted copied = new(model);
@@ -589,17 +573,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         long expectedAwayScore = 0;
@@ -632,17 +606,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -656,17 +620,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -703,17 +657,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         model.Validate();
@@ -724,21 +668,13 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
         };
 
         Assert.Null(model.LessonLearned);
-        Assert.False(model.RawData.ContainsKey("lesson_learned"));
-        Assert.Null(model.ManOfTheMatch);
+        Assert.False(model.RawData.ContainsKey("lesson_learned"));Assert.Null(model.ManOfTheMatch);
         Assert.False(model.RawData.ContainsKey("man_of_the_match"));
+
     }
 
     [Fact]
@@ -746,15 +682,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
         };
 
         model.Validate();
@@ -765,24 +693,15 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
 
-            LessonLearned = null,
-            ManOfTheMatch = null,
+            LessonLearned = null,ManOfTheMatch = null,
         };
 
         Assert.Null(model.LessonLearned);
-        Assert.True(model.RawData.ContainsKey("lesson_learned"));
-        Assert.Null(model.ManOfTheMatch);
+        Assert.True(model.RawData.ContainsKey("lesson_learned"));Assert.Null(model.ManOfTheMatch);
         Assert.True(model.RawData.ContainsKey("man_of_the_match"));
+
     }
 
     [Fact]
@@ -790,18 +709,9 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
 
-            LessonLearned = null,
-            ManOfTheMatch = null,
+            LessonLearned = null,ManOfTheMatch = null,
         };
 
         model.Validate();
@@ -812,17 +722,7 @@ public class DataTest : TestBase
     {
         var model = new Data
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchType.League,
-            Result = Result.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchType.League,Result = Result.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         Data copied = new(model);
@@ -833,12 +733,7 @@ public class DataTest : TestBase
 
 public class MatchTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(MatchType.League)]
-    [InlineData(MatchType.Cup)]
-    [InlineData(MatchType.Friendly)]
-    [InlineData(MatchType.Playoff)]
-    [InlineData(MatchType.Final)]
+    [Theory][InlineData(MatchType.League)][InlineData(MatchType.Cup)][InlineData(MatchType.Friendly)][InlineData(MatchType.Playoff)][InlineData(MatchType.Final)]
     public void Validation_Works(MatchType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -849,31 +744,20 @@ public class MatchTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MatchType.League)]
-    [InlineData(MatchType.Cup)]
-    [InlineData(MatchType.Friendly)]
-    [InlineData(MatchType.Playoff)]
-    [InlineData(MatchType.Final)]
+    [Theory][InlineData(MatchType.League)][InlineData(MatchType.Cup)][InlineData(MatchType.Friendly)][InlineData(MatchType.Playoff)][InlineData(MatchType.Final)]
     public void SerializationRoundtrip_Works(MatchType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MatchType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -881,15 +765,9 @@ public class MatchTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -897,10 +775,7 @@ public class MatchTypeTest : TestBase
 
 public class ResultTest : TestBase
 {
-    [Theory]
-    [InlineData(Result.HomeWin)]
-    [InlineData(Result.AwayWin)]
-    [InlineData(Result.Draw)]
+    [Theory][InlineData(Result.HomeWin)][InlineData(Result.AwayWin)][InlineData(Result.Draw)]
     public void Validation_Works(Result rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -911,29 +786,20 @@ public class ResultTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Result>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Result>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(Result.HomeWin)]
-    [InlineData(Result.AwayWin)]
-    [InlineData(Result.Draw)]
+    [Theory][InlineData(Result.HomeWin)][InlineData(Result.AwayWin)][InlineData(Result.Draw)]
     public void SerializationRoundtrip_Works(Result rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, Result> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Result>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Result>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -941,15 +807,9 @@ public class ResultTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Result>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Result>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Result>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Result>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -957,8 +817,7 @@ public class ResultTest : TestBase
 
 public class MatchCompletedEventTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(MatchCompletedEventType.MatchCompleted)]
+    [Theory][InlineData(MatchCompletedEventType.MatchCompleted)]
     public void Validation_Works(MatchCompletedEventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -969,27 +828,20 @@ public class MatchCompletedEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MatchCompletedEventType.MatchCompleted)]
+    [Theory][InlineData(MatchCompletedEventType.MatchCompleted)]
     public void SerializationRoundtrip_Works(MatchCompletedEventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MatchCompletedEventType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -997,15 +849,9 @@ public class MatchCompletedEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1032,8 +878,7 @@ public class TeamMemberTransferredTest : TestBase
                 PreviousTeamName = "previous_team_name",
                 TransferFeeGbp = "transfer_fee_gbp",
                 YearsWithPreviousTeam = 0,
-            },
-            EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
+            },EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
         };
 
         TeamMemberTransferredData expectedData = new()
@@ -1051,8 +896,7 @@ public class TeamMemberTransferredTest : TestBase
             TransferFeeGbp = "transfer_fee_gbp",
             YearsWithPreviousTeam = 0,
         };
-        ApiEnum<string, TeamMemberTransferredEventType> expectedEventType =
-            TeamMemberTransferredEventType.TeamMemberTransferred;
+        ApiEnum<string, TeamMemberTransferredEventType> expectedEventType = TeamMemberTransferredEventType.TeamMemberTransferred;
 
         Assert.Equal(expectedData, model.Data);
         Assert.Equal(expectedEventType, model.EventType);
@@ -1077,15 +921,11 @@ public class TeamMemberTransferredTest : TestBase
                 PreviousTeamName = "previous_team_name",
                 TransferFeeGbp = "transfer_fee_gbp",
                 YearsWithPreviousTeam = 0,
-            },
-            EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
+            },EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferred>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferred>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1109,15 +949,11 @@ public class TeamMemberTransferredTest : TestBase
                 PreviousTeamName = "previous_team_name",
                 TransferFeeGbp = "transfer_fee_gbp",
                 YearsWithPreviousTeam = 0,
-            },
-            EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
+            },EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferred>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferred>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         TeamMemberTransferredData expectedData = new()
@@ -1135,8 +971,7 @@ public class TeamMemberTransferredTest : TestBase
             TransferFeeGbp = "transfer_fee_gbp",
             YearsWithPreviousTeam = 0,
         };
-        ApiEnum<string, TeamMemberTransferredEventType> expectedEventType =
-            TeamMemberTransferredEventType.TeamMemberTransferred;
+        ApiEnum<string, TeamMemberTransferredEventType> expectedEventType = TeamMemberTransferredEventType.TeamMemberTransferred;
 
         Assert.Equal(expectedData, deserialized.Data);
         Assert.Equal(expectedEventType, deserialized.EventType);
@@ -1161,8 +996,7 @@ public class TeamMemberTransferredTest : TestBase
                 PreviousTeamName = "previous_team_name",
                 TransferFeeGbp = "transfer_fee_gbp",
                 YearsWithPreviousTeam = 0,
-            },
-            EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
+            },EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
         };
 
         model.Validate();
@@ -1192,6 +1026,7 @@ public class TeamMemberTransferredTest : TestBase
 
         Assert.Null(model.EventType);
         Assert.False(model.RawData.ContainsKey("event_type"));
+
     }
 
     [Fact]
@@ -1246,6 +1081,7 @@ public class TeamMemberTransferredTest : TestBase
 
         Assert.Null(model.EventType);
         Assert.False(model.RawData.ContainsKey("event_type"));
+
     }
 
     [Fact]
@@ -1295,8 +1131,7 @@ public class TeamMemberTransferredTest : TestBase
                 PreviousTeamName = "previous_team_name",
                 TransferFeeGbp = "transfer_fee_gbp",
                 YearsWithPreviousTeam = 0,
-            },
-            EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
+            },EventType = TeamMemberTransferredEventType.TeamMemberTransferred,
         };
 
         TeamMemberTransferred copied = new(model);
@@ -1312,18 +1147,7 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
-            PreviousTeamID = "previous_team_id",
-            PreviousTeamName = "previous_team_name",
-            TransferFeeGbp = "transfer_fee_gbp",
-            YearsWithPreviousTeam = 0,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,PreviousTeamID = "previous_team_id",PreviousTeamName = "previous_team_name",TransferFeeGbp = "transfer_fee_gbp",YearsWithPreviousTeam = 0,
         };
 
         string expectedCharacterID = "character_id";
@@ -1358,25 +1182,11 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
-            PreviousTeamID = "previous_team_id",
-            PreviousTeamName = "previous_team_name",
-            TransferFeeGbp = "transfer_fee_gbp",
-            YearsWithPreviousTeam = 0,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,PreviousTeamID = "previous_team_id",PreviousTeamName = "previous_team_name",TransferFeeGbp = "transfer_fee_gbp",YearsWithPreviousTeam = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferredData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferredData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1386,25 +1196,11 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
-            PreviousTeamID = "previous_team_id",
-            PreviousTeamName = "previous_team_name",
-            TransferFeeGbp = "transfer_fee_gbp",
-            YearsWithPreviousTeam = 0,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,PreviousTeamID = "previous_team_id",PreviousTeamName = "previous_team_name",TransferFeeGbp = "transfer_fee_gbp",YearsWithPreviousTeam = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferredData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberTransferredData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedCharacterID = "character_id";
@@ -1439,18 +1235,7 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
-            PreviousTeamID = "previous_team_id",
-            PreviousTeamName = "previous_team_name",
-            TransferFeeGbp = "transfer_fee_gbp",
-            YearsWithPreviousTeam = 0,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,PreviousTeamID = "previous_team_id",PreviousTeamName = "previous_team_name",TransferFeeGbp = "transfer_fee_gbp",YearsWithPreviousTeam = 0,
         };
 
         model.Validate();
@@ -1461,24 +1246,15 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,
         };
 
         Assert.Null(model.PreviousTeamID);
-        Assert.False(model.RawData.ContainsKey("previous_team_id"));
-        Assert.Null(model.PreviousTeamName);
-        Assert.False(model.RawData.ContainsKey("previous_team_name"));
-        Assert.Null(model.TransferFeeGbp);
-        Assert.False(model.RawData.ContainsKey("transfer_fee_gbp"));
-        Assert.Null(model.YearsWithPreviousTeam);
+        Assert.False(model.RawData.ContainsKey("previous_team_id"));Assert.Null(model.PreviousTeamName);
+        Assert.False(model.RawData.ContainsKey("previous_team_name"));Assert.Null(model.TransferFeeGbp);
+        Assert.False(model.RawData.ContainsKey("transfer_fee_gbp"));Assert.Null(model.YearsWithPreviousTeam);
         Assert.False(model.RawData.ContainsKey("years_with_previous_team"));
+
     }
 
     [Fact]
@@ -1486,14 +1262,7 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,
         };
 
         model.Validate();
@@ -1504,29 +1273,17 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,
 
-            PreviousTeamID = null,
-            PreviousTeamName = null,
-            TransferFeeGbp = null,
-            YearsWithPreviousTeam = null,
+            PreviousTeamID = null,PreviousTeamName = null,TransferFeeGbp = null,YearsWithPreviousTeam = null,
         };
 
         Assert.Null(model.PreviousTeamID);
-        Assert.True(model.RawData.ContainsKey("previous_team_id"));
-        Assert.Null(model.PreviousTeamName);
-        Assert.True(model.RawData.ContainsKey("previous_team_name"));
-        Assert.Null(model.TransferFeeGbp);
-        Assert.True(model.RawData.ContainsKey("transfer_fee_gbp"));
-        Assert.Null(model.YearsWithPreviousTeam);
+        Assert.True(model.RawData.ContainsKey("previous_team_id"));Assert.Null(model.PreviousTeamName);
+        Assert.True(model.RawData.ContainsKey("previous_team_name"));Assert.Null(model.TransferFeeGbp);
+        Assert.True(model.RawData.ContainsKey("transfer_fee_gbp"));Assert.Null(model.YearsWithPreviousTeam);
         Assert.True(model.RawData.ContainsKey("years_with_previous_team"));
+
     }
 
     [Fact]
@@ -1534,19 +1291,9 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,
 
-            PreviousTeamID = null,
-            PreviousTeamName = null,
-            TransferFeeGbp = null,
-            YearsWithPreviousTeam = null,
+            PreviousTeamID = null,PreviousTeamName = null,TransferFeeGbp = null,YearsWithPreviousTeam = null,
         };
 
         model.Validate();
@@ -1557,18 +1304,7 @@ public class TeamMemberTransferredDataTest : TestBase
     {
         var model = new TeamMemberTransferredData
         {
-            CharacterID = "character_id",
-            CharacterName = "character_name",
-            MemberType = MemberType.Player,
-            TeamID = "team_id",
-            TeamMemberID = "team_member_id",
-            TeamName = "team_name",
-            TedReaction = "ted_reaction",
-            TransferType = TransferType.Joined,
-            PreviousTeamID = "previous_team_id",
-            PreviousTeamName = "previous_team_name",
-            TransferFeeGbp = "transfer_fee_gbp",
-            YearsWithPreviousTeam = 0,
+            CharacterID = "character_id",CharacterName = "character_name",MemberType = MemberType.Player,TeamID = "team_id",TeamMemberID = "team_member_id",TeamName = "team_name",TedReaction = "ted_reaction",TransferType = TransferType.Joined,PreviousTeamID = "previous_team_id",PreviousTeamName = "previous_team_name",TransferFeeGbp = "transfer_fee_gbp",YearsWithPreviousTeam = 0,
         };
 
         TeamMemberTransferredData copied = new(model);
@@ -1579,11 +1315,7 @@ public class TeamMemberTransferredDataTest : TestBase
 
 public class MemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(MemberType.Player)]
-    [InlineData(MemberType.Coach)]
-    [InlineData(MemberType.MedicalStaff)]
-    [InlineData(MemberType.EquipmentManager)]
+    [Theory][InlineData(MemberType.Player)][InlineData(MemberType.Coach)][InlineData(MemberType.MedicalStaff)][InlineData(MemberType.EquipmentManager)]
     public void Validation_Works(MemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -1594,30 +1326,20 @@ public class MemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MemberType.Player)]
-    [InlineData(MemberType.Coach)]
-    [InlineData(MemberType.MedicalStaff)]
-    [InlineData(MemberType.EquipmentManager)]
+    [Theory][InlineData(MemberType.Player)][InlineData(MemberType.Coach)][InlineData(MemberType.MedicalStaff)][InlineData(MemberType.EquipmentManager)]
     public void SerializationRoundtrip_Works(MemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1625,15 +1347,9 @@ public class MemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1641,9 +1357,7 @@ public class MemberTypeTest : TestBase
 
 public class TransferTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(TransferType.Joined)]
-    [InlineData(TransferType.Departed)]
+    [Theory][InlineData(TransferType.Joined)][InlineData(TransferType.Departed)]
     public void Validation_Works(TransferType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -1654,28 +1368,20 @@ public class TransferTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(TransferType.Joined)]
-    [InlineData(TransferType.Departed)]
+    [Theory][InlineData(TransferType.Joined)][InlineData(TransferType.Departed)]
     public void SerializationRoundtrip_Works(TransferType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, TransferType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1683,15 +1389,9 @@ public class TransferTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TransferType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1699,8 +1399,7 @@ public class TransferTypeTest : TestBase
 
 public class TeamMemberTransferredEventTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(TeamMemberTransferredEventType.TeamMemberTransferred)]
+    [Theory][InlineData(TeamMemberTransferredEventType.TeamMemberTransferred)]
     public void Validation_Works(TeamMemberTransferredEventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -1711,26 +1410,22 @@ public class TeamMemberTransferredEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberTransferredEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberTransferredEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(TeamMemberTransferredEventType.TeamMemberTransferred)]
-    public void SerializationRoundtrip_Works(TeamMemberTransferredEventType rawValue)
+    [Theory][InlineData(TeamMemberTransferredEventType.TeamMemberTransferred)]
+    public void SerializationRoundtrip_Works(
+        TeamMemberTransferredEventType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, TeamMemberTransferredEventType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberTransferredEventType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberTransferredEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -1738,14 +1433,9 @@ public class TeamMemberTransferredEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberTransferredEventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberTransferredEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TeamMemberTransferredEventType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberTransferredEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

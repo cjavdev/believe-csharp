@@ -8,10 +8,11 @@ public class ReframeTransformNegativeThoughtsParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new ReframeTransformNegativeThoughtsParams
         {
-            NegativeThought = "I'm not good enough for this job.",
-            Recurring = true,
+            NegativeThought = "I'm not good enough for this job.",Recurring = true,
         };
 
         string expectedNegativeThought = "I'm not good enough for this job.";
@@ -24,6 +25,8 @@ public class ReframeTransformNegativeThoughtsParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new ReframeTransformNegativeThoughtsParams
         {
             NegativeThought = "I'm not good enough for this job.",
@@ -31,11 +34,14 @@ public class ReframeTransformNegativeThoughtsParamsTest : TestBase
 
         Assert.Null(parameters.Recurring);
         Assert.False(parameters.RawBodyData.ContainsKey("recurring"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new ReframeTransformNegativeThoughtsParams
         {
             NegativeThought = "I'm not good enough for this job.",
@@ -46,6 +52,7 @@ public class ReframeTransformNegativeThoughtsParamsTest : TestBase
 
         Assert.Null(parameters.Recurring);
         Assert.False(parameters.RawBodyData.ContainsKey("recurring"));
+
     }
 
     [Fact]
@@ -53,10 +60,15 @@ public class ReframeTransformNegativeThoughtsParamsTest : TestBase
     {
         ReframeTransformNegativeThoughtsParams parameters = new()
         {
-            NegativeThought = "I'm not good enough for this job.",
+            NegativeThought = "I'm not good enough for this job."
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/reframe"), url);
     }

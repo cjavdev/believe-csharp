@@ -12,16 +12,7 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = TeamMemberPlayerMemberType.Player,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = TeamMemberPlayerMemberType.Player,
         };
 
         string expectedID = "jamie-tartt-richmond";
@@ -33,8 +24,7 @@ public class TeamMemberPlayerTest : TestBase
         long expectedAssists = 23;
         long expectedGoalsScored = 47;
         bool expectedIsCaptain = false;
-        ApiEnum<string, TeamMemberPlayerMemberType> expectedMemberType =
-            TeamMemberPlayerMemberType.Player;
+        ApiEnum<string, TeamMemberPlayerMemberType> expectedMemberType = TeamMemberPlayerMemberType.Player;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCharacterID, model.CharacterID);
@@ -53,23 +43,11 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = TeamMemberPlayerMemberType.Player,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = TeamMemberPlayerMemberType.Player,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberPlayer>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberPlayer>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -79,23 +57,11 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = TeamMemberPlayerMemberType.Player,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = TeamMemberPlayerMemberType.Player,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberPlayer>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberPlayer>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "jamie-tartt-richmond";
@@ -107,8 +73,7 @@ public class TeamMemberPlayerTest : TestBase
         long expectedAssists = 23;
         long expectedGoalsScored = 47;
         bool expectedIsCaptain = false;
-        ApiEnum<string, TeamMemberPlayerMemberType> expectedMemberType =
-            TeamMemberPlayerMemberType.Player;
+        ApiEnum<string, TeamMemberPlayerMemberType> expectedMemberType = TeamMemberPlayerMemberType.Player;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCharacterID, deserialized.CharacterID);
@@ -127,16 +92,7 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = TeamMemberPlayerMemberType.Player,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = TeamMemberPlayerMemberType.Player,
         };
 
         model.Validate();
@@ -147,22 +103,15 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
         };
 
         Assert.Null(model.Assists);
-        Assert.False(model.RawData.ContainsKey("assists"));
-        Assert.Null(model.GoalsScored);
-        Assert.False(model.RawData.ContainsKey("goals_scored"));
-        Assert.Null(model.IsCaptain);
-        Assert.False(model.RawData.ContainsKey("is_captain"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("assists"));Assert.Null(model.GoalsScored);
+        Assert.False(model.RawData.ContainsKey("goals_scored"));Assert.Null(model.IsCaptain);
+        Assert.False(model.RawData.ContainsKey("is_captain"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -170,12 +119,7 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
         };
 
         model.Validate();
@@ -186,28 +130,18 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
 
             // Null should be interpreted as omitted for these properties
-            Assists = null,
-            GoalsScored = null,
-            IsCaptain = null,
-            MemberType = null,
+            Assists = null,GoalsScored = null,IsCaptain = null,MemberType = null,
         };
 
         Assert.Null(model.Assists);
-        Assert.False(model.RawData.ContainsKey("assists"));
-        Assert.Null(model.GoalsScored);
-        Assert.False(model.RawData.ContainsKey("goals_scored"));
-        Assert.Null(model.IsCaptain);
-        Assert.False(model.RawData.ContainsKey("is_captain"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("assists"));Assert.Null(model.GoalsScored);
+        Assert.False(model.RawData.ContainsKey("goals_scored"));Assert.Null(model.IsCaptain);
+        Assert.False(model.RawData.ContainsKey("is_captain"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -215,18 +149,10 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,
 
             // Null should be interpreted as omitted for these properties
-            Assists = null,
-            GoalsScored = null,
-            IsCaptain = null,
-            MemberType = null,
+            Assists = null,GoalsScored = null,IsCaptain = null,MemberType = null,
         };
 
         model.Validate();
@@ -237,16 +163,7 @@ public class TeamMemberPlayerTest : TestBase
     {
         var model = new TeamMemberPlayer
         {
-            ID = "jamie-tartt-richmond",
-            CharacterID = "jamie-tartt",
-            JerseyNumber = 9,
-            Position = Position.Forward,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 3,
-            Assists = 23,
-            GoalsScored = 47,
-            IsCaptain = false,
-            MemberType = TeamMemberPlayerMemberType.Player,
+            ID = "jamie-tartt-richmond",CharacterID = "jamie-tartt",JerseyNumber = 9,Position = Position.Forward,TeamID = "afc-richmond",YearsWithTeam = 3,Assists = 23,GoalsScored = 47,IsCaptain = false,MemberType = TeamMemberPlayerMemberType.Player,
         };
 
         TeamMemberPlayer copied = new(model);
@@ -257,8 +174,7 @@ public class TeamMemberPlayerTest : TestBase
 
 public class TeamMemberPlayerMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(TeamMemberPlayerMemberType.Player)]
+    [Theory][InlineData(TeamMemberPlayerMemberType.Player)]
     public void Validation_Works(TeamMemberPlayerMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -269,27 +185,22 @@ public class TeamMemberPlayerMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(TeamMemberPlayerMemberType.Player)]
-    public void SerializationRoundtrip_Works(TeamMemberPlayerMemberType rawValue)
+    [Theory][InlineData(TeamMemberPlayerMemberType.Player)]
+    public void SerializationRoundtrip_Works(
+        TeamMemberPlayerMemberType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, TeamMemberPlayerMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -297,15 +208,9 @@ public class TeamMemberPlayerMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberPlayerMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

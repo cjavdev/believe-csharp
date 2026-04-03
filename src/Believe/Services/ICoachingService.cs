@@ -22,7 +22,8 @@ public interface ICoachingService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ICoachingService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICoachingService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     IPrincipleService Principles { get; }
 }
@@ -38,7 +39,10 @@ public interface ICoachingServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ICoachingServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ICoachingServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     IPrincipleServiceWithRawResponse Principles { get; }
 }

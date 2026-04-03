@@ -9,12 +9,11 @@ public class TeamMemberListCoachesParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TeamMemberListCoachesParams
         {
-            Limit = 10,
-            Skip = 0,
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
+            Limit = 10,Skip = 0,Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",
         };
 
         long expectedLimit = 10;
@@ -31,64 +30,70 @@ public class TeamMemberListCoachesParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new TeamMemberListCoachesParams
         {
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
+            Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",
         };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new TeamMemberListCoachesParams
         {
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "team_id",
+            Specialty = CoachSpecialty.HeadCoach,TeamID = "team_id",
 
             // Null should be interpreted as omitted for these properties
-            Limit = null,
-            Skip = null,
+            Limit = null,Skip = null,
         };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new TeamMemberListCoachesParams { Limit = 10, Skip = 0 };
+
+
+        var parameters = new TeamMemberListCoachesParams
+        {
+            Limit = 10,Skip = 0,
+        };
 
         Assert.Null(parameters.Specialty);
-        Assert.False(parameters.RawQueryData.ContainsKey("specialty"));
-        Assert.Null(parameters.TeamID);
+        Assert.False(parameters.RawQueryData.ContainsKey("specialty"));Assert.Null(parameters.TeamID);
         Assert.False(parameters.RawQueryData.ContainsKey("team_id"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new TeamMemberListCoachesParams
         {
-            Limit = 10,
-            Skip = 0,
+            Limit = 10,Skip = 0,
 
-            Specialty = null,
-            TeamID = null,
+            Specialty = null,TeamID = null,
         };
 
         Assert.Null(parameters.Specialty);
-        Assert.True(parameters.RawQueryData.ContainsKey("specialty"));
-        Assert.Null(parameters.TeamID);
+        Assert.True(parameters.RawQueryData.ContainsKey("specialty"));Assert.Null(parameters.TeamID);
         Assert.True(parameters.RawQueryData.ContainsKey("team_id"));
+
     }
 
     [Fact]
@@ -102,14 +107,14 @@ public class TeamMemberListCoachesParamsTest : TestBase
             TeamID = "team_id",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/team-members/coaches/?limit=10&skip=0&specialty=head_coach&team_id=team_id"
-            ),
-            url
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(new Uri("https://believe.cjav.dev/team-members/coaches/?limit=10&skip=0&specialty=head_coach&team_id=team_id"), url);
     }
 
     [Fact]

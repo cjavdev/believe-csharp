@@ -19,12 +19,12 @@ public sealed record class RegisteredWebhook : JsonModel
     /// <summary>
     /// Unique webhook identifier
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -32,12 +32,12 @@ public sealed record class RegisteredWebhook : JsonModel
     /// <summary>
     /// When the webhook was registered
     /// </summary>
-    public required DateTimeOffset CreatedAt
-    {
-        get
-        {
+    public required DateTimeOffset CreatedAt {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<DateTimeOffset>("created_at");
+            return this._rawData.GetNotNullStruct<DateTimeOffset>(
+                "created_at"
+            );
         }
         init { this._rawData.Set("created_at", value); }
     }
@@ -45,17 +45,14 @@ public sealed record class RegisteredWebhook : JsonModel
     /// <summary>
     /// List of event types this webhook is subscribed to
     /// </summary>
-    public required IReadOnlyList<ApiEnum<string, RegisteredWebhookEventType>> EventTypes
-    {
-        get
-        {
+    public required IReadOnlyList<ApiEnum<string, RegisteredWebhookEventType>> EventTypes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<
-                ImmutableArray<ApiEnum<string, RegisteredWebhookEventType>>
-            >("event_types");
+            return this._rawData.GetNotNullStruct<ImmutableArray<ApiEnum<string, RegisteredWebhookEventType>>>(
+                "event_types"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<ApiEnum<string, RegisteredWebhookEventType>>>(
                 "event_types",
                 ImmutableArray.ToImmutableArray(value)
@@ -66,12 +63,12 @@ public sealed record class RegisteredWebhook : JsonModel
     /// <summary>
     /// The secret key for verifying webhook signatures (base64 encoded)
     /// </summary>
-    public required string Secret
-    {
-        get
-        {
+    public required string Secret {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("secret");
+            return this._rawData.GetNotNullClass<string>(
+                "secret"
+            );
         }
         init { this._rawData.Set("secret", value); }
     }
@@ -79,12 +76,12 @@ public sealed record class RegisteredWebhook : JsonModel
     /// <summary>
     /// The URL to send webhook events to
     /// </summary>
-    public required string Url
-    {
-        get
-        {
+    public required string Url {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("url");
+            return this._rawData.GetNotNullClass<string>(
+                "url"
+            );
         }
         init { this._rawData.Set("url", value); }
     }
@@ -92,12 +89,12 @@ public sealed record class RegisteredWebhook : JsonModel
     /// <summary>
     /// Optional description for this webhook
     /// </summary>
-    public string? Description
-    {
-        get
-        {
+    public string? Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("description");
+            return this._rawData.GetNullableClass<string>(
+                "description"
+            );
         }
         init { this._rawData.Set("description", value); }
     }
@@ -116,51 +113,47 @@ public sealed record class RegisteredWebhook : JsonModel
         _ = this.Description;
     }
 
-    public RegisteredWebhook() { }
+    public RegisteredWebhook ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public RegisteredWebhook(RegisteredWebhook registeredWebhook)
-        : base(registeredWebhook) { }
-#pragma warning restore CS8618
+    public RegisteredWebhook (RegisteredWebhook registeredWebhook) : base(
+        registeredWebhook
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public RegisteredWebhook(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public RegisteredWebhook (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    RegisteredWebhook(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    RegisteredWebhook (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="RegisteredWebhookFromRaw.FromRawUnchecked"/>
     public static RegisteredWebhook FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class RegisteredWebhookFromRaw : IFromRawJson<RegisteredWebhook>
 {
     /// <inheritdoc/>
-    public RegisteredWebhook FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        RegisteredWebhook.FromRawUnchecked(rawData);
+    public RegisteredWebhook FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>RegisteredWebhook.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(typeof(RegisteredWebhookEventTypeConverter))]
 public enum RegisteredWebhookEventType
 {
-    MatchCompleted,
-    TeamMemberTransferred,
-}
-
-sealed class RegisteredWebhookEventTypeConverter : JsonConverter<RegisteredWebhookEventType>
+    MatchCompleted, TeamMemberTransferred
+}sealed class RegisteredWebhookEventTypeConverter : JsonConverter<RegisteredWebhookEventType>
 {
     public override RegisteredWebhookEventType Read(
         ref Utf8JsonReader reader,
@@ -170,9 +163,9 @@ sealed class RegisteredWebhookEventTypeConverter : JsonConverter<RegisteredWebho
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "match.completed" => RegisteredWebhookEventType.MatchCompleted,
-            "team_member.transferred" => RegisteredWebhookEventType.TeamMemberTransferred,
-            _ => (RegisteredWebhookEventType)(-1),
+            "match.completed"=>RegisteredWebhookEventType.MatchCompleted,
+            "team_member.transferred"=>RegisteredWebhookEventType.TeamMemberTransferred,
+            _ =>(RegisteredWebhookEventType)(-1)
         };
     }
 
@@ -182,17 +175,13 @@ sealed class RegisteredWebhookEventTypeConverter : JsonConverter<RegisteredWebho
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                RegisteredWebhookEventType.MatchCompleted => "match.completed",
-                RegisteredWebhookEventType.TeamMemberTransferred => "team_member.transferred",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            RegisteredWebhookEventType.MatchCompleted=>"match.completed",
+            RegisteredWebhookEventType.TeamMemberTransferred=>"team_member.transferred",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

@@ -20,12 +20,12 @@ public record class EpisodeListParams : ParamsBase
     /// <summary>
     /// Filter by character focus (character ID)
     /// </summary>
-    public string? CharacterFocus
-    {
-        get
-        {
+    public string? CharacterFocus {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("character_focus");
+            return this._rawQueryData.GetNullableClass<string>(
+                "character_focus"
+            );
         }
         init { this._rawQueryData.Set("character_focus", value); }
     }
@@ -33,17 +33,15 @@ public record class EpisodeListParams : ParamsBase
     /// <summary>
     /// Maximum number of items to return (max: 100)
     /// </summary>
-    public long? Limit
-    {
-        get
-        {
+    public long? Limit {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "limit"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -54,12 +52,12 @@ public record class EpisodeListParams : ParamsBase
     /// <summary>
     /// Filter by season
     /// </summary>
-    public long? Season
-    {
-        get
-        {
+    public long? Season {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("season");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "season"
+            );
         }
         init { this._rawQueryData.Set("season", value); }
     }
@@ -67,17 +65,15 @@ public record class EpisodeListParams : ParamsBase
     /// <summary>
     /// Number of items to skip (offset)
     /// </summary>
-    public long? Skip
-    {
-        get
-        {
+    public long? Skip {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "skip"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -85,15 +81,18 @@ public record class EpisodeListParams : ParamsBase
         }
     }
 
-    public EpisodeListParams() { }
+    public EpisodeListParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public EpisodeListParams(EpisodeListParams episodeListParams)
-        : base(episodeListParams) { }
-#pragma warning restore CS8618
+    public EpisodeListParams (EpisodeListParams episodeListParams) : base(
+        episodeListParams
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public EpisodeListParams(
+    public EpisodeListParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -102,9 +101,9 @@ public record class EpisodeListParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    EpisodeListParams(
+    EpisodeListParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -112,7 +111,7 @@ public record class EpisodeListParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static EpisodeListParams FromRawUnchecked(
@@ -123,24 +122,17 @@ public record class EpisodeListParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(EpisodeListParams? other)
     {
@@ -148,19 +140,22 @@ public record class EpisodeListParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/episodes")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/episodes"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -170,7 +165,5 @@ public record class EpisodeListParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

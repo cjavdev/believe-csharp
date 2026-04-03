@@ -11,11 +11,7 @@ public class EmotionalStatsTest : TestBase
     {
         var model = new EmotionalStats
         {
-            Curiosity = 99,
-            Empathy = 100,
-            Optimism = 95,
-            Resilience = 90,
-            Vulnerability = 80,
+            Curiosity = 99,Empathy = 100,Optimism = 95,Resilience = 90,Vulnerability = 80,
         };
 
         long expectedCuriosity = 99;
@@ -36,18 +32,11 @@ public class EmotionalStatsTest : TestBase
     {
         var model = new EmotionalStats
         {
-            Curiosity = 99,
-            Empathy = 100,
-            Optimism = 95,
-            Resilience = 90,
-            Vulnerability = 80,
+            Curiosity = 99,Empathy = 100,Optimism = 95,Resilience = 90,Vulnerability = 80,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EmotionalStats>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EmotionalStats>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -57,18 +46,11 @@ public class EmotionalStatsTest : TestBase
     {
         var model = new EmotionalStats
         {
-            Curiosity = 99,
-            Empathy = 100,
-            Optimism = 95,
-            Resilience = 90,
-            Vulnerability = 80,
+            Curiosity = 99,Empathy = 100,Optimism = 95,Resilience = 90,Vulnerability = 80,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<EmotionalStats>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<EmotionalStats>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         long expectedCuriosity = 99;
@@ -89,11 +71,7 @@ public class EmotionalStatsTest : TestBase
     {
         var model = new EmotionalStats
         {
-            Curiosity = 99,
-            Empathy = 100,
-            Optimism = 95,
-            Resilience = 90,
-            Vulnerability = 80,
+            Curiosity = 99,Empathy = 100,Optimism = 95,Resilience = 90,Vulnerability = 80,
         };
 
         model.Validate();
@@ -104,11 +82,7 @@ public class EmotionalStatsTest : TestBase
     {
         var model = new EmotionalStats
         {
-            Curiosity = 99,
-            Empathy = 100,
-            Optimism = 95,
-            Resilience = 90,
-            Vulnerability = 80,
+            Curiosity = 99,Empathy = 100,Optimism = 95,Resilience = 90,Vulnerability = 80,
         };
 
         EmotionalStats copied = new(model);

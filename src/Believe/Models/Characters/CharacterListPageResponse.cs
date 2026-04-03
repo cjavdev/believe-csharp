@@ -8,20 +8,17 @@ using Believe.Core;
 
 namespace Believe.Models.Characters;
 
-[JsonConverter(
-    typeof(JsonModelConverter<CharacterListPageResponse, CharacterListPageResponseFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<CharacterListPageResponse, CharacterListPageResponseFromRaw>))]
 public sealed record class CharacterListPageResponse : JsonModel
 {
-    public required IReadOnlyList<Character> Data
-    {
-        get
-        {
+    public required IReadOnlyList<Character> Data {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<Character>>("data");
+            return this._rawData.GetNotNullStruct<ImmutableArray<Character>>(
+                "data"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<Character>>(
                 "data",
                 ImmutableArray.ToImmutableArray(value)
@@ -32,22 +29,22 @@ public sealed record class CharacterListPageResponse : JsonModel
     /// <summary>
     /// Whether there are more items after this page.
     /// </summary>
-    public required bool HasMore
-    {
-        get
-        {
+    public required bool HasMore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<bool>("has_more");
+            return this._rawData.GetNotNullStruct<bool>(
+                "has_more"
+            );
         }
         init { this._rawData.Set("has_more", value); }
     }
 
-    public required long Limit
-    {
-        get
-        {
+    public required long Limit {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("limit");
+            return this._rawData.GetNotNullStruct<long>(
+                "limit"
+            );
         }
         init { this._rawData.Set("limit", value); }
     }
@@ -55,12 +52,12 @@ public sealed record class CharacterListPageResponse : JsonModel
     /// <summary>
     /// Current page number (1-indexed, for display purposes).
     /// </summary>
-    public required long Page
-    {
-        get
-        {
+    public required long Page {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("page");
+            return this._rawData.GetNotNullStruct<long>(
+                "page"
+            );
         }
         init { this._rawData.Set("page", value); }
     }
@@ -68,32 +65,32 @@ public sealed record class CharacterListPageResponse : JsonModel
     /// <summary>
     /// Total number of pages.
     /// </summary>
-    public required long Pages
-    {
-        get
-        {
+    public required long Pages {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("pages");
+            return this._rawData.GetNotNullStruct<long>(
+                "pages"
+            );
         }
         init { this._rawData.Set("pages", value); }
     }
 
-    public required long Skip
-    {
-        get
-        {
+    public required long Skip {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("skip");
+            return this._rawData.GetNotNullStruct<long>(
+                "skip"
+            );
         }
         init { this._rawData.Set("skip", value); }
     }
 
-    public required long Total
-    {
-        get
-        {
+    public required long Total {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("total");
+            return this._rawData.GetNotNullStruct<long>(
+                "total"
+            );
         }
         init { this._rawData.Set("total", value); }
     }
@@ -113,34 +110,33 @@ public sealed record class CharacterListPageResponse : JsonModel
         _ = this.Total;
     }
 
-    public CharacterListPageResponse() { }
+    public CharacterListPageResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CharacterListPageResponse(CharacterListPageResponse characterListPageResponse)
-        : base(characterListPageResponse) { }
-#pragma warning restore CS8618
+    public CharacterListPageResponse (
+        CharacterListPageResponse characterListPageResponse
+    ) : base(characterListPageResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public CharacterListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public CharacterListPageResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CharacterListPageResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    CharacterListPageResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CharacterListPageResponseFromRaw.FromRawUnchecked"/>
     public static CharacterListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CharacterListPageResponseFromRaw : IFromRawJson<CharacterListPageResponse>
@@ -148,5 +144,6 @@ class CharacterListPageResponseFromRaw : IFromRawJson<CharacterListPageResponse>
     /// <inheritdoc/>
     public CharacterListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => CharacterListPageResponse.FromRawUnchecked(rawData);
+    )
+    =>CharacterListPageResponse.FromRawUnchecked(rawData);
 }

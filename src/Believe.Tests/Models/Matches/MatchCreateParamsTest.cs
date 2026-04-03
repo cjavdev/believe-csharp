@@ -11,24 +11,11 @@ public class MatchCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new MatchCreateParams
         {
-            AwayTeamID = "tottenham",
-            Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.Cup,
-            Attendance = 24500,
-            AwayScore = 0,
-            EpisodeID = "s02e05",
-            HomeScore = 0,
-            LessonLearned =
-                "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",
-            PossessionPercentage = 50,
-            Result = MatchResult.Pending,
-            TedHalftimeSpeech =
-                "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",
-            TicketRevenueGbp = "735000.00",
-            TurningPoints =
+            AwayTeamID = "tottenham",Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.Cup,Attendance = 24500,AwayScore = 0,EpisodeID = "s02e05",HomeScore = 0,LessonLearned = "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",PossessionPercentage = 50,Result = MatchResult.Pending,TedHalftimeSpeech = "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",TicketRevenueGbp = "735000.00",TurningPoints =
             [
                 new()
                 {
@@ -37,8 +24,7 @@ public class MatchCreateParamsTest : TestBase
                     Minute = 0,
                     CharacterInvolved = "jamie-tartt",
                 },
-            ],
-            WeatherTempCelsius = 8.5,
+            ],WeatherTempCelsius = 8.5,
         };
 
         string expectedAwayTeamID = "tottenham";
@@ -49,12 +35,10 @@ public class MatchCreateParamsTest : TestBase
         long expectedAwayScore = 0;
         string expectedEpisodeID = "s02e05";
         long expectedHomeScore = 0;
-        string expectedLessonLearned =
-            "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.";
+        string expectedLessonLearned = "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.";
         double expectedPossessionPercentage = 50;
         ApiEnum<string, MatchResult> expectedResult = MatchResult.Pending;
-        string expectedTedHalftimeSpeech =
-            "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.";
+        string expectedTedHalftimeSpeech = "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.";
         TicketRevenueGbp expectedTicketRevenueGbp = "735000.00";
         List<TurningPoint> expectedTurningPoints =
         [
@@ -93,82 +77,50 @@ public class MatchCreateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new MatchCreateParams
         {
-            AwayTeamID = "tottenham",
-            Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.Cup,
-            Attendance = 24500,
-            EpisodeID = "s02e05",
-            LessonLearned =
-                "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",
-            PossessionPercentage = 50,
-            TedHalftimeSpeech =
-                "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",
-            TicketRevenueGbp = "735000.00",
-            WeatherTempCelsius = 8.5,
+            AwayTeamID = "tottenham",Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.Cup,Attendance = 24500,EpisodeID = "s02e05",LessonLearned = "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",PossessionPercentage = 50,TedHalftimeSpeech = "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",TicketRevenueGbp = "735000.00",WeatherTempCelsius = 8.5,
         };
 
         Assert.Null(parameters.AwayScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("away_score"));
-        Assert.Null(parameters.HomeScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("home_score"));
-        Assert.Null(parameters.Result);
-        Assert.False(parameters.RawBodyData.ContainsKey("result"));
-        Assert.Null(parameters.TurningPoints);
+        Assert.False(parameters.RawBodyData.ContainsKey("away_score"));Assert.Null(parameters.HomeScore);
+        Assert.False(parameters.RawBodyData.ContainsKey("home_score"));Assert.Null(parameters.Result);
+        Assert.False(parameters.RawBodyData.ContainsKey("result"));Assert.Null(parameters.TurningPoints);
         Assert.False(parameters.RawBodyData.ContainsKey("turning_points"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new MatchCreateParams
         {
-            AwayTeamID = "tottenham",
-            Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.Cup,
-            Attendance = 24500,
-            EpisodeID = "s02e05",
-            LessonLearned =
-                "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",
-            PossessionPercentage = 50,
-            TedHalftimeSpeech =
-                "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",
-            TicketRevenueGbp = "735000.00",
-            WeatherTempCelsius = 8.5,
+            AwayTeamID = "tottenham",Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.Cup,Attendance = 24500,EpisodeID = "s02e05",LessonLearned = "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",PossessionPercentage = 50,TedHalftimeSpeech = "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",TicketRevenueGbp = "735000.00",WeatherTempCelsius = 8.5,
 
             // Null should be interpreted as omitted for these properties
-            AwayScore = null,
-            HomeScore = null,
-            Result = null,
-            TurningPoints = null,
+            AwayScore = null,HomeScore = null,Result = null,TurningPoints = null,
         };
 
         Assert.Null(parameters.AwayScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("away_score"));
-        Assert.Null(parameters.HomeScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("home_score"));
-        Assert.Null(parameters.Result);
-        Assert.False(parameters.RawBodyData.ContainsKey("result"));
-        Assert.Null(parameters.TurningPoints);
+        Assert.False(parameters.RawBodyData.ContainsKey("away_score"));Assert.Null(parameters.HomeScore);
+        Assert.False(parameters.RawBodyData.ContainsKey("home_score"));Assert.Null(parameters.Result);
+        Assert.False(parameters.RawBodyData.ContainsKey("result"));Assert.Null(parameters.TurningPoints);
         Assert.False(parameters.RawBodyData.ContainsKey("turning_points"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new MatchCreateParams
         {
-            AwayTeamID = "tottenham",
-            Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.Cup,
-            AwayScore = 0,
-            HomeScore = 0,
-            Result = MatchResult.Pending,
-            TurningPoints =
+            AwayTeamID = "tottenham",Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.Cup,AwayScore = 0,HomeScore = 0,Result = MatchResult.Pending,TurningPoints =
             [
                 new()
                 {
@@ -181,34 +133,24 @@ public class MatchCreateParamsTest : TestBase
         };
 
         Assert.Null(parameters.Attendance);
-        Assert.False(parameters.RawBodyData.ContainsKey("attendance"));
-        Assert.Null(parameters.EpisodeID);
-        Assert.False(parameters.RawBodyData.ContainsKey("episode_id"));
-        Assert.Null(parameters.LessonLearned);
-        Assert.False(parameters.RawBodyData.ContainsKey("lesson_learned"));
-        Assert.Null(parameters.PossessionPercentage);
-        Assert.False(parameters.RawBodyData.ContainsKey("possession_percentage"));
-        Assert.Null(parameters.TedHalftimeSpeech);
-        Assert.False(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));
-        Assert.Null(parameters.TicketRevenueGbp);
-        Assert.False(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));
-        Assert.Null(parameters.WeatherTempCelsius);
+        Assert.False(parameters.RawBodyData.ContainsKey("attendance"));Assert.Null(parameters.EpisodeID);
+        Assert.False(parameters.RawBodyData.ContainsKey("episode_id"));Assert.Null(parameters.LessonLearned);
+        Assert.False(parameters.RawBodyData.ContainsKey("lesson_learned"));Assert.Null(parameters.PossessionPercentage);
+        Assert.False(parameters.RawBodyData.ContainsKey("possession_percentage"));Assert.Null(parameters.TedHalftimeSpeech);
+        Assert.False(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));Assert.Null(parameters.TicketRevenueGbp);
+        Assert.False(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));Assert.Null(parameters.WeatherTempCelsius);
         Assert.False(parameters.RawBodyData.ContainsKey("weather_temp_celsius"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new MatchCreateParams
         {
-            AwayTeamID = "tottenham",
-            Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.Cup,
-            AwayScore = 0,
-            HomeScore = 0,
-            Result = MatchResult.Pending,
-            TurningPoints =
+            AwayTeamID = "tottenham",Date = DateTimeOffset.Parse("2024-02-20T19:45:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.Cup,AwayScore = 0,HomeScore = 0,Result = MatchResult.Pending,TurningPoints =
             [
                 new()
                 {
@@ -219,29 +161,18 @@ public class MatchCreateParamsTest : TestBase
                 },
             ],
 
-            Attendance = null,
-            EpisodeID = null,
-            LessonLearned = null,
-            PossessionPercentage = null,
-            TedHalftimeSpeech = null,
-            TicketRevenueGbp = null,
-            WeatherTempCelsius = null,
+            Attendance = null,EpisodeID = null,LessonLearned = null,PossessionPercentage = null,TedHalftimeSpeech = null,TicketRevenueGbp = null,WeatherTempCelsius = null,
         };
 
         Assert.Null(parameters.Attendance);
-        Assert.True(parameters.RawBodyData.ContainsKey("attendance"));
-        Assert.Null(parameters.EpisodeID);
-        Assert.True(parameters.RawBodyData.ContainsKey("episode_id"));
-        Assert.Null(parameters.LessonLearned);
-        Assert.True(parameters.RawBodyData.ContainsKey("lesson_learned"));
-        Assert.Null(parameters.PossessionPercentage);
-        Assert.True(parameters.RawBodyData.ContainsKey("possession_percentage"));
-        Assert.Null(parameters.TedHalftimeSpeech);
-        Assert.True(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));
-        Assert.Null(parameters.TicketRevenueGbp);
-        Assert.True(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));
-        Assert.Null(parameters.WeatherTempCelsius);
+        Assert.True(parameters.RawBodyData.ContainsKey("attendance"));Assert.Null(parameters.EpisodeID);
+        Assert.True(parameters.RawBodyData.ContainsKey("episode_id"));Assert.Null(parameters.LessonLearned);
+        Assert.True(parameters.RawBodyData.ContainsKey("lesson_learned"));Assert.Null(parameters.PossessionPercentage);
+        Assert.True(parameters.RawBodyData.ContainsKey("possession_percentage"));Assert.Null(parameters.TedHalftimeSpeech);
+        Assert.True(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));Assert.Null(parameters.TicketRevenueGbp);
+        Assert.True(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));Assert.Null(parameters.WeatherTempCelsius);
         Assert.True(parameters.RawBodyData.ContainsKey("weather_temp_celsius"));
+
     }
 
     [Fact]
@@ -255,7 +186,12 @@ public class MatchCreateParamsTest : TestBase
             MatchType = MatchType.Cup,
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/matches"), url);
     }
@@ -273,12 +209,10 @@ public class MatchCreateParamsTest : TestBase
             AwayScore = 0,
             EpisodeID = "s02e05",
             HomeScore = 0,
-            LessonLearned =
-                "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",
+            LessonLearned = "It's not about the wins and losses, it's about helping these young fellas be the best versions of themselves.",
             PossessionPercentage = 50,
             Result = MatchResult.Pending,
-            TedHalftimeSpeech =
-                "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",
+            TedHalftimeSpeech = "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",
             TicketRevenueGbp = "735000.00",
             TurningPoints =
             [
@@ -320,10 +254,7 @@ public class TicketRevenueGbpTest : TestBase
     {
         TicketRevenueGbp value = 0;
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketRevenueGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TicketRevenueGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -333,10 +264,7 @@ public class TicketRevenueGbpTest : TestBase
     {
         TicketRevenueGbp value = "string";
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketRevenueGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TicketRevenueGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

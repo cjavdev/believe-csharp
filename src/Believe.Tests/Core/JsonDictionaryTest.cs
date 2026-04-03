@@ -38,10 +38,7 @@ public class JsonDictionaryTest : TestBase
     public void FrozenDictionaryConstructor_UsesProvidedDictionary()
     {
         var source = FrozenDictionary.ToFrozenDictionary(
-            new Dictionary<string, JsonElement>
-            {
-                ["foo"] = JsonSerializer.SerializeToElement("bar"),
-            }
+            new Dictionary<string, JsonElement> { ["foo"] = JsonSerializer.SerializeToElement("bar") }
         );
 
         var dict = new JsonDictionary(source);
@@ -122,8 +119,8 @@ public class JsonDictionaryTest : TestBase
     {
         var dict = new JsonDictionary();
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullClass<string>("missing")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullClass<string>("missing")
         );
         Assert.Contains("'missing' cannot be absent", exception.Message);
     }
@@ -138,8 +135,8 @@ public class JsonDictionaryTest : TestBase
             }
         );
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullClass<string>("nullable")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullClass<string>("nullable")
         );
         Assert.Contains("'nullable' cannot be null", exception.Message);
     }
@@ -150,8 +147,8 @@ public class JsonDictionaryTest : TestBase
         var dict = new JsonDictionary();
         dict.Set("number", 42);
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullClass<string>("number")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullClass<string>("number")
         );
         Assert.Contains("'number' must be of type", exception.Message);
     }
@@ -172,8 +169,8 @@ public class JsonDictionaryTest : TestBase
     {
         var dict = new JsonDictionary();
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullStruct<int>("missing")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullStruct<int>("missing")
         );
         Assert.Contains("'missing' cannot be absent", exception.Message);
     }
@@ -188,8 +185,8 @@ public class JsonDictionaryTest : TestBase
             }
         );
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullStruct<int>("nullable")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullStruct<int>("nullable")
         );
         Assert.Contains("'nullable' cannot be null", exception.Message);
     }
@@ -200,8 +197,8 @@ public class JsonDictionaryTest : TestBase
         var dict = new JsonDictionary();
         dict.Set("text", "not a number");
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullStruct<int>("text")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullStruct<int>("text")
         );
         Assert.Contains("'text' must be of type", exception.Message);
     }
@@ -260,8 +257,8 @@ public class JsonDictionaryTest : TestBase
         var dict = new JsonDictionary();
         dict.Set("number", 42);
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNullableClass<string>("number")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNullableClass<string>("number")
         );
         Assert.Contains("'number' must be of type", exception.Message);
     }
@@ -308,8 +305,8 @@ public class JsonDictionaryTest : TestBase
         var dict = new JsonDictionary();
         dict.Set("text", "not a number");
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNullableStruct<int>("text")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNullableStruct<int>("text")
         );
         Assert.Contains("'text' must be of type", exception.Message);
     }

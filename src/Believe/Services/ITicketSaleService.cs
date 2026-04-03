@@ -26,66 +26,72 @@ public interface ITicketSaleService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ITicketSaleService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ITicketSaleService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Record a new ticket sale.
-    /// </summary>
+/// Record a new ticket sale.
+/// </summary>
     Task<TicketSale> Create(
         TicketSaleCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieve detailed information about a specific ticket sale.
-    /// </summary>
+/// Retrieve detailed information about a specific ticket sale.
+/// </summary>
     Task<TicketSale> Retrieve(
         TicketSaleRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>
     Task<TicketSale> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Update specific fields of an existing ticket sale.
-    /// </summary>
+/// Update specific fields of an existing ticket sale.
+/// </summary>
     Task<TicketSale> Update(
         TicketSaleUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(TicketSaleUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(TicketSaleUpdateParams, CancellationToken)"/>
     Task<TicketSale> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a paginated list of all ticket sales with optional filtering. With 300
-    /// records, this endpoint is ideal for practicing pagination.
-    /// </summary>
+/// Get a paginated list of all ticket sales with optional filtering. With 300
+/// records, this endpoint is ideal for practicing pagination.
+/// </summary>
     Task<TicketSaleListPage> List(
         TicketSaleListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Remove a ticket sale from the database.
-    /// </summary>
-    Task Delete(TicketSaleDeleteParams parameters, CancellationToken cancellationToken = default);
-
-    /// <inheritdoc cref="Delete(TicketSaleDeleteParams, CancellationToken)"/>
+/// Remove a ticket sale from the database.
+/// </summary>
+    Task Delete(
+        TicketSaleDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    ;/// <inheritdoc cref="Delete(TicketSaleDeleteParams, CancellationToken)"/>
     Task Delete(
         string ticketSaleID,
         TicketSaleDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -99,71 +105,76 @@ public interface ITicketSaleServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    ITicketSaleServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    ITicketSaleServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /ticket-sales</c>, but is otherwise the
-    /// same as <see cref="ITicketSaleService.Create(TicketSaleCreateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /ticket-sales</c>, but is otherwise the
+/// same as <see cref="ITicketSaleService.Create(TicketSaleCreateParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<TicketSale>> Create(
         TicketSaleCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
-    /// same as <see cref="ITicketSaleService.Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
+/// same as <see cref="ITicketSaleService.Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<TicketSale>> Retrieve(
         TicketSaleRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(TicketSaleRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<TicketSale>> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>patch /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
-    /// same as <see cref="ITicketSaleService.Update(TicketSaleUpdateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>patch /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
+/// same as <see cref="ITicketSaleService.Update(TicketSaleUpdateParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<TicketSale>> Update(
         TicketSaleUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(TicketSaleUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(TicketSaleUpdateParams, CancellationToken)"/>
     Task<HttpResponse<TicketSale>> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /ticket-sales</c>, but is otherwise the
-    /// same as <see cref="ITicketSaleService.List(TicketSaleListParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /ticket-sales</c>, but is otherwise the
+/// same as <see cref="ITicketSaleService.List(TicketSaleListParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<TicketSaleListPage>> List(
         TicketSaleListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>delete /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
-    /// same as <see cref="ITicketSaleService.Delete(TicketSaleDeleteParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>delete /ticket-sales/{ticket_sale_id}</c>, but is otherwise the
+/// same as <see cref="ITicketSaleService.Delete(TicketSaleDeleteParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse> Delete(
         TicketSaleDeleteParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Delete(TicketSaleDeleteParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Delete(TicketSaleDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string ticketSaleID,
         TicketSaleDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

@@ -14,24 +14,25 @@ public sealed class TeamMemberService : ITeamMemberService
     readonly Lazy<ITeamMemberServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public ITeamMemberServiceWithRawResponse WithRawResponse
-    {
+    public ITeamMemberServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public ITeamMemberService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new TeamMemberService(this._client.WithOptions(modifier));
-    }
+    public ITeamMemberService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new TeamMemberService(this._client.WithOptions(modifier)); }
 
-    public TeamMemberService(IBelieveClient client)
+    public TeamMemberService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new TeamMemberServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new TeamMemberServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,9 +41,7 @@ public sealed class TeamMemberService : ITeamMemberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Create(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Create(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -52,13 +51,9 @@ public sealed class TeamMemberService : ITeamMemberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<TeamMemberRetrieveResponse> Retrieve(
         string memberID,
         TeamMemberRetrieveParams? parameters = null,
@@ -67,7 +62,9 @@ public sealed class TeamMemberService : ITeamMemberService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { MemberID = memberID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            MemberID = memberID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -76,20 +73,18 @@ public sealed class TeamMemberService : ITeamMemberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Update(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<TeamMemberUpdateResponse> Update(
         string memberID,
         TeamMemberUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Update(parameters with { MemberID = memberID }, cancellationToken);
+        return this.Update(parameters with{
+            MemberID = memberID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -98,9 +93,7 @@ public sealed class TeamMemberService : ITeamMemberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -111,9 +104,7 @@ public sealed class TeamMemberService : ITeamMemberService
     )
     {
         return this.WithRawResponse.Delete(parameters, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public async Task Delete(
         string memberID,
         TeamMemberDeleteParams? parameters = null,
@@ -122,8 +113,9 @@ public sealed class TeamMemberService : ITeamMemberService
     {
         parameters ??= new();
 
-        await this.Delete(parameters with { MemberID = memberID }, cancellationToken)
-            .ConfigureAwait(false);
+        await this.Delete(parameters with{
+            MemberID = memberID
+        }, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -132,9 +124,7 @@ public sealed class TeamMemberService : ITeamMemberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.ListCoaches(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.ListCoaches(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -144,9 +134,7 @@ public sealed class TeamMemberService : ITeamMemberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.ListPlayers(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.ListPlayers(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -156,9 +144,7 @@ public sealed class TeamMemberService : ITeamMemberService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.ListStaff(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.ListStaff(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -176,10 +162,10 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
         return new TeamMemberServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public TeamMemberServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public TeamMemberServiceWithRawResponse (
+        IBelieveClientWithRawResponse client
+    )
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<TeamMemberCreateResponse>> Create(
@@ -193,20 +179,13 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var teamMember = await response
-                    .Deserialize<TeamMemberCreateResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    teamMember.Validate();
-                }
-                return teamMember;
+        return new(response, async ( token )=>{
+            var teamMember = await response.Deserialize<TeamMemberCreateResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                teamMember.Validate();
             }
-        );
+            return teamMember;
+        });
     }
 
     /// <inheritdoc/>
@@ -217,7 +196,9 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
     {
         if (parameters.MemberID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MemberID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MemberID' cannot be null"
+            );
         }
 
         HttpRequest<TeamMemberRetrieveParams> request = new()
@@ -226,23 +207,14 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var teamMember = await response
-                    .Deserialize<TeamMemberRetrieveResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    teamMember.Validate();
-                }
-                return teamMember;
+        return new(response, async ( token )=>{
+            var teamMember = await response.Deserialize<TeamMemberRetrieveResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                teamMember.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return teamMember;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<TeamMemberRetrieveResponse>> Retrieve(
         string memberID,
         TeamMemberRetrieveParams? parameters = null,
@@ -251,7 +223,9 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { MemberID = memberID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            MemberID = memberID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -262,7 +236,9 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
     {
         if (parameters.MemberID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MemberID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MemberID' cannot be null"
+            );
         }
 
         HttpRequest<TeamMemberUpdateParams> request = new()
@@ -271,30 +247,23 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var teamMember = await response
-                    .Deserialize<TeamMemberUpdateResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    teamMember.Validate();
-                }
-                return teamMember;
+        return new(response, async ( token )=>{
+            var teamMember = await response.Deserialize<TeamMemberUpdateResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                teamMember.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return teamMember;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<TeamMemberUpdateResponse>> Update(
         string memberID,
         TeamMemberUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return this.Update(parameters with { MemberID = memberID }, cancellationToken);
+        return this.Update(parameters with{
+            MemberID = memberID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -311,20 +280,13 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<TeamMemberListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new TeamMemberListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<TeamMemberListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new TeamMemberListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -335,7 +297,9 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
     {
         if (parameters.MemberID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.MemberID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.MemberID' cannot be null"
+            );
         }
 
         HttpRequest<TeamMemberDeleteParams> request = new()
@@ -344,9 +308,7 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         return this._client.Execute(request, cancellationToken);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<HttpResponse> Delete(
         string memberID,
         TeamMemberDeleteParams? parameters = null,
@@ -355,7 +317,9 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
     {
         parameters ??= new();
 
-        return this.Delete(parameters with { MemberID = memberID }, cancellationToken);
+        return this.Delete(parameters with{
+            MemberID = memberID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -372,20 +336,13 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<TeamMemberListCoachesPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new TeamMemberListCoachesPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<TeamMemberListCoachesPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new TeamMemberListCoachesPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -402,20 +359,13 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<TeamMemberListPlayersPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new TeamMemberListPlayersPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<TeamMemberListPlayersPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new TeamMemberListPlayersPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -432,19 +382,12 @@ public sealed class TeamMemberServiceWithRawResponse : ITeamMemberServiceWithRaw
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<TeamMemberListStaffPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new TeamMemberListStaffPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<TeamMemberListStaffPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new TeamMemberListStaffPage(this, parameters, page);
+        });
     }
 }

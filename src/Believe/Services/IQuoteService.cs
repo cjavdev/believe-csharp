@@ -26,97 +26,110 @@ public interface IQuoteService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IQuoteService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IQuoteService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Add a new memorable quote to the collection.
-    /// </summary>
-    Task<Quote> Create(QuoteCreateParams parameters, CancellationToken cancellationToken = default);
+/// Add a new memorable quote to the collection.
+/// </summary>
+    Task<Quote> Create(
+        QuoteCreateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    ;
 
     /// <summary>
-    /// Retrieve a specific quote by its ID.
-    /// </summary>
+/// Retrieve a specific quote by its ID.
+/// </summary>
     Task<Quote> Retrieve(
         QuoteRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(QuoteRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(QuoteRetrieveParams, CancellationToken)"/>
     Task<Quote> Retrieve(
         string quoteID,
         QuoteRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Update specific fields of an existing quote.
-    /// </summary>
-    Task<Quote> Update(QuoteUpdateParams parameters, CancellationToken cancellationToken = default);
-
-    /// <inheritdoc cref="Update(QuoteUpdateParams, CancellationToken)"/>
+/// Update specific fields of an existing quote.
+/// </summary>
+    Task<Quote> Update(
+        QuoteUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    ;/// <inheritdoc cref="Update(QuoteUpdateParams, CancellationToken)"/>
     Task<Quote> Update(
         string quoteID,
         QuoteUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a paginated list of all memorable Ted Lasso quotes with optional filtering.
-    /// </summary>
+/// Get a paginated list of all memorable Ted Lasso quotes with optional filtering.
+/// </summary>
     Task<QuoteListPage> List(
         QuoteListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Remove a quote from the collection.
-    /// </summary>
-    Task Delete(QuoteDeleteParams parameters, CancellationToken cancellationToken = default);
-
-    /// <inheritdoc cref="Delete(QuoteDeleteParams, CancellationToken)"/>
+/// Remove a quote from the collection.
+/// </summary>
+    Task Delete(
+        QuoteDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    ;/// <inheritdoc cref="Delete(QuoteDeleteParams, CancellationToken)"/>
     Task Delete(
         string quoteID,
         QuoteDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a random Ted Lasso quote, optionally filtered.
-    /// </summary>
+/// Get a random Ted Lasso quote, optionally filtered.
+/// </summary>
     Task<Quote> GetRandom(
         QuoteGetRandomParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a paginated list of quotes from a specific character.
-    /// </summary>
+/// Get a paginated list of quotes from a specific character.
+/// </summary>
     Task<QuoteListByCharacterPage> ListByCharacter(
         QuoteListByCharacterParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListByCharacter(QuoteListByCharacterParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListByCharacter(QuoteListByCharacterParams, CancellationToken)"/>
     Task<QuoteListByCharacterPage> ListByCharacter(
         string characterID,
         QuoteListByCharacterParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a paginated list of quotes related to a specific theme.
-    /// </summary>
+/// Get a paginated list of quotes related to a specific theme.
+/// </summary>
     Task<QuoteListByThemePage> ListByTheme(
         QuoteListByThemeParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListByTheme(QuoteListByThemeParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListByTheme(QuoteListByThemeParams, CancellationToken)"/>
     Task<QuoteListByThemePage> ListByTheme(
         ApiEnum<string, QuoteTheme> theme,
         QuoteListByThemeParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -130,112 +143,118 @@ public interface IQuoteServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IQuoteServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IQuoteServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /quotes</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.Create(QuoteCreateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /quotes</c>, but is otherwise the
+/// same as <see cref="IQuoteService.Create(QuoteCreateParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Quote>> Create(
         QuoteCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /quotes/{quote_id}</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.Retrieve(QuoteRetrieveParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /quotes/{quote_id}</c>, but is otherwise the
+/// same as <see cref="IQuoteService.Retrieve(QuoteRetrieveParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Quote>> Retrieve(
         QuoteRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(QuoteRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(QuoteRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<Quote>> Retrieve(
         string quoteID,
         QuoteRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>patch /quotes/{quote_id}</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.Update(QuoteUpdateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>patch /quotes/{quote_id}</c>, but is otherwise the
+/// same as <see cref="IQuoteService.Update(QuoteUpdateParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Quote>> Update(
         QuoteUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(QuoteUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(QuoteUpdateParams, CancellationToken)"/>
     Task<HttpResponse<Quote>> Update(
         string quoteID,
         QuoteUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /quotes</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.List(QuoteListParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /quotes</c>, but is otherwise the
+/// same as <see cref="IQuoteService.List(QuoteListParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<QuoteListPage>> List(
         QuoteListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>delete /quotes/{quote_id}</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.Delete(QuoteDeleteParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>delete /quotes/{quote_id}</c>, but is otherwise the
+/// same as <see cref="IQuoteService.Delete(QuoteDeleteParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse> Delete(
         QuoteDeleteParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Delete(QuoteDeleteParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Delete(QuoteDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string quoteID,
         QuoteDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /quotes/random</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.GetRandom(QuoteGetRandomParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /quotes/random</c>, but is otherwise the
+/// same as <see cref="IQuoteService.GetRandom(QuoteGetRandomParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Quote>> GetRandom(
         QuoteGetRandomParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /quotes/characters/{character_id}</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.ListByCharacter(QuoteListByCharacterParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /quotes/characters/{character_id}</c>, but is otherwise the
+/// same as <see cref="IQuoteService.ListByCharacter(QuoteListByCharacterParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<QuoteListByCharacterPage>> ListByCharacter(
         QuoteListByCharacterParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListByCharacter(QuoteListByCharacterParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListByCharacter(QuoteListByCharacterParams, CancellationToken)"/>
     Task<HttpResponse<QuoteListByCharacterPage>> ListByCharacter(
         string characterID,
         QuoteListByCharacterParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /quotes/themes/{theme}</c>, but is otherwise the
-    /// same as <see cref="IQuoteService.ListByTheme(QuoteListByThemeParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /quotes/themes/{theme}</c>, but is otherwise the
+/// same as <see cref="IQuoteService.ListByTheme(QuoteListByThemeParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<QuoteListByThemePage>> ListByTheme(
         QuoteListByThemeParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="ListByTheme(QuoteListByThemeParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="ListByTheme(QuoteListByThemeParams, CancellationToken)"/>
     Task<HttpResponse<QuoteListByThemePage>> ListByTheme(
         ApiEnum<string, QuoteTheme> theme,
         QuoteListByThemeParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

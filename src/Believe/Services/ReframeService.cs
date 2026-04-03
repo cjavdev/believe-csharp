@@ -13,24 +13,25 @@ public sealed class ReframeService : IReframeService
     readonly Lazy<IReframeServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IReframeServiceWithRawResponse WithRawResponse
-    {
+    public IReframeServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IReframeService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new ReframeService(this._client.WithOptions(modifier));
-    }
+    public IReframeService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new ReframeService(this._client.WithOptions(modifier)); }
 
-    public ReframeService(IBelieveClient client)
+    public ReframeService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new ReframeServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new ReframeServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -39,9 +40,7 @@ public sealed class ReframeService : IReframeService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.TransformNegativeThoughts(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.TransformNegativeThoughts(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -52,20 +51,18 @@ public sealed class ReframeServiceWithRawResponse : IReframeServiceWithRawRespon
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IReframeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IReframeServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new ReframeServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public ReframeServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public ReframeServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
-    public async Task<
-        HttpResponse<ReframeTransformNegativeThoughtsResponse>
-    > TransformNegativeThoughts(
+    public async Task<HttpResponse<ReframeTransformNegativeThoughtsResponse>> TransformNegativeThoughts(
         ReframeTransformNegativeThoughtsParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -76,19 +73,12 @@ public sealed class ReframeServiceWithRawResponse : IReframeServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var deserializedResponse = await response
-                    .Deserialize<ReframeTransformNegativeThoughtsResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    deserializedResponse.Validate();
-                }
-                return deserializedResponse;
+        return new(response, async ( token )=>{
+            var deserializedResponse = await response.Deserialize<ReframeTransformNegativeThoughtsResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                deserializedResponse.Validate();
             }
-        );
+            return deserializedResponse;
+        });
     }
 }

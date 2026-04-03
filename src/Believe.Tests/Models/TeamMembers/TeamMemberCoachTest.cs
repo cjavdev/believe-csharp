@@ -13,14 +13,10 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,WinRate = 0.55,
         };
 
         string expectedID = "ted-lasso-richmond";
@@ -28,9 +24,11 @@ public class TeamMemberCoachTest : TestBase
         ApiEnum<string, CoachSpecialty> expectedSpecialty = CoachSpecialty.HeadCoach;
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 2;
-        List<string> expectedCertifications = ["NCAA Division II"];
-        ApiEnum<string, TeamMemberCoachMemberType> expectedMemberType =
-            TeamMemberCoachMemberType.Coach;
+        List<string> expectedCertifications =
+        [
+            "NCAA Division II"
+        ];
+        ApiEnum<string, TeamMemberCoachMemberType> expectedMemberType = TeamMemberCoachMemberType.Coach;
         double expectedWinRate = 0.55;
 
         Assert.Equal(expectedID, model.ID);
@@ -53,21 +51,14 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,WinRate = 0.55,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberCoach>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberCoach>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -77,21 +68,14 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,WinRate = 0.55,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberCoach>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberCoach>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "ted-lasso-richmond";
@@ -99,9 +83,11 @@ public class TeamMemberCoachTest : TestBase
         ApiEnum<string, CoachSpecialty> expectedSpecialty = CoachSpecialty.HeadCoach;
         string expectedTeamID = "afc-richmond";
         long expectedYearsWithTeam = 2;
-        List<string> expectedCertifications = ["NCAA Division II"];
-        ApiEnum<string, TeamMemberCoachMemberType> expectedMemberType =
-            TeamMemberCoachMemberType.Coach;
+        List<string> expectedCertifications =
+        [
+            "NCAA Division II"
+        ];
+        ApiEnum<string, TeamMemberCoachMemberType> expectedMemberType = TeamMemberCoachMemberType.Coach;
         double expectedWinRate = 0.55;
 
         Assert.Equal(expectedID, deserialized.ID);
@@ -124,14 +110,10 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,WinRate = 0.55,
         };
 
         model.Validate();
@@ -142,18 +124,13 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,WinRate = 0.55,
         };
 
         Assert.Null(model.Certifications);
-        Assert.False(model.RawData.ContainsKey("certifications"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("certifications"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -161,12 +138,7 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,WinRate = 0.55,
         };
 
         model.Validate();
@@ -177,22 +149,16 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,WinRate = 0.55,
 
             // Null should be interpreted as omitted for these properties
-            Certifications = null,
-            MemberType = null,
+            Certifications = null,MemberType = null,
         };
 
         Assert.Null(model.Certifications);
-        Assert.False(model.RawData.ContainsKey("certifications"));
-        Assert.Null(model.MemberType);
+        Assert.False(model.RawData.ContainsKey("certifications"));Assert.Null(model.MemberType);
         Assert.False(model.RawData.ContainsKey("member_type"));
+
     }
 
     [Fact]
@@ -200,16 +166,10 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,WinRate = 0.55,
 
             // Null should be interpreted as omitted for these properties
-            Certifications = null,
-            MemberType = null,
+            Certifications = null,MemberType = null,
         };
 
         model.Validate();
@@ -220,17 +180,15 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,
         };
 
         Assert.Null(model.WinRate);
         Assert.False(model.RawData.ContainsKey("win_rate"));
+
     }
 
     [Fact]
@@ -238,13 +196,10 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,
         };
 
         model.Validate();
@@ -255,19 +210,17 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,
 
             WinRate = null,
         };
 
         Assert.Null(model.WinRate);
         Assert.True(model.RawData.ContainsKey("win_rate"));
+
     }
 
     [Fact]
@@ -275,13 +228,10 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,
 
             WinRate = null,
         };
@@ -294,14 +244,10 @@ public class TeamMemberCoachTest : TestBase
     {
         var model = new TeamMemberCoach
         {
-            ID = "ted-lasso-richmond",
-            CharacterID = "ted-lasso",
-            Specialty = CoachSpecialty.HeadCoach,
-            TeamID = "afc-richmond",
-            YearsWithTeam = 2,
-            Certifications = ["NCAA Division II"],
-            MemberType = TeamMemberCoachMemberType.Coach,
-            WinRate = 0.55,
+            ID = "ted-lasso-richmond",CharacterID = "ted-lasso",Specialty = CoachSpecialty.HeadCoach,TeamID = "afc-richmond",YearsWithTeam = 2,Certifications =
+            [
+                "NCAA Division II"
+            ],MemberType = TeamMemberCoachMemberType.Coach,WinRate = 0.55,
         };
 
         TeamMemberCoach copied = new(model);
@@ -312,8 +258,7 @@ public class TeamMemberCoachTest : TestBase
 
 public class TeamMemberCoachMemberTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(TeamMemberCoachMemberType.Coach)]
+    [Theory][InlineData(TeamMemberCoachMemberType.Coach)]
     public void Validation_Works(TeamMemberCoachMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -324,27 +269,20 @@ public class TeamMemberCoachMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(TeamMemberCoachMemberType.Coach)]
+    [Theory][InlineData(TeamMemberCoachMemberType.Coach)]
     public void SerializationRoundtrip_Works(TeamMemberCoachMemberType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, TeamMemberCoachMemberType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -352,15 +290,9 @@ public class TeamMemberCoachMemberTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, TeamMemberCoachMemberType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

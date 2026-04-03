@@ -17,12 +17,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Unique identifier (format: s##e##)
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Original air date
     /// </summary>
-    public required string AirDate
-    {
-        get
-        {
+    public required string AirDate {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("air_date");
+            return this._rawData.GetNotNullClass<string>(
+                "air_date"
+            );
         }
         init { this._rawData.Set("air_date", value); }
     }
@@ -43,15 +43,14 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Characters with significant development
     /// </summary>
-    public required IReadOnlyList<string> CharacterFocus
-    {
-        get
-        {
+    public required IReadOnlyList<string> CharacterFocus {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("character_focus");
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>(
+                "character_focus"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>>(
                 "character_focus",
                 ImmutableArray.ToImmutableArray(value)
@@ -62,12 +61,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Episode director
     /// </summary>
-    public required string Director
-    {
-        get
-        {
+    public required string Director {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("director");
+            return this._rawData.GetNotNullClass<string>(
+                "director"
+            );
         }
         init { this._rawData.Set("director", value); }
     }
@@ -75,12 +74,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Episode number within season
     /// </summary>
-    public required long EpisodeNumber
-    {
-        get
-        {
+    public required long EpisodeNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("episode_number");
+            return this._rawData.GetNotNullStruct<long>(
+                "episode_number"
+            );
         }
         init { this._rawData.Set("episode_number", value); }
     }
@@ -88,12 +87,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Central theme of the episode
     /// </summary>
-    public required string MainTheme
-    {
-        get
-        {
+    public required string MainTheme {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("main_theme");
+            return this._rawData.GetNotNullClass<string>(
+                "main_theme"
+            );
         }
         init { this._rawData.Set("main_theme", value); }
     }
@@ -101,12 +100,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Episode runtime in minutes
     /// </summary>
-    public required long RuntimeMinutes
-    {
-        get
-        {
+    public required long RuntimeMinutes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("runtime_minutes");
+            return this._rawData.GetNotNullStruct<long>(
+                "runtime_minutes"
+            );
         }
         init { this._rawData.Set("runtime_minutes", value); }
     }
@@ -114,12 +113,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Season number
     /// </summary>
-    public required long Season
-    {
-        get
-        {
+    public required long Season {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("season");
+            return this._rawData.GetNotNullStruct<long>(
+                "season"
+            );
         }
         init { this._rawData.Set("season", value); }
     }
@@ -127,12 +126,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Brief plot synopsis
     /// </summary>
-    public required string Synopsis
-    {
-        get
-        {
+    public required string Synopsis {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("synopsis");
+            return this._rawData.GetNotNullClass<string>(
+                "synopsis"
+            );
         }
         init { this._rawData.Set("synopsis", value); }
     }
@@ -140,12 +139,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Key piece of Ted wisdom from the episode
     /// </summary>
-    public required string TedWisdom
-    {
-        get
-        {
+    public required string TedWisdom {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("ted_wisdom");
+            return this._rawData.GetNotNullClass<string>(
+                "ted_wisdom"
+            );
         }
         init { this._rawData.Set("ted_wisdom", value); }
     }
@@ -153,12 +152,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Episode title
     /// </summary>
-    public required string Title
-    {
-        get
-        {
+    public required string Title {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("title");
+            return this._rawData.GetNotNullClass<string>(
+                "title"
+            );
         }
         init { this._rawData.Set("title", value); }
     }
@@ -166,12 +165,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Episode writer(s)
     /// </summary>
-    public required string Writer
-    {
-        get
-        {
+    public required string Writer {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("writer");
+            return this._rawData.GetNotNullClass<string>(
+                "writer"
+            );
         }
         init { this._rawData.Set("writer", value); }
     }
@@ -179,12 +178,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Notable biscuits with the boss scene
     /// </summary>
-    public string? BiscuitsWithBossMoment
-    {
-        get
-        {
+    public string? BiscuitsWithBossMoment {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("biscuits_with_boss_moment");
+            return this._rawData.GetNullableClass<string>(
+                "biscuits_with_boss_moment"
+            );
         }
         init { this._rawData.Set("biscuits_with_boss_moment", value); }
     }
@@ -192,17 +191,15 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Standout moments from the episode
     /// </summary>
-    public IReadOnlyList<string>? MemorableMoments
-    {
-        get
-        {
+    public IReadOnlyList<string>? MemorableMoments {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("memorable_moments");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "memorable_moments"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -216,12 +213,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// US viewership in millions
     /// </summary>
-    public double? UsViewersMillions
-    {
-        get
-        {
+    public double? UsViewersMillions {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("us_viewers_millions");
+            return this._rawData.GetNullableStruct<double>(
+                "us_viewers_millions"
+            );
         }
         init { this._rawData.Set("us_viewers_millions", value); }
     }
@@ -229,12 +226,12 @@ public sealed record class Episode : JsonModel
     /// <summary>
     /// Viewer rating out of 10
     /// </summary>
-    public double? ViewerRating
-    {
-        get
-        {
+    public double? ViewerRating {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("viewer_rating");
+            return this._rawData.GetNullableStruct<double>(
+                "viewer_rating"
+            );
         }
         init { this._rawData.Set("viewer_rating", value); }
     }
@@ -260,37 +257,36 @@ public sealed record class Episode : JsonModel
         _ = this.ViewerRating;
     }
 
-    public Episode() { }
+    public Episode ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Episode(Episode episode)
-        : base(episode) { }
-#pragma warning restore CS8618
+    public Episode (Episode episode) : base(episode)
+    {  }
+    #pragma warning restore CS8618
 
-    public Episode(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Episode (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Episode(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Episode (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="EpisodeFromRaw.FromRawUnchecked"/>
-    public static Episode FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Episode FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class EpisodeFromRaw : IFromRawJson<Episode>
 {
     /// <inheritdoc/>
-    public Episode FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Episode.FromRawUnchecked(rawData);
+    public Episode FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Episode.FromRawUnchecked(rawData);
 }

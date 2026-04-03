@@ -4,6 +4,8 @@ namespace Believe.Exceptions;
 
 public class BelieveUnexpectedStatusCodeException : BelieveApiException
 {
-    public BelieveUnexpectedStatusCodeException(HttpRequestException? innerException = null)
-        : base(innerException) { }
+    public BelieveUnexpectedStatusCodeException (
+        HttpRequestException? innerException = null
+    ) : base(innerException)
+    {  }
 }

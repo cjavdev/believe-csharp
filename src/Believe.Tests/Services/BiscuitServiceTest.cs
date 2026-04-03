@@ -7,11 +7,8 @@ public class BiscuitServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var biscuit = await this.client.Biscuits.Retrieve(
-            "biscuit_id",
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var biscuit = await this.client.Biscuits.Retrieve("biscuit_id",
+        new(), TestContext.Current.CancellationToken);
         biscuit.Validate();
     }
 
@@ -25,10 +22,7 @@ public class BiscuitServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetFresh_Works()
     {
-        var biscuit = await this.client.Biscuits.GetFresh(
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var biscuit = await this.client.Biscuits.GetFresh(new(), TestContext.Current.CancellationToken);
         biscuit.Validate();
     }
 }

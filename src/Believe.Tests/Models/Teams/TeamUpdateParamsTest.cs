@@ -11,31 +11,28 @@ public class TeamUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TeamUpdateParams
         {
-            TeamID = "team_id",
-            AnnualBudgetGbp = 0,
-            AverageAttendance = 0,
-            ContactEmail = "dev@stainless.com",
-            CultureScore = 0,
-            FoundedYear = 1800,
-            IsActive = true,
-            League = League.PremierLeague,
-            Name = "x",
-            Nickname = "nickname",
-            PrimaryColor = "primary_color",
-            RivalTeams = ["string"],
-            SecondaryColor = "secondary_color",
-            Stadium = "stadium",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
-            Values = new()
+            TeamID = "team_id",AnnualBudgetGbp = 0,AverageAttendance = 0,ContactEmail = "dev@stainless.com",CultureScore = 0,FoundedYear = 1800,IsActive = true,League = League.PremierLeague,Name = "x",Nickname = "nickname",PrimaryColor = "primary_color",RivalTeams =
+            [
+                "string"
+            ],SecondaryColor = "secondary_color",Stadium = "stadium",StadiumLocation = new(
+
+            )
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },Values = new()
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
-            },
-            Website = "https://example.com",
-            WinPercentage = 0,
+            },Website = "https://example.com",WinPercentage = 0,
         };
 
         string expectedTeamID = "team_id";
@@ -49,14 +46,24 @@ public class TeamUpdateParamsTest : TestBase
         string expectedName = "x";
         string expectedNickname = "nickname";
         string expectedPrimaryColor = "primary_color";
-        List<string> expectedRivalTeams = ["string"];
+        List<string> expectedRivalTeams =
+        [
+            "string"
+        ];
         string expectedSecondaryColor = "secondary_color";
         string expectedStadium = "stadium";
-        GeoLocation expectedStadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 };
+        GeoLocation expectedStadiumLocation = new()
+        {
+            Latitude = 51.4816,
+            Longitude = -0.191,
+        };
         TeamValues expectedValues = new()
         {
             PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
+            SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],
             TeamMotto = "Football is life!",
         };
         string expectedWebsite = "https://example.com";
@@ -90,104 +97,65 @@ public class TeamUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new TeamUpdateParams { TeamID = "team_id" };
+
+
+        var parameters = new TeamUpdateParams
+        {
+            TeamID = "team_id",
+        };
 
         Assert.Null(parameters.AnnualBudgetGbp);
-        Assert.False(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));
-        Assert.Null(parameters.AverageAttendance);
-        Assert.False(parameters.RawBodyData.ContainsKey("average_attendance"));
-        Assert.Null(parameters.ContactEmail);
-        Assert.False(parameters.RawBodyData.ContainsKey("contact_email"));
-        Assert.Null(parameters.CultureScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("culture_score"));
-        Assert.Null(parameters.FoundedYear);
-        Assert.False(parameters.RawBodyData.ContainsKey("founded_year"));
-        Assert.Null(parameters.IsActive);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));
-        Assert.Null(parameters.League);
-        Assert.False(parameters.RawBodyData.ContainsKey("league"));
-        Assert.Null(parameters.Name);
-        Assert.False(parameters.RawBodyData.ContainsKey("name"));
-        Assert.Null(parameters.Nickname);
-        Assert.False(parameters.RawBodyData.ContainsKey("nickname"));
-        Assert.Null(parameters.PrimaryColor);
-        Assert.False(parameters.RawBodyData.ContainsKey("primary_color"));
-        Assert.Null(parameters.RivalTeams);
-        Assert.False(parameters.RawBodyData.ContainsKey("rival_teams"));
-        Assert.Null(parameters.SecondaryColor);
-        Assert.False(parameters.RawBodyData.ContainsKey("secondary_color"));
-        Assert.Null(parameters.Stadium);
-        Assert.False(parameters.RawBodyData.ContainsKey("stadium"));
-        Assert.Null(parameters.StadiumLocation);
-        Assert.False(parameters.RawBodyData.ContainsKey("stadium_location"));
-        Assert.Null(parameters.Values);
-        Assert.False(parameters.RawBodyData.ContainsKey("values"));
-        Assert.Null(parameters.Website);
-        Assert.False(parameters.RawBodyData.ContainsKey("website"));
-        Assert.Null(parameters.WinPercentage);
+        Assert.False(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));Assert.Null(parameters.AverageAttendance);
+        Assert.False(parameters.RawBodyData.ContainsKey("average_attendance"));Assert.Null(parameters.ContactEmail);
+        Assert.False(parameters.RawBodyData.ContainsKey("contact_email"));Assert.Null(parameters.CultureScore);
+        Assert.False(parameters.RawBodyData.ContainsKey("culture_score"));Assert.Null(parameters.FoundedYear);
+        Assert.False(parameters.RawBodyData.ContainsKey("founded_year"));Assert.Null(parameters.IsActive);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_active"));Assert.Null(parameters.League);
+        Assert.False(parameters.RawBodyData.ContainsKey("league"));Assert.Null(parameters.Name);
+        Assert.False(parameters.RawBodyData.ContainsKey("name"));Assert.Null(parameters.Nickname);
+        Assert.False(parameters.RawBodyData.ContainsKey("nickname"));Assert.Null(parameters.PrimaryColor);
+        Assert.False(parameters.RawBodyData.ContainsKey("primary_color"));Assert.Null(parameters.RivalTeams);
+        Assert.False(parameters.RawBodyData.ContainsKey("rival_teams"));Assert.Null(parameters.SecondaryColor);
+        Assert.False(parameters.RawBodyData.ContainsKey("secondary_color"));Assert.Null(parameters.Stadium);
+        Assert.False(parameters.RawBodyData.ContainsKey("stadium"));Assert.Null(parameters.StadiumLocation);
+        Assert.False(parameters.RawBodyData.ContainsKey("stadium_location"));Assert.Null(parameters.Values);
+        Assert.False(parameters.RawBodyData.ContainsKey("values"));Assert.Null(parameters.Website);
+        Assert.False(parameters.RawBodyData.ContainsKey("website"));Assert.Null(parameters.WinPercentage);
         Assert.False(parameters.RawBodyData.ContainsKey("win_percentage"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new TeamUpdateParams
         {
             TeamID = "team_id",
 
-            AnnualBudgetGbp = null,
-            AverageAttendance = null,
-            ContactEmail = null,
-            CultureScore = null,
-            FoundedYear = null,
-            IsActive = null,
-            League = null,
-            Name = null,
-            Nickname = null,
-            PrimaryColor = null,
-            RivalTeams = null,
-            SecondaryColor = null,
-            Stadium = null,
-            StadiumLocation = null,
-            Values = null,
-            Website = null,
-            WinPercentage = null,
+            AnnualBudgetGbp = null,AverageAttendance = null,ContactEmail = null,CultureScore = null,FoundedYear = null,IsActive = null,League = null,Name = null,Nickname = null,PrimaryColor = null,RivalTeams = null,SecondaryColor = null,Stadium = null,StadiumLocation = null,Values = null,Website = null,WinPercentage = null,
         };
 
         Assert.Null(parameters.AnnualBudgetGbp);
-        Assert.True(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));
-        Assert.Null(parameters.AverageAttendance);
-        Assert.True(parameters.RawBodyData.ContainsKey("average_attendance"));
-        Assert.Null(parameters.ContactEmail);
-        Assert.True(parameters.RawBodyData.ContainsKey("contact_email"));
-        Assert.Null(parameters.CultureScore);
-        Assert.True(parameters.RawBodyData.ContainsKey("culture_score"));
-        Assert.Null(parameters.FoundedYear);
-        Assert.True(parameters.RawBodyData.ContainsKey("founded_year"));
-        Assert.Null(parameters.IsActive);
-        Assert.True(parameters.RawBodyData.ContainsKey("is_active"));
-        Assert.Null(parameters.League);
-        Assert.True(parameters.RawBodyData.ContainsKey("league"));
-        Assert.Null(parameters.Name);
-        Assert.True(parameters.RawBodyData.ContainsKey("name"));
-        Assert.Null(parameters.Nickname);
-        Assert.True(parameters.RawBodyData.ContainsKey("nickname"));
-        Assert.Null(parameters.PrimaryColor);
-        Assert.True(parameters.RawBodyData.ContainsKey("primary_color"));
-        Assert.Null(parameters.RivalTeams);
-        Assert.True(parameters.RawBodyData.ContainsKey("rival_teams"));
-        Assert.Null(parameters.SecondaryColor);
-        Assert.True(parameters.RawBodyData.ContainsKey("secondary_color"));
-        Assert.Null(parameters.Stadium);
-        Assert.True(parameters.RawBodyData.ContainsKey("stadium"));
-        Assert.Null(parameters.StadiumLocation);
-        Assert.True(parameters.RawBodyData.ContainsKey("stadium_location"));
-        Assert.Null(parameters.Values);
-        Assert.True(parameters.RawBodyData.ContainsKey("values"));
-        Assert.Null(parameters.Website);
-        Assert.True(parameters.RawBodyData.ContainsKey("website"));
-        Assert.Null(parameters.WinPercentage);
+        Assert.True(parameters.RawBodyData.ContainsKey("annual_budget_gbp"));Assert.Null(parameters.AverageAttendance);
+        Assert.True(parameters.RawBodyData.ContainsKey("average_attendance"));Assert.Null(parameters.ContactEmail);
+        Assert.True(parameters.RawBodyData.ContainsKey("contact_email"));Assert.Null(parameters.CultureScore);
+        Assert.True(parameters.RawBodyData.ContainsKey("culture_score"));Assert.Null(parameters.FoundedYear);
+        Assert.True(parameters.RawBodyData.ContainsKey("founded_year"));Assert.Null(parameters.IsActive);
+        Assert.True(parameters.RawBodyData.ContainsKey("is_active"));Assert.Null(parameters.League);
+        Assert.True(parameters.RawBodyData.ContainsKey("league"));Assert.Null(parameters.Name);
+        Assert.True(parameters.RawBodyData.ContainsKey("name"));Assert.Null(parameters.Nickname);
+        Assert.True(parameters.RawBodyData.ContainsKey("nickname"));Assert.Null(parameters.PrimaryColor);
+        Assert.True(parameters.RawBodyData.ContainsKey("primary_color"));Assert.Null(parameters.RivalTeams);
+        Assert.True(parameters.RawBodyData.ContainsKey("rival_teams"));Assert.Null(parameters.SecondaryColor);
+        Assert.True(parameters.RawBodyData.ContainsKey("secondary_color"));Assert.Null(parameters.Stadium);
+        Assert.True(parameters.RawBodyData.ContainsKey("stadium"));Assert.Null(parameters.StadiumLocation);
+        Assert.True(parameters.RawBodyData.ContainsKey("stadium_location"));Assert.Null(parameters.Values);
+        Assert.True(parameters.RawBodyData.ContainsKey("values"));Assert.Null(parameters.Website);
+        Assert.True(parameters.RawBodyData.ContainsKey("website"));Assert.Null(parameters.WinPercentage);
         Assert.True(parameters.RawBodyData.ContainsKey("win_percentage"));
+
     }
 
     [Fact]
@@ -195,7 +163,12 @@ public class TeamUpdateParamsTest : TestBase
     {
         TeamUpdateParams parameters = new() { TeamID = "team_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/teams/team_id"), url);
     }
@@ -216,14 +189,24 @@ public class TeamUpdateParamsTest : TestBase
             Name = "x",
             Nickname = "nickname",
             PrimaryColor = "primary_color",
-            RivalTeams = ["string"],
+            RivalTeams =
+            [
+                "string"
+            ],
             SecondaryColor = "secondary_color",
             Stadium = "stadium",
-            StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+            StadiumLocation = new()
+            {
+                Latitude = 51.4816,
+                Longitude = -0.191,
+            },
             Values = new()
             {
                 PrimaryValue = "Believe",
-                SecondaryValues = ["Family", "Resilience", "Joy"],
+                SecondaryValues =
+                [
+                    "Family", "Resilience", "Joy"
+                ],
                 TeamMotto = "Football is life!",
             },
             Website = "https://example.com",
@@ -257,10 +240,7 @@ public class TeamUpdateParamsAnnualBudgetGbpTest : TestBase
     {
         TeamUpdateParamsAnnualBudgetGbp value = 0;
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamUpdateParamsAnnualBudgetGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamUpdateParamsAnnualBudgetGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -270,10 +250,7 @@ public class TeamUpdateParamsAnnualBudgetGbpTest : TestBase
     {
         TeamUpdateParamsAnnualBudgetGbp value = "string";
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamUpdateParamsAnnualBudgetGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamUpdateParamsAnnualBudgetGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

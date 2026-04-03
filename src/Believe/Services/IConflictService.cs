@@ -26,15 +26,17 @@ public interface IConflictService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IConflictService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IConflictService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Get Ted Lasso-style advice for resolving conflicts.
-    /// </summary>
+/// Get Ted Lasso-style advice for resolving conflicts.
+/// </summary>
     Task<ConflictResolveResponse> Resolve(
         ConflictResolveParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -48,14 +50,18 @@ public interface IConflictServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IConflictServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IConflictServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /conflicts/resolve</c>, but is otherwise the
-    /// same as <see cref="IConflictService.Resolve(ConflictResolveParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /conflicts/resolve</c>, but is otherwise the
+/// same as <see cref="IConflictService.Resolve(ConflictResolveParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<ConflictResolveResponse>> Resolve(
         ConflictResolveParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

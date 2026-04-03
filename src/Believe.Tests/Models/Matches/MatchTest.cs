@@ -13,22 +13,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            AwayScore = 2,
-            EpisodeID = "s01e10",
-            HomeScore = 2,
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            Result = MatchResult.Draw,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,AwayScore = 2,EpisodeID = "s01e10",HomeScore = 2,LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,Result = MatchResult.Draw,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",TurningPoints =
             [
                 new()
                 {
@@ -37,8 +22,7 @@ public class MatchTest : TestBase
                     Minute = 89,
                     CharacterInvolved = "jamie-tartt",
                 },
-            ],
-            WeatherTempCelsius = 14.5,
+            ],WeatherTempCelsius = 14.5,
         };
 
         string expectedID = "match-001";
@@ -50,12 +34,10 @@ public class MatchTest : TestBase
         long expectedAwayScore = 2;
         string expectedEpisodeID = "s01e10";
         long expectedHomeScore = 2;
-        string expectedLessonLearned =
-            "Sometimes a tie feels like a win when you've grown as people.";
+        string expectedLessonLearned = "Sometimes a tie feels like a win when you've grown as people.";
         double expectedPossessionPercentage = 52.3;
         ApiEnum<string, MatchResult> expectedResult = MatchResult.Draw;
-        string expectedTedHalftimeSpeech =
-            "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.";
+        string expectedTedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.";
         string expectedTicketRevenueGbp = "735000.00";
         List<TurningPoint> expectedTurningPoints =
         [
@@ -97,22 +79,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            AwayScore = 2,
-            EpisodeID = "s01e10",
-            HomeScore = 2,
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            Result = MatchResult.Draw,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,AwayScore = 2,EpisodeID = "s01e10",HomeScore = 2,LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,Result = MatchResult.Draw,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",TurningPoints =
             [
                 new()
                 {
@@ -121,8 +88,7 @@ public class MatchTest : TestBase
                     Minute = 89,
                     CharacterInvolved = "jamie-tartt",
                 },
-            ],
-            WeatherTempCelsius = 14.5,
+            ],WeatherTempCelsius = 14.5,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -136,22 +102,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            AwayScore = 2,
-            EpisodeID = "s01e10",
-            HomeScore = 2,
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            Result = MatchResult.Draw,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,AwayScore = 2,EpisodeID = "s01e10",HomeScore = 2,LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,Result = MatchResult.Draw,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",TurningPoints =
             [
                 new()
                 {
@@ -160,8 +111,7 @@ public class MatchTest : TestBase
                     Minute = 89,
                     CharacterInvolved = "jamie-tartt",
                 },
-            ],
-            WeatherTempCelsius = 14.5,
+            ],WeatherTempCelsius = 14.5,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -177,12 +127,10 @@ public class MatchTest : TestBase
         long expectedAwayScore = 2;
         string expectedEpisodeID = "s01e10";
         long expectedHomeScore = 2;
-        string expectedLessonLearned =
-            "Sometimes a tie feels like a win when you've grown as people.";
+        string expectedLessonLearned = "Sometimes a tie feels like a win when you've grown as people.";
         double expectedPossessionPercentage = 52.3;
         ApiEnum<string, MatchResult> expectedResult = MatchResult.Draw;
-        string expectedTedHalftimeSpeech =
-            "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.";
+        string expectedTedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.";
         string expectedTicketRevenueGbp = "735000.00";
         List<TurningPoint> expectedTurningPoints =
         [
@@ -224,22 +172,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            AwayScore = 2,
-            EpisodeID = "s01e10",
-            HomeScore = 2,
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            Result = MatchResult.Draw,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,AwayScore = 2,EpisodeID = "s01e10",HomeScore = 2,LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,Result = MatchResult.Draw,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",TurningPoints =
             [
                 new()
                 {
@@ -248,8 +181,7 @@ public class MatchTest : TestBase
                     Minute = 89,
                     CharacterInvolved = "jamie-tartt",
                 },
-            ],
-            WeatherTempCelsius = 14.5,
+            ],WeatherTempCelsius = 14.5,
         };
 
         model.Validate();
@@ -260,29 +192,15 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            EpisodeID = "s01e10",
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            WeatherTempCelsius = 14.5,
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,EpisodeID = "s01e10",LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",WeatherTempCelsius = 14.5,
         };
 
         Assert.Null(model.AwayScore);
-        Assert.False(model.RawData.ContainsKey("away_score"));
-        Assert.Null(model.HomeScore);
-        Assert.False(model.RawData.ContainsKey("home_score"));
-        Assert.Null(model.Result);
-        Assert.False(model.RawData.ContainsKey("result"));
-        Assert.Null(model.TurningPoints);
+        Assert.False(model.RawData.ContainsKey("away_score"));Assert.Null(model.HomeScore);
+        Assert.False(model.RawData.ContainsKey("home_score"));Assert.Null(model.Result);
+        Assert.False(model.RawData.ContainsKey("result"));Assert.Null(model.TurningPoints);
         Assert.False(model.RawData.ContainsKey("turning_points"));
+
     }
 
     [Fact]
@@ -290,19 +208,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            EpisodeID = "s01e10",
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            WeatherTempCelsius = 14.5,
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,EpisodeID = "s01e10",LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",WeatherTempCelsius = 14.5,
         };
 
         model.Validate();
@@ -313,35 +219,18 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            EpisodeID = "s01e10",
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            WeatherTempCelsius = 14.5,
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,EpisodeID = "s01e10",LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",WeatherTempCelsius = 14.5,
 
             // Null should be interpreted as omitted for these properties
-            AwayScore = null,
-            HomeScore = null,
-            Result = null,
-            TurningPoints = null,
+            AwayScore = null,HomeScore = null,Result = null,TurningPoints = null,
         };
 
         Assert.Null(model.AwayScore);
-        Assert.False(model.RawData.ContainsKey("away_score"));
-        Assert.Null(model.HomeScore);
-        Assert.False(model.RawData.ContainsKey("home_score"));
-        Assert.Null(model.Result);
-        Assert.False(model.RawData.ContainsKey("result"));
-        Assert.Null(model.TurningPoints);
+        Assert.False(model.RawData.ContainsKey("away_score"));Assert.Null(model.HomeScore);
+        Assert.False(model.RawData.ContainsKey("home_score"));Assert.Null(model.Result);
+        Assert.False(model.RawData.ContainsKey("result"));Assert.Null(model.TurningPoints);
         Assert.False(model.RawData.ContainsKey("turning_points"));
+
     }
 
     [Fact]
@@ -349,25 +238,10 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            EpisodeID = "s01e10",
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            WeatherTempCelsius = 14.5,
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,EpisodeID = "s01e10",LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",WeatherTempCelsius = 14.5,
 
             // Null should be interpreted as omitted for these properties
-            AwayScore = null,
-            HomeScore = null,
-            Result = null,
-            TurningPoints = null,
+            AwayScore = null,HomeScore = null,Result = null,TurningPoints = null,
         };
 
         model.Validate();
@@ -378,15 +252,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            AwayScore = 2,
-            HomeScore = 2,
-            Result = MatchResult.Draw,
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,AwayScore = 2,HomeScore = 2,Result = MatchResult.Draw,TurningPoints =
             [
                 new()
                 {
@@ -399,19 +265,14 @@ public class MatchTest : TestBase
         };
 
         Assert.Null(model.Attendance);
-        Assert.False(model.RawData.ContainsKey("attendance"));
-        Assert.Null(model.EpisodeID);
-        Assert.False(model.RawData.ContainsKey("episode_id"));
-        Assert.Null(model.LessonLearned);
-        Assert.False(model.RawData.ContainsKey("lesson_learned"));
-        Assert.Null(model.PossessionPercentage);
-        Assert.False(model.RawData.ContainsKey("possession_percentage"));
-        Assert.Null(model.TedHalftimeSpeech);
-        Assert.False(model.RawData.ContainsKey("ted_halftime_speech"));
-        Assert.Null(model.TicketRevenueGbp);
-        Assert.False(model.RawData.ContainsKey("ticket_revenue_gbp"));
-        Assert.Null(model.WeatherTempCelsius);
+        Assert.False(model.RawData.ContainsKey("attendance"));Assert.Null(model.EpisodeID);
+        Assert.False(model.RawData.ContainsKey("episode_id"));Assert.Null(model.LessonLearned);
+        Assert.False(model.RawData.ContainsKey("lesson_learned"));Assert.Null(model.PossessionPercentage);
+        Assert.False(model.RawData.ContainsKey("possession_percentage"));Assert.Null(model.TedHalftimeSpeech);
+        Assert.False(model.RawData.ContainsKey("ted_halftime_speech"));Assert.Null(model.TicketRevenueGbp);
+        Assert.False(model.RawData.ContainsKey("ticket_revenue_gbp"));Assert.Null(model.WeatherTempCelsius);
         Assert.False(model.RawData.ContainsKey("weather_temp_celsius"));
+
     }
 
     [Fact]
@@ -419,15 +280,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            AwayScore = 2,
-            HomeScore = 2,
-            Result = MatchResult.Draw,
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,AwayScore = 2,HomeScore = 2,Result = MatchResult.Draw,TurningPoints =
             [
                 new()
                 {
@@ -447,15 +300,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            AwayScore = 2,
-            HomeScore = 2,
-            Result = MatchResult.Draw,
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,AwayScore = 2,HomeScore = 2,Result = MatchResult.Draw,TurningPoints =
             [
                 new()
                 {
@@ -466,29 +311,18 @@ public class MatchTest : TestBase
                 },
             ],
 
-            Attendance = null,
-            EpisodeID = null,
-            LessonLearned = null,
-            PossessionPercentage = null,
-            TedHalftimeSpeech = null,
-            TicketRevenueGbp = null,
-            WeatherTempCelsius = null,
+            Attendance = null,EpisodeID = null,LessonLearned = null,PossessionPercentage = null,TedHalftimeSpeech = null,TicketRevenueGbp = null,WeatherTempCelsius = null,
         };
 
         Assert.Null(model.Attendance);
-        Assert.True(model.RawData.ContainsKey("attendance"));
-        Assert.Null(model.EpisodeID);
-        Assert.True(model.RawData.ContainsKey("episode_id"));
-        Assert.Null(model.LessonLearned);
-        Assert.True(model.RawData.ContainsKey("lesson_learned"));
-        Assert.Null(model.PossessionPercentage);
-        Assert.True(model.RawData.ContainsKey("possession_percentage"));
-        Assert.Null(model.TedHalftimeSpeech);
-        Assert.True(model.RawData.ContainsKey("ted_halftime_speech"));
-        Assert.Null(model.TicketRevenueGbp);
-        Assert.True(model.RawData.ContainsKey("ticket_revenue_gbp"));
-        Assert.Null(model.WeatherTempCelsius);
+        Assert.True(model.RawData.ContainsKey("attendance"));Assert.Null(model.EpisodeID);
+        Assert.True(model.RawData.ContainsKey("episode_id"));Assert.Null(model.LessonLearned);
+        Assert.True(model.RawData.ContainsKey("lesson_learned"));Assert.Null(model.PossessionPercentage);
+        Assert.True(model.RawData.ContainsKey("possession_percentage"));Assert.Null(model.TedHalftimeSpeech);
+        Assert.True(model.RawData.ContainsKey("ted_halftime_speech"));Assert.Null(model.TicketRevenueGbp);
+        Assert.True(model.RawData.ContainsKey("ticket_revenue_gbp"));Assert.Null(model.WeatherTempCelsius);
         Assert.True(model.RawData.ContainsKey("weather_temp_celsius"));
+
     }
 
     [Fact]
@@ -496,15 +330,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            AwayScore = 2,
-            HomeScore = 2,
-            Result = MatchResult.Draw,
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,AwayScore = 2,HomeScore = 2,Result = MatchResult.Draw,TurningPoints =
             [
                 new()
                 {
@@ -515,13 +341,7 @@ public class MatchTest : TestBase
                 },
             ],
 
-            Attendance = null,
-            EpisodeID = null,
-            LessonLearned = null,
-            PossessionPercentage = null,
-            TedHalftimeSpeech = null,
-            TicketRevenueGbp = null,
-            WeatherTempCelsius = null,
+            Attendance = null,EpisodeID = null,LessonLearned = null,PossessionPercentage = null,TedHalftimeSpeech = null,TicketRevenueGbp = null,WeatherTempCelsius = null,
         };
 
         model.Validate();
@@ -532,22 +352,7 @@ public class MatchTest : TestBase
     {
         var model = new Match
         {
-            ID = "match-001",
-            AwayTeamID = "manchester-city",
-            Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),
-            HomeTeamID = "afc-richmond",
-            MatchType = MatchType.League,
-            Attendance = 24500,
-            AwayScore = 2,
-            EpisodeID = "s01e10",
-            HomeScore = 2,
-            LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",
-            PossessionPercentage = 52.3,
-            Result = MatchResult.Draw,
-            TedHalftimeSpeech =
-                "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",
-            TicketRevenueGbp = "735000.00",
-            TurningPoints =
+            ID = "match-001",AwayTeamID = "manchester-city",Date = DateTimeOffset.Parse("2024-01-15T15:00:00Z"),HomeTeamID = "afc-richmond",MatchType = MatchType.League,Attendance = 24500,AwayScore = 2,EpisodeID = "s01e10",HomeScore = 2,LessonLearned = "Sometimes a tie feels like a win when you've grown as people.",PossessionPercentage = 52.3,Result = MatchResult.Draw,TedHalftimeSpeech = "Guys, I want you to know, I don't care if we win or lose today. I just want you to go out there and play the best football of your lives.",TicketRevenueGbp = "735000.00",TurningPoints =
             [
                 new()
                 {
@@ -556,8 +361,7 @@ public class MatchTest : TestBase
                     Minute = 89,
                     CharacterInvolved = "jamie-tartt",
                 },
-            ],
-            WeatherTempCelsius = 14.5,
+            ],WeatherTempCelsius = 14.5,
         };
 
         Match copied = new(model);

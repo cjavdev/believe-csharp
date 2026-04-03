@@ -14,24 +14,25 @@ public sealed class PrincipleService : IPrincipleService
     readonly Lazy<IPrincipleServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IPrincipleServiceWithRawResponse WithRawResponse
-    {
+    public IPrincipleServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IPrincipleService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new PrincipleService(this._client.WithOptions(modifier));
-    }
+    public IPrincipleService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new PrincipleService(this._client.WithOptions(modifier)); }
 
-    public PrincipleService(IBelieveClient client)
+    public PrincipleService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new PrincipleServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new PrincipleServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,13 +41,9 @@ public sealed class PrincipleService : IPrincipleService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<CoachingPrinciple> Retrieve(
         string principleID,
         PrincipleRetrieveParams? parameters = null,
@@ -55,7 +52,9 @@ public sealed class PrincipleService : IPrincipleService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { PrincipleID = principleID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            PrincipleID = principleID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -64,9 +63,7 @@ public sealed class PrincipleService : IPrincipleService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -76,9 +73,7 @@ public sealed class PrincipleService : IPrincipleService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetRandom(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetRandom(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -89,15 +84,17 @@ public sealed class PrincipleServiceWithRawResponse : IPrincipleServiceWithRawRe
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IPrincipleServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IPrincipleServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new PrincipleServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public PrincipleServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public PrincipleServiceWithRawResponse (
+        IBelieveClientWithRawResponse client
+    )
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<CoachingPrinciple>> Retrieve(
@@ -107,7 +104,9 @@ public sealed class PrincipleServiceWithRawResponse : IPrincipleServiceWithRawRe
     {
         if (parameters.PrincipleID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.PrincipleID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.PrincipleID' cannot be null"
+            );
         }
 
         HttpRequest<PrincipleRetrieveParams> request = new()
@@ -116,23 +115,14 @@ public sealed class PrincipleServiceWithRawResponse : IPrincipleServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var coachingPrinciple = await response
-                    .Deserialize<CoachingPrinciple>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    coachingPrinciple.Validate();
-                }
-                return coachingPrinciple;
+        return new(response, async ( token )=>{
+            var coachingPrinciple = await response.Deserialize<CoachingPrinciple>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                coachingPrinciple.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return coachingPrinciple;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<CoachingPrinciple>> Retrieve(
         string principleID,
         PrincipleRetrieveParams? parameters = null,
@@ -141,7 +131,9 @@ public sealed class PrincipleServiceWithRawResponse : IPrincipleServiceWithRawRe
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { PrincipleID = principleID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            PrincipleID = principleID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -158,20 +150,13 @@ public sealed class PrincipleServiceWithRawResponse : IPrincipleServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<PrincipleListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new PrincipleListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<PrincipleListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new PrincipleListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -188,19 +173,12 @@ public sealed class PrincipleServiceWithRawResponse : IPrincipleServiceWithRawRe
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var coachingPrinciple = await response
-                    .Deserialize<CoachingPrinciple>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    coachingPrinciple.Validate();
-                }
-                return coachingPrinciple;
+        return new(response, async ( token )=>{
+            var coachingPrinciple = await response.Deserialize<CoachingPrinciple>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                coachingPrinciple.Validate();
             }
-        );
+            return coachingPrinciple;
+        });
     }
 }

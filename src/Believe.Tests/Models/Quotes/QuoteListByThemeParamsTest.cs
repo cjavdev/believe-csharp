@@ -9,11 +9,11 @@ public class QuoteListByThemeParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new QuoteListByThemeParams
         {
-            Theme = QuoteTheme.Belief,
-            Limit = 10,
-            Skip = 0,
+            Theme = QuoteTheme.Belief,Limit = 10,Skip = 0,
         };
 
         ApiEnum<string, QuoteTheme> expectedTheme = QuoteTheme.Belief;
@@ -28,30 +28,36 @@ public class QuoteListByThemeParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new QuoteListByThemeParams { Theme = QuoteTheme.Belief };
+
+
+        var parameters = new QuoteListByThemeParams
+        {
+            Theme = QuoteTheme.Belief,
+        };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new QuoteListByThemeParams
         {
             Theme = QuoteTheme.Belief,
 
             // Null should be interpreted as omitted for these properties
-            Limit = null,
-            Skip = null,
+            Limit = null,Skip = null,
         };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
@@ -64,7 +70,12 @@ public class QuoteListByThemeParamsTest : TestBase
             Skip = 0,
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/quotes/themes/belief?limit=10&skip=0"), url);
     }
@@ -74,9 +85,7 @@ public class QuoteListByThemeParamsTest : TestBase
     {
         var parameters = new QuoteListByThemeParams
         {
-            Theme = QuoteTheme.Belief,
-            Limit = 10,
-            Skip = 0,
+            Theme = QuoteTheme.Belief, Limit = 10, Skip = 0
         };
 
         QuoteListByThemeParams copied = new(parameters);

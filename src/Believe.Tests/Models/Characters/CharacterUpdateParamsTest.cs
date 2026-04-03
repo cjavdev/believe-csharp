@@ -11,21 +11,20 @@ public class CharacterUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new CharacterUpdateParams
         {
-            CharacterID = "character_id",
-            Background = "background",
-            DateOfBirth = "2019-12-27",
-            Email = "dev@stainless.com",
-            EmotionalStats = new()
+            CharacterID = "character_id",Background = "background",DateOfBirth = "2019-12-27",Email = "dev@stainless.com",EmotionalStats = new(
+
+            )
             {
                 Curiosity = 99,
                 Empathy = 100,
                 Optimism = 95,
                 Resilience = 90,
                 Vulnerability = 80,
-            },
-            GrowthArcs =
+            },GrowthArcs =
             [
                 new()
                 {
@@ -35,15 +34,13 @@ public class CharacterUpdateParamsTest : TestBase
                     Season = 1,
                     StartingPoint = "starting_point",
                 },
-            ],
-            HeightMeters = 1,
-            Name = "x",
-            PersonalityTraits = ["string"],
-            ProfileImageUrl = "https://example.com",
-            Role = CharacterRole.Coach,
-            SalaryGbp = 0,
-            SignatureQuotes = ["string"],
-            TeamID = "team_id",
+            ],HeightMeters = 1,Name = "x",PersonalityTraits =
+            [
+                "string"
+            ],ProfileImageUrl = "https://example.com",Role = CharacterRole.Coach,SalaryGbp = 0,SignatureQuotes =
+            [
+                "string"
+            ],TeamID = "team_id",
         };
 
         string expectedCharacterID = "character_id";
@@ -71,11 +68,17 @@ public class CharacterUpdateParamsTest : TestBase
         ];
         double expectedHeightMeters = 1;
         string expectedName = "x";
-        List<string> expectedPersonalityTraits = ["string"];
+        List<string> expectedPersonalityTraits =
+        [
+            "string"
+        ];
         string expectedProfileImageUrl = "https://example.com";
         ApiEnum<string, CharacterRole> expectedRole = CharacterRole.Coach;
         CharacterUpdateParamsSalaryGbp expectedSalaryGbp = 0;
-        List<string> expectedSignatureQuotes = ["string"];
+        List<string> expectedSignatureQuotes =
+        [
+            "string"
+        ];
         string expectedTeamID = "team_id";
 
         Assert.Equal(expectedCharacterID, parameters.CharacterID);
@@ -112,92 +115,73 @@ public class CharacterUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new CharacterUpdateParams { CharacterID = "character_id" };
+
+
+        var parameters = new CharacterUpdateParams
+        {
+            CharacterID = "character_id",
+        };
 
         Assert.Null(parameters.Background);
-        Assert.False(parameters.RawBodyData.ContainsKey("background"));
-        Assert.Null(parameters.DateOfBirth);
-        Assert.False(parameters.RawBodyData.ContainsKey("date_of_birth"));
-        Assert.Null(parameters.Email);
-        Assert.False(parameters.RawBodyData.ContainsKey("email"));
-        Assert.Null(parameters.EmotionalStats);
-        Assert.False(parameters.RawBodyData.ContainsKey("emotional_stats"));
-        Assert.Null(parameters.GrowthArcs);
-        Assert.False(parameters.RawBodyData.ContainsKey("growth_arcs"));
-        Assert.Null(parameters.HeightMeters);
-        Assert.False(parameters.RawBodyData.ContainsKey("height_meters"));
-        Assert.Null(parameters.Name);
-        Assert.False(parameters.RawBodyData.ContainsKey("name"));
-        Assert.Null(parameters.PersonalityTraits);
-        Assert.False(parameters.RawBodyData.ContainsKey("personality_traits"));
-        Assert.Null(parameters.ProfileImageUrl);
-        Assert.False(parameters.RawBodyData.ContainsKey("profile_image_url"));
-        Assert.Null(parameters.Role);
-        Assert.False(parameters.RawBodyData.ContainsKey("role"));
-        Assert.Null(parameters.SalaryGbp);
-        Assert.False(parameters.RawBodyData.ContainsKey("salary_gbp"));
-        Assert.Null(parameters.SignatureQuotes);
-        Assert.False(parameters.RawBodyData.ContainsKey("signature_quotes"));
-        Assert.Null(parameters.TeamID);
+        Assert.False(parameters.RawBodyData.ContainsKey("background"));Assert.Null(parameters.DateOfBirth);
+        Assert.False(parameters.RawBodyData.ContainsKey("date_of_birth"));Assert.Null(parameters.Email);
+        Assert.False(parameters.RawBodyData.ContainsKey("email"));Assert.Null(parameters.EmotionalStats);
+        Assert.False(parameters.RawBodyData.ContainsKey("emotional_stats"));Assert.Null(parameters.GrowthArcs);
+        Assert.False(parameters.RawBodyData.ContainsKey("growth_arcs"));Assert.Null(parameters.HeightMeters);
+        Assert.False(parameters.RawBodyData.ContainsKey("height_meters"));Assert.Null(parameters.Name);
+        Assert.False(parameters.RawBodyData.ContainsKey("name"));Assert.Null(parameters.PersonalityTraits);
+        Assert.False(parameters.RawBodyData.ContainsKey("personality_traits"));Assert.Null(parameters.ProfileImageUrl);
+        Assert.False(parameters.RawBodyData.ContainsKey("profile_image_url"));Assert.Null(parameters.Role);
+        Assert.False(parameters.RawBodyData.ContainsKey("role"));Assert.Null(parameters.SalaryGbp);
+        Assert.False(parameters.RawBodyData.ContainsKey("salary_gbp"));Assert.Null(parameters.SignatureQuotes);
+        Assert.False(parameters.RawBodyData.ContainsKey("signature_quotes"));Assert.Null(parameters.TeamID);
         Assert.False(parameters.RawBodyData.ContainsKey("team_id"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new CharacterUpdateParams
         {
             CharacterID = "character_id",
 
-            Background = null,
-            DateOfBirth = null,
-            Email = null,
-            EmotionalStats = null,
-            GrowthArcs = null,
-            HeightMeters = null,
-            Name = null,
-            PersonalityTraits = null,
-            ProfileImageUrl = null,
-            Role = null,
-            SalaryGbp = null,
-            SignatureQuotes = null,
-            TeamID = null,
+            Background = null,DateOfBirth = null,Email = null,EmotionalStats = null,GrowthArcs = null,HeightMeters = null,Name = null,PersonalityTraits = null,ProfileImageUrl = null,Role = null,SalaryGbp = null,SignatureQuotes = null,TeamID = null,
         };
 
         Assert.Null(parameters.Background);
-        Assert.True(parameters.RawBodyData.ContainsKey("background"));
-        Assert.Null(parameters.DateOfBirth);
-        Assert.True(parameters.RawBodyData.ContainsKey("date_of_birth"));
-        Assert.Null(parameters.Email);
-        Assert.True(parameters.RawBodyData.ContainsKey("email"));
-        Assert.Null(parameters.EmotionalStats);
-        Assert.True(parameters.RawBodyData.ContainsKey("emotional_stats"));
-        Assert.Null(parameters.GrowthArcs);
-        Assert.True(parameters.RawBodyData.ContainsKey("growth_arcs"));
-        Assert.Null(parameters.HeightMeters);
-        Assert.True(parameters.RawBodyData.ContainsKey("height_meters"));
-        Assert.Null(parameters.Name);
-        Assert.True(parameters.RawBodyData.ContainsKey("name"));
-        Assert.Null(parameters.PersonalityTraits);
-        Assert.True(parameters.RawBodyData.ContainsKey("personality_traits"));
-        Assert.Null(parameters.ProfileImageUrl);
-        Assert.True(parameters.RawBodyData.ContainsKey("profile_image_url"));
-        Assert.Null(parameters.Role);
-        Assert.True(parameters.RawBodyData.ContainsKey("role"));
-        Assert.Null(parameters.SalaryGbp);
-        Assert.True(parameters.RawBodyData.ContainsKey("salary_gbp"));
-        Assert.Null(parameters.SignatureQuotes);
-        Assert.True(parameters.RawBodyData.ContainsKey("signature_quotes"));
-        Assert.Null(parameters.TeamID);
+        Assert.True(parameters.RawBodyData.ContainsKey("background"));Assert.Null(parameters.DateOfBirth);
+        Assert.True(parameters.RawBodyData.ContainsKey("date_of_birth"));Assert.Null(parameters.Email);
+        Assert.True(parameters.RawBodyData.ContainsKey("email"));Assert.Null(parameters.EmotionalStats);
+        Assert.True(parameters.RawBodyData.ContainsKey("emotional_stats"));Assert.Null(parameters.GrowthArcs);
+        Assert.True(parameters.RawBodyData.ContainsKey("growth_arcs"));Assert.Null(parameters.HeightMeters);
+        Assert.True(parameters.RawBodyData.ContainsKey("height_meters"));Assert.Null(parameters.Name);
+        Assert.True(parameters.RawBodyData.ContainsKey("name"));Assert.Null(parameters.PersonalityTraits);
+        Assert.True(parameters.RawBodyData.ContainsKey("personality_traits"));Assert.Null(parameters.ProfileImageUrl);
+        Assert.True(parameters.RawBodyData.ContainsKey("profile_image_url"));Assert.Null(parameters.Role);
+        Assert.True(parameters.RawBodyData.ContainsKey("role"));Assert.Null(parameters.SalaryGbp);
+        Assert.True(parameters.RawBodyData.ContainsKey("salary_gbp"));Assert.Null(parameters.SignatureQuotes);
+        Assert.True(parameters.RawBodyData.ContainsKey("signature_quotes"));Assert.Null(parameters.TeamID);
         Assert.True(parameters.RawBodyData.ContainsKey("team_id"));
+
     }
 
     [Fact]
     public void Url_Works()
     {
-        CharacterUpdateParams parameters = new() { CharacterID = "character_id" };
+        CharacterUpdateParams parameters = new()
+        {
+            CharacterID = "character_id"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/characters/character_id"), url);
     }
@@ -232,11 +216,17 @@ public class CharacterUpdateParamsTest : TestBase
             ],
             HeightMeters = 1,
             Name = "x",
-            PersonalityTraits = ["string"],
+            PersonalityTraits =
+            [
+                "string"
+            ],
             ProfileImageUrl = "https://example.com",
             Role = CharacterRole.Coach,
             SalaryGbp = 0,
-            SignatureQuotes = ["string"],
+            SignatureQuotes =
+            [
+                "string"
+            ],
             TeamID = "team_id",
         };
 
@@ -267,10 +257,7 @@ public class CharacterUpdateParamsSalaryGbpTest : TestBase
     {
         CharacterUpdateParamsSalaryGbp value = 0;
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CharacterUpdateParamsSalaryGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CharacterUpdateParamsSalaryGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -280,10 +267,7 @@ public class CharacterUpdateParamsSalaryGbpTest : TestBase
     {
         CharacterUpdateParamsSalaryGbp value = "string";
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<CharacterUpdateParamsSalaryGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<CharacterUpdateParamsSalaryGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

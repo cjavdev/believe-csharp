@@ -26,17 +26,19 @@ public interface IPepTalkService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IPepTalkService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IPepTalkService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Get a motivational pep talk from Ted Lasso himself. By default returns the
-    /// complete pep talk. Add `?stream=true` to get Server-Sent Events (SSE) streaming
-    /// the pep talk chunk by chunk.
-    /// </summary>
+/// Get a motivational pep talk from Ted Lasso himself. By default returns the
+/// complete pep talk. Add `?stream=true` to get Server-Sent Events (SSE) streaming
+/// the pep talk chunk by chunk.
+/// </summary>
     Task<PepTalkRetrieveResponse> Retrieve(
         PepTalkRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -50,14 +52,18 @@ public interface IPepTalkServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IPepTalkServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IPepTalkServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /pep-talk</c>, but is otherwise the
-    /// same as <see cref="IPepTalkService.Retrieve(PepTalkRetrieveParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /pep-talk</c>, but is otherwise the
+/// same as <see cref="IPepTalkService.Retrieve(PepTalkRetrieveParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<PepTalkRetrieveResponse>> Retrieve(
         PepTalkRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

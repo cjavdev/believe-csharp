@@ -8,15 +8,14 @@ public class PressSimulateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new PressSimulateParams
         {
-            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",
-            Hostile = true,
-            Topic = "match_result",
+            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",Hostile = true,Topic = "match_result",
         };
 
-        string expectedQuestion =
-            "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?";
+        string expectedQuestion = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?";
         bool expectedHostile = true;
         string expectedTopic = "match_result";
 
@@ -28,23 +27,26 @@ public class PressSimulateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new PressSimulateParams
         {
-            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",
-            Topic = "match_result",
+            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",Topic = "match_result",
         };
 
         Assert.Null(parameters.Hostile);
         Assert.False(parameters.RawBodyData.ContainsKey("hostile"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new PressSimulateParams
         {
-            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",
-            Topic = "match_result",
+            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",Topic = "match_result",
 
             // Null should be interpreted as omitted for these properties
             Hostile = null,
@@ -52,34 +54,39 @@ public class PressSimulateParamsTest : TestBase
 
         Assert.Null(parameters.Hostile);
         Assert.False(parameters.RawBodyData.ContainsKey("hostile"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new PressSimulateParams
         {
-            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",
-            Hostile = true,
+            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",Hostile = true,
         };
 
         Assert.Null(parameters.Topic);
         Assert.False(parameters.RawBodyData.ContainsKey("topic"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new PressSimulateParams
         {
-            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",
-            Hostile = true,
+            Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",Hostile = true,
 
             Topic = null,
         };
 
         Assert.Null(parameters.Topic);
         Assert.True(parameters.RawBodyData.ContainsKey("topic"));
+
     }
 
     [Fact]
@@ -90,7 +97,12 @@ public class PressSimulateParamsTest : TestBase
             Question = "Ted, your team just lost 5-0. How do you explain this embarrassing defeat?",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/press"), url);
     }

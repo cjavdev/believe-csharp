@@ -22,17 +22,15 @@ public record class QuoteListByThemeParams : ParamsBase
     /// <summary>
     /// Maximum number of items to return (max: 100)
     /// </summary>
-    public long? Limit
-    {
-        get
-        {
+    public long? Limit {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "limit"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -43,17 +41,15 @@ public record class QuoteListByThemeParams : ParamsBase
     /// <summary>
     /// Number of items to skip (offset)
     /// </summary>
-    public long? Skip
-    {
-        get
-        {
+    public long? Skip {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "skip"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -61,18 +57,18 @@ public record class QuoteListByThemeParams : ParamsBase
         }
     }
 
-    public QuoteListByThemeParams() { }
+    public QuoteListByThemeParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public QuoteListByThemeParams(QuoteListByThemeParams quoteListByThemeParams)
-        : base(quoteListByThemeParams)
-    {
-        this.Theme = quoteListByThemeParams.Theme;
-    }
-#pragma warning restore CS8618
+    public QuoteListByThemeParams (
+        QuoteListByThemeParams quoteListByThemeParams
+    ) : base(quoteListByThemeParams)
+    { this.Theme = quoteListByThemeParams.Theme; }
+    #pragma warning restore CS8618
 
-    public QuoteListByThemeParams(
+    public QuoteListByThemeParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -81,9 +77,9 @@ public record class QuoteListByThemeParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    QuoteListByThemeParams(
+    QuoteListByThemeParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         ApiEnum<string, QuoteTheme> theme
@@ -93,7 +89,7 @@ public record class QuoteListByThemeParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.Theme = theme;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static QuoteListByThemeParams FromRawUnchecked(
@@ -106,25 +102,18 @@ public record class QuoteListByThemeParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             theme
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["Theme"] = JsonSerializer.SerializeToElement(this.Theme),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["Theme"] = JsonSerializer.SerializeToElement(this.Theme),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(QuoteListByThemeParams? other)
     {
@@ -132,23 +121,23 @@ public record class QuoteListByThemeParams : ParamsBase
         {
             return false;
         }
-        return (this.Theme?.Equals(other.Theme) ?? other.Theme == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.Theme?.Equals(other.Theme) ?? other.Theme == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/quotes/themes/{0}", this.Theme?.Raw())
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/quotes/themes/{0}",
+            this.Theme?.Raw())
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -158,7 +147,5 @@ public record class QuoteListByThemeParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

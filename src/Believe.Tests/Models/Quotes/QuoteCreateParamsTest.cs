@@ -10,19 +10,14 @@ public class QuoteCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new QuoteCreateParams
         {
-            CharacterID = "ted-lasso",
-            Context = "Ted's first team meeting, revealing his coaching philosophy",
-            MomentType = QuoteMoment.LockerRoom,
-            Text = "I believe in believe.",
-            Theme = QuoteTheme.Belief,
-            EpisodeID = "s01e01",
-            IsFunny = false,
-            IsInspirational = true,
-            PopularityScore = 98.5,
-            SecondaryThemes = [QuoteTheme.Leadership, QuoteTheme.Teamwork],
-            TimesShared = 250000,
+            CharacterID = "ted-lasso",Context = "Ted's first team meeting, revealing his coaching philosophy",MomentType = QuoteMoment.LockerRoom,Text = "I believe in believe.",Theme = QuoteTheme.Belief,EpisodeID = "s01e01",IsFunny = false,IsInspirational = true,PopularityScore = 98.5,SecondaryThemes =
+            [
+                QuoteTheme.Leadership, QuoteTheme.Teamwork
+            ],TimesShared = 250000,
         };
 
         string expectedCharacterID = "ted-lasso";
@@ -36,8 +31,7 @@ public class QuoteCreateParamsTest : TestBase
         double expectedPopularityScore = 98.5;
         List<ApiEnum<string, QuoteTheme>> expectedSecondaryThemes =
         [
-            QuoteTheme.Leadership,
-            QuoteTheme.Teamwork,
+            QuoteTheme.Leadership, QuoteTheme.Teamwork
         ];
         long expectedTimesShared = 250000;
 
@@ -62,102 +56,80 @@ public class QuoteCreateParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new QuoteCreateParams
         {
-            CharacterID = "ted-lasso",
-            Context = "Ted's first team meeting, revealing his coaching philosophy",
-            MomentType = QuoteMoment.LockerRoom,
-            Text = "I believe in believe.",
-            Theme = QuoteTheme.Belief,
-            EpisodeID = "s01e01",
-            PopularityScore = 98.5,
-            TimesShared = 250000,
+            CharacterID = "ted-lasso",Context = "Ted's first team meeting, revealing his coaching philosophy",MomentType = QuoteMoment.LockerRoom,Text = "I believe in believe.",Theme = QuoteTheme.Belief,EpisodeID = "s01e01",PopularityScore = 98.5,TimesShared = 250000,
         };
 
         Assert.Null(parameters.IsFunny);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_funny"));
-        Assert.Null(parameters.IsInspirational);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_inspirational"));
-        Assert.Null(parameters.SecondaryThemes);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_funny"));Assert.Null(parameters.IsInspirational);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_inspirational"));Assert.Null(parameters.SecondaryThemes);
         Assert.False(parameters.RawBodyData.ContainsKey("secondary_themes"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new QuoteCreateParams
         {
-            CharacterID = "ted-lasso",
-            Context = "Ted's first team meeting, revealing his coaching philosophy",
-            MomentType = QuoteMoment.LockerRoom,
-            Text = "I believe in believe.",
-            Theme = QuoteTheme.Belief,
-            EpisodeID = "s01e01",
-            PopularityScore = 98.5,
-            TimesShared = 250000,
+            CharacterID = "ted-lasso",Context = "Ted's first team meeting, revealing his coaching philosophy",MomentType = QuoteMoment.LockerRoom,Text = "I believe in believe.",Theme = QuoteTheme.Belief,EpisodeID = "s01e01",PopularityScore = 98.5,TimesShared = 250000,
 
             // Null should be interpreted as omitted for these properties
-            IsFunny = null,
-            IsInspirational = null,
-            SecondaryThemes = null,
+            IsFunny = null,IsInspirational = null,SecondaryThemes = null,
         };
 
         Assert.Null(parameters.IsFunny);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_funny"));
-        Assert.Null(parameters.IsInspirational);
-        Assert.False(parameters.RawBodyData.ContainsKey("is_inspirational"));
-        Assert.Null(parameters.SecondaryThemes);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_funny"));Assert.Null(parameters.IsInspirational);
+        Assert.False(parameters.RawBodyData.ContainsKey("is_inspirational"));Assert.Null(parameters.SecondaryThemes);
         Assert.False(parameters.RawBodyData.ContainsKey("secondary_themes"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
+
+
         var parameters = new QuoteCreateParams
         {
-            CharacterID = "ted-lasso",
-            Context = "Ted's first team meeting, revealing his coaching philosophy",
-            MomentType = QuoteMoment.LockerRoom,
-            Text = "I believe in believe.",
-            Theme = QuoteTheme.Belief,
-            IsFunny = false,
-            IsInspirational = true,
-            SecondaryThemes = [QuoteTheme.Leadership, QuoteTheme.Teamwork],
+            CharacterID = "ted-lasso",Context = "Ted's first team meeting, revealing his coaching philosophy",MomentType = QuoteMoment.LockerRoom,Text = "I believe in believe.",Theme = QuoteTheme.Belief,IsFunny = false,IsInspirational = true,SecondaryThemes =
+            [
+                QuoteTheme.Leadership, QuoteTheme.Teamwork
+            ],
         };
 
         Assert.Null(parameters.EpisodeID);
-        Assert.False(parameters.RawBodyData.ContainsKey("episode_id"));
-        Assert.Null(parameters.PopularityScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("popularity_score"));
-        Assert.Null(parameters.TimesShared);
+        Assert.False(parameters.RawBodyData.ContainsKey("episode_id"));Assert.Null(parameters.PopularityScore);
+        Assert.False(parameters.RawBodyData.ContainsKey("popularity_score"));Assert.Null(parameters.TimesShared);
         Assert.False(parameters.RawBodyData.ContainsKey("times_shared"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new QuoteCreateParams
         {
-            CharacterID = "ted-lasso",
-            Context = "Ted's first team meeting, revealing his coaching philosophy",
-            MomentType = QuoteMoment.LockerRoom,
-            Text = "I believe in believe.",
-            Theme = QuoteTheme.Belief,
-            IsFunny = false,
-            IsInspirational = true,
-            SecondaryThemes = [QuoteTheme.Leadership, QuoteTheme.Teamwork],
+            CharacterID = "ted-lasso",Context = "Ted's first team meeting, revealing his coaching philosophy",MomentType = QuoteMoment.LockerRoom,Text = "I believe in believe.",Theme = QuoteTheme.Belief,IsFunny = false,IsInspirational = true,SecondaryThemes =
+            [
+                QuoteTheme.Leadership, QuoteTheme.Teamwork
+            ],
 
-            EpisodeID = null,
-            PopularityScore = null,
-            TimesShared = null,
+            EpisodeID = null,PopularityScore = null,TimesShared = null,
         };
 
         Assert.Null(parameters.EpisodeID);
-        Assert.True(parameters.RawBodyData.ContainsKey("episode_id"));
-        Assert.Null(parameters.PopularityScore);
-        Assert.True(parameters.RawBodyData.ContainsKey("popularity_score"));
-        Assert.Null(parameters.TimesShared);
+        Assert.True(parameters.RawBodyData.ContainsKey("episode_id"));Assert.Null(parameters.PopularityScore);
+        Assert.True(parameters.RawBodyData.ContainsKey("popularity_score"));Assert.Null(parameters.TimesShared);
         Assert.True(parameters.RawBodyData.ContainsKey("times_shared"));
+
     }
 
     [Fact]
@@ -172,7 +144,12 @@ public class QuoteCreateParamsTest : TestBase
             Theme = QuoteTheme.Belief,
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/quotes"), url);
     }
@@ -191,7 +168,10 @@ public class QuoteCreateParamsTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 98.5,
-            SecondaryThemes = [QuoteTheme.Leadership, QuoteTheme.Teamwork],
+            SecondaryThemes =
+            [
+                QuoteTheme.Leadership, QuoteTheme.Teamwork
+            ],
             TimesShared = 250000,
         };
 

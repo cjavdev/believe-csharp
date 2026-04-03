@@ -20,12 +20,12 @@ public record class TeamListParams : ParamsBase
     /// <summary>
     /// Filter by league
     /// </summary>
-    public ApiEnum<string, League>? League
-    {
-        get
-        {
+    public ApiEnum<string, League>? League {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, League>>("league");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, League>>(
+                "league"
+            );
         }
         init { this._rawQueryData.Set("league", value); }
     }
@@ -33,17 +33,15 @@ public record class TeamListParams : ParamsBase
     /// <summary>
     /// Maximum number of items to return (max: 100)
     /// </summary>
-    public long? Limit
-    {
-        get
-        {
+    public long? Limit {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "limit"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -54,12 +52,12 @@ public record class TeamListParams : ParamsBase
     /// <summary>
     /// Minimum culture score
     /// </summary>
-    public long? MinCultureScore
-    {
-        get
-        {
+    public long? MinCultureScore {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("min_culture_score");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "min_culture_score"
+            );
         }
         init { this._rawQueryData.Set("min_culture_score", value); }
     }
@@ -67,17 +65,15 @@ public record class TeamListParams : ParamsBase
     /// <summary>
     /// Number of items to skip (offset)
     /// </summary>
-    public long? Skip
-    {
-        get
-        {
+    public long? Skip {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "skip"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -85,15 +81,16 @@ public record class TeamListParams : ParamsBase
         }
     }
 
-    public TeamListParams() { }
+    public TeamListParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamListParams(TeamListParams teamListParams)
-        : base(teamListParams) { }
-#pragma warning restore CS8618
+    public TeamListParams (TeamListParams teamListParams) : base(teamListParams)
+    {  }
+    #pragma warning restore CS8618
 
-    public TeamListParams(
+    public TeamListParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -102,9 +99,9 @@ public record class TeamListParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamListParams(
+    TeamListParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -112,7 +109,7 @@ public record class TeamListParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TeamListParams FromRawUnchecked(
@@ -123,24 +120,17 @@ public record class TeamListParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TeamListParams? other)
     {
@@ -148,19 +138,22 @@ public record class TeamListParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/teams")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/teams"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -170,7 +163,5 @@ public record class TeamListParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

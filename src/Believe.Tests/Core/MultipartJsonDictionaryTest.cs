@@ -37,10 +37,7 @@ public class MultipartJsonDictionaryTest : TestBase
     public void FrozenDictionaryConstructor_UsesProvidedDictionary()
     {
         var source = FrozenDictionary.ToFrozenDictionary(
-            new Dictionary<string, MultipartJsonElement>
-            {
-                ["foo"] = MultipartJsonSerializer.SerializeToElement("bar"),
-            }
+            new Dictionary<string, MultipartJsonElement> { ["foo"] = MultipartJsonSerializer.SerializeToElement("bar") }
         );
 
         var dict = new MultipartJsonDictionary(source);
@@ -121,8 +118,8 @@ public class MultipartJsonDictionaryTest : TestBase
     {
         var dict = new MultipartJsonDictionary();
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullClass<string>("missing")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullClass<string>("missing")
         );
         Assert.Contains("'missing' cannot be absent", exception.Message);
     }
@@ -137,8 +134,8 @@ public class MultipartJsonDictionaryTest : TestBase
             }
         );
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullClass<string>("nullable")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullClass<string>("nullable")
         );
         Assert.Contains("'nullable' cannot be null", exception.Message);
     }
@@ -149,8 +146,8 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("number", 42);
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullClass<string>("number")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullClass<string>("number")
         );
         Assert.Contains("'number' must be of type", exception.Message);
     }
@@ -171,8 +168,8 @@ public class MultipartJsonDictionaryTest : TestBase
     {
         var dict = new MultipartJsonDictionary();
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullStruct<int>("missing")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullStruct<int>("missing")
         );
         Assert.Contains("'missing' cannot be absent", exception.Message);
     }
@@ -187,8 +184,8 @@ public class MultipartJsonDictionaryTest : TestBase
             }
         );
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullStruct<int>("nullable")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullStruct<int>("nullable")
         );
         Assert.Contains("'nullable' cannot be null", exception.Message);
     }
@@ -199,8 +196,8 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("text", "not a number");
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNotNullStruct<int>("text")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNotNullStruct<int>("text")
         );
         Assert.Contains("'text' must be of type", exception.Message);
     }
@@ -259,8 +256,8 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("number", 42);
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNullableClass<string>("number")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNullableClass<string>("number")
         );
         Assert.Contains("'number' must be of type", exception.Message);
     }
@@ -307,8 +304,8 @@ public class MultipartJsonDictionaryTest : TestBase
         var dict = new MultipartJsonDictionary();
         dict.Set("text", "not a number");
 
-        var exception = Assert.Throws<BelieveInvalidDataException>(() =>
-            dict.GetNullableStruct<int>("text")
+        var exception = Assert.Throws<BelieveInvalidDataException>(
+            () => dict.GetNullableStruct<int>("text")
         );
         Assert.Contains("'text' must be of type", exception.Message);
     }

@@ -8,11 +8,11 @@ public class QuoteListByCharacterParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new QuoteListByCharacterParams
         {
-            CharacterID = "character_id",
-            Limit = 10,
-            Skip = 0,
+            CharacterID = "character_id",Limit = 10,Skip = 0,
         };
 
         string expectedCharacterID = "character_id";
@@ -27,30 +27,36 @@ public class QuoteListByCharacterParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new QuoteListByCharacterParams { CharacterID = "character_id" };
+
+
+        var parameters = new QuoteListByCharacterParams
+        {
+            CharacterID = "character_id",
+        };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new QuoteListByCharacterParams
         {
             CharacterID = "character_id",
 
             // Null should be interpreted as omitted for these properties
-            Limit = null,
-            Skip = null,
+            Limit = null,Skip = null,
         };
 
         Assert.Null(parameters.Limit);
-        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
-        Assert.Null(parameters.Skip);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));Assert.Null(parameters.Skip);
         Assert.False(parameters.RawQueryData.ContainsKey("skip"));
+
     }
 
     [Fact]
@@ -63,12 +69,14 @@ public class QuoteListByCharacterParamsTest : TestBase
             Skip = 0,
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            new Uri("https://believe.cjav.dev/quotes/characters/character_id?limit=10&skip=0"),
-            url
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(new Uri("https://believe.cjav.dev/quotes/characters/character_id?limit=10&skip=0"), url);
     }
 
     [Fact]
@@ -76,9 +84,7 @@ public class QuoteListByCharacterParamsTest : TestBase
     {
         var parameters = new QuoteListByCharacterParams
         {
-            CharacterID = "character_id",
-            Limit = 10,
-            Skip = 0,
+            CharacterID = "character_id", Limit = 10, Skip = 0
         };
 
         QuoteListByCharacterParams copied = new(parameters);

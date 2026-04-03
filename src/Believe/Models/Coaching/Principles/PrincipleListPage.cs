@@ -12,15 +12,12 @@ namespace Believe.Models.Coaching.Principles;
 /// <summary>
 /// A single page from the paginated endpoint that <see cref="IPrincipleService.List(PrincipleListParams, CancellationToken)"/> queries.
 /// </summary>
-public sealed class PrincipleListPage(
-    IPrincipleServiceWithRawResponse service,
-    PrincipleListParams parameters,
-    PrincipleListPageResponse response
-) : IPage<CoachingPrinciple>
+public sealed class PrincipleListPage(IPrincipleServiceWithRawResponse service,
+PrincipleListParams parameters,
+PrincipleListPageResponse response) : IPage<CoachingPrinciple>
 {
     /// <inheritdoc/>
-    public IReadOnlyList<CoachingPrinciple> Items
-    {
+    public IReadOnlyList<CoachingPrinciple> Items {
         get { return response.Data; }
     }
 
@@ -48,29 +45,28 @@ public sealed class PrincipleListPage(
     /// <inheritdoc/>
     async Task<IPage<CoachingPrinciple>> IPage<CoachingPrinciple>.Next(
         CancellationToken cancellationToken
-    ) => await this.Next(cancellationToken).ConfigureAwait(false);
+    )
+    =>await this.Next(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc cref="IPage{T}.Next"/>
-    public async Task<PrincipleListPage> Next(CancellationToken cancellationToken = default)
+    public async Task<PrincipleListPage> Next(
+        CancellationToken cancellationToken = default
+    )
     {
         var currentOffset = parameters.Skip ?? 0;
-        using var nextResponse = await service
-            .List(parameters with { Skip = currentOffset + this.Items.Count }, cancellationToken)
-            .ConfigureAwait(false);
+        using var nextResponse = await service.List(
+            parameters with { Skip = currentOffset + this.Items.Count },
+            cancellationToken
+        ).ConfigureAwait(false);
         return await nextResponse.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public void Validate()
-    {
-        response.Validate();
-    }
+    { response.Validate(); }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)), ModelBase.ToStringSerializerOptions);
 
     public override bool Equals(object? obj)
     {
@@ -82,5 +78,6 @@ public sealed class PrincipleListPage(
         return Enumerable.SequenceEqual(this.Items, other.Items);
     }
 
-    public override int GetHashCode() => 0;
+    public override int GetHashCode()
+    =>0;
 }

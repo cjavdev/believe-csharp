@@ -17,21 +17,13 @@ public class BiscuitListPageResponseTest : TestBase
                 new()
                 {
                     ID = "biscuit-001",
-                    Message =
-                        "Sometimes the best thing you can do is just show up with something warm.",
+                    Message = "Sometimes the best thing you can do is just show up with something warm.",
                     PairsWellWith = "A hot cup of tea and an honest conversation",
-                    TedNote =
-                        "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
+                    TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
                     Type = Type.Shortbread,
                     WarmthLevel = 9,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<Biscuit> expectedData =
@@ -39,11 +31,9 @@ public class BiscuitListPageResponseTest : TestBase
             new()
             {
                 ID = "biscuit-001",
-                Message =
-                    "Sometimes the best thing you can do is just show up with something warm.",
+                Message = "Sometimes the best thing you can do is just show up with something warm.",
                 PairsWellWith = "A hot cup of tea and an honest conversation",
-                TedNote =
-                    "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
+                TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
                 Type = Type.Shortbread,
                 WarmthLevel = 9,
             },
@@ -78,28 +68,17 @@ public class BiscuitListPageResponseTest : TestBase
                 new()
                 {
                     ID = "biscuit-001",
-                    Message =
-                        "Sometimes the best thing you can do is just show up with something warm.",
+                    Message = "Sometimes the best thing you can do is just show up with something warm.",
                     PairsWellWith = "A hot cup of tea and an honest conversation",
-                    TedNote =
-                        "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
+                    TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
                     Type = Type.Shortbread,
                     WarmthLevel = 9,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BiscuitListPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BiscuitListPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -114,28 +93,17 @@ public class BiscuitListPageResponseTest : TestBase
                 new()
                 {
                     ID = "biscuit-001",
-                    Message =
-                        "Sometimes the best thing you can do is just show up with something warm.",
+                    Message = "Sometimes the best thing you can do is just show up with something warm.",
                     PairsWellWith = "A hot cup of tea and an honest conversation",
-                    TedNote =
-                        "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
+                    TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
                     Type = Type.Shortbread,
                     WarmthLevel = 9,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<BiscuitListPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<BiscuitListPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<Biscuit> expectedData =
@@ -143,11 +111,9 @@ public class BiscuitListPageResponseTest : TestBase
             new()
             {
                 ID = "biscuit-001",
-                Message =
-                    "Sometimes the best thing you can do is just show up with something warm.",
+                Message = "Sometimes the best thing you can do is just show up with something warm.",
                 PairsWellWith = "A hot cup of tea and an honest conversation",
-                TedNote =
-                    "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
+                TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
                 Type = Type.Shortbread,
                 WarmthLevel = 9,
             },
@@ -182,21 +148,13 @@ public class BiscuitListPageResponseTest : TestBase
                 new()
                 {
                     ID = "biscuit-001",
-                    Message =
-                        "Sometimes the best thing you can do is just show up with something warm.",
+                    Message = "Sometimes the best thing you can do is just show up with something warm.",
                     PairsWellWith = "A hot cup of tea and an honest conversation",
-                    TedNote =
-                        "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
+                    TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
                     Type = Type.Shortbread,
                     WarmthLevel = 9,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -212,21 +170,13 @@ public class BiscuitListPageResponseTest : TestBase
                 new()
                 {
                     ID = "biscuit-001",
-                    Message =
-                        "Sometimes the best thing you can do is just show up with something warm.",
+                    Message = "Sometimes the best thing you can do is just show up with something warm.",
                     PairsWellWith = "A hot cup of tea and an honest conversation",
-                    TedNote =
-                        "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
+                    TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
                     Type = Type.Shortbread,
                     WarmthLevel = 9,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         BiscuitListPageResponse copied = new(model);

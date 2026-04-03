@@ -27,15 +27,17 @@ public interface IStreamService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IStreamService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IStreamService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// A simple SSE test endpoint that streams numbers 1-5.
-    /// </summary>
+/// A simple SSE test endpoint that streams numbers 1-5.
+/// </summary>
     Task<JsonElement> TestConnection(
         StreamTestConnectionParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -49,14 +51,18 @@ public interface IStreamServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IStreamServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IStreamServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /stream/test</c>, but is otherwise the
-    /// same as <see cref="IStreamService.TestConnection(StreamTestConnectionParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /stream/test</c>, but is otherwise the
+/// same as <see cref="IStreamService.TestConnection(StreamTestConnectionParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<JsonElement>> TestConnection(
         StreamTestConnectionParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

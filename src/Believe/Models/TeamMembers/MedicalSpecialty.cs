@@ -15,7 +15,7 @@ public enum MedicalSpecialty
     Physiotherapist,
     SportsPsychologist,
     Nutritionist,
-    MassageTherapist,
+    MassageTherapist
 }
 
 sealed class MedicalSpecialtyConverter : JsonConverter<MedicalSpecialty>
@@ -28,12 +28,12 @@ sealed class MedicalSpecialtyConverter : JsonConverter<MedicalSpecialty>
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "team_doctor" => MedicalSpecialty.TeamDoctor,
-            "physiotherapist" => MedicalSpecialty.Physiotherapist,
-            "sports_psychologist" => MedicalSpecialty.SportsPsychologist,
-            "nutritionist" => MedicalSpecialty.Nutritionist,
-            "massage_therapist" => MedicalSpecialty.MassageTherapist,
-            _ => (MedicalSpecialty)(-1),
+            "team_doctor"=>MedicalSpecialty.TeamDoctor,
+            "physiotherapist"=>MedicalSpecialty.Physiotherapist,
+            "sports_psychologist"=>MedicalSpecialty.SportsPsychologist,
+            "nutritionist"=>MedicalSpecialty.Nutritionist,
+            "massage_therapist"=>MedicalSpecialty.MassageTherapist,
+            _ =>(MedicalSpecialty)(-1)
         };
     }
 
@@ -43,20 +43,16 @@ sealed class MedicalSpecialtyConverter : JsonConverter<MedicalSpecialty>
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                MedicalSpecialty.TeamDoctor => "team_doctor",
-                MedicalSpecialty.Physiotherapist => "physiotherapist",
-                MedicalSpecialty.SportsPsychologist => "sports_psychologist",
-                MedicalSpecialty.Nutritionist => "nutritionist",
-                MedicalSpecialty.MassageTherapist => "massage_therapist",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            MedicalSpecialty.TeamDoctor=>"team_doctor",
+            MedicalSpecialty.Physiotherapist=>"physiotherapist",
+            MedicalSpecialty.SportsPsychologist=>"sports_psychologist",
+            MedicalSpecialty.Nutritionist=>"nutritionist",
+            MedicalSpecialty.MassageTherapist=>"massage_therapist",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

@@ -16,12 +16,12 @@ public sealed record class PressSimulateResponse : JsonModel
     /// <summary>
     /// The actual wisdom beneath the humor
     /// </summary>
-    public required string ActualWisdom
-    {
-        get
-        {
+    public required string ActualWisdom {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("actual_wisdom");
+            return this._rawData.GetNotNullClass<string>(
+                "actual_wisdom"
+            );
         }
         init { this._rawData.Set("actual_wisdom", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class PressSimulateResponse : JsonModel
     /// <summary>
     /// How Ted would dodge a follow-up
     /// </summary>
-    public required string FollowUpDodge
-    {
-        get
-        {
+    public required string FollowUpDodge {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("follow_up_dodge");
+            return this._rawData.GetNotNullClass<string>(
+                "follow_up_dodge"
+            );
         }
         init { this._rawData.Set("follow_up_dodge", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class PressSimulateResponse : JsonModel
     /// <summary>
     /// How reporters would react
     /// </summary>
-    public required string ReporterReaction
-    {
-        get
-        {
+    public required string ReporterReaction {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("reporter_reaction");
+            return this._rawData.GetNotNullClass<string>(
+                "reporter_reaction"
+            );
         }
         init { this._rawData.Set("reporter_reaction", value); }
     }
@@ -55,12 +55,12 @@ public sealed record class PressSimulateResponse : JsonModel
     /// <summary>
     /// Ted's press conference answer
     /// </summary>
-    public required string Response
-    {
-        get
-        {
+    public required string Response {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("response");
+            return this._rawData.GetNotNullClass<string>(
+                "response"
+            );
         }
         init { this._rawData.Set("response", value); }
     }
@@ -68,12 +68,12 @@ public sealed record class PressSimulateResponse : JsonModel
     /// <summary>
     /// Humorous deflection if appropriate
     /// </summary>
-    public string? DeflectionHumor
-    {
-        get
-        {
+    public string? DeflectionHumor {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("deflection_humor");
+            return this._rawData.GetNullableClass<string>(
+                "deflection_humor"
+            );
         }
         init { this._rawData.Set("deflection_humor", value); }
     }
@@ -88,34 +88,33 @@ public sealed record class PressSimulateResponse : JsonModel
         _ = this.DeflectionHumor;
     }
 
-    public PressSimulateResponse() { }
+    public PressSimulateResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PressSimulateResponse(PressSimulateResponse pressSimulateResponse)
-        : base(pressSimulateResponse) { }
-#pragma warning restore CS8618
+    public PressSimulateResponse (
+        PressSimulateResponse pressSimulateResponse
+    ) : base(pressSimulateResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public PressSimulateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public PressSimulateResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PressSimulateResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    PressSimulateResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="PressSimulateResponseFromRaw.FromRawUnchecked"/>
     public static PressSimulateResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class PressSimulateResponseFromRaw : IFromRawJson<PressSimulateResponse>
@@ -123,5 +122,6 @@ class PressSimulateResponseFromRaw : IFromRawJson<PressSimulateResponse>
     /// <inheritdoc/>
     public PressSimulateResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => PressSimulateResponse.FromRawUnchecked(rawData);
+    )
+    =>PressSimulateResponse.FromRawUnchecked(rawData);
 }

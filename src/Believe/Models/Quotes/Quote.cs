@@ -17,12 +17,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Unique identifier
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// ID of the character who said it
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -43,12 +43,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Context in which the quote was said
     /// </summary>
-    public required string Context
-    {
-        get
-        {
+    public required string Context {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("context");
+            return this._rawData.GetNotNullClass<string>(
+                "context"
+            );
         }
         init { this._rawData.Set("context", value); }
     }
@@ -56,12 +56,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Type of moment when the quote was said
     /// </summary>
-    public required ApiEnum<string, QuoteMoment> MomentType
-    {
-        get
-        {
+    public required ApiEnum<string, QuoteMoment> MomentType {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, QuoteMoment>>("moment_type");
+            return this._rawData.GetNotNullClass<ApiEnum<string, QuoteMoment>>(
+                "moment_type"
+            );
         }
         init { this._rawData.Set("moment_type", value); }
     }
@@ -69,12 +69,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// The quote text
     /// </summary>
-    public required string Text
-    {
-        get
-        {
+    public required string Text {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("text");
+            return this._rawData.GetNotNullClass<string>(
+                "text"
+            );
         }
         init { this._rawData.Set("text", value); }
     }
@@ -82,12 +82,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Primary theme of the quote
     /// </summary>
-    public required ApiEnum<string, QuoteTheme> Theme
-    {
-        get
-        {
+    public required ApiEnum<string, QuoteTheme> Theme {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, QuoteTheme>>("theme");
+            return this._rawData.GetNotNullClass<ApiEnum<string, QuoteTheme>>(
+                "theme"
+            );
         }
         init { this._rawData.Set("theme", value); }
     }
@@ -95,12 +95,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Episode where the quote appears
     /// </summary>
-    public string? EpisodeID
-    {
-        get
-        {
+    public string? EpisodeID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("episode_id");
+            return this._rawData.GetNullableClass<string>(
+                "episode_id"
+            );
         }
         init { this._rawData.Set("episode_id", value); }
     }
@@ -108,17 +108,15 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Whether this quote is humorous
     /// </summary>
-    public bool? IsFunny
-    {
-        get
-        {
+    public bool? IsFunny {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_funny");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_funny"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -129,17 +127,15 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Whether this quote is inspirational
     /// </summary>
-    public bool? IsInspirational
-    {
-        get
-        {
+    public bool? IsInspirational {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_inspirational");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_inspirational"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -150,12 +146,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Popularity/virality score (0-100)
     /// </summary>
-    public double? PopularityScore
-    {
-        get
-        {
+    public double? PopularityScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("popularity_score");
+            return this._rawData.GetNullableStruct<double>(
+                "popularity_score"
+            );
         }
         init { this._rawData.Set("popularity_score", value); }
     }
@@ -163,19 +159,15 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Additional themes
     /// </summary>
-    public IReadOnlyList<ApiEnum<string, QuoteTheme>>? SecondaryThemes
-    {
-        get
-        {
+    public IReadOnlyList<ApiEnum<string, QuoteTheme>>? SecondaryThemes {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableStruct<ImmutableArray<ApiEnum<string, QuoteTheme>>>(
                 "secondary_themes"
             );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -189,12 +181,12 @@ public sealed record class Quote : JsonModel
     /// <summary>
     /// Number of times shared on social media
     /// </summary>
-    public long? TimesShared
-    {
-        get
-        {
+    public long? TimesShared {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("times_shared");
+            return this._rawData.GetNullableStruct<long>(
+                "times_shared"
+            );
         }
         init { this._rawData.Set("times_shared", value); }
     }
@@ -219,37 +211,36 @@ public sealed record class Quote : JsonModel
         _ = this.TimesShared;
     }
 
-    public Quote() { }
+    public Quote ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Quote(Quote quote)
-        : base(quote) { }
-#pragma warning restore CS8618
+    public Quote (Quote quote) : base(quote)
+    {  }
+    #pragma warning restore CS8618
 
-    public Quote(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Quote (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Quote(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Quote (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="QuoteFromRaw.FromRawUnchecked"/>
-    public static Quote FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Quote FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class QuoteFromRaw : IFromRawJson<Quote>
 {
     /// <inheritdoc/>
-    public Quote FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Quote.FromRawUnchecked(rawData);
+    public Quote FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Quote.FromRawUnchecked(rawData);
 }

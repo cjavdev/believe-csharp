@@ -17,12 +17,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Unique identifier
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Team culture/morale score (0-100)
     /// </summary>
-    public required long CultureScore
-    {
-        get
-        {
+    public required long CultureScore {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("culture_score");
+            return this._rawData.GetNotNullStruct<long>(
+                "culture_score"
+            );
         }
         init { this._rawData.Set("culture_score", value); }
     }
@@ -43,12 +43,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Year the club was founded
     /// </summary>
-    public required long FoundedYear
-    {
-        get
-        {
+    public required long FoundedYear {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("founded_year");
+            return this._rawData.GetNotNullStruct<long>(
+                "founded_year"
+            );
         }
         init { this._rawData.Set("founded_year", value); }
     }
@@ -56,12 +56,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Current league
     /// </summary>
-    public required ApiEnum<string, League> League
-    {
-        get
-        {
+    public required ApiEnum<string, League> League {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, League>>("league");
+            return this._rawData.GetNotNullClass<ApiEnum<string, League>>(
+                "league"
+            );
         }
         init { this._rawData.Set("league", value); }
     }
@@ -69,12 +69,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Team name
     /// </summary>
-    public required string Name
-    {
-        get
-        {
+    public required string Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
+            return this._rawData.GetNotNullClass<string>(
+                "name"
+            );
         }
         init { this._rawData.Set("name", value); }
     }
@@ -82,12 +82,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Home stadium name
     /// </summary>
-    public required string Stadium
-    {
-        get
-        {
+    public required string Stadium {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("stadium");
+            return this._rawData.GetNotNullClass<string>(
+                "stadium"
+            );
         }
         init { this._rawData.Set("stadium", value); }
     }
@@ -95,12 +95,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Team's core values
     /// </summary>
-    public required TeamValues Values
-    {
-        get
-        {
+    public required TeamValues Values {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<TeamValues>("values");
+            return this._rawData.GetNotNullClass<TeamValues>(
+                "values"
+            );
         }
         init { this._rawData.Set("values", value); }
     }
@@ -108,12 +108,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Annual budget in GBP
     /// </summary>
-    public string? AnnualBudgetGbp
-    {
-        get
-        {
+    public string? AnnualBudgetGbp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("annual_budget_gbp");
+            return this._rawData.GetNullableClass<string>(
+                "annual_budget_gbp"
+            );
         }
         init { this._rawData.Set("annual_budget_gbp", value); }
     }
@@ -121,12 +121,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Average match attendance
     /// </summary>
-    public double? AverageAttendance
-    {
-        get
-        {
+    public double? AverageAttendance {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("average_attendance");
+            return this._rawData.GetNullableStruct<double>(
+                "average_attendance"
+            );
         }
         init { this._rawData.Set("average_attendance", value); }
     }
@@ -134,12 +134,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Team contact email
     /// </summary>
-    public string? ContactEmail
-    {
-        get
-        {
+    public string? ContactEmail {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("contact_email");
+            return this._rawData.GetNullableClass<string>(
+                "contact_email"
+            );
         }
         init { this._rawData.Set("contact_email", value); }
     }
@@ -147,17 +147,15 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Whether the team is currently active
     /// </summary>
-    public bool? IsActive
-    {
-        get
-        {
+    public bool? IsActive {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_active");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_active"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -168,12 +166,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Team nickname
     /// </summary>
-    public string? Nickname
-    {
-        get
-        {
+    public string? Nickname {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("nickname");
+            return this._rawData.GetNullableClass<string>(
+                "nickname"
+            );
         }
         init { this._rawData.Set("nickname", value); }
     }
@@ -181,12 +179,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Primary team color (hex)
     /// </summary>
-    public string? PrimaryColor
-    {
-        get
-        {
+    public string? PrimaryColor {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("primary_color");
+            return this._rawData.GetNullableClass<string>(
+                "primary_color"
+            );
         }
         init { this._rawData.Set("primary_color", value); }
     }
@@ -194,17 +192,15 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// List of rival team IDs
     /// </summary>
-    public IReadOnlyList<string>? RivalTeams
-    {
-        get
-        {
+    public IReadOnlyList<string>? RivalTeams {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("rival_teams");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "rival_teams"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -218,12 +214,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Secondary team color (hex)
     /// </summary>
-    public string? SecondaryColor
-    {
-        get
-        {
+    public string? SecondaryColor {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("secondary_color");
+            return this._rawData.GetNullableClass<string>(
+                "secondary_color"
+            );
         }
         init { this._rawData.Set("secondary_color", value); }
     }
@@ -231,12 +227,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Geographic coordinates for a location.
     /// </summary>
-    public GeoLocation? StadiumLocation
-    {
-        get
-        {
+    public GeoLocation? StadiumLocation {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<GeoLocation>("stadium_location");
+            return this._rawData.GetNullableClass<GeoLocation>(
+                "stadium_location"
+            );
         }
         init { this._rawData.Set("stadium_location", value); }
     }
@@ -244,12 +240,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Official team website
     /// </summary>
-    public string? Website
-    {
-        get
-        {
+    public string? Website {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("website");
+            return this._rawData.GetNullableClass<string>(
+                "website"
+            );
         }
         init { this._rawData.Set("website", value); }
     }
@@ -257,12 +253,12 @@ public sealed record class Team : JsonModel
     /// <summary>
     /// Season win percentage
     /// </summary>
-    public double? WinPercentage
-    {
-        get
-        {
+    public double? WinPercentage {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("win_percentage");
+            return this._rawData.GetNullableStruct<double>(
+                "win_percentage"
+            );
         }
         init { this._rawData.Set("win_percentage", value); }
     }
@@ -290,37 +286,36 @@ public sealed record class Team : JsonModel
         _ = this.WinPercentage;
     }
 
-    public Team() { }
+    public Team ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Team(Team team)
-        : base(team) { }
-#pragma warning restore CS8618
+    public Team (Team team) : base(team)
+    {  }
+    #pragma warning restore CS8618
 
-    public Team(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Team (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Team(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Team (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TeamFromRaw.FromRawUnchecked"/>
-    public static Team FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Team FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TeamFromRaw : IFromRawJson<Team>
 {
     /// <inheritdoc/>
-    public Team FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Team.FromRawUnchecked(rawData);
+    public Team FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Team.FromRawUnchecked(rawData);
 }

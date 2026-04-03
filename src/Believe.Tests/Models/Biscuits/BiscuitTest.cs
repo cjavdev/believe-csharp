@@ -12,21 +12,13 @@ public class BiscuitTest : TestBase
     {
         var model = new Biscuit
         {
-            ID = "biscuit-001",
-            Message = "Sometimes the best thing you can do is just show up with something warm.",
-            PairsWellWith = "A hot cup of tea and an honest conversation",
-            TedNote =
-                "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
-            Type = Type.Shortbread,
-            WarmthLevel = 9,
+            ID = "biscuit-001",Message = "Sometimes the best thing you can do is just show up with something warm.",PairsWellWith = "A hot cup of tea and an honest conversation",TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",Type = Type.Shortbread,WarmthLevel = 9,
         };
 
         string expectedID = "biscuit-001";
-        string expectedMessage =
-            "Sometimes the best thing you can do is just show up with something warm.";
+        string expectedMessage = "Sometimes the best thing you can do is just show up with something warm.";
         string expectedPairsWellWith = "A hot cup of tea and an honest conversation";
-        string expectedTedNote =
-            "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted";
+        string expectedTedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted";
         ApiEnum<string, Type> expectedType = Type.Shortbread;
         long expectedWarmthLevel = 9;
 
@@ -43,13 +35,7 @@ public class BiscuitTest : TestBase
     {
         var model = new Biscuit
         {
-            ID = "biscuit-001",
-            Message = "Sometimes the best thing you can do is just show up with something warm.",
-            PairsWellWith = "A hot cup of tea and an honest conversation",
-            TedNote =
-                "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
-            Type = Type.Shortbread,
-            WarmthLevel = 9,
+            ID = "biscuit-001",Message = "Sometimes the best thing you can do is just show up with something warm.",PairsWellWith = "A hot cup of tea and an honest conversation",TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",Type = Type.Shortbread,WarmthLevel = 9,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
@@ -63,28 +49,17 @@ public class BiscuitTest : TestBase
     {
         var model = new Biscuit
         {
-            ID = "biscuit-001",
-            Message = "Sometimes the best thing you can do is just show up with something warm.",
-            PairsWellWith = "A hot cup of tea and an honest conversation",
-            TedNote =
-                "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
-            Type = Type.Shortbread,
-            WarmthLevel = 9,
+            ID = "biscuit-001",Message = "Sometimes the best thing you can do is just show up with something warm.",PairsWellWith = "A hot cup of tea and an honest conversation",TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",Type = Type.Shortbread,WarmthLevel = 9,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Biscuit>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Biscuit>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "biscuit-001";
-        string expectedMessage =
-            "Sometimes the best thing you can do is just show up with something warm.";
+        string expectedMessage = "Sometimes the best thing you can do is just show up with something warm.";
         string expectedPairsWellWith = "A hot cup of tea and an honest conversation";
-        string expectedTedNote =
-            "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted";
+        string expectedTedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted";
         ApiEnum<string, Type> expectedType = Type.Shortbread;
         long expectedWarmthLevel = 9;
 
@@ -101,13 +76,7 @@ public class BiscuitTest : TestBase
     {
         var model = new Biscuit
         {
-            ID = "biscuit-001",
-            Message = "Sometimes the best thing you can do is just show up with something warm.",
-            PairsWellWith = "A hot cup of tea and an honest conversation",
-            TedNote =
-                "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
-            Type = Type.Shortbread,
-            WarmthLevel = 9,
+            ID = "biscuit-001",Message = "Sometimes the best thing you can do is just show up with something warm.",PairsWellWith = "A hot cup of tea and an honest conversation",TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",Type = Type.Shortbread,WarmthLevel = 9,
         };
 
         model.Validate();
@@ -118,13 +87,7 @@ public class BiscuitTest : TestBase
     {
         var model = new Biscuit
         {
-            ID = "biscuit-001",
-            Message = "Sometimes the best thing you can do is just show up with something warm.",
-            PairsWellWith = "A hot cup of tea and an honest conversation",
-            TedNote =
-                "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",
-            Type = Type.Shortbread,
-            WarmthLevel = 9,
+            ID = "biscuit-001",Message = "Sometimes the best thing you can do is just show up with something warm.",PairsWellWith = "A hot cup of tea and an honest conversation",TedNote = "Made these thinking about you. Hope your day is as sweet as these little fellas. - Ted",Type = Type.Shortbread,WarmthLevel = 9,
         };
 
         Biscuit copied = new(model);
@@ -135,13 +98,7 @@ public class BiscuitTest : TestBase
 
 public class TypeTest : TestBase
 {
-    [Theory]
-    [InlineData(Type.Classic)]
-    [InlineData(Type.Shortbread)]
-    [InlineData(Type.ChocolateChip)]
-    [InlineData(Type.OatmealRaisin)]
-    [InlineData(Type.Snickerdoodle)]
-    [InlineData(Type.LemonDrizzle)]
+    [Theory][InlineData(Type.Classic)][InlineData(Type.Shortbread)][InlineData(Type.ChocolateChip)][InlineData(Type.OatmealRaisin)][InlineData(Type.Snickerdoodle)][InlineData(Type.LemonDrizzle)]
     public void Validation_Works(Type rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -152,32 +109,20 @@ public class TypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(Type.Classic)]
-    [InlineData(Type.Shortbread)]
-    [InlineData(Type.ChocolateChip)]
-    [InlineData(Type.OatmealRaisin)]
-    [InlineData(Type.Snickerdoodle)]
-    [InlineData(Type.LemonDrizzle)]
+    [Theory][InlineData(Type.Classic)][InlineData(Type.Shortbread)][InlineData(Type.ChocolateChip)][InlineData(Type.OatmealRaisin)][InlineData(Type.Snickerdoodle)][InlineData(Type.LemonDrizzle)]
     public void SerializationRoundtrip_Works(Type rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, Type> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Type>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -185,15 +130,9 @@ public class TypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Type>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

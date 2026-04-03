@@ -11,23 +11,11 @@ public class MatchUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new MatchUpdateParams
         {
-            MatchID = "match_id",
-            Attendance = 0,
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            Date = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            EpisodeID = "episode_id",
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            LessonLearned = "lesson_learned",
-            MatchType = MatchType.League,
-            PossessionPercentage = 0,
-            Result = MatchResult.Win,
-            TedHalftimeSpeech = "ted_halftime_speech",
-            TicketRevenueGbp = 0,
-            TurningPoints =
+            MatchID = "match_id",Attendance = 0,AwayScore = 0,AwayTeamID = "away_team_id",Date = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),EpisodeID = "episode_id",HomeScore = 0,HomeTeamID = "home_team_id",LessonLearned = "lesson_learned",MatchType = MatchType.League,PossessionPercentage = 0,Result = MatchResult.Win,TedHalftimeSpeech = "ted_halftime_speech",TicketRevenueGbp = 0,TurningPoints =
             [
                 new()
                 {
@@ -36,8 +24,7 @@ public class MatchUpdateParamsTest : TestBase
                     Minute = 0,
                     CharacterInvolved = "jamie-tartt",
                 },
-            ],
-            WeatherTempCelsius = -30,
+            ],WeatherTempCelsius = -30,
         };
 
         string expectedMatchID = "match_id";
@@ -92,94 +79,61 @@ public class MatchUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new MatchUpdateParams { MatchID = "match_id" };
+
+
+        var parameters = new MatchUpdateParams
+        {
+            MatchID = "match_id",
+        };
 
         Assert.Null(parameters.Attendance);
-        Assert.False(parameters.RawBodyData.ContainsKey("attendance"));
-        Assert.Null(parameters.AwayScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("away_score"));
-        Assert.Null(parameters.AwayTeamID);
-        Assert.False(parameters.RawBodyData.ContainsKey("away_team_id"));
-        Assert.Null(parameters.Date);
-        Assert.False(parameters.RawBodyData.ContainsKey("date"));
-        Assert.Null(parameters.EpisodeID);
-        Assert.False(parameters.RawBodyData.ContainsKey("episode_id"));
-        Assert.Null(parameters.HomeScore);
-        Assert.False(parameters.RawBodyData.ContainsKey("home_score"));
-        Assert.Null(parameters.HomeTeamID);
-        Assert.False(parameters.RawBodyData.ContainsKey("home_team_id"));
-        Assert.Null(parameters.LessonLearned);
-        Assert.False(parameters.RawBodyData.ContainsKey("lesson_learned"));
-        Assert.Null(parameters.MatchType);
-        Assert.False(parameters.RawBodyData.ContainsKey("match_type"));
-        Assert.Null(parameters.PossessionPercentage);
-        Assert.False(parameters.RawBodyData.ContainsKey("possession_percentage"));
-        Assert.Null(parameters.Result);
-        Assert.False(parameters.RawBodyData.ContainsKey("result"));
-        Assert.Null(parameters.TedHalftimeSpeech);
-        Assert.False(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));
-        Assert.Null(parameters.TicketRevenueGbp);
-        Assert.False(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));
-        Assert.Null(parameters.TurningPoints);
-        Assert.False(parameters.RawBodyData.ContainsKey("turning_points"));
-        Assert.Null(parameters.WeatherTempCelsius);
+        Assert.False(parameters.RawBodyData.ContainsKey("attendance"));Assert.Null(parameters.AwayScore);
+        Assert.False(parameters.RawBodyData.ContainsKey("away_score"));Assert.Null(parameters.AwayTeamID);
+        Assert.False(parameters.RawBodyData.ContainsKey("away_team_id"));Assert.Null(parameters.Date);
+        Assert.False(parameters.RawBodyData.ContainsKey("date"));Assert.Null(parameters.EpisodeID);
+        Assert.False(parameters.RawBodyData.ContainsKey("episode_id"));Assert.Null(parameters.HomeScore);
+        Assert.False(parameters.RawBodyData.ContainsKey("home_score"));Assert.Null(parameters.HomeTeamID);
+        Assert.False(parameters.RawBodyData.ContainsKey("home_team_id"));Assert.Null(parameters.LessonLearned);
+        Assert.False(parameters.RawBodyData.ContainsKey("lesson_learned"));Assert.Null(parameters.MatchType);
+        Assert.False(parameters.RawBodyData.ContainsKey("match_type"));Assert.Null(parameters.PossessionPercentage);
+        Assert.False(parameters.RawBodyData.ContainsKey("possession_percentage"));Assert.Null(parameters.Result);
+        Assert.False(parameters.RawBodyData.ContainsKey("result"));Assert.Null(parameters.TedHalftimeSpeech);
+        Assert.False(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));Assert.Null(parameters.TicketRevenueGbp);
+        Assert.False(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));Assert.Null(parameters.TurningPoints);
+        Assert.False(parameters.RawBodyData.ContainsKey("turning_points"));Assert.Null(parameters.WeatherTempCelsius);
         Assert.False(parameters.RawBodyData.ContainsKey("weather_temp_celsius"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new MatchUpdateParams
         {
             MatchID = "match_id",
 
-            Attendance = null,
-            AwayScore = null,
-            AwayTeamID = null,
-            Date = null,
-            EpisodeID = null,
-            HomeScore = null,
-            HomeTeamID = null,
-            LessonLearned = null,
-            MatchType = null,
-            PossessionPercentage = null,
-            Result = null,
-            TedHalftimeSpeech = null,
-            TicketRevenueGbp = null,
-            TurningPoints = null,
-            WeatherTempCelsius = null,
+            Attendance = null,AwayScore = null,AwayTeamID = null,Date = null,EpisodeID = null,HomeScore = null,HomeTeamID = null,LessonLearned = null,MatchType = null,PossessionPercentage = null,Result = null,TedHalftimeSpeech = null,TicketRevenueGbp = null,TurningPoints = null,WeatherTempCelsius = null,
         };
 
         Assert.Null(parameters.Attendance);
-        Assert.True(parameters.RawBodyData.ContainsKey("attendance"));
-        Assert.Null(parameters.AwayScore);
-        Assert.True(parameters.RawBodyData.ContainsKey("away_score"));
-        Assert.Null(parameters.AwayTeamID);
-        Assert.True(parameters.RawBodyData.ContainsKey("away_team_id"));
-        Assert.Null(parameters.Date);
-        Assert.True(parameters.RawBodyData.ContainsKey("date"));
-        Assert.Null(parameters.EpisodeID);
-        Assert.True(parameters.RawBodyData.ContainsKey("episode_id"));
-        Assert.Null(parameters.HomeScore);
-        Assert.True(parameters.RawBodyData.ContainsKey("home_score"));
-        Assert.Null(parameters.HomeTeamID);
-        Assert.True(parameters.RawBodyData.ContainsKey("home_team_id"));
-        Assert.Null(parameters.LessonLearned);
-        Assert.True(parameters.RawBodyData.ContainsKey("lesson_learned"));
-        Assert.Null(parameters.MatchType);
-        Assert.True(parameters.RawBodyData.ContainsKey("match_type"));
-        Assert.Null(parameters.PossessionPercentage);
-        Assert.True(parameters.RawBodyData.ContainsKey("possession_percentage"));
-        Assert.Null(parameters.Result);
-        Assert.True(parameters.RawBodyData.ContainsKey("result"));
-        Assert.Null(parameters.TedHalftimeSpeech);
-        Assert.True(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));
-        Assert.Null(parameters.TicketRevenueGbp);
-        Assert.True(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));
-        Assert.Null(parameters.TurningPoints);
-        Assert.True(parameters.RawBodyData.ContainsKey("turning_points"));
-        Assert.Null(parameters.WeatherTempCelsius);
+        Assert.True(parameters.RawBodyData.ContainsKey("attendance"));Assert.Null(parameters.AwayScore);
+        Assert.True(parameters.RawBodyData.ContainsKey("away_score"));Assert.Null(parameters.AwayTeamID);
+        Assert.True(parameters.RawBodyData.ContainsKey("away_team_id"));Assert.Null(parameters.Date);
+        Assert.True(parameters.RawBodyData.ContainsKey("date"));Assert.Null(parameters.EpisodeID);
+        Assert.True(parameters.RawBodyData.ContainsKey("episode_id"));Assert.Null(parameters.HomeScore);
+        Assert.True(parameters.RawBodyData.ContainsKey("home_score"));Assert.Null(parameters.HomeTeamID);
+        Assert.True(parameters.RawBodyData.ContainsKey("home_team_id"));Assert.Null(parameters.LessonLearned);
+        Assert.True(parameters.RawBodyData.ContainsKey("lesson_learned"));Assert.Null(parameters.MatchType);
+        Assert.True(parameters.RawBodyData.ContainsKey("match_type"));Assert.Null(parameters.PossessionPercentage);
+        Assert.True(parameters.RawBodyData.ContainsKey("possession_percentage"));Assert.Null(parameters.Result);
+        Assert.True(parameters.RawBodyData.ContainsKey("result"));Assert.Null(parameters.TedHalftimeSpeech);
+        Assert.True(parameters.RawBodyData.ContainsKey("ted_halftime_speech"));Assert.Null(parameters.TicketRevenueGbp);
+        Assert.True(parameters.RawBodyData.ContainsKey("ticket_revenue_gbp"));Assert.Null(parameters.TurningPoints);
+        Assert.True(parameters.RawBodyData.ContainsKey("turning_points"));Assert.Null(parameters.WeatherTempCelsius);
         Assert.True(parameters.RawBodyData.ContainsKey("weather_temp_celsius"));
+
     }
 
     [Fact]
@@ -187,7 +141,12 @@ public class MatchUpdateParamsTest : TestBase
     {
         MatchUpdateParams parameters = new() { MatchID = "match_id" };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/matches/match_id"), url);
     }
@@ -251,10 +210,7 @@ public class MatchUpdateParamsTicketRevenueGbpTest : TestBase
     {
         MatchUpdateParamsTicketRevenueGbp value = 0;
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchUpdateParamsTicketRevenueGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchUpdateParamsTicketRevenueGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -264,10 +220,7 @@ public class MatchUpdateParamsTicketRevenueGbpTest : TestBase
     {
         MatchUpdateParamsTicketRevenueGbp value = "string";
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchUpdateParamsTicketRevenueGbp>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchUpdateParamsTicketRevenueGbp>(element, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

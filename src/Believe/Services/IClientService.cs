@@ -22,7 +22,8 @@ public interface IClientService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IClientService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IClientService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     IWService Ws { get; }
 }
@@ -38,7 +39,10 @@ public interface IClientServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IClientServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IClientServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     IWServiceWithRawResponse Ws { get; }
 }

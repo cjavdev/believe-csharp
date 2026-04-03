@@ -8,10 +8,11 @@ public class LogoDeleteParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new LogoDeleteParams
         {
-            TeamID = "team_id",
-            FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TeamID = "team_id",FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
         string expectedTeamID = "team_id";
@@ -30,14 +31,14 @@ public class LogoDeleteParamsTest : TestBase
             FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/teams/team_id/logo/182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-            ),
-            url
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(new Uri("https://believe.cjav.dev/teams/team_id/logo/182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"), url);
     }
 
     [Fact]
@@ -45,8 +46,7 @@ public class LogoDeleteParamsTest : TestBase
     {
         var parameters = new LogoDeleteParams
         {
-            TeamID = "team_id",
-            FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            TeamID = "team_id", FileID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
         };
 
         LogoDeleteParams copied = new(parameters);

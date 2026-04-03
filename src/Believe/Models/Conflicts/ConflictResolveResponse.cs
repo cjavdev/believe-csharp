@@ -17,12 +17,12 @@ public sealed record class ConflictResolveResponse : JsonModel
     /// <summary>
     /// A folksy metaphor to remember
     /// </summary>
-    public required string BarbecueSauceWisdom
-    {
-        get
-        {
+    public required string BarbecueSauceWisdom {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("barbecue_sauce_wisdom");
+            return this._rawData.GetNotNullClass<string>(
+                "barbecue_sauce_wisdom"
+            );
         }
         init { this._rawData.Set("barbecue_sauce_wisdom", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class ConflictResolveResponse : JsonModel
     /// <summary>
     /// Understanding the root cause
     /// </summary>
-    public required string Diagnosis
-    {
-        get
-        {
+    public required string Diagnosis {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("diagnosis");
+            return this._rawData.GetNotNullClass<string>(
+                "diagnosis"
+            );
         }
         init { this._rawData.Set("diagnosis", value); }
     }
@@ -43,12 +43,12 @@ public sealed record class ConflictResolveResponse : JsonModel
     /// <summary>
     /// Advice from the Diamond Dogs support group
     /// </summary>
-    public required string DiamondDogsAdvice
-    {
-        get
-        {
+    public required string DiamondDogsAdvice {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("diamond_dogs_advice");
+            return this._rawData.GetNotNullClass<string>(
+                "diamond_dogs_advice"
+            );
         }
         init { this._rawData.Set("diamond_dogs_advice", value); }
     }
@@ -56,12 +56,12 @@ public sealed record class ConflictResolveResponse : JsonModel
     /// <summary>
     /// What resolution could look like
     /// </summary>
-    public required string PotentialOutcome
-    {
-        get
-        {
+    public required string PotentialOutcome {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("potential_outcome");
+            return this._rawData.GetNotNullClass<string>(
+                "potential_outcome"
+            );
         }
         init { this._rawData.Set("potential_outcome", value); }
     }
@@ -69,15 +69,14 @@ public sealed record class ConflictResolveResponse : JsonModel
     /// <summary>
     /// Concrete steps to resolve the conflict
     /// </summary>
-    public required IReadOnlyList<string> StepsToResolution
-    {
-        get
-        {
+    public required IReadOnlyList<string> StepsToResolution {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("steps_to_resolution");
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>(
+                "steps_to_resolution"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>>(
                 "steps_to_resolution",
                 ImmutableArray.ToImmutableArray(value)
@@ -88,12 +87,12 @@ public sealed record class ConflictResolveResponse : JsonModel
     /// <summary>
     /// How Ted would handle this
     /// </summary>
-    public required string TedApproach
-    {
-        get
-        {
+    public required string TedApproach {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("ted_approach");
+            return this._rawData.GetNotNullClass<string>(
+                "ted_approach"
+            );
         }
         init { this._rawData.Set("ted_approach", value); }
     }
@@ -109,34 +108,33 @@ public sealed record class ConflictResolveResponse : JsonModel
         _ = this.TedApproach;
     }
 
-    public ConflictResolveResponse() { }
+    public ConflictResolveResponse ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public ConflictResolveResponse(ConflictResolveResponse conflictResolveResponse)
-        : base(conflictResolveResponse) { }
-#pragma warning restore CS8618
+    public ConflictResolveResponse (
+        ConflictResolveResponse conflictResolveResponse
+    ) : base(conflictResolveResponse)
+    {  }
+    #pragma warning restore CS8618
 
-    public ConflictResolveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public ConflictResolveResponse (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    ConflictResolveResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    ConflictResolveResponse (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="ConflictResolveResponseFromRaw.FromRawUnchecked"/>
     public static ConflictResolveResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class ConflictResolveResponseFromRaw : IFromRawJson<ConflictResolveResponse>
@@ -144,5 +142,6 @@ class ConflictResolveResponseFromRaw : IFromRawJson<ConflictResolveResponse>
     /// <inheritdoc/>
     public ConflictResolveResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => ConflictResolveResponse.FromRawUnchecked(rawData);
+    )
+    =>ConflictResolveResponse.FromRawUnchecked(rawData);
 }

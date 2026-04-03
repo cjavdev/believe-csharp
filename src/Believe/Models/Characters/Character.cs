@@ -17,12 +17,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Unique identifier
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -30,12 +30,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Character background and history
     /// </summary>
-    public required string Background
-    {
-        get
-        {
+    public required string Background {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("background");
+            return this._rawData.GetNotNullClass<string>(
+                "background"
+            );
         }
         init { this._rawData.Set("background", value); }
     }
@@ -43,12 +43,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Emotional intelligence stats
     /// </summary>
-    public required EmotionalStats EmotionalStats
-    {
-        get
-        {
+    public required EmotionalStats EmotionalStats {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<EmotionalStats>("emotional_stats");
+            return this._rawData.GetNotNullClass<EmotionalStats>(
+                "emotional_stats"
+            );
         }
         init { this._rawData.Set("emotional_stats", value); }
     }
@@ -56,12 +56,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Character's full name
     /// </summary>
-    public required string Name
-    {
-        get
-        {
+    public required string Name {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("name");
+            return this._rawData.GetNotNullClass<string>(
+                "name"
+            );
         }
         init { this._rawData.Set("name", value); }
     }
@@ -69,15 +69,14 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Key personality traits
     /// </summary>
-    public required IReadOnlyList<string> PersonalityTraits
-    {
-        get
-        {
+    public required IReadOnlyList<string> PersonalityTraits {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("personality_traits");
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>(
+                "personality_traits"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>>(
                 "personality_traits",
                 ImmutableArray.ToImmutableArray(value)
@@ -88,12 +87,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Character's role
     /// </summary>
-    public required ApiEnum<string, CharacterRole> Role
-    {
-        get
-        {
+    public required ApiEnum<string, CharacterRole> Role {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, CharacterRole>>("role");
+            return this._rawData.GetNotNullClass<ApiEnum<string, CharacterRole>>(
+                "role"
+            );
         }
         init { this._rawData.Set("role", value); }
     }
@@ -101,12 +100,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Character's date of birth
     /// </summary>
-    public string? DateOfBirth
-    {
-        get
-        {
+    public string? DateOfBirth {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("date_of_birth");
+            return this._rawData.GetNullableClass<string>(
+                "date_of_birth"
+            );
         }
         init { this._rawData.Set("date_of_birth", value); }
     }
@@ -114,12 +113,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Character's email address
     /// </summary>
-    public string? Email
-    {
-        get
-        {
+    public string? Email {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("email");
+            return this._rawData.GetNullableClass<string>(
+                "email"
+            );
         }
         init { this._rawData.Set("email", value); }
     }
@@ -127,17 +126,15 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Character development across seasons
     /// </summary>
-    public IReadOnlyList<GrowthArc>? GrowthArcs
-    {
-        get
-        {
+    public IReadOnlyList<GrowthArc>? GrowthArcs {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<GrowthArc>>("growth_arcs");
+            return this._rawData.GetNullableStruct<ImmutableArray<GrowthArc>>(
+                "growth_arcs"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -151,12 +148,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Height in meters
     /// </summary>
-    public double? HeightMeters
-    {
-        get
-        {
+    public double? HeightMeters {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("height_meters");
+            return this._rawData.GetNullableStruct<double>(
+                "height_meters"
+            );
         }
         init { this._rawData.Set("height_meters", value); }
     }
@@ -164,12 +161,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// URL to character's profile image
     /// </summary>
-    public string? ProfileImageUrl
-    {
-        get
-        {
+    public string? ProfileImageUrl {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("profile_image_url");
+            return this._rawData.GetNullableClass<string>(
+                "profile_image_url"
+            );
         }
         init { this._rawData.Set("profile_image_url", value); }
     }
@@ -177,12 +174,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Annual salary in GBP
     /// </summary>
-    public string? SalaryGbp
-    {
-        get
-        {
+    public string? SalaryGbp {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("salary_gbp");
+            return this._rawData.GetNullableClass<string>(
+                "salary_gbp"
+            );
         }
         init { this._rawData.Set("salary_gbp", value); }
     }
@@ -190,17 +187,15 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// Memorable quotes from this character
     /// </summary>
-    public IReadOnlyList<string>? SignatureQuotes
-    {
-        get
-        {
+    public IReadOnlyList<string>? SignatureQuotes {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("signature_quotes");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "signature_quotes"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -214,12 +209,12 @@ public sealed record class Character : JsonModel
     /// <summary>
     /// ID of the team they belong to
     /// </summary>
-    public string? TeamID
-    {
-        get
-        {
+    public string? TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("team_id");
+            return this._rawData.GetNullableClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -246,37 +241,36 @@ public sealed record class Character : JsonModel
         _ = this.TeamID;
     }
 
-    public Character() { }
+    public Character ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Character(Character character)
-        : base(character) { }
-#pragma warning restore CS8618
+    public Character (Character character) : base(character)
+    {  }
+    #pragma warning restore CS8618
 
-    public Character(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public Character (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Character(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    Character (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CharacterFromRaw.FromRawUnchecked"/>
-    public static Character FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static Character FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CharacterFromRaw : IFromRawJson<Character>
 {
     /// <inheritdoc/>
-    public Character FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Character.FromRawUnchecked(rawData);
+    public Character FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>Character.FromRawUnchecked(rawData);
 }

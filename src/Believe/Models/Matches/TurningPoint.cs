@@ -16,12 +16,12 @@ public sealed record class TurningPoint : JsonModel
     /// <summary>
     /// What happened
     /// </summary>
-    public required string Description
-    {
-        get
-        {
+    public required string Description {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("description");
+            return this._rawData.GetNotNullClass<string>(
+                "description"
+            );
         }
         init { this._rawData.Set("description", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class TurningPoint : JsonModel
     /// <summary>
     /// How this affected the team emotionally
     /// </summary>
-    public required string EmotionalImpact
-    {
-        get
-        {
+    public required string EmotionalImpact {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("emotional_impact");
+            return this._rawData.GetNotNullClass<string>(
+                "emotional_impact"
+            );
         }
         init { this._rawData.Set("emotional_impact", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class TurningPoint : JsonModel
     /// <summary>
     /// Minute of the match
     /// </summary>
-    public required long Minute
-    {
-        get
-        {
+    public required long Minute {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("minute");
+            return this._rawData.GetNotNullStruct<long>(
+                "minute"
+            );
         }
         init { this._rawData.Set("minute", value); }
     }
@@ -55,12 +55,12 @@ public sealed record class TurningPoint : JsonModel
     /// <summary>
     /// Character ID who was central to this moment
     /// </summary>
-    public string? CharacterInvolved
-    {
-        get
-        {
+    public string? CharacterInvolved {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("character_involved");
+            return this._rawData.GetNullableClass<string>(
+                "character_involved"
+            );
         }
         init { this._rawData.Set("character_involved", value); }
     }
@@ -74,37 +74,36 @@ public sealed record class TurningPoint : JsonModel
         _ = this.CharacterInvolved;
     }
 
-    public TurningPoint() { }
+    public TurningPoint ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TurningPoint(TurningPoint turningPoint)
-        : base(turningPoint) { }
-#pragma warning restore CS8618
+    public TurningPoint (TurningPoint turningPoint) : base(turningPoint)
+    {  }
+    #pragma warning restore CS8618
 
-    public TurningPoint(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TurningPoint (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TurningPoint(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TurningPoint (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TurningPointFromRaw.FromRawUnchecked"/>
-    public static TurningPoint FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static TurningPoint FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TurningPointFromRaw : IFromRawJson<TurningPoint>
 {
     /// <inheritdoc/>
-    public TurningPoint FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TurningPoint.FromRawUnchecked(rawData);
+    public TurningPoint FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TurningPoint.FromRawUnchecked(rawData);
 }

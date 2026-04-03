@@ -9,21 +9,11 @@ public class TicketSaleUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new TicketSaleUpdateParams
         {
-            TicketSaleID = "ticket_sale_id",
-            BuyerEmail = "dev@stainless.com",
-            BuyerName = "buyer_name",
-            CouponCode = "coupon_code",
-            Currency = "currency",
-            Discount = "discount",
-            MatchID = "match_id",
-            PurchaseMethod = PurchaseMethod.Online,
-            Quantity = 1,
-            Subtotal = "subtotal",
-            Tax = "tax",
-            Total = "total",
-            UnitPrice = "unit_price",
+            TicketSaleID = "ticket_sale_id",BuyerEmail = "dev@stainless.com",BuyerName = "buyer_name",CouponCode = "coupon_code",Currency = "currency",Discount = "discount",MatchID = "match_id",PurchaseMethod = PurchaseMethod.Online,Quantity = 1,Subtotal = "subtotal",Tax = "tax",Total = "total",UnitPrice = "unit_price",
         };
 
         string expectedTicketSaleID = "ticket_sale_id";
@@ -58,87 +48,71 @@ public class TicketSaleUpdateParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new TicketSaleUpdateParams { TicketSaleID = "ticket_sale_id" };
+
+
+        var parameters = new TicketSaleUpdateParams
+        {
+            TicketSaleID = "ticket_sale_id",
+        };
 
         Assert.Null(parameters.BuyerEmail);
-        Assert.False(parameters.RawBodyData.ContainsKey("buyer_email"));
-        Assert.Null(parameters.BuyerName);
-        Assert.False(parameters.RawBodyData.ContainsKey("buyer_name"));
-        Assert.Null(parameters.CouponCode);
-        Assert.False(parameters.RawBodyData.ContainsKey("coupon_code"));
-        Assert.Null(parameters.Currency);
-        Assert.False(parameters.RawBodyData.ContainsKey("currency"));
-        Assert.Null(parameters.Discount);
-        Assert.False(parameters.RawBodyData.ContainsKey("discount"));
-        Assert.Null(parameters.MatchID);
-        Assert.False(parameters.RawBodyData.ContainsKey("match_id"));
-        Assert.Null(parameters.PurchaseMethod);
-        Assert.False(parameters.RawBodyData.ContainsKey("purchase_method"));
-        Assert.Null(parameters.Quantity);
-        Assert.False(parameters.RawBodyData.ContainsKey("quantity"));
-        Assert.Null(parameters.Subtotal);
-        Assert.False(parameters.RawBodyData.ContainsKey("subtotal"));
-        Assert.Null(parameters.Tax);
-        Assert.False(parameters.RawBodyData.ContainsKey("tax"));
-        Assert.Null(parameters.Total);
-        Assert.False(parameters.RawBodyData.ContainsKey("total"));
-        Assert.Null(parameters.UnitPrice);
+        Assert.False(parameters.RawBodyData.ContainsKey("buyer_email"));Assert.Null(parameters.BuyerName);
+        Assert.False(parameters.RawBodyData.ContainsKey("buyer_name"));Assert.Null(parameters.CouponCode);
+        Assert.False(parameters.RawBodyData.ContainsKey("coupon_code"));Assert.Null(parameters.Currency);
+        Assert.False(parameters.RawBodyData.ContainsKey("currency"));Assert.Null(parameters.Discount);
+        Assert.False(parameters.RawBodyData.ContainsKey("discount"));Assert.Null(parameters.MatchID);
+        Assert.False(parameters.RawBodyData.ContainsKey("match_id"));Assert.Null(parameters.PurchaseMethod);
+        Assert.False(parameters.RawBodyData.ContainsKey("purchase_method"));Assert.Null(parameters.Quantity);
+        Assert.False(parameters.RawBodyData.ContainsKey("quantity"));Assert.Null(parameters.Subtotal);
+        Assert.False(parameters.RawBodyData.ContainsKey("subtotal"));Assert.Null(parameters.Tax);
+        Assert.False(parameters.RawBodyData.ContainsKey("tax"));Assert.Null(parameters.Total);
+        Assert.False(parameters.RawBodyData.ContainsKey("total"));Assert.Null(parameters.UnitPrice);
         Assert.False(parameters.RawBodyData.ContainsKey("unit_price"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new TicketSaleUpdateParams
         {
             TicketSaleID = "ticket_sale_id",
 
-            BuyerEmail = null,
-            BuyerName = null,
-            CouponCode = null,
-            Currency = null,
-            Discount = null,
-            MatchID = null,
-            PurchaseMethod = null,
-            Quantity = null,
-            Subtotal = null,
-            Tax = null,
-            Total = null,
-            UnitPrice = null,
+            BuyerEmail = null,BuyerName = null,CouponCode = null,Currency = null,Discount = null,MatchID = null,PurchaseMethod = null,Quantity = null,Subtotal = null,Tax = null,Total = null,UnitPrice = null,
         };
 
         Assert.Null(parameters.BuyerEmail);
-        Assert.True(parameters.RawBodyData.ContainsKey("buyer_email"));
-        Assert.Null(parameters.BuyerName);
-        Assert.True(parameters.RawBodyData.ContainsKey("buyer_name"));
-        Assert.Null(parameters.CouponCode);
-        Assert.True(parameters.RawBodyData.ContainsKey("coupon_code"));
-        Assert.Null(parameters.Currency);
-        Assert.True(parameters.RawBodyData.ContainsKey("currency"));
-        Assert.Null(parameters.Discount);
-        Assert.True(parameters.RawBodyData.ContainsKey("discount"));
-        Assert.Null(parameters.MatchID);
-        Assert.True(parameters.RawBodyData.ContainsKey("match_id"));
-        Assert.Null(parameters.PurchaseMethod);
-        Assert.True(parameters.RawBodyData.ContainsKey("purchase_method"));
-        Assert.Null(parameters.Quantity);
-        Assert.True(parameters.RawBodyData.ContainsKey("quantity"));
-        Assert.Null(parameters.Subtotal);
-        Assert.True(parameters.RawBodyData.ContainsKey("subtotal"));
-        Assert.Null(parameters.Tax);
-        Assert.True(parameters.RawBodyData.ContainsKey("tax"));
-        Assert.Null(parameters.Total);
-        Assert.True(parameters.RawBodyData.ContainsKey("total"));
-        Assert.Null(parameters.UnitPrice);
+        Assert.True(parameters.RawBodyData.ContainsKey("buyer_email"));Assert.Null(parameters.BuyerName);
+        Assert.True(parameters.RawBodyData.ContainsKey("buyer_name"));Assert.Null(parameters.CouponCode);
+        Assert.True(parameters.RawBodyData.ContainsKey("coupon_code"));Assert.Null(parameters.Currency);
+        Assert.True(parameters.RawBodyData.ContainsKey("currency"));Assert.Null(parameters.Discount);
+        Assert.True(parameters.RawBodyData.ContainsKey("discount"));Assert.Null(parameters.MatchID);
+        Assert.True(parameters.RawBodyData.ContainsKey("match_id"));Assert.Null(parameters.PurchaseMethod);
+        Assert.True(parameters.RawBodyData.ContainsKey("purchase_method"));Assert.Null(parameters.Quantity);
+        Assert.True(parameters.RawBodyData.ContainsKey("quantity"));Assert.Null(parameters.Subtotal);
+        Assert.True(parameters.RawBodyData.ContainsKey("subtotal"));Assert.Null(parameters.Tax);
+        Assert.True(parameters.RawBodyData.ContainsKey("tax"));Assert.Null(parameters.Total);
+        Assert.True(parameters.RawBodyData.ContainsKey("total"));Assert.Null(parameters.UnitPrice);
         Assert.True(parameters.RawBodyData.ContainsKey("unit_price"));
+
     }
 
     [Fact]
     public void Url_Works()
     {
-        TicketSaleUpdateParams parameters = new() { TicketSaleID = "ticket_sale_id" };
+        TicketSaleUpdateParams parameters = new()
+        {
+            TicketSaleID = "ticket_sale_id"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/ticket-sales/ticket_sale_id"), url);
     }

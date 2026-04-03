@@ -27,13 +27,7 @@ public class TeamMemberListPageResponseTest : TestBase
                     IsCaptain = false,
                     MemberType = TeamMemberPlayerMemberType.Player,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<TeamMemberListResponse> expectedData =
@@ -92,20 +86,11 @@ public class TeamMemberListPageResponseTest : TestBase
                     IsCaptain = false,
                     MemberType = TeamMemberPlayerMemberType.Player,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -130,20 +115,11 @@ public class TeamMemberListPageResponseTest : TestBase
                     IsCaptain = false,
                     MemberType = TeamMemberPlayerMemberType.Player,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamMemberListPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamMemberListPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<TeamMemberListResponse> expectedData =
@@ -202,13 +178,7 @@ public class TeamMemberListPageResponseTest : TestBase
                     IsCaptain = false,
                     MemberType = TeamMemberPlayerMemberType.Player,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -234,13 +204,7 @@ public class TeamMemberListPageResponseTest : TestBase
                     IsCaptain = false,
                     MemberType = TeamMemberPlayerMemberType.Player,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         TeamMemberListPageResponse copied = new(model);

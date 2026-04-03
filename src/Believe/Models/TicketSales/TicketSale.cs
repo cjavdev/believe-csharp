@@ -16,12 +16,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Unique identifier
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -29,12 +29,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Name of the ticket buyer
     /// </summary>
-    public required string BuyerName
-    {
-        get
-        {
+    public required string BuyerName {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("buyer_name");
+            return this._rawData.GetNotNullClass<string>(
+                "buyer_name"
+            );
         }
         init { this._rawData.Set("buyer_name", value); }
     }
@@ -42,12 +42,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Currency code (GBP, USD, or EUR)
     /// </summary>
-    public required string Currency
-    {
-        get
-        {
+    public required string Currency {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("currency");
+            return this._rawData.GetNotNullClass<string>(
+                "currency"
+            );
         }
         init { this._rawData.Set("currency", value); }
     }
@@ -55,12 +55,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Discount amount applied from coupon
     /// </summary>
-    public required string Discount
-    {
-        get
-        {
+    public required string Discount {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("discount");
+            return this._rawData.GetNotNullClass<string>(
+                "discount"
+            );
         }
         init { this._rawData.Set("discount", value); }
     }
@@ -68,12 +68,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// ID of the match
     /// </summary>
-    public required string MatchID
-    {
-        get
-        {
+    public required string MatchID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("match_id");
+            return this._rawData.GetNotNullClass<string>(
+                "match_id"
+            );
         }
         init { this._rawData.Set("match_id", value); }
     }
@@ -81,10 +81,8 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// How the ticket was purchased
     /// </summary>
-    public required ApiEnum<string, PurchaseMethod> PurchaseMethod
-    {
-        get
-        {
+    public required ApiEnum<string, PurchaseMethod> PurchaseMethod {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNotNullClass<ApiEnum<string, PurchaseMethod>>(
                 "purchase_method"
@@ -96,12 +94,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Number of tickets purchased
     /// </summary>
-    public required long Quantity
-    {
-        get
-        {
+    public required long Quantity {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("quantity");
+            return this._rawData.GetNotNullStruct<long>(
+                "quantity"
+            );
         }
         init { this._rawData.Set("quantity", value); }
     }
@@ -109,12 +107,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Subtotal before discount and tax (unit_price * quantity)
     /// </summary>
-    public required string Subtotal
-    {
-        get
-        {
+    public required string Subtotal {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("subtotal");
+            return this._rawData.GetNotNullClass<string>(
+                "subtotal"
+            );
         }
         init { this._rawData.Set("subtotal", value); }
     }
@@ -122,12 +120,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Tax amount (20% UK VAT on discounted subtotal)
     /// </summary>
-    public required string Tax
-    {
-        get
-        {
+    public required string Tax {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("tax");
+            return this._rawData.GetNotNullClass<string>(
+                "tax"
+            );
         }
         init { this._rawData.Set("tax", value); }
     }
@@ -135,12 +133,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Final total (subtotal - discount + tax)
     /// </summary>
-    public required string Total
-    {
-        get
-        {
+    public required string Total {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("total");
+            return this._rawData.GetNotNullClass<string>(
+                "total"
+            );
         }
         init { this._rawData.Set("total", value); }
     }
@@ -148,12 +146,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Price per ticket (decimal string)
     /// </summary>
-    public required string UnitPrice
-    {
-        get
-        {
+    public required string UnitPrice {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("unit_price");
+            return this._rawData.GetNotNullClass<string>(
+                "unit_price"
+            );
         }
         init { this._rawData.Set("unit_price", value); }
     }
@@ -161,12 +159,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Email of the ticket buyer
     /// </summary>
-    public string? BuyerEmail
-    {
-        get
-        {
+    public string? BuyerEmail {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("buyer_email");
+            return this._rawData.GetNullableClass<string>(
+                "buyer_email"
+            );
         }
         init { this._rawData.Set("buyer_email", value); }
     }
@@ -174,12 +172,12 @@ public sealed record class TicketSale : JsonModel
     /// <summary>
     /// Coupon code applied, if any
     /// </summary>
-    public string? CouponCode
-    {
-        get
-        {
+    public string? CouponCode {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("coupon_code");
+            return this._rawData.GetNullableClass<string>(
+                "coupon_code"
+            );
         }
         init { this._rawData.Set("coupon_code", value); }
     }
@@ -202,37 +200,36 @@ public sealed record class TicketSale : JsonModel
         _ = this.CouponCode;
     }
 
-    public TicketSale() { }
+    public TicketSale ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TicketSale(TicketSale ticketSale)
-        : base(ticketSale) { }
-#pragma warning restore CS8618
+    public TicketSale (TicketSale ticketSale) : base(ticketSale)
+    {  }
+    #pragma warning restore CS8618
 
-    public TicketSale(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TicketSale (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TicketSale(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TicketSale (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TicketSaleFromRaw.FromRawUnchecked"/>
-    public static TicketSale FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static TicketSale FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TicketSaleFromRaw : IFromRawJson<TicketSale>
 {
     /// <inheritdoc/>
-    public TicketSale FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TicketSale.FromRawUnchecked(rawData);
+    public TicketSale FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TicketSale.FromRawUnchecked(rawData);
 }

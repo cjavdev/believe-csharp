@@ -18,21 +18,19 @@ namespace Believe.Models.Press;
 /// </summary>
 public record class PressSimulateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     /// <summary>
     /// The press question to answer
     /// </summary>
-    public required string Question
-    {
-        get
-        {
+    public required string Question {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("question");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "question"
+            );
         }
         init { this._rawBodyData.Set("question", value); }
     }
@@ -40,17 +38,15 @@ public record class PressSimulateParams : ParamsBase
     /// <summary>
     /// Is this a hostile question from Trent Crimm?
     /// </summary>
-    public bool? Hostile
-    {
-        get
-        {
+    public bool? Hostile {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("hostile");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "hostile"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -61,28 +57,28 @@ public record class PressSimulateParams : ParamsBase
     /// <summary>
     /// Topic category
     /// </summary>
-    public string? Topic
-    {
-        get
-        {
+    public string? Topic {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("topic");
+            return this._rawBodyData.GetNullableClass<string>(
+                "topic"
+            );
         }
         init { this._rawBodyData.Set("topic", value); }
     }
 
-    public PressSimulateParams() { }
+    public PressSimulateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PressSimulateParams(PressSimulateParams pressSimulateParams)
-        : base(pressSimulateParams)
-    {
-        this._rawBodyData = new(pressSimulateParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public PressSimulateParams (PressSimulateParams pressSimulateParams) : base(
+        pressSimulateParams
+    )
+    { this._rawBodyData = new(pressSimulateParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public PressSimulateParams(
+    public PressSimulateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -93,9 +89,9 @@ public record class PressSimulateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PressSimulateParams(
+    PressSimulateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -105,7 +101,7 @@ public record class PressSimulateParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PressSimulateParams FromRawUnchecked(
@@ -118,25 +114,18 @@ public record class PressSimulateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(PressSimulateParams? other)
     {
@@ -144,17 +133,19 @@ public record class PressSimulateParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/press")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/press"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -163,10 +154,12 @@ public record class PressSimulateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -176,7 +169,5 @@ public record class PressSimulateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

@@ -13,8 +13,9 @@ public class MatchCompletedWebhookEventTest : TestBase
     {
         var model = new MatchCompletedWebhookEvent
         {
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Data = new()
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Data = new(
+
+            )
             {
                 AwayScore = 0,
                 AwayTeamID = "away_team_id",
@@ -27,9 +28,7 @@ public class MatchCompletedWebhookEventTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
+            },EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
         };
 
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -48,8 +47,7 @@ public class MatchCompletedWebhookEventTest : TestBase
             ManOfTheMatch = "man_of_the_match",
         };
         string expectedEventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        ApiEnum<string, MatchCompletedWebhookEventEventType> expectedEventType =
-            MatchCompletedWebhookEventEventType.MatchCompleted;
+        ApiEnum<string, MatchCompletedWebhookEventEventType> expectedEventType = MatchCompletedWebhookEventEventType.MatchCompleted;
 
         Assert.Equal(expectedCreatedAt, model.CreatedAt);
         Assert.Equal(expectedData, model.Data);
@@ -62,8 +60,9 @@ public class MatchCompletedWebhookEventTest : TestBase
     {
         var model = new MatchCompletedWebhookEvent
         {
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Data = new()
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Data = new(
+
+            )
             {
                 AwayScore = 0,
                 AwayTeamID = "away_team_id",
@@ -76,16 +75,11 @@ public class MatchCompletedWebhookEventTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
+            },EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEvent>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEvent>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -95,8 +89,9 @@ public class MatchCompletedWebhookEventTest : TestBase
     {
         var model = new MatchCompletedWebhookEvent
         {
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Data = new()
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Data = new(
+
+            )
             {
                 AwayScore = 0,
                 AwayTeamID = "away_team_id",
@@ -109,16 +104,11 @@ public class MatchCompletedWebhookEventTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
+            },EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEvent>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEvent>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         DateTimeOffset expectedCreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -137,8 +127,7 @@ public class MatchCompletedWebhookEventTest : TestBase
             ManOfTheMatch = "man_of_the_match",
         };
         string expectedEventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e";
-        ApiEnum<string, MatchCompletedWebhookEventEventType> expectedEventType =
-            MatchCompletedWebhookEventEventType.MatchCompleted;
+        ApiEnum<string, MatchCompletedWebhookEventEventType> expectedEventType = MatchCompletedWebhookEventEventType.MatchCompleted;
 
         Assert.Equal(expectedCreatedAt, deserialized.CreatedAt);
         Assert.Equal(expectedData, deserialized.Data);
@@ -151,8 +140,9 @@ public class MatchCompletedWebhookEventTest : TestBase
     {
         var model = new MatchCompletedWebhookEvent
         {
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Data = new()
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Data = new(
+
+            )
             {
                 AwayScore = 0,
                 AwayTeamID = "away_team_id",
@@ -165,9 +155,7 @@ public class MatchCompletedWebhookEventTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
+            },EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
         };
 
         model.Validate();
@@ -178,8 +166,9 @@ public class MatchCompletedWebhookEventTest : TestBase
     {
         var model = new MatchCompletedWebhookEvent
         {
-            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            Data = new()
+            CreatedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),Data = new(
+
+            )
             {
                 AwayScore = 0,
                 AwayTeamID = "away_team_id",
@@ -192,9 +181,7 @@ public class MatchCompletedWebhookEventTest : TestBase
                 TedPostMatchQuote = "ted_post_match_quote",
                 LessonLearned = "lesson_learned",
                 ManOfTheMatch = "man_of_the_match",
-            },
-            EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
+            },EventID = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",EventType = MatchCompletedWebhookEventEventType.MatchCompleted,
         };
 
         MatchCompletedWebhookEvent copied = new(model);
@@ -210,17 +197,7 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         long expectedAwayScore = 0;
@@ -229,10 +206,8 @@ public class MatchCompletedWebhookEventDataTest : TestBase
         long expectedHomeScore = 0;
         string expectedHomeTeamID = "home_team_id";
         string expectedMatchID = "match_id";
-        ApiEnum<string, MatchCompletedWebhookEventDataMatchType> expectedMatchType =
-            MatchCompletedWebhookEventDataMatchType.League;
-        ApiEnum<string, MatchCompletedWebhookEventDataResult> expectedResult =
-            MatchCompletedWebhookEventDataResult.HomeWin;
+        ApiEnum<string, MatchCompletedWebhookEventDataMatchType> expectedMatchType = MatchCompletedWebhookEventDataMatchType.League;
+        ApiEnum<string, MatchCompletedWebhookEventDataResult> expectedResult = MatchCompletedWebhookEventDataResult.HomeWin;
         string expectedTedPostMatchQuote = "ted_post_match_quote";
         string expectedLessonLearned = "lesson_learned";
         string expectedManOfTheMatch = "man_of_the_match";
@@ -255,24 +230,11 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEventData>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEventData>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -282,24 +244,11 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEventData>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEventData>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         long expectedAwayScore = 0;
@@ -308,10 +257,8 @@ public class MatchCompletedWebhookEventDataTest : TestBase
         long expectedHomeScore = 0;
         string expectedHomeTeamID = "home_team_id";
         string expectedMatchID = "match_id";
-        ApiEnum<string, MatchCompletedWebhookEventDataMatchType> expectedMatchType =
-            MatchCompletedWebhookEventDataMatchType.League;
-        ApiEnum<string, MatchCompletedWebhookEventDataResult> expectedResult =
-            MatchCompletedWebhookEventDataResult.HomeWin;
+        ApiEnum<string, MatchCompletedWebhookEventDataMatchType> expectedMatchType = MatchCompletedWebhookEventDataMatchType.League;
+        ApiEnum<string, MatchCompletedWebhookEventDataResult> expectedResult = MatchCompletedWebhookEventDataResult.HomeWin;
         string expectedTedPostMatchQuote = "ted_post_match_quote";
         string expectedLessonLearned = "lesson_learned";
         string expectedManOfTheMatch = "man_of_the_match";
@@ -334,17 +281,7 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         model.Validate();
@@ -355,21 +292,13 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
         };
 
         Assert.Null(model.LessonLearned);
-        Assert.False(model.RawData.ContainsKey("lesson_learned"));
-        Assert.Null(model.ManOfTheMatch);
+        Assert.False(model.RawData.ContainsKey("lesson_learned"));Assert.Null(model.ManOfTheMatch);
         Assert.False(model.RawData.ContainsKey("man_of_the_match"));
+
     }
 
     [Fact]
@@ -377,15 +306,7 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
         };
 
         model.Validate();
@@ -396,24 +317,15 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
 
-            LessonLearned = null,
-            ManOfTheMatch = null,
+            LessonLearned = null,ManOfTheMatch = null,
         };
 
         Assert.Null(model.LessonLearned);
-        Assert.True(model.RawData.ContainsKey("lesson_learned"));
-        Assert.Null(model.ManOfTheMatch);
+        Assert.True(model.RawData.ContainsKey("lesson_learned"));Assert.Null(model.ManOfTheMatch);
         Assert.True(model.RawData.ContainsKey("man_of_the_match"));
+
     }
 
     [Fact]
@@ -421,18 +333,9 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",
 
-            LessonLearned = null,
-            ManOfTheMatch = null,
+            LessonLearned = null,ManOfTheMatch = null,
         };
 
         model.Validate();
@@ -443,17 +346,7 @@ public class MatchCompletedWebhookEventDataTest : TestBase
     {
         var model = new MatchCompletedWebhookEventData
         {
-            AwayScore = 0,
-            AwayTeamID = "away_team_id",
-            CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
-            HomeScore = 0,
-            HomeTeamID = "home_team_id",
-            MatchID = "match_id",
-            MatchType = MatchCompletedWebhookEventDataMatchType.League,
-            Result = MatchCompletedWebhookEventDataResult.HomeWin,
-            TedPostMatchQuote = "ted_post_match_quote",
-            LessonLearned = "lesson_learned",
-            ManOfTheMatch = "man_of_the_match",
+            AwayScore = 0,AwayTeamID = "away_team_id",CompletedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),HomeScore = 0,HomeTeamID = "home_team_id",MatchID = "match_id",MatchType = MatchCompletedWebhookEventDataMatchType.League,Result = MatchCompletedWebhookEventDataResult.HomeWin,TedPostMatchQuote = "ted_post_match_quote",LessonLearned = "lesson_learned",ManOfTheMatch = "man_of_the_match",
         };
 
         MatchCompletedWebhookEventData copied = new(model);
@@ -464,13 +357,10 @@ public class MatchCompletedWebhookEventDataTest : TestBase
 
 public class MatchCompletedWebhookEventDataMatchTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.League)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Cup)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Friendly)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Playoff)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Final)]
-    public void Validation_Works(MatchCompletedWebhookEventDataMatchType rawValue)
+    [Theory][InlineData(MatchCompletedWebhookEventDataMatchType.League)][InlineData(MatchCompletedWebhookEventDataMatchType.Cup)][InlineData(MatchCompletedWebhookEventDataMatchType.Friendly)][InlineData(MatchCompletedWebhookEventDataMatchType.Playoff)][InlineData(MatchCompletedWebhookEventDataMatchType.Final)]
+    public void Validation_Works(
+        MatchCompletedWebhookEventDataMatchType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MatchCompletedWebhookEventDataMatchType> value = rawValue;
@@ -480,29 +370,22 @@ public class MatchCompletedWebhookEventDataMatchTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataMatchType>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataMatchType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.League)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Cup)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Friendly)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Playoff)]
-    [InlineData(MatchCompletedWebhookEventDataMatchType.Final)]
-    public void SerializationRoundtrip_Works(MatchCompletedWebhookEventDataMatchType rawValue)
+    [Theory][InlineData(MatchCompletedWebhookEventDataMatchType.League)][InlineData(MatchCompletedWebhookEventDataMatchType.Cup)][InlineData(MatchCompletedWebhookEventDataMatchType.Friendly)][InlineData(MatchCompletedWebhookEventDataMatchType.Playoff)][InlineData(MatchCompletedWebhookEventDataMatchType.Final)]
+    public void SerializationRoundtrip_Works(
+        MatchCompletedWebhookEventDataMatchType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MatchCompletedWebhookEventDataMatchType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataMatchType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataMatchType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -510,13 +393,9 @@ public class MatchCompletedWebhookEventDataMatchTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataMatchType>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataMatchType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataMatchType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataMatchType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -524,10 +403,7 @@ public class MatchCompletedWebhookEventDataMatchTypeTest : TestBase
 
 public class MatchCompletedWebhookEventDataResultTest : TestBase
 {
-    [Theory]
-    [InlineData(MatchCompletedWebhookEventDataResult.HomeWin)]
-    [InlineData(MatchCompletedWebhookEventDataResult.AwayWin)]
-    [InlineData(MatchCompletedWebhookEventDataResult.Draw)]
+    [Theory][InlineData(MatchCompletedWebhookEventDataResult.HomeWin)][InlineData(MatchCompletedWebhookEventDataResult.AwayWin)][InlineData(MatchCompletedWebhookEventDataResult.Draw)]
     public void Validation_Works(MatchCompletedWebhookEventDataResult rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -538,27 +414,22 @@ public class MatchCompletedWebhookEventDataResultTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataResult>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataResult>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MatchCompletedWebhookEventDataResult.HomeWin)]
-    [InlineData(MatchCompletedWebhookEventDataResult.AwayWin)]
-    [InlineData(MatchCompletedWebhookEventDataResult.Draw)]
-    public void SerializationRoundtrip_Works(MatchCompletedWebhookEventDataResult rawValue)
+    [Theory][InlineData(MatchCompletedWebhookEventDataResult.HomeWin)][InlineData(MatchCompletedWebhookEventDataResult.AwayWin)][InlineData(MatchCompletedWebhookEventDataResult.Draw)]
+    public void SerializationRoundtrip_Works(
+        MatchCompletedWebhookEventDataResult rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MatchCompletedWebhookEventDataResult> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataResult>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataResult>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -566,13 +437,9 @@ public class MatchCompletedWebhookEventDataResultTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataResult>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataResult>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventDataResult>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventDataResult>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -580,8 +447,7 @@ public class MatchCompletedWebhookEventDataResultTest : TestBase
 
 public class MatchCompletedWebhookEventEventTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(MatchCompletedWebhookEventEventType.MatchCompleted)]
+    [Theory][InlineData(MatchCompletedWebhookEventEventType.MatchCompleted)]
     public void Validation_Works(MatchCompletedWebhookEventEventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -592,25 +458,22 @@ public class MatchCompletedWebhookEventEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventEventType>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(MatchCompletedWebhookEventEventType.MatchCompleted)]
-    public void SerializationRoundtrip_Works(MatchCompletedWebhookEventEventType rawValue)
+    [Theory][InlineData(MatchCompletedWebhookEventEventType.MatchCompleted)]
+    public void SerializationRoundtrip_Works(
+        MatchCompletedWebhookEventEventType rawValue
+    )
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, MatchCompletedWebhookEventEventType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventEventType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -618,13 +481,9 @@ public class MatchCompletedWebhookEventEventTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventEventType>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
+        var value = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventEventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, MatchCompletedWebhookEventEventType>
-        >(json, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, MatchCompletedWebhookEventEventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

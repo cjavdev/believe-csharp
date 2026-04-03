@@ -8,12 +8,11 @@ public class MatchStreamLiveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new MatchStreamLiveParams
         {
-            AwayTeam = "away_team",
-            ExcitementLevel = 1,
-            HomeTeam = "home_team",
-            Speed = 0.1,
+            AwayTeam = "away_team",ExcitementLevel = 1,HomeTeam = "home_team",Speed = 0.1,
         };
 
         string expectedAwayTeam = "away_team";
@@ -30,38 +29,40 @@ public class MatchStreamLiveParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new MatchStreamLiveParams { };
+
+
+        var parameters = new MatchStreamLiveParams
+        {
+
+        };
 
         Assert.Null(parameters.AwayTeam);
-        Assert.False(parameters.RawQueryData.ContainsKey("away_team"));
-        Assert.Null(parameters.ExcitementLevel);
-        Assert.False(parameters.RawQueryData.ContainsKey("excitement_level"));
-        Assert.Null(parameters.HomeTeam);
-        Assert.False(parameters.RawQueryData.ContainsKey("home_team"));
-        Assert.Null(parameters.Speed);
+        Assert.False(parameters.RawQueryData.ContainsKey("away_team"));Assert.Null(parameters.ExcitementLevel);
+        Assert.False(parameters.RawQueryData.ContainsKey("excitement_level"));Assert.Null(parameters.HomeTeam);
+        Assert.False(parameters.RawQueryData.ContainsKey("home_team"));Assert.Null(parameters.Speed);
         Assert.False(parameters.RawQueryData.ContainsKey("speed"));
+
     }
 
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
+
+
         var parameters = new MatchStreamLiveParams
         {
+
+
             // Null should be interpreted as omitted for these properties
-            AwayTeam = null,
-            ExcitementLevel = null,
-            HomeTeam = null,
-            Speed = null,
+            AwayTeam = null,ExcitementLevel = null,HomeTeam = null,Speed = null,
         };
 
         Assert.Null(parameters.AwayTeam);
-        Assert.False(parameters.RawQueryData.ContainsKey("away_team"));
-        Assert.Null(parameters.ExcitementLevel);
-        Assert.False(parameters.RawQueryData.ContainsKey("excitement_level"));
-        Assert.Null(parameters.HomeTeam);
-        Assert.False(parameters.RawQueryData.ContainsKey("home_team"));
-        Assert.Null(parameters.Speed);
+        Assert.False(parameters.RawQueryData.ContainsKey("away_team"));Assert.Null(parameters.ExcitementLevel);
+        Assert.False(parameters.RawQueryData.ContainsKey("excitement_level"));Assert.Null(parameters.HomeTeam);
+        Assert.False(parameters.RawQueryData.ContainsKey("home_team"));Assert.Null(parameters.Speed);
         Assert.False(parameters.RawQueryData.ContainsKey("speed"));
+
     }
 
     [Fact]
@@ -75,14 +76,14 @@ public class MatchStreamLiveParamsTest : TestBase
             Speed = 0.1,
         };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
-
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/matches/live?away_team=away_team&excitement_level=1&home_team=home_team&speed=0.1"
-            ),
-            url
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
         );
+
+        Assert.Equal(new Uri("https://believe.cjav.dev/matches/live?away_team=away_team&excitement_level=1&home_team=home_team&speed=0.1"), url);
     }
 
     [Fact]

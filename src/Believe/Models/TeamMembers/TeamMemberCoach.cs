@@ -19,12 +19,12 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// Unique identifier for this team membership
     /// </summary>
-    public required string ID
-    {
-        get
-        {
+    public required string ID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("id");
+            return this._rawData.GetNotNullClass<string>(
+                "id"
+            );
         }
         init { this._rawData.Set("id", value); }
     }
@@ -32,12 +32,12 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// ID of the character (references /characters/{id})
     /// </summary>
-    public required string CharacterID
-    {
-        get
-        {
+    public required string CharacterID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("character_id");
+            return this._rawData.GetNotNullClass<string>(
+                "character_id"
+            );
         }
         init { this._rawData.Set("character_id", value); }
     }
@@ -45,12 +45,12 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// Coaching specialty/role
     /// </summary>
-    public required ApiEnum<string, CoachSpecialty> Specialty
-    {
-        get
-        {
+    public required ApiEnum<string, CoachSpecialty> Specialty {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<ApiEnum<string, CoachSpecialty>>("specialty");
+            return this._rawData.GetNotNullClass<ApiEnum<string, CoachSpecialty>>(
+                "specialty"
+            );
         }
         init { this._rawData.Set("specialty", value); }
     }
@@ -58,12 +58,12 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// ID of the team they belong to
     /// </summary>
-    public required string TeamID
-    {
-        get
-        {
+    public required string TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<string>("team_id");
+            return this._rawData.GetNotNullClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
@@ -71,12 +71,12 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// Number of years with the current team
     /// </summary>
-    public required long YearsWithTeam
-    {
-        get
-        {
+    public required long YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<long>("years_with_team");
+            return this._rawData.GetNotNullStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -84,17 +84,15 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// Coaching certifications and licenses
     /// </summary>
-    public IReadOnlyList<string>? Certifications
-    {
-        get
-        {
+    public IReadOnlyList<string>? Certifications {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("certifications");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "certifications"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -108,19 +106,15 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// Discriminator field indicating this is a coach
     /// </summary>
-    public ApiEnum<string, TeamMemberCoachMemberType>? MemberType
-    {
-        get
-        {
+    public ApiEnum<string, TeamMemberCoachMemberType>? MemberType {
+        get {
             this._rawData.Freeze();
             return this._rawData.GetNullableClass<ApiEnum<string, TeamMemberCoachMemberType>>(
                 "member_type"
             );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -131,12 +125,12 @@ public sealed record class TeamMemberCoach : JsonModel
     /// <summary>
     /// Career win rate (0.0 to 1.0)
     /// </summary>
-    public double? WinRate
-    {
-        get
-        {
+    public double? WinRate {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("win_rate");
+            return this._rawData.GetNullableStruct<double>(
+                "win_rate"
+            );
         }
         init { this._rawData.Set("win_rate", value); }
     }
@@ -154,39 +148,40 @@ public sealed record class TeamMemberCoach : JsonModel
         _ = this.WinRate;
     }
 
-    public TeamMemberCoach() { }
+    public TeamMemberCoach ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamMemberCoach(TeamMemberCoach teamMemberCoach)
-        : base(teamMemberCoach) { }
-#pragma warning restore CS8618
+    public TeamMemberCoach (TeamMemberCoach teamMemberCoach) : base(
+        teamMemberCoach
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public TeamMemberCoach(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public TeamMemberCoach (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamMemberCoach(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    TeamMemberCoach (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="TeamMemberCoachFromRaw.FromRawUnchecked"/>
-    public static TeamMemberCoach FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static TeamMemberCoach FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class TeamMemberCoachFromRaw : IFromRawJson<TeamMemberCoach>
 {
     /// <inheritdoc/>
-    public TeamMemberCoach FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        TeamMemberCoach.FromRawUnchecked(rawData);
+    public TeamMemberCoach FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>TeamMemberCoach.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -195,10 +190,8 @@ class TeamMemberCoachFromRaw : IFromRawJson<TeamMemberCoach>
 [JsonConverter(typeof(TeamMemberCoachMemberTypeConverter))]
 public enum TeamMemberCoachMemberType
 {
-    Coach,
-}
-
-sealed class TeamMemberCoachMemberTypeConverter : JsonConverter<TeamMemberCoachMemberType>
+    Coach
+}sealed class TeamMemberCoachMemberTypeConverter : JsonConverter<TeamMemberCoachMemberType>
 {
     public override TeamMemberCoachMemberType Read(
         ref Utf8JsonReader reader,
@@ -208,8 +201,8 @@ sealed class TeamMemberCoachMemberTypeConverter : JsonConverter<TeamMemberCoachM
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "coach" => TeamMemberCoachMemberType.Coach,
-            _ => (TeamMemberCoachMemberType)(-1),
+            "coach"=>TeamMemberCoachMemberType.Coach,
+            _ =>(TeamMemberCoachMemberType)(-1)
         };
     }
 
@@ -219,16 +212,12 @@ sealed class TeamMemberCoachMemberTypeConverter : JsonConverter<TeamMemberCoachM
         JsonSerializerOptions options
     )
     {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TeamMemberCoachMemberType.Coach => "coach",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
+        JsonSerializer.Serialize(writer, value switch
+        {
+            TeamMemberCoachMemberType.Coach=>"coach",
+            _ => throw new BelieveInvalidDataException(string.Format("Invalid value '{0}' in {1}",
+            value,
+            nameof(value)))
+        }, options);
     }
 }

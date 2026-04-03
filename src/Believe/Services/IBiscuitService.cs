@@ -26,39 +26,42 @@ public interface IBiscuitService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IBiscuitService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IBiscuitService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Get a specific type of biscuit by ID.
-    /// </summary>
+/// Get a specific type of biscuit by ID.
+/// </summary>
     Task<Biscuit> Retrieve(
         BiscuitRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(BiscuitRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(BiscuitRetrieveParams, CancellationToken)"/>
     Task<Biscuit> Retrieve(
         string biscuitID,
         BiscuitRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a paginated list of Ted's famous homemade biscuits! Each comes with a
-    /// heartwarming message.
-    /// </summary>
+/// Get a paginated list of Ted's famous homemade biscuits! Each comes with a
+/// heartwarming message.
+/// </summary>
     Task<BiscuitListPage> List(
         BiscuitListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a single fresh biscuit with a personalized message from Ted.
-    /// </summary>
+/// Get a single fresh biscuit with a personalized message from Ted.
+/// </summary>
     Task<Biscuit> GetFresh(
         BiscuitGetFreshParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -72,39 +75,44 @@ public interface IBiscuitServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IBiscuitServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IBiscuitServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /biscuits/{biscuit_id}</c>, but is otherwise the
-    /// same as <see cref="IBiscuitService.Retrieve(BiscuitRetrieveParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /biscuits/{biscuit_id}</c>, but is otherwise the
+/// same as <see cref="IBiscuitService.Retrieve(BiscuitRetrieveParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Biscuit>> Retrieve(
         BiscuitRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(BiscuitRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(BiscuitRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<Biscuit>> Retrieve(
         string biscuitID,
         BiscuitRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /biscuits</c>, but is otherwise the
-    /// same as <see cref="IBiscuitService.List(BiscuitListParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /biscuits</c>, but is otherwise the
+/// same as <see cref="IBiscuitService.List(BiscuitListParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<BiscuitListPage>> List(
         BiscuitListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /biscuits/fresh</c>, but is otherwise the
-    /// same as <see cref="IBiscuitService.GetFresh(BiscuitGetFreshParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /biscuits/fresh</c>, but is otherwise the
+/// same as <see cref="IBiscuitService.GetFresh(BiscuitGetFreshParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Biscuit>> GetFresh(
         BiscuitGetFreshParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

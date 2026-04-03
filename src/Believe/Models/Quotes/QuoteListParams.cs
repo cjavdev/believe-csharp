@@ -20,12 +20,12 @@ public record class QuoteListParams : ParamsBase
     /// <summary>
     /// Filter by character
     /// </summary>
-    public string? CharacterID
-    {
-        get
-        {
+    public string? CharacterID {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("character_id");
+            return this._rawQueryData.GetNullableClass<string>(
+                "character_id"
+            );
         }
         init { this._rawQueryData.Set("character_id", value); }
     }
@@ -33,12 +33,12 @@ public record class QuoteListParams : ParamsBase
     /// <summary>
     /// Filter funny quotes
     /// </summary>
-    public bool? Funny
-    {
-        get
-        {
+    public bool? Funny {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<bool>("funny");
+            return this._rawQueryData.GetNullableStruct<bool>(
+                "funny"
+            );
         }
         init { this._rawQueryData.Set("funny", value); }
     }
@@ -46,12 +46,12 @@ public record class QuoteListParams : ParamsBase
     /// <summary>
     /// Filter inspirational quotes
     /// </summary>
-    public bool? Inspirational
-    {
-        get
-        {
+    public bool? Inspirational {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<bool>("inspirational");
+            return this._rawQueryData.GetNullableStruct<bool>(
+                "inspirational"
+            );
         }
         init { this._rawQueryData.Set("inspirational", value); }
     }
@@ -59,17 +59,15 @@ public record class QuoteListParams : ParamsBase
     /// <summary>
     /// Maximum number of items to return (max: 100)
     /// </summary>
-    public long? Limit
-    {
-        get
-        {
+    public long? Limit {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "limit"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -80,12 +78,12 @@ public record class QuoteListParams : ParamsBase
     /// <summary>
     /// Filter by moment type
     /// </summary>
-    public ApiEnum<string, QuoteMoment>? MomentType
-    {
-        get
-        {
+    public ApiEnum<string, QuoteMoment>? MomentType {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, QuoteMoment>>("moment_type");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, QuoteMoment>>(
+                "moment_type"
+            );
         }
         init { this._rawQueryData.Set("moment_type", value); }
     }
@@ -93,17 +91,15 @@ public record class QuoteListParams : ParamsBase
     /// <summary>
     /// Number of items to skip (offset)
     /// </summary>
-    public long? Skip
-    {
-        get
-        {
+    public long? Skip {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "skip"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -114,25 +110,28 @@ public record class QuoteListParams : ParamsBase
     /// <summary>
     /// Filter by theme
     /// </summary>
-    public ApiEnum<string, QuoteTheme>? Theme
-    {
-        get
-        {
+    public ApiEnum<string, QuoteTheme>? Theme {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, QuoteTheme>>("theme");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, QuoteTheme>>(
+                "theme"
+            );
         }
         init { this._rawQueryData.Set("theme", value); }
     }
 
-    public QuoteListParams() { }
+    public QuoteListParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public QuoteListParams(QuoteListParams quoteListParams)
-        : base(quoteListParams) { }
-#pragma warning restore CS8618
+    public QuoteListParams (QuoteListParams quoteListParams) : base(
+        quoteListParams
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public QuoteListParams(
+    public QuoteListParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -141,9 +140,9 @@ public record class QuoteListParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    QuoteListParams(
+    QuoteListParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -151,7 +150,7 @@ public record class QuoteListParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static QuoteListParams FromRawUnchecked(
@@ -162,24 +161,17 @@ public record class QuoteListParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(QuoteListParams? other)
     {
@@ -187,19 +179,22 @@ public record class QuoteListParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/quotes")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/quotes"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -209,7 +204,5 @@ public record class QuoteListParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

@@ -12,19 +12,21 @@ public class WebhookCreateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+
+
         var parameters = new WebhookCreateParams
         {
-            UrlValue = "https://example.com/webhooks",
-            Description = "Production webhook for match notifications",
-            EventTypes = [EventType.MatchCompleted, EventType.TeamMemberTransferred],
+            UrlValue = "https://example.com/webhooks",Description = "Production webhook for match notifications",EventTypes =
+            [
+                EventType.MatchCompleted, EventType.TeamMemberTransferred
+            ],
         };
 
         string expectedUrlValue = "https://example.com/webhooks";
         string expectedDescription = "Production webhook for match notifications";
         List<ApiEnum<string, EventType>> expectedEventTypes =
         [
-            EventType.MatchCompleted,
-            EventType.TeamMemberTransferred,
+            EventType.MatchCompleted, EventType.TeamMemberTransferred
         ];
 
         Assert.Equal(expectedUrlValue, parameters.UrlValue);
@@ -40,37 +42,51 @@ public class WebhookCreateParamsTest : TestBase
     [Fact]
     public void OptionalNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new WebhookCreateParams { UrlValue = "https://example.com/webhooks" };
+
+
+        var parameters = new WebhookCreateParams
+        {
+            UrlValue = "https://example.com/webhooks",
+        };
 
         Assert.Null(parameters.Description);
-        Assert.False(parameters.RawBodyData.ContainsKey("description"));
-        Assert.Null(parameters.EventTypes);
+        Assert.False(parameters.RawBodyData.ContainsKey("description"));Assert.Null(parameters.EventTypes);
         Assert.False(parameters.RawBodyData.ContainsKey("event_types"));
+
     }
 
     [Fact]
     public void OptionalNullableParamsSetToNullAreSetToNull_Works()
     {
+
+
         var parameters = new WebhookCreateParams
         {
             UrlValue = "https://example.com/webhooks",
 
-            Description = null,
-            EventTypes = null,
+            Description = null,EventTypes = null,
         };
 
         Assert.Null(parameters.Description);
-        Assert.True(parameters.RawBodyData.ContainsKey("description"));
-        Assert.Null(parameters.EventTypes);
+        Assert.True(parameters.RawBodyData.ContainsKey("description"));Assert.Null(parameters.EventTypes);
         Assert.True(parameters.RawBodyData.ContainsKey("event_types"));
+
     }
 
     [Fact]
     public void Url_Works()
     {
-        WebhookCreateParams parameters = new() { UrlValue = "https://example.com/webhooks" };
+        WebhookCreateParams parameters = new()
+        {
+            UrlValue = "https://example.com/webhooks"
+        };
 
-        var url = parameters.Url(new() { ApiKey = "My API Key" });
+        var url = parameters.Url(
+            new()
+            {
+                ApiKey = "My API Key"
+            }
+        );
 
         Assert.Equal(new Uri("https://believe.cjav.dev/webhooks"), url);
     }
@@ -82,7 +98,10 @@ public class WebhookCreateParamsTest : TestBase
         {
             UrlValue = "https://example.com/webhooks",
             Description = "Production webhook for match notifications",
-            EventTypes = [EventType.MatchCompleted, EventType.TeamMemberTransferred],
+            EventTypes =
+            [
+                EventType.MatchCompleted, EventType.TeamMemberTransferred
+            ],
         };
 
         WebhookCreateParams copied = new(parameters);
@@ -93,9 +112,7 @@ public class WebhookCreateParamsTest : TestBase
 
 public class EventTypeTest : TestBase
 {
-    [Theory]
-    [InlineData(EventType.MatchCompleted)]
-    [InlineData(EventType.TeamMemberTransferred)]
+    [Theory][InlineData(EventType.MatchCompleted)][InlineData(EventType.TeamMemberTransferred)]
     public void Validation_Works(EventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
@@ -106,28 +123,20 @@ public class EventTypeTest : TestBase
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
     }
 
-    [Theory]
-    [InlineData(EventType.MatchCompleted)]
-    [InlineData(EventType.TeamMemberTransferred)]
+    [Theory][InlineData(EventType.MatchCompleted)][InlineData(EventType.TeamMemberTransferred)]
     public void SerializationRoundtrip_Works(EventType rawValue)
     {
         // force implicit conversion because Theory can't do that for us
         ApiEnum<string, EventType> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }
@@ -135,15 +144,9 @@ public class EventTypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(
-            JsonSerializer.SerializeToElement("invalid value"),
-            ModelBase.SerializerOptions
-        );
+        var value = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, EventType>>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(value, deserialized);
     }

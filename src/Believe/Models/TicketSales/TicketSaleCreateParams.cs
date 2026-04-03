@@ -18,21 +18,19 @@ namespace Believe.Models.TicketSales;
 /// </summary>
 public record class TicketSaleCreateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     /// <summary>
     /// Name of the ticket buyer
     /// </summary>
-    public required string BuyerName
-    {
-        get
-        {
+    public required string BuyerName {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("buyer_name");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "buyer_name"
+            );
         }
         init { this._rawBodyData.Set("buyer_name", value); }
     }
@@ -40,12 +38,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Currency code (GBP, USD, or EUR)
     /// </summary>
-    public required string Currency
-    {
-        get
-        {
+    public required string Currency {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("currency");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "currency"
+            );
         }
         init { this._rawBodyData.Set("currency", value); }
     }
@@ -53,12 +51,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Discount amount applied from coupon
     /// </summary>
-    public required string Discount
-    {
-        get
-        {
+    public required string Discount {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("discount");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "discount"
+            );
         }
         init { this._rawBodyData.Set("discount", value); }
     }
@@ -66,12 +64,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// ID of the match
     /// </summary>
-    public required string MatchID
-    {
-        get
-        {
+    public required string MatchID {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("match_id");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "match_id"
+            );
         }
         init { this._rawBodyData.Set("match_id", value); }
     }
@@ -79,10 +77,8 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// How the ticket was purchased
     /// </summary>
-    public required ApiEnum<string, PurchaseMethod> PurchaseMethod
-    {
-        get
-        {
+    public required ApiEnum<string, PurchaseMethod> PurchaseMethod {
+        get {
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNotNullClass<ApiEnum<string, PurchaseMethod>>(
                 "purchase_method"
@@ -94,12 +90,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Number of tickets purchased
     /// </summary>
-    public required long Quantity
-    {
-        get
-        {
+    public required long Quantity {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullStruct<long>("quantity");
+            return this._rawBodyData.GetNotNullStruct<long>(
+                "quantity"
+            );
         }
         init { this._rawBodyData.Set("quantity", value); }
     }
@@ -107,12 +103,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Subtotal before discount and tax (unit_price * quantity)
     /// </summary>
-    public required string Subtotal
-    {
-        get
-        {
+    public required string Subtotal {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("subtotal");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "subtotal"
+            );
         }
         init { this._rawBodyData.Set("subtotal", value); }
     }
@@ -120,12 +116,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Tax amount (20% UK VAT on discounted subtotal)
     /// </summary>
-    public required string Tax
-    {
-        get
-        {
+    public required string Tax {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("tax");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "tax"
+            );
         }
         init { this._rawBodyData.Set("tax", value); }
     }
@@ -133,12 +129,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Final total (subtotal - discount + tax)
     /// </summary>
-    public required string Total
-    {
-        get
-        {
+    public required string Total {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("total");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "total"
+            );
         }
         init { this._rawBodyData.Set("total", value); }
     }
@@ -146,12 +142,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Price per ticket (decimal string)
     /// </summary>
-    public required string UnitPrice
-    {
-        get
-        {
+    public required string UnitPrice {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<string>("unit_price");
+            return this._rawBodyData.GetNotNullClass<string>(
+                "unit_price"
+            );
         }
         init { this._rawBodyData.Set("unit_price", value); }
     }
@@ -159,12 +155,12 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Email of the ticket buyer
     /// </summary>
-    public string? BuyerEmail
-    {
-        get
-        {
+    public string? BuyerEmail {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("buyer_email");
+            return this._rawBodyData.GetNullableClass<string>(
+                "buyer_email"
+            );
         }
         init { this._rawBodyData.Set("buyer_email", value); }
     }
@@ -172,28 +168,28 @@ public record class TicketSaleCreateParams : ParamsBase
     /// <summary>
     /// Coupon code applied, if any
     /// </summary>
-    public string? CouponCode
-    {
-        get
-        {
+    public string? CouponCode {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("coupon_code");
+            return this._rawBodyData.GetNullableClass<string>(
+                "coupon_code"
+            );
         }
         init { this._rawBodyData.Set("coupon_code", value); }
     }
 
-    public TicketSaleCreateParams() { }
+    public TicketSaleCreateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TicketSaleCreateParams(TicketSaleCreateParams ticketSaleCreateParams)
-        : base(ticketSaleCreateParams)
-    {
-        this._rawBodyData = new(ticketSaleCreateParams._rawBodyData);
-    }
-#pragma warning restore CS8618
+    public TicketSaleCreateParams (
+        TicketSaleCreateParams ticketSaleCreateParams
+    ) : base(ticketSaleCreateParams)
+    { this._rawBodyData = new(ticketSaleCreateParams._rawBodyData); }
+    #pragma warning restore CS8618
 
-    public TicketSaleCreateParams(
+    public TicketSaleCreateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -204,9 +200,9 @@ public record class TicketSaleCreateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TicketSaleCreateParams(
+    TicketSaleCreateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData
@@ -216,7 +212,7 @@ public record class TicketSaleCreateParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TicketSaleCreateParams FromRawUnchecked(
@@ -229,25 +225,18 @@ public record class TicketSaleCreateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TicketSaleCreateParams? other)
     {
@@ -255,17 +244,19 @@ public record class TicketSaleCreateParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/ticket-sales")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/ticket-sales"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -274,10 +265,12 @@ public record class TicketSaleCreateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -287,7 +280,5 @@ public record class TicketSaleCreateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

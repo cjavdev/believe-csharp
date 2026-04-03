@@ -9,7 +9,10 @@ public class GeoLocationTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new GeoLocation { Latitude = 51.4816, Longitude = -0.191 };
+        var model = new GeoLocation
+        {
+            Latitude = 51.4816,Longitude = -0.191,
+        };
 
         double expectedLatitude = 51.4816;
         double expectedLongitude = -0.191;
@@ -21,13 +24,13 @@ public class GeoLocationTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new GeoLocation { Latitude = 51.4816, Longitude = -0.191 };
+        var model = new GeoLocation
+        {
+            Latitude = 51.4816,Longitude = -0.191,
+        };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<GeoLocation>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<GeoLocation>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -35,13 +38,13 @@ public class GeoLocationTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new GeoLocation { Latitude = 51.4816, Longitude = -0.191 };
+        var model = new GeoLocation
+        {
+            Latitude = 51.4816,Longitude = -0.191,
+        };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<GeoLocation>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<GeoLocation>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         double expectedLatitude = 51.4816;
@@ -54,7 +57,10 @@ public class GeoLocationTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new GeoLocation { Latitude = 51.4816, Longitude = -0.191 };
+        var model = new GeoLocation
+        {
+            Latitude = 51.4816,Longitude = -0.191,
+        };
 
         model.Validate();
     }
@@ -62,7 +68,10 @@ public class GeoLocationTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new GeoLocation { Latitude = 51.4816, Longitude = -0.191 };
+        var model = new GeoLocation
+        {
+            Latitude = 51.4816,Longitude = -0.191,
+        };
 
         GeoLocation copied = new(model);
 

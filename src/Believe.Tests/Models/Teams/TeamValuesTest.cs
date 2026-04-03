@@ -12,13 +12,17 @@ public class TeamValuesTest : TestBase
     {
         var model = new TeamValues
         {
-            PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
-            TeamMotto = "Football is life!",
+            PrimaryValue = "Believe",SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],TeamMotto = "Football is life!",
         };
 
         string expectedPrimaryValue = "Believe";
-        List<string> expectedSecondaryValues = ["Family", "Resilience", "Joy"];
+        List<string> expectedSecondaryValues =
+        [
+            "Family", "Resilience", "Joy"
+        ];
         string expectedTeamMotto = "Football is life!";
 
         Assert.Equal(expectedPrimaryValue, model.PrimaryValue);
@@ -35,16 +39,14 @@ public class TeamValuesTest : TestBase
     {
         var model = new TeamValues
         {
-            PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
-            TeamMotto = "Football is life!",
+            PrimaryValue = "Believe",SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],TeamMotto = "Football is life!",
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamValues>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamValues>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -54,20 +56,21 @@ public class TeamValuesTest : TestBase
     {
         var model = new TeamValues
         {
-            PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
-            TeamMotto = "Football is life!",
+            PrimaryValue = "Believe",SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],TeamMotto = "Football is life!",
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamValues>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamValues>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedPrimaryValue = "Believe";
-        List<string> expectedSecondaryValues = ["Family", "Resilience", "Joy"];
+        List<string> expectedSecondaryValues =
+        [
+            "Family", "Resilience", "Joy"
+        ];
         string expectedTeamMotto = "Football is life!";
 
         Assert.Equal(expectedPrimaryValue, deserialized.PrimaryValue);
@@ -84,9 +87,10 @@ public class TeamValuesTest : TestBase
     {
         var model = new TeamValues
         {
-            PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
-            TeamMotto = "Football is life!",
+            PrimaryValue = "Believe",SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],TeamMotto = "Football is life!",
         };
 
         model.Validate();
@@ -97,9 +101,10 @@ public class TeamValuesTest : TestBase
     {
         var model = new TeamValues
         {
-            PrimaryValue = "Believe",
-            SecondaryValues = ["Family", "Resilience", "Joy"],
-            TeamMotto = "Football is life!",
+            PrimaryValue = "Believe",SecondaryValues =
+            [
+                "Family", "Resilience", "Joy"
+            ],TeamMotto = "Football is life!",
         };
 
         TeamValues copied = new(model);

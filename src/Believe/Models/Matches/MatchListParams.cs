@@ -20,17 +20,15 @@ public record class MatchListParams : ParamsBase
     /// <summary>
     /// Maximum number of items to return (max: 100)
     /// </summary>
-    public long? Limit
-    {
-        get
-        {
+    public long? Limit {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "limit"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -41,12 +39,12 @@ public record class MatchListParams : ParamsBase
     /// <summary>
     /// Filter by match type
     /// </summary>
-    public ApiEnum<string, MatchType>? MatchType
-    {
-        get
-        {
+    public ApiEnum<string, MatchType>? MatchType {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, MatchType>>("match_type");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, MatchType>>(
+                "match_type"
+            );
         }
         init { this._rawQueryData.Set("match_type", value); }
     }
@@ -54,12 +52,12 @@ public record class MatchListParams : ParamsBase
     /// <summary>
     /// Filter by result
     /// </summary>
-    public ApiEnum<string, MatchResult>? Result
-    {
-        get
-        {
+    public ApiEnum<string, MatchResult>? Result {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, MatchResult>>("result");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, MatchResult>>(
+                "result"
+            );
         }
         init { this._rawQueryData.Set("result", value); }
     }
@@ -67,17 +65,15 @@ public record class MatchListParams : ParamsBase
     /// <summary>
     /// Number of items to skip (offset)
     /// </summary>
-    public long? Skip
-    {
-        get
-        {
+    public long? Skip {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "skip"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -88,25 +84,28 @@ public record class MatchListParams : ParamsBase
     /// <summary>
     /// Filter by team (home or away)
     /// </summary>
-    public string? TeamID
-    {
-        get
-        {
+    public string? TeamID {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("team_id");
+            return this._rawQueryData.GetNullableClass<string>(
+                "team_id"
+            );
         }
         init { this._rawQueryData.Set("team_id", value); }
     }
 
-    public MatchListParams() { }
+    public MatchListParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MatchListParams(MatchListParams matchListParams)
-        : base(matchListParams) { }
-#pragma warning restore CS8618
+    public MatchListParams (MatchListParams matchListParams) : base(
+        matchListParams
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public MatchListParams(
+    public MatchListParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -115,9 +114,9 @@ public record class MatchListParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MatchListParams(
+    MatchListParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -125,7 +124,7 @@ public record class MatchListParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static MatchListParams FromRawUnchecked(
@@ -136,24 +135,17 @@ public record class MatchListParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(MatchListParams? other)
     {
@@ -161,19 +153,22 @@ public record class MatchListParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/matches")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/matches"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -183,7 +178,5 @@ public record class MatchListParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

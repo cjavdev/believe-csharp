@@ -19,60 +19,58 @@ namespace Believe.Models.Quotes;
 /// </summary>
 public record class QuoteUpdateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     public string? QuoteID { get; init; }
 
-    public string? CharacterID
-    {
-        get
-        {
+    public string? CharacterID {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("character_id");
+            return this._rawBodyData.GetNullableClass<string>(
+                "character_id"
+            );
         }
         init { this._rawBodyData.Set("character_id", value); }
     }
 
-    public string? Context
-    {
-        get
-        {
+    public string? Context {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("context");
+            return this._rawBodyData.GetNullableClass<string>(
+                "context"
+            );
         }
         init { this._rawBodyData.Set("context", value); }
     }
 
-    public string? EpisodeID
-    {
-        get
-        {
+    public string? EpisodeID {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("episode_id");
+            return this._rawBodyData.GetNullableClass<string>(
+                "episode_id"
+            );
         }
         init { this._rawBodyData.Set("episode_id", value); }
     }
 
-    public bool? IsFunny
-    {
-        get
-        {
+    public bool? IsFunny {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("is_funny");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "is_funny"
+            );
         }
         init { this._rawBodyData.Set("is_funny", value); }
     }
 
-    public bool? IsInspirational
-    {
-        get
-        {
+    public bool? IsInspirational {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<bool>("is_inspirational");
+            return this._rawBodyData.GetNullableStruct<bool>(
+                "is_inspirational"
+            );
         }
         init { this._rawBodyData.Set("is_inspirational", value); }
     }
@@ -80,37 +78,34 @@ public record class QuoteUpdateParams : ParamsBase
     /// <summary>
     /// Types of moments when quotes occur.
     /// </summary>
-    public ApiEnum<string, QuoteMoment>? MomentType
-    {
-        get
-        {
+    public ApiEnum<string, QuoteMoment>? MomentType {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<ApiEnum<string, QuoteMoment>>("moment_type");
+            return this._rawBodyData.GetNullableClass<ApiEnum<string, QuoteMoment>>(
+                "moment_type"
+            );
         }
         init { this._rawBodyData.Set("moment_type", value); }
     }
 
-    public double? PopularityScore
-    {
-        get
-        {
+    public double? PopularityScore {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<double>("popularity_score");
+            return this._rawBodyData.GetNullableStruct<double>(
+                "popularity_score"
+            );
         }
         init { this._rawBodyData.Set("popularity_score", value); }
     }
 
-    public IReadOnlyList<ApiEnum<string, QuoteTheme>>? SecondaryThemes
-    {
-        get
-        {
+    public IReadOnlyList<ApiEnum<string, QuoteTheme>>? SecondaryThemes {
+        get {
             this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableStruct<ImmutableArray<ApiEnum<string, QuoteTheme>>>(
                 "secondary_themes"
             );
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<ImmutableArray<ApiEnum<string, QuoteTheme>>?>(
                 "secondary_themes",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -118,12 +113,12 @@ public record class QuoteUpdateParams : ParamsBase
         }
     }
 
-    public string? Text
-    {
-        get
-        {
+    public string? Text {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("text");
+            return this._rawBodyData.GetNullableClass<string>(
+                "text"
+            );
         }
         init { this._rawBodyData.Set("text", value); }
     }
@@ -131,40 +126,42 @@ public record class QuoteUpdateParams : ParamsBase
     /// <summary>
     /// Themes that quotes can be categorized under.
     /// </summary>
-    public ApiEnum<string, QuoteTheme>? Theme
-    {
-        get
-        {
+    public ApiEnum<string, QuoteTheme>? Theme {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<ApiEnum<string, QuoteTheme>>("theme");
+            return this._rawBodyData.GetNullableClass<ApiEnum<string, QuoteTheme>>(
+                "theme"
+            );
         }
         init { this._rawBodyData.Set("theme", value); }
     }
 
-    public long? TimesShared
-    {
-        get
-        {
+    public long? TimesShared {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<long>("times_shared");
+            return this._rawBodyData.GetNullableStruct<long>(
+                "times_shared"
+            );
         }
         init { this._rawBodyData.Set("times_shared", value); }
     }
 
-    public QuoteUpdateParams() { }
+    public QuoteUpdateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public QuoteUpdateParams(QuoteUpdateParams quoteUpdateParams)
-        : base(quoteUpdateParams)
+    public QuoteUpdateParams (QuoteUpdateParams quoteUpdateParams) : base(
+        quoteUpdateParams
+    )
     {
         this.QuoteID = quoteUpdateParams.QuoteID;
 
         this._rawBodyData = new(quoteUpdateParams._rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public QuoteUpdateParams(
+    public QuoteUpdateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -175,9 +172,9 @@ public record class QuoteUpdateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    QuoteUpdateParams(
+    QuoteUpdateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData,
@@ -189,7 +186,7 @@ public record class QuoteUpdateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
         this.QuoteID = quoteID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static QuoteUpdateParams FromRawUnchecked(
@@ -204,26 +201,19 @@ public record class QuoteUpdateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData),
             quoteID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["QuoteID"] = JsonSerializer.SerializeToElement(this.QuoteID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["QuoteID"] = JsonSerializer.SerializeToElement(this.QuoteID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(QuoteUpdateParams? other)
     {
@@ -231,20 +221,20 @@ public record class QuoteUpdateParams : ParamsBase
         {
             return false;
         }
-        return (this.QuoteID?.Equals(other.QuoteID) ?? other.QuoteID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return (this.QuoteID?.Equals(other.QuoteID) ?? other.QuoteID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/quotes/{0}", this.QuoteID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/quotes/{0}",
+            this.QuoteID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -253,10 +243,12 @@ public record class QuoteUpdateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -266,7 +258,5 @@ public record class QuoteUpdateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

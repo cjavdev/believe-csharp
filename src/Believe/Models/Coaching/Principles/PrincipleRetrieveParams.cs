@@ -19,18 +19,18 @@ public record class PrincipleRetrieveParams : ParamsBase
 {
     public string? PrincipleID { get; init; }
 
-    public PrincipleRetrieveParams() { }
+    public PrincipleRetrieveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PrincipleRetrieveParams(PrincipleRetrieveParams principleRetrieveParams)
-        : base(principleRetrieveParams)
-    {
-        this.PrincipleID = principleRetrieveParams.PrincipleID;
-    }
-#pragma warning restore CS8618
+    public PrincipleRetrieveParams (
+        PrincipleRetrieveParams principleRetrieveParams
+    ) : base(principleRetrieveParams)
+    { this.PrincipleID = principleRetrieveParams.PrincipleID; }
+    #pragma warning restore CS8618
 
-    public PrincipleRetrieveParams(
+    public PrincipleRetrieveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -39,9 +39,9 @@ public record class PrincipleRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PrincipleRetrieveParams(
+    PrincipleRetrieveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string principleID
@@ -51,7 +51,7 @@ public record class PrincipleRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.PrincipleID = principleID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PrincipleRetrieveParams FromRawUnchecked(
@@ -64,25 +64,18 @@ public record class PrincipleRetrieveParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             principleID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["PrincipleID"] = JsonSerializer.SerializeToElement(this.PrincipleID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["PrincipleID"] = JsonSerializer.SerializeToElement(this.PrincipleID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(PrincipleRetrieveParams? other)
     {
@@ -90,23 +83,23 @@ public record class PrincipleRetrieveParams : ParamsBase
         {
             return false;
         }
-        return (this.PrincipleID?.Equals(other.PrincipleID) ?? other.PrincipleID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.PrincipleID?.Equals(other.PrincipleID) ?? other.PrincipleID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/coaching/principles/{0}", this.PrincipleID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/coaching/principles/{0}",
+            this.PrincipleID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -116,7 +109,5 @@ public record class PrincipleRetrieveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

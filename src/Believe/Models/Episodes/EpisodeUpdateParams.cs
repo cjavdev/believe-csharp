@@ -19,43 +19,40 @@ namespace Believe.Models.Episodes;
 /// </summary>
 public record class EpisodeUpdateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
+    readonly JsonDictionary _rawBodyData = new();public IReadOnlyDictionary<string, JsonElement> RawBodyData {
         get { return this._rawBodyData.Freeze(); }
     }
 
     public string? EpisodeID { get; init; }
 
-    public string? AirDate
-    {
-        get
-        {
+    public string? AirDate {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("air_date");
+            return this._rawBodyData.GetNullableClass<string>(
+                "air_date"
+            );
         }
         init { this._rawBodyData.Set("air_date", value); }
     }
 
-    public string? BiscuitsWithBossMoment
-    {
-        get
-        {
+    public string? BiscuitsWithBossMoment {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("biscuits_with_boss_moment");
+            return this._rawBodyData.GetNullableClass<string>(
+                "biscuits_with_boss_moment"
+            );
         }
         init { this._rawBodyData.Set("biscuits_with_boss_moment", value); }
     }
 
-    public IReadOnlyList<string>? CharacterFocus
-    {
-        get
-        {
+    public IReadOnlyList<string>? CharacterFocus {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("character_focus");
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>(
+                "character_focus"
+            );
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<ImmutableArray<string>?>(
                 "character_focus",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -63,45 +60,44 @@ public record class EpisodeUpdateParams : ParamsBase
         }
     }
 
-    public string? Director
-    {
-        get
-        {
+    public string? Director {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("director");
+            return this._rawBodyData.GetNullableClass<string>(
+                "director"
+            );
         }
         init { this._rawBodyData.Set("director", value); }
     }
 
-    public long? EpisodeNumber
-    {
-        get
-        {
+    public long? EpisodeNumber {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<long>("episode_number");
+            return this._rawBodyData.GetNullableStruct<long>(
+                "episode_number"
+            );
         }
         init { this._rawBodyData.Set("episode_number", value); }
     }
 
-    public string? MainTheme
-    {
-        get
-        {
+    public string? MainTheme {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("main_theme");
+            return this._rawBodyData.GetNullableClass<string>(
+                "main_theme"
+            );
         }
         init { this._rawBodyData.Set("main_theme", value); }
     }
 
-    public IReadOnlyList<string>? MemorableMoments
-    {
-        get
-        {
+    public IReadOnlyList<string>? MemorableMoments {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("memorable_moments");
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>(
+                "memorable_moments"
+            );
         }
-        init
-        {
+        init {
             this._rawBodyData.Set<ImmutableArray<string>?>(
                 "memorable_moments",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -109,100 +105,102 @@ public record class EpisodeUpdateParams : ParamsBase
         }
     }
 
-    public long? RuntimeMinutes
-    {
-        get
-        {
+    public long? RuntimeMinutes {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<long>("runtime_minutes");
+            return this._rawBodyData.GetNullableStruct<long>(
+                "runtime_minutes"
+            );
         }
         init { this._rawBodyData.Set("runtime_minutes", value); }
     }
 
-    public long? Season
-    {
-        get
-        {
+    public long? Season {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<long>("season");
+            return this._rawBodyData.GetNullableStruct<long>(
+                "season"
+            );
         }
         init { this._rawBodyData.Set("season", value); }
     }
 
-    public string? Synopsis
-    {
-        get
-        {
+    public string? Synopsis {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("synopsis");
+            return this._rawBodyData.GetNullableClass<string>(
+                "synopsis"
+            );
         }
         init { this._rawBodyData.Set("synopsis", value); }
     }
 
-    public string? TedWisdom
-    {
-        get
-        {
+    public string? TedWisdom {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("ted_wisdom");
+            return this._rawBodyData.GetNullableClass<string>(
+                "ted_wisdom"
+            );
         }
         init { this._rawBodyData.Set("ted_wisdom", value); }
     }
 
-    public string? Title
-    {
-        get
-        {
+    public string? Title {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("title");
+            return this._rawBodyData.GetNullableClass<string>(
+                "title"
+            );
         }
         init { this._rawBodyData.Set("title", value); }
     }
 
-    public double? UsViewersMillions
-    {
-        get
-        {
+    public double? UsViewersMillions {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<double>("us_viewers_millions");
+            return this._rawBodyData.GetNullableStruct<double>(
+                "us_viewers_millions"
+            );
         }
         init { this._rawBodyData.Set("us_viewers_millions", value); }
     }
 
-    public double? ViewerRating
-    {
-        get
-        {
+    public double? ViewerRating {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableStruct<double>("viewer_rating");
+            return this._rawBodyData.GetNullableStruct<double>(
+                "viewer_rating"
+            );
         }
         init { this._rawBodyData.Set("viewer_rating", value); }
     }
 
-    public string? Writer
-    {
-        get
-        {
+    public string? Writer {
+        get {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<string>("writer");
+            return this._rawBodyData.GetNullableClass<string>(
+                "writer"
+            );
         }
         init { this._rawBodyData.Set("writer", value); }
     }
 
-    public EpisodeUpdateParams() { }
+    public EpisodeUpdateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public EpisodeUpdateParams(EpisodeUpdateParams episodeUpdateParams)
-        : base(episodeUpdateParams)
+    public EpisodeUpdateParams (EpisodeUpdateParams episodeUpdateParams) : base(
+        episodeUpdateParams
+    )
     {
         this.EpisodeID = episodeUpdateParams.EpisodeID;
 
         this._rawBodyData = new(episodeUpdateParams._rawBodyData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public EpisodeUpdateParams(
+    public EpisodeUpdateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         IReadOnlyDictionary<string, JsonElement> rawBodyData
@@ -213,9 +211,9 @@ public record class EpisodeUpdateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    EpisodeUpdateParams(
+    EpisodeUpdateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         FrozenDictionary<string, JsonElement> rawBodyData,
@@ -227,7 +225,7 @@ public record class EpisodeUpdateParams : ParamsBase
         this._rawBodyData = new(rawBodyData);
         this.EpisodeID = episodeID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static EpisodeUpdateParams FromRawUnchecked(
@@ -242,26 +240,19 @@ public record class EpisodeUpdateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             FrozenDictionary.ToFrozenDictionary(rawBodyData),
             episodeID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["EpisodeID"] = JsonSerializer.SerializeToElement(this.EpisodeID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["EpisodeID"] = JsonSerializer.SerializeToElement(this.EpisodeID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(EpisodeUpdateParams? other)
     {
@@ -269,20 +260,20 @@ public record class EpisodeUpdateParams : ParamsBase
         {
             return false;
         }
-        return (this.EpisodeID?.Equals(other.EpisodeID) ?? other.EpisodeID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+        return (this.EpisodeID?.Equals(other.EpisodeID) ?? other.EpisodeID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this._rawBodyData.Equals(
+            other._rawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/episodes/{0}", this.EpisodeID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/episodes/{0}",
+            this.EpisodeID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -291,10 +282,12 @@ public record class EpisodeUpdateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -304,7 +297,5 @@ public record class EpisodeUpdateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

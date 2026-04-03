@@ -25,7 +25,10 @@ public class TeamListPageResponseTest : TestBase
                     Values = new()
                     {
                         PrimaryValue = "Believe",
-                        SecondaryValues = ["Family", "Resilience", "Joy"],
+                        SecondaryValues =
+                        [
+                            "Family", "Resilience", "Joy"
+                        ],
                         TeamMotto = "Football is life!",
                     },
                     AnnualBudgetGbp = "50000000.00",
@@ -34,19 +37,20 @@ public class TeamListPageResponseTest : TestBase
                     IsActive = true,
                     Nickname = "The Greyhounds",
                     PrimaryColor = "#0033A0",
-                    RivalTeams = ["west-ham", "rupert-fc"],
+                    RivalTeams =
+                    [
+                        "west-ham", "rupert-fc"
+                    ],
                     SecondaryColor = "#FFFFFF",
-                    StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+                    StadiumLocation = new()
+                    {
+                        Latitude = 51.4816,
+                        Longitude = -0.191,
+                    },
                     Website = "https://www.afcrichmond.com",
                     WinPercentage = 45.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<Team> expectedData =
@@ -62,7 +66,10 @@ public class TeamListPageResponseTest : TestBase
                 Values = new()
                 {
                     PrimaryValue = "Believe",
-                    SecondaryValues = ["Family", "Resilience", "Joy"],
+                    SecondaryValues =
+                    [
+                        "Family", "Resilience", "Joy"
+                    ],
                     TeamMotto = "Football is life!",
                 },
                 AnnualBudgetGbp = "50000000.00",
@@ -71,9 +78,16 @@ public class TeamListPageResponseTest : TestBase
                 IsActive = true,
                 Nickname = "The Greyhounds",
                 PrimaryColor = "#0033A0",
-                RivalTeams = ["west-ham", "rupert-fc"],
+                RivalTeams =
+                [
+                    "west-ham", "rupert-fc"
+                ],
                 SecondaryColor = "#FFFFFF",
-                StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+                StadiumLocation = new()
+                {
+                    Latitude = 51.4816,
+                    Longitude = -0.191,
+                },
                 Website = "https://www.afcrichmond.com",
                 WinPercentage = 45.5,
             },
@@ -116,7 +130,10 @@ public class TeamListPageResponseTest : TestBase
                     Values = new()
                     {
                         PrimaryValue = "Believe",
-                        SecondaryValues = ["Family", "Resilience", "Joy"],
+                        SecondaryValues =
+                        [
+                            "Family", "Resilience", "Joy"
+                        ],
                         TeamMotto = "Football is life!",
                     },
                     AnnualBudgetGbp = "50000000.00",
@@ -125,26 +142,24 @@ public class TeamListPageResponseTest : TestBase
                     IsActive = true,
                     Nickname = "The Greyhounds",
                     PrimaryColor = "#0033A0",
-                    RivalTeams = ["west-ham", "rupert-fc"],
+                    RivalTeams =
+                    [
+                        "west-ham", "rupert-fc"
+                    ],
                     SecondaryColor = "#FFFFFF",
-                    StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+                    StadiumLocation = new()
+                    {
+                        Latitude = 51.4816,
+                        Longitude = -0.191,
+                    },
                     Website = "https://www.afcrichmond.com",
                     WinPercentage = 45.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamListPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamListPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -167,7 +182,10 @@ public class TeamListPageResponseTest : TestBase
                     Values = new()
                     {
                         PrimaryValue = "Believe",
-                        SecondaryValues = ["Family", "Resilience", "Joy"],
+                        SecondaryValues =
+                        [
+                            "Family", "Resilience", "Joy"
+                        ],
                         TeamMotto = "Football is life!",
                     },
                     AnnualBudgetGbp = "50000000.00",
@@ -176,26 +194,24 @@ public class TeamListPageResponseTest : TestBase
                     IsActive = true,
                     Nickname = "The Greyhounds",
                     PrimaryColor = "#0033A0",
-                    RivalTeams = ["west-ham", "rupert-fc"],
+                    RivalTeams =
+                    [
+                        "west-ham", "rupert-fc"
+                    ],
                     SecondaryColor = "#FFFFFF",
-                    StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+                    StadiumLocation = new()
+                    {
+                        Latitude = 51.4816,
+                        Longitude = -0.191,
+                    },
                     Website = "https://www.afcrichmond.com",
                     WinPercentage = 45.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TeamListPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TeamListPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<Team> expectedData =
@@ -211,7 +227,10 @@ public class TeamListPageResponseTest : TestBase
                 Values = new()
                 {
                     PrimaryValue = "Believe",
-                    SecondaryValues = ["Family", "Resilience", "Joy"],
+                    SecondaryValues =
+                    [
+                        "Family", "Resilience", "Joy"
+                    ],
                     TeamMotto = "Football is life!",
                 },
                 AnnualBudgetGbp = "50000000.00",
@@ -220,9 +239,16 @@ public class TeamListPageResponseTest : TestBase
                 IsActive = true,
                 Nickname = "The Greyhounds",
                 PrimaryColor = "#0033A0",
-                RivalTeams = ["west-ham", "rupert-fc"],
+                RivalTeams =
+                [
+                    "west-ham", "rupert-fc"
+                ],
                 SecondaryColor = "#FFFFFF",
-                StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+                StadiumLocation = new()
+                {
+                    Latitude = 51.4816,
+                    Longitude = -0.191,
+                },
                 Website = "https://www.afcrichmond.com",
                 WinPercentage = 45.5,
             },
@@ -265,7 +291,10 @@ public class TeamListPageResponseTest : TestBase
                     Values = new()
                     {
                         PrimaryValue = "Believe",
-                        SecondaryValues = ["Family", "Resilience", "Joy"],
+                        SecondaryValues =
+                        [
+                            "Family", "Resilience", "Joy"
+                        ],
                         TeamMotto = "Football is life!",
                     },
                     AnnualBudgetGbp = "50000000.00",
@@ -274,19 +303,20 @@ public class TeamListPageResponseTest : TestBase
                     IsActive = true,
                     Nickname = "The Greyhounds",
                     PrimaryColor = "#0033A0",
-                    RivalTeams = ["west-ham", "rupert-fc"],
+                    RivalTeams =
+                    [
+                        "west-ham", "rupert-fc"
+                    ],
                     SecondaryColor = "#FFFFFF",
-                    StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+                    StadiumLocation = new()
+                    {
+                        Latitude = 51.4816,
+                        Longitude = -0.191,
+                    },
                     Website = "https://www.afcrichmond.com",
                     WinPercentage = 45.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -310,7 +340,10 @@ public class TeamListPageResponseTest : TestBase
                     Values = new()
                     {
                         PrimaryValue = "Believe",
-                        SecondaryValues = ["Family", "Resilience", "Joy"],
+                        SecondaryValues =
+                        [
+                            "Family", "Resilience", "Joy"
+                        ],
                         TeamMotto = "Football is life!",
                     },
                     AnnualBudgetGbp = "50000000.00",
@@ -319,19 +352,20 @@ public class TeamListPageResponseTest : TestBase
                     IsActive = true,
                     Nickname = "The Greyhounds",
                     PrimaryColor = "#0033A0",
-                    RivalTeams = ["west-ham", "rupert-fc"],
+                    RivalTeams =
+                    [
+                        "west-ham", "rupert-fc"
+                    ],
                     SecondaryColor = "#FFFFFF",
-                    StadiumLocation = new() { Latitude = 51.4816, Longitude = -0.191 },
+                    StadiumLocation = new()
+                    {
+                        Latitude = 51.4816,
+                        Longitude = -0.191,
+                    },
                     Website = "https://www.afcrichmond.com",
                     WinPercentage = 45.5,
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         TeamListPageResponse copied = new(model);

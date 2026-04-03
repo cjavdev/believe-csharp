@@ -30,13 +30,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     BuyerEmail = "mae.green@example.com",
                     CouponCode = "BELIEVE10",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         List<TicketSale> expectedData =
@@ -101,20 +95,11 @@ public class TicketSaleListPageResponseTest : TestBase
                     BuyerEmail = "mae.green@example.com",
                     CouponCode = "BELIEVE10",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketSaleListPageResponse>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TicketSaleListPageResponse>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -142,20 +127,11 @@ public class TicketSaleListPageResponseTest : TestBase
                     BuyerEmail = "mae.green@example.com",
                     CouponCode = "BELIEVE10",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketSaleListPageResponse>(
-            element,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<TicketSaleListPageResponse>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         List<TicketSale> expectedData =
@@ -220,13 +196,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     BuyerEmail = "mae.green@example.com",
                     CouponCode = "BELIEVE10",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         model.Validate();
@@ -255,13 +225,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     BuyerEmail = "mae.green@example.com",
                     CouponCode = "BELIEVE10",
                 },
-            ],
-            HasMore = true,
-            Limit = 0,
-            Page = 0,
-            Pages = 0,
-            Skip = 0,
-            Total = 0,
+            ],HasMore = true,Limit = 0,Page = 0,Pages = 0,Skip = 0,Total = 0,
         };
 
         TicketSaleListPageResponse copied = new(model);

@@ -28,81 +28,87 @@ public interface IEpisodeService
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IEpisodeService WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IEpisodeService WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    ;
 
     /// <summary>
-    /// Add a new episode to the series.
-    /// </summary>
+/// Add a new episode to the series.
+/// </summary>
     Task<Episode> Create(
         EpisodeCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Retrieve detailed information about a specific episode.
-    /// </summary>
+/// Retrieve detailed information about a specific episode.
+/// </summary>
     Task<Episode> Retrieve(
         EpisodeRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(EpisodeRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(EpisodeRetrieveParams, CancellationToken)"/>
     Task<Episode> Retrieve(
         string episodeID,
         EpisodeRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Update specific fields of an existing episode.
-    /// </summary>
+/// Update specific fields of an existing episode.
+/// </summary>
     Task<Episode> Update(
         EpisodeUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(EpisodeUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(EpisodeUpdateParams, CancellationToken)"/>
     Task<Episode> Update(
         string episodeID,
         EpisodeUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get a paginated list of all Ted Lasso episodes with optional filtering by
-    /// season.
-    /// </summary>
+/// Get a paginated list of all Ted Lasso episodes with optional filtering by
+/// season.
+/// </summary>
     Task<EpisodeListPage> List(
         EpisodeListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Remove an episode from the database.
-    /// </summary>
-    Task Delete(EpisodeDeleteParams parameters, CancellationToken cancellationToken = default);
-
-    /// <inheritdoc cref="Delete(EpisodeDeleteParams, CancellationToken)"/>
+/// Remove an episode from the database.
+/// </summary>
+    Task Delete(
+        EpisodeDeleteParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    ;/// <inheritdoc cref="Delete(EpisodeDeleteParams, CancellationToken)"/>
     Task Delete(
         string episodeID,
         EpisodeDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Get Ted's wisdom and memorable moments from a specific episode.
-    /// </summary>
+/// Get Ted's wisdom and memorable moments from a specific episode.
+/// </summary>
     Task<Dictionary<string, JsonElement>> GetWisdom(
         EpisodeGetWisdomParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="GetWisdom(EpisodeGetWisdomParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="GetWisdom(EpisodeGetWisdomParams, CancellationToken)"/>
     Task<Dictionary<string, JsonElement>> GetWisdom(
         string episodeID,
         EpisodeGetWisdomParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }
 
 /// <summary>
@@ -116,87 +122,92 @@ public interface IEpisodeServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    IEpisodeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+    IEpisodeServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>post /episodes</c>, but is otherwise the
-    /// same as <see cref="IEpisodeService.Create(EpisodeCreateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>post /episodes</c>, but is otherwise the
+/// same as <see cref="IEpisodeService.Create(EpisodeCreateParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Episode>> Create(
         EpisodeCreateParams parameters,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /episodes/{episode_id}</c>, but is otherwise the
-    /// same as <see cref="IEpisodeService.Retrieve(EpisodeRetrieveParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /episodes/{episode_id}</c>, but is otherwise the
+/// same as <see cref="IEpisodeService.Retrieve(EpisodeRetrieveParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Episode>> Retrieve(
         EpisodeRetrieveParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Retrieve(EpisodeRetrieveParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Retrieve(EpisodeRetrieveParams, CancellationToken)"/>
     Task<HttpResponse<Episode>> Retrieve(
         string episodeID,
         EpisodeRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>patch /episodes/{episode_id}</c>, but is otherwise the
-    /// same as <see cref="IEpisodeService.Update(EpisodeUpdateParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>patch /episodes/{episode_id}</c>, but is otherwise the
+/// same as <see cref="IEpisodeService.Update(EpisodeUpdateParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Episode>> Update(
         EpisodeUpdateParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Update(EpisodeUpdateParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Update(EpisodeUpdateParams, CancellationToken)"/>
     Task<HttpResponse<Episode>> Update(
         string episodeID,
         EpisodeUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /episodes</c>, but is otherwise the
-    /// same as <see cref="IEpisodeService.List(EpisodeListParams?, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /episodes</c>, but is otherwise the
+/// same as <see cref="IEpisodeService.List(EpisodeListParams?, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<EpisodeListPage>> List(
         EpisodeListParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>delete /episodes/{episode_id}</c>, but is otherwise the
-    /// same as <see cref="IEpisodeService.Delete(EpisodeDeleteParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>delete /episodes/{episode_id}</c>, but is otherwise the
+/// same as <see cref="IEpisodeService.Delete(EpisodeDeleteParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse> Delete(
         EpisodeDeleteParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="Delete(EpisodeDeleteParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="Delete(EpisodeDeleteParams, CancellationToken)"/>
     Task<HttpResponse> Delete(
         string episodeID,
         EpisodeDeleteParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 
     /// <summary>
-    /// Returns a raw HTTP response for <c>get /episodes/{episode_id}/wisdom</c>, but is otherwise the
-    /// same as <see cref="IEpisodeService.GetWisdom(EpisodeGetWisdomParams, CancellationToken)"/>.
-    /// </summary>
+/// Returns a raw HTTP response for <c>get /episodes/{episode_id}/wisdom</c>, but is otherwise the
+/// same as <see cref="IEpisodeService.GetWisdom(EpisodeGetWisdomParams, CancellationToken)"/>.
+/// </summary>
     Task<HttpResponse<Dictionary<string, JsonElement>>> GetWisdom(
         EpisodeGetWisdomParams parameters,
         CancellationToken cancellationToken = default
-    );
-
-    /// <inheritdoc cref="GetWisdom(EpisodeGetWisdomParams, CancellationToken)"/>
+    )
+    ;/// <inheritdoc cref="GetWisdom(EpisodeGetWisdomParams, CancellationToken)"/>
     Task<HttpResponse<Dictionary<string, JsonElement>>> GetWisdom(
         string episodeID,
         EpisodeGetWisdomParams? parameters = null,
         CancellationToken cancellationToken = default
-    );
+    )
+    ;
 }

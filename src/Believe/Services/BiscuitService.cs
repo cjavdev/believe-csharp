@@ -14,24 +14,25 @@ public sealed class BiscuitService : IBiscuitService
     readonly Lazy<IBiscuitServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IBiscuitServiceWithRawResponse WithRawResponse
-    {
+    public IBiscuitServiceWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     readonly IBelieveClient _client;
 
     /// <inheritdoc/>
-    public IBiscuitService WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new BiscuitService(this._client.WithOptions(modifier));
-    }
+    public IBiscuitService WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new BiscuitService(this._client.WithOptions(modifier)); }
 
-    public BiscuitService(IBelieveClient client)
+    public BiscuitService (IBelieveClient client)
     {
-        _client = client;
+        _client =client ;
 
-        _withRawResponse = new(() => new BiscuitServiceWithRawResponse(client.WithRawResponse));
+        _withRawResponse =new(
+            () => new BiscuitServiceWithRawResponse(client.WithRawResponse)
+        ) ;
     }
 
     /// <inheritdoc/>
@@ -40,13 +41,9 @@ public sealed class BiscuitService : IBiscuitService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Retrieve(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.Retrieve(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    }/// <inheritdoc/>
     public Task<Biscuit> Retrieve(
         string biscuitID,
         BiscuitRetrieveParams? parameters = null,
@@ -55,7 +52,9 @@ public sealed class BiscuitService : IBiscuitService
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { BiscuitID = biscuitID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            BiscuitID = biscuitID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -64,9 +63,7 @@ public sealed class BiscuitService : IBiscuitService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.List(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.List(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
@@ -76,9 +73,7 @@ public sealed class BiscuitService : IBiscuitService
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetFresh(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetFresh(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 }
@@ -89,15 +84,15 @@ public sealed class BiscuitServiceWithRawResponse : IBiscuitServiceWithRawRespon
     readonly IBelieveClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public IBiscuitServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    public IBiscuitServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
     {
         return new BiscuitServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
-    public BiscuitServiceWithRawResponse(IBelieveClientWithRawResponse client)
-    {
-        _client = client;
-    }
+    public BiscuitServiceWithRawResponse (IBelieveClientWithRawResponse client)
+    { _client =client ; }
 
     /// <inheritdoc/>
     public async Task<HttpResponse<Biscuit>> Retrieve(
@@ -107,7 +102,9 @@ public sealed class BiscuitServiceWithRawResponse : IBiscuitServiceWithRawRespon
     {
         if (parameters.BiscuitID == null)
         {
-            throw new BelieveInvalidDataException("'parameters.BiscuitID' cannot be null");
+            throw new BelieveInvalidDataException(
+                "'parameters.BiscuitID' cannot be null"
+            );
         }
 
         HttpRequest<BiscuitRetrieveParams> request = new()
@@ -116,21 +113,14 @@ public sealed class BiscuitServiceWithRawResponse : IBiscuitServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var biscuit = await response.Deserialize<Biscuit>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    biscuit.Validate();
-                }
-                return biscuit;
+        return new(response, async ( token )=>{
+            var biscuit = await response.Deserialize<Biscuit>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                biscuit.Validate();
             }
-        );
-    }
-
-    /// <inheritdoc/>
+            return biscuit;
+        });
+    }/// <inheritdoc/>
     public Task<HttpResponse<Biscuit>> Retrieve(
         string biscuitID,
         BiscuitRetrieveParams? parameters = null,
@@ -139,7 +129,9 @@ public sealed class BiscuitServiceWithRawResponse : IBiscuitServiceWithRawRespon
     {
         parameters ??= new();
 
-        return this.Retrieve(parameters with { BiscuitID = biscuitID }, cancellationToken);
+        return this.Retrieve(parameters with{
+            BiscuitID = biscuitID
+        }, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -156,20 +148,13 @@ public sealed class BiscuitServiceWithRawResponse : IBiscuitServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var page = await response
-                    .Deserialize<BiscuitListPageResponse>(token)
-                    .ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    page.Validate();
-                }
-                return new BiscuitListPage(this, parameters, page);
+        return new(response, async ( token )=>{
+            var page = await response.Deserialize<BiscuitListPageResponse>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                page.Validate();
             }
-        );
+            return new BiscuitListPage(this, parameters, page);
+        });
     }
 
     /// <inheritdoc/>
@@ -186,17 +171,12 @@ public sealed class BiscuitServiceWithRawResponse : IBiscuitServiceWithRawRespon
             Params = parameters,
         };
         var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                var biscuit = await response.Deserialize<Biscuit>(token).ConfigureAwait(false);
-                if (this._client.ResponseValidation)
-                {
-                    biscuit.Validate();
-                }
-                return biscuit;
+        return new(response, async ( token )=>{
+            var biscuit = await response.Deserialize<Biscuit>(token).ConfigureAwait(false);
+            if (this._client.ResponseValidation) {
+                biscuit.Validate();
             }
-        );
+            return biscuit;
+        });
     }
 }

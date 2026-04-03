@@ -20,12 +20,12 @@ public record class QuoteGetRandomParams : ParamsBase
     /// <summary>
     /// Filter by character
     /// </summary>
-    public string? CharacterID
-    {
-        get
-        {
+    public string? CharacterID {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("character_id");
+            return this._rawQueryData.GetNullableClass<string>(
+                "character_id"
+            );
         }
         init { this._rawQueryData.Set("character_id", value); }
     }
@@ -33,12 +33,12 @@ public record class QuoteGetRandomParams : ParamsBase
     /// <summary>
     /// Filter inspirational quotes
     /// </summary>
-    public bool? Inspirational
-    {
-        get
-        {
+    public bool? Inspirational {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<bool>("inspirational");
+            return this._rawQueryData.GetNullableStruct<bool>(
+                "inspirational"
+            );
         }
         init { this._rawQueryData.Set("inspirational", value); }
     }
@@ -46,25 +46,28 @@ public record class QuoteGetRandomParams : ParamsBase
     /// <summary>
     /// Filter by theme
     /// </summary>
-    public ApiEnum<string, QuoteTheme>? Theme
-    {
-        get
-        {
+    public ApiEnum<string, QuoteTheme>? Theme {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<ApiEnum<string, QuoteTheme>>("theme");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, QuoteTheme>>(
+                "theme"
+            );
         }
         init { this._rawQueryData.Set("theme", value); }
     }
 
-    public QuoteGetRandomParams() { }
+    public QuoteGetRandomParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public QuoteGetRandomParams(QuoteGetRandomParams quoteGetRandomParams)
-        : base(quoteGetRandomParams) { }
-#pragma warning restore CS8618
+    public QuoteGetRandomParams (
+        QuoteGetRandomParams quoteGetRandomParams
+    ) : base(quoteGetRandomParams)
+    {  }
+    #pragma warning restore CS8618
 
-    public QuoteGetRandomParams(
+    public QuoteGetRandomParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -73,9 +76,9 @@ public record class QuoteGetRandomParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    QuoteGetRandomParams(
+    QuoteGetRandomParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -83,7 +86,7 @@ public record class QuoteGetRandomParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static QuoteGetRandomParams FromRawUnchecked(
@@ -94,24 +97,17 @@ public record class QuoteGetRandomParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(QuoteGetRandomParams? other)
     {
@@ -119,19 +115,22 @@ public record class QuoteGetRandomParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/quotes/random")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/quotes/random"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -141,7 +140,5 @@ public record class QuoteGetRandomParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

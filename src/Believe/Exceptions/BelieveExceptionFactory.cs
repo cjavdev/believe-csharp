@@ -5,57 +5,56 @@ namespace Believe.Exceptions;
 public class BelieveExceptionFactory
 {
     public static BelieveApiException CreateApiException(
-        HttpStatusCode statusCode,
-        string responseBody
+        HttpStatusCode statusCode, string responseBody
     )
     {
-        return (int)statusCode switch
+        return (int) statusCode switch
         {
-            400 => new BelieveBadRequestException()
+            400=>new BelieveBadRequestException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            401 => new BelieveUnauthorizedException()
+            401=>new BelieveUnauthorizedException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            403 => new BelieveForbiddenException()
+            403=>new BelieveForbiddenException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            404 => new BelieveNotFoundException()
+            404=>new BelieveNotFoundException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            422 => new BelieveUnprocessableEntityException()
+            422=>new BelieveUnprocessableEntityException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            429 => new BelieveRateLimitException()
+            429=>new BelieveRateLimitException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            >= 400 and <= 499 => new Believe4xxException()
+            >= 400 and <= 499=>new Believe4xxException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            >= 500 and <= 599 => new Believe5xxException()
+            >= 500 and <= 599=>new Believe5xxException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
             },
-            _ => new BelieveUnexpectedStatusCodeException()
+            _ =>new BelieveUnexpectedStatusCodeException()
             {
                 StatusCode = statusCode,
                 ResponseBody = responseBody,
-            },
+            }
         };
     }
 }

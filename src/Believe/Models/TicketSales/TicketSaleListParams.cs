@@ -21,12 +21,12 @@ public record class TicketSaleListParams : ParamsBase
     /// <summary>
     /// Filter by coupon code (use 'none' for sales without coupons)
     /// </summary>
-    public string? CouponCode
-    {
-        get
-        {
+    public string? CouponCode {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("coupon_code");
+            return this._rawQueryData.GetNullableClass<string>(
+                "coupon_code"
+            );
         }
         init { this._rawQueryData.Set("coupon_code", value); }
     }
@@ -34,12 +34,12 @@ public record class TicketSaleListParams : ParamsBase
     /// <summary>
     /// Filter by currency (GBP, USD, EUR)
     /// </summary>
-    public string? Currency
-    {
-        get
-        {
+    public string? Currency {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("currency");
+            return this._rawQueryData.GetNullableClass<string>(
+                "currency"
+            );
         }
         init { this._rawQueryData.Set("currency", value); }
     }
@@ -47,17 +47,15 @@ public record class TicketSaleListParams : ParamsBase
     /// <summary>
     /// Maximum number of items to return (max: 100)
     /// </summary>
-    public long? Limit
-    {
-        get
-        {
+    public long? Limit {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("limit");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "limit"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -68,12 +66,12 @@ public record class TicketSaleListParams : ParamsBase
     /// <summary>
     /// Filter by match ID
     /// </summary>
-    public string? MatchID
-    {
-        get
-        {
+    public string? MatchID {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<string>("match_id");
+            return this._rawQueryData.GetNullableClass<string>(
+                "match_id"
+            );
         }
         init { this._rawQueryData.Set("match_id", value); }
     }
@@ -81,10 +79,8 @@ public record class TicketSaleListParams : ParamsBase
     /// <summary>
     /// Filter by purchase method
     /// </summary>
-    public ApiEnum<string, PurchaseMethod>? PurchaseMethod
-    {
-        get
-        {
+    public ApiEnum<string, PurchaseMethod>? PurchaseMethod {
+        get {
             this._rawQueryData.Freeze();
             return this._rawQueryData.GetNullableClass<ApiEnum<string, PurchaseMethod>>(
                 "purchase_method"
@@ -96,17 +92,15 @@ public record class TicketSaleListParams : ParamsBase
     /// <summary>
     /// Number of items to skip (offset)
     /// </summary>
-    public long? Skip
-    {
-        get
-        {
+    public long? Skip {
+        get {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableStruct<long>("skip");
+            return this._rawQueryData.GetNullableStruct<long>(
+                "skip"
+            );
         }
-        init
-        {
-            if (value == null)
-            {
+        init {
+            if (value == null) {
                 return;
             }
 
@@ -114,15 +108,18 @@ public record class TicketSaleListParams : ParamsBase
         }
     }
 
-    public TicketSaleListParams() { }
+    public TicketSaleListParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TicketSaleListParams(TicketSaleListParams ticketSaleListParams)
-        : base(ticketSaleListParams) { }
-#pragma warning restore CS8618
+    public TicketSaleListParams (
+        TicketSaleListParams ticketSaleListParams
+    ) : base(ticketSaleListParams)
+    {  }
+    #pragma warning restore CS8618
 
-    public TicketSaleListParams(
+    public TicketSaleListParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -131,9 +128,9 @@ public record class TicketSaleListParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TicketSaleListParams(
+    TicketSaleListParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData
     )
@@ -141,7 +138,7 @@ public record class TicketSaleListParams : ParamsBase
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TicketSaleListParams FromRawUnchecked(
@@ -152,24 +149,17 @@ public record class TicketSaleListParams : ParamsBase
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData)
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TicketSaleListParams? other)
     {
@@ -177,19 +167,22 @@ public record class TicketSaleListParams : ParamsBase
         {
             return false;
         }
-        return this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
-        return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/ticket-sales")
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + "/ticket-sales"
+        )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -199,7 +192,5 @@ public record class TicketSaleListParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }

@@ -28,29 +28,29 @@ public record class TeamMemberUpdateParams : ParamsBase
     /// <summary>
     /// Update model for players.
     /// </summary>
-    public required Updates Updates
-    {
-        get
-        {
+    public required Updates Updates {
+        get {
             return WrappedJsonSerializer.GetNotNullClass<Updates>(this.RawBodyData, "RawBodyData");
         }
         init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
-    public TeamMemberUpdateParams() { }
+    public TeamMemberUpdateParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TeamMemberUpdateParams(TeamMemberUpdateParams teamMemberUpdateParams)
-        : base(teamMemberUpdateParams)
+    public TeamMemberUpdateParams (
+        TeamMemberUpdateParams teamMemberUpdateParams
+    ) : base(teamMemberUpdateParams)
     {
         this.MemberID = teamMemberUpdateParams.MemberID;
 
         this.RawBodyData = teamMemberUpdateParams.RawBodyData;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
-    public TeamMemberUpdateParams(
+    public TeamMemberUpdateParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
         JsonElement rawBodyData
@@ -61,9 +61,9 @@ public record class TeamMemberUpdateParams : ParamsBase
         this.RawBodyData = rawBodyData;
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TeamMemberUpdateParams(
+    TeamMemberUpdateParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         JsonElement rawBodyData,
@@ -75,7 +75,7 @@ public record class TeamMemberUpdateParams : ParamsBase
         this.RawBodyData = rawBodyData;
         this.MemberID = memberID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TeamMemberUpdateParams FromRawUnchecked(
@@ -90,26 +90,19 @@ public record class TeamMemberUpdateParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             rawBodyData,
             memberID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["MemberID"] = JsonSerializer.SerializeToElement(this.MemberID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["MemberID"] = JsonSerializer.SerializeToElement(this.MemberID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+        ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(TeamMemberUpdateParams? other)
     {
@@ -117,21 +110,20 @@ public record class TeamMemberUpdateParams : ParamsBase
         {
             return false;
         }
-        return (this.MemberID?.Equals(other.MemberID) ?? other.MemberID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData)
-            && this.RawBodyData.Equals(other.RawBodyData);
+        return (this.MemberID?.Equals(other.MemberID) ?? other.MemberID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData)&&this.RawBodyData.Equals(
+            other.RawBodyData
+        ) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/')
-                + string.Format("/team-members/{0}", this.MemberID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/team-members/{0}",
+            this.MemberID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
     internal override HttpContent? BodyContent()
@@ -140,10 +132,12 @@ public record class TeamMemberUpdateParams : ParamsBase
             JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
-        );
+        ) ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -153,9 +147,7 @@ public record class TeamMemberUpdateParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
 
 /// <summary>
@@ -168,178 +160,167 @@ public record class Updates : ModelBase
 
     JsonElement? _element = null;
 
-    public JsonElement Json
-    {
-        get
-        {
-            return this._element ??= JsonSerializer.SerializeToElement(
-                this.Value,
-                ModelBase.SerializerOptions
-            );
+    public JsonElement Json {
+        get {
+            return this._element ??= JsonSerializer.SerializeToElement(this.Value, ModelBase.SerializerOptions);
         }
     }
 
-    public string? TeamID
-    {
-        get
-        {
-            return Match<string?>(
-                playerUpdate: (x) => x.TeamID,
-                coachUpdate: (x) => x.TeamID,
-                medicalStaffUpdate: (x) => x.TeamID,
-                equipmentManagerUpdate: (x) => x.TeamID
-            );
+    public string? TeamID {
+        get {
+            return Match<string?>(playerUpdate: ( x )=>x.TeamID,
+            coachUpdate: ( x )=>x.TeamID,
+            medicalStaffUpdate: ( x )=>x.TeamID,
+            equipmentManagerUpdate: ( x )=>x.TeamID);
         }
     }
 
-    public long? YearsWithTeam
-    {
-        get
-        {
-            return Match<long?>(
-                playerUpdate: (x) => x.YearsWithTeam,
-                coachUpdate: (x) => x.YearsWithTeam,
-                medicalStaffUpdate: (x) => x.YearsWithTeam,
-                equipmentManagerUpdate: (x) => x.YearsWithTeam
-            );
+    public long? YearsWithTeam {
+        get {
+            return Match<long?>(playerUpdate: ( x )=>x.YearsWithTeam,
+            coachUpdate: ( x )=>x.YearsWithTeam,
+            medicalStaffUpdate: ( x )=>x.YearsWithTeam,
+            equipmentManagerUpdate: ( x )=>x.YearsWithTeam);
         }
     }
 
-    public Updates(PlayerUpdate value, JsonElement? element = null)
+    public Updates (PlayerUpdate value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Updates(CoachUpdate value, JsonElement? element = null)
+    public Updates (CoachUpdate value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Updates(MedicalStaffUpdate value, JsonElement? element = null)
+    public Updates (MedicalStaffUpdate value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Updates(EquipmentManagerUpdate value, JsonElement? element = null)
+    public Updates (EquipmentManagerUpdate value, JsonElement? element = null)
     {
         this.Value = value;
         this._element = element;
     }
 
-    public Updates(JsonElement element)
-    {
-        this._element = element;
-    }
+    public Updates (JsonElement element)
+    { this._element = element; }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="PlayerUpdate"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickPlayerUpdate(out var value)) {
-    ///     // `value` is of type `PlayerUpdate`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="PlayerUpdate"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickPlayerUpdate(out var value)) {
+///     // `value` is of type `PlayerUpdate`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
     public bool TryPickPlayerUpdate([NotNullWhen(true)] out PlayerUpdate? value)
     {
-        value = this.Value as PlayerUpdate;
-        return value != null;
+        value =this.Value as PlayerUpdate ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="CoachUpdate"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickCoachUpdate(out var value)) {
-    ///     // `value` is of type `CoachUpdate`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="CoachUpdate"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickCoachUpdate(out var value)) {
+///     // `value` is of type `CoachUpdate`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
     public bool TryPickCoachUpdate([NotNullWhen(true)] out CoachUpdate? value)
     {
-        value = this.Value as CoachUpdate;
-        return value != null;
+        value =this.Value as CoachUpdate ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="MedicalStaffUpdate"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickMedicalStaffUpdate(out var value)) {
-    ///     // `value` is of type `MedicalStaffUpdate`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
-    public bool TryPickMedicalStaffUpdate([NotNullWhen(true)] out MedicalStaffUpdate? value)
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="MedicalStaffUpdate"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickMedicalStaffUpdate(out var value)) {
+///     // `value` is of type `MedicalStaffUpdate`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
+    public bool TryPickMedicalStaffUpdate(
+        [NotNullWhen(true)] out MedicalStaffUpdate? value
+    )
     {
-        value = this.Value as MedicalStaffUpdate;
-        return value != null;
+        value =this.Value as MedicalStaffUpdate ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
-    /// type <see cref="EquipmentManagerUpdate"/>.
-    ///
-    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
-    ///
-    /// <example>
-    /// <code>
-    /// if (instance.TryPickEquipmentManagerUpdate(out var value)) {
-    ///     // `value` is of type `EquipmentManagerUpdate`
-    ///     Console.WriteLine(value);
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
-    public bool TryPickEquipmentManagerUpdate([NotNullWhen(true)] out EquipmentManagerUpdate? value)
+/// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+/// type <see cref="EquipmentManagerUpdate"/>.
+/// 
+/// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+/// 
+/// <example>
+/// <code>
+/// if (instance.TryPickEquipmentManagerUpdate(out var value)) {
+///     // `value` is of type `EquipmentManagerUpdate`
+///     Console.WriteLine(value);
+/// }
+/// </code>
+/// </example>
+/// </summary>
+    public bool TryPickEquipmentManagerUpdate(
+        [NotNullWhen(true)] out EquipmentManagerUpdate? value
+    )
     {
-        value = this.Value as EquipmentManagerUpdate;
-        return value != null;
+        value =this.Value as EquipmentManagerUpdate ;
+        return value != null ;
     }
 
     /// <summary>
-    /// Calls the function parameter corresponding to the variant the instance was constructed with.
-    ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
-    /// if you need your function parameters to return something.</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
-    /// that doesn't match any variant's expected shape).
-    /// </exception>
-    ///
-    /// <example>
-    /// <code>
-    /// instance.Switch(
-    ///     (PlayerUpdate value) =&gt; {...},
-    ///     (CoachUpdate value) =&gt; {...},
-    ///     (MedicalStaffUpdate value) =&gt; {...},
-    ///     (EquipmentManagerUpdate value) =&gt; {...}
-    /// );
-    /// </code>
-    /// </example>
-    /// </summary>
+/// Calls the function parameter corresponding to the variant the instance was constructed with.
+/// 
+/// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
+/// if you need your function parameters to return something.</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+/// that doesn't match any variant's expected shape).
+/// </exception>
+/// 
+/// <example>
+/// <code>
+/// instance.Switch(
+///     (PlayerUpdate value) =&gt; {...},
+///     (CoachUpdate value) =&gt; {...},
+///     (MedicalStaffUpdate value) =&gt; {...},
+///     (EquipmentManagerUpdate value) =&gt; {...}
+/// );
+/// </code>
+/// </example>
+/// </summary>
     public void Switch(
         Action<PlayerUpdate> playerUpdate,
         Action<CoachUpdate> coachUpdate,
@@ -363,33 +344,35 @@ public record class Updates : ModelBase
                 break;
             default:
                 throw new BelieveInvalidDataException("Data did not match any variant of Updates");
+
         }
     }
 
     /// <summary>
-    /// Calls the function parameter corresponding to the variant the instance was constructed with and
-    /// returns its result.
-    ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
-    /// if you don't need your function parameters to return a value.</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
-    /// that doesn't match any variant's expected shape).
-    /// </exception>
-    ///
-    /// <example>
-    /// <code>
-    /// var result = instance.Match(
-    ///     (PlayerUpdate value) =&gt; {...},
-    ///     (CoachUpdate value) =&gt; {...},
-    ///     (MedicalStaffUpdate value) =&gt; {...},
-    ///     (EquipmentManagerUpdate value) =&gt; {...}
-    /// );
-    /// </code>
-    /// </example>
-    /// </summary>
-    public T Match<T>(
+/// Calls the function parameter corresponding to the variant the instance was constructed with and
+/// returns its result.
+/// 
+/// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
+/// if you don't need your function parameters to return a value.</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+/// that doesn't match any variant's expected shape).
+/// </exception>
+/// 
+/// <example>
+/// <code>
+/// var result = instance.Match(
+///     (PlayerUpdate value) =&gt; {...},
+///     (CoachUpdate value) =&gt; {...},
+///     (MedicalStaffUpdate value) =&gt; {...},
+///     (EquipmentManagerUpdate value) =&gt; {...}
+/// );
+/// </code>
+/// </example>
+/// </summary>
+    public T Match<T>
+    (
         Func<PlayerUpdate, T> playerUpdate,
         Func<CoachUpdate, T> coachUpdate,
         Func<MedicalStaffUpdate, T> medicalStaffUpdate,
@@ -398,72 +381,69 @@ public record class Updates : ModelBase
     {
         return this.Value switch
         {
-            PlayerUpdate value => playerUpdate(value),
-            CoachUpdate value => coachUpdate(value),
-            MedicalStaffUpdate value => medicalStaffUpdate(value),
-            EquipmentManagerUpdate value => equipmentManagerUpdate(value),
-            _ => throw new BelieveInvalidDataException("Data did not match any variant of Updates"),
-        };
+            PlayerUpdate value=>playerUpdate(value),
+            CoachUpdate value=>coachUpdate(value),
+            MedicalStaffUpdate value=>medicalStaffUpdate(value),
+            EquipmentManagerUpdate value=>equipmentManagerUpdate(value),
+            _ =>throw new BelieveInvalidDataException("Data did not match any variant of Updates")
+        } ;
     }
 
-    public static implicit operator Updates(PlayerUpdate value) => new(value);
+    public static implicit operator Updates (PlayerUpdate value)=> new(value) ;
 
-    public static implicit operator Updates(CoachUpdate value) => new(value);
+    public static implicit operator Updates (CoachUpdate value)=> new(value) ;
 
-    public static implicit operator Updates(MedicalStaffUpdate value) => new(value);
+    public static implicit operator Updates (
+        MedicalStaffUpdate value
+    )=> new(value) ;
 
-    public static implicit operator Updates(EquipmentManagerUpdate value) => new(value);
+    public static implicit operator Updates (
+        EquipmentManagerUpdate value
+    )=> new(value) ;
 
     /// <summary>
-    /// Validates that the instance was constructed with a known variant and that this variant is valid
-    /// (based on its own <c>Validate</c> method).
-    ///
-    /// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
-    ///
-    /// <exception cref="BelieveInvalidDataException">
-    /// Thrown when the instance does not pass validation.
-    /// </exception>
-    /// </summary>
+/// Validates that the instance was constructed with a known variant and that this variant is valid
+/// (based on its own <c>Validate</c> method).
+/// 
+/// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
+/// 
+/// <exception cref="BelieveInvalidDataException">
+/// Thrown when the instance does not pass validation.
+/// </exception>
+/// </summary>
     public override void Validate()
     {
         if (this.Value == null)
         {
             throw new BelieveInvalidDataException("Data did not match any variant of Updates");
         }
-        this.Switch(
-            (playerUpdate) => playerUpdate.Validate(),
-            (coachUpdate) => coachUpdate.Validate(),
-            (medicalStaffUpdate) => medicalStaffUpdate.Validate(),
-            (equipmentManagerUpdate) => equipmentManagerUpdate.Validate()
-        );
+        this.Switch((playerUpdate) => playerUpdate.Validate(),
+        (coachUpdate) => coachUpdate.Validate(),
+        (medicalStaffUpdate) => medicalStaffUpdate.Validate(),
+        (equipmentManagerUpdate) => equipmentManagerUpdate.Validate());
     }
 
-    public virtual bool Equals(Updates? other) =>
-        other != null
-        && this.VariantIndex() == other.VariantIndex()
-        && JsonElement.DeepEquals(this.Json, other.Json);
+    public virtual bool Equals(Updates? other)
+    =>other != null &&
+    this.VariantIndex() == other.VariantIndex() &&
+    JsonElement.DeepEquals(this.Json, other.Json);
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(this.Json),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(this.Json), ModelBase.ToStringSerializerOptions);
 
     int VariantIndex()
     {
         return this.Value switch
         {
-            PlayerUpdate _ => 0,
-            CoachUpdate _ => 1,
-            MedicalStaffUpdate _ => 2,
-            EquipmentManagerUpdate _ => 3,
-            _ => -1,
-        };
+            PlayerUpdate _=>0,
+            CoachUpdate _=>1,
+            MedicalStaffUpdate _=>2,
+            EquipmentManagerUpdate _=>3,
+            _ =>-1
+        } ;
     }
 }
 
@@ -475,17 +455,19 @@ sealed class UpdatesConverter : JsonConverter<Updates>
         JsonSerializerOptions options
     )
     {
-        var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        var element = JsonSerializer.Deserialize<JsonElement>(
+            ref reader,
+            options
+        );
         try
         {
             var deserialized = JsonSerializer.Deserialize<PlayerUpdate>(element, options);
-            if (deserialized != null)
-            {
+            if (deserialized != null) {
                 deserialized.Validate();
                 return new(deserialized, element);
             }
         }
-        catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+        catch (Exception e)when( e is JsonException || e is BelieveInvalidDataException )
         {
             // ignore
         }
@@ -493,13 +475,12 @@ sealed class UpdatesConverter : JsonConverter<Updates>
         try
         {
             var deserialized = JsonSerializer.Deserialize<CoachUpdate>(element, options);
-            if (deserialized != null)
-            {
+            if (deserialized != null) {
                 deserialized.Validate();
                 return new(deserialized, element);
             }
         }
-        catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+        catch (Exception e)when( e is JsonException || e is BelieveInvalidDataException )
         {
             // ignore
         }
@@ -507,13 +488,12 @@ sealed class UpdatesConverter : JsonConverter<Updates>
         try
         {
             var deserialized = JsonSerializer.Deserialize<MedicalStaffUpdate>(element, options);
-            if (deserialized != null)
-            {
+            if (deserialized != null) {
                 deserialized.Validate();
                 return new(deserialized, element);
             }
         }
-        catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+        catch (Exception e)when( e is JsonException || e is BelieveInvalidDataException )
         {
             // ignore
         }
@@ -521,13 +501,12 @@ sealed class UpdatesConverter : JsonConverter<Updates>
         try
         {
             var deserialized = JsonSerializer.Deserialize<EquipmentManagerUpdate>(element, options);
-            if (deserialized != null)
-            {
+            if (deserialized != null) {
                 deserialized.Validate();
                 return new(deserialized, element);
             }
         }
-        catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+        catch (Exception e)when( e is JsonException || e is BelieveInvalidDataException )
         {
             // ignore
         }
@@ -535,10 +514,10 @@ sealed class UpdatesConverter : JsonConverter<Updates>
         return new(element);
     }
 
-    public override void Write(Utf8JsonWriter writer, Updates value, JsonSerializerOptions options)
-    {
-        JsonSerializer.Serialize(writer, value.Json, options);
-    }
+    public override void Write(
+        Utf8JsonWriter writer, Updates value, JsonSerializerOptions options
+    )
+    { JsonSerializer.Serialize(writer, value.Json, options); }
 }
 
 /// <summary>
@@ -547,42 +526,42 @@ sealed class UpdatesConverter : JsonConverter<Updates>
 [JsonConverter(typeof(JsonModelConverter<PlayerUpdate, PlayerUpdateFromRaw>))]
 public sealed record class PlayerUpdate : JsonModel
 {
-    public long? Assists
-    {
-        get
-        {
+    public long? Assists {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("assists");
+            return this._rawData.GetNullableStruct<long>(
+                "assists"
+            );
         }
         init { this._rawData.Set("assists", value); }
     }
 
-    public long? GoalsScored
-    {
-        get
-        {
+    public long? GoalsScored {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("goals_scored");
+            return this._rawData.GetNullableStruct<long>(
+                "goals_scored"
+            );
         }
         init { this._rawData.Set("goals_scored", value); }
     }
 
-    public bool? IsCaptain
-    {
-        get
-        {
+    public bool? IsCaptain {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_captain");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_captain"
+            );
         }
         init { this._rawData.Set("is_captain", value); }
     }
 
-    public long? JerseyNumber
-    {
-        get
-        {
+    public long? JerseyNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("jersey_number");
+            return this._rawData.GetNullableStruct<long>(
+                "jersey_number"
+            );
         }
         init { this._rawData.Set("jersey_number", value); }
     }
@@ -590,32 +569,32 @@ public sealed record class PlayerUpdate : JsonModel
     /// <summary>
     /// Football positions for players.
     /// </summary>
-    public ApiEnum<string, Position>? Position
-    {
-        get
-        {
+    public ApiEnum<string, Position>? Position {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, Position>>("position");
+            return this._rawData.GetNullableClass<ApiEnum<string, Position>>(
+                "position"
+            );
         }
         init { this._rawData.Set("position", value); }
     }
 
-    public string? TeamID
-    {
-        get
-        {
+    public string? TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("team_id");
+            return this._rawData.GetNullableClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
 
-    public long? YearsWithTeam
-    {
-        get
-        {
+    public long? YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("years_with_team");
+            return this._rawData.GetNullableStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -632,39 +611,38 @@ public sealed record class PlayerUpdate : JsonModel
         _ = this.YearsWithTeam;
     }
 
-    public PlayerUpdate() { }
+    public PlayerUpdate ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public PlayerUpdate(PlayerUpdate playerUpdate)
-        : base(playerUpdate) { }
-#pragma warning restore CS8618
+    public PlayerUpdate (PlayerUpdate playerUpdate) : base(playerUpdate)
+    {  }
+    #pragma warning restore CS8618
 
-    public PlayerUpdate(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public PlayerUpdate (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    PlayerUpdate(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    PlayerUpdate (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="PlayerUpdateFromRaw.FromRawUnchecked"/>
-    public static PlayerUpdate FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static PlayerUpdate FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class PlayerUpdateFromRaw : IFromRawJson<PlayerUpdate>
 {
     /// <inheritdoc/>
-    public PlayerUpdate FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        PlayerUpdate.FromRawUnchecked(rawData);
+    public PlayerUpdate FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>PlayerUpdate.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -673,15 +651,14 @@ class PlayerUpdateFromRaw : IFromRawJson<PlayerUpdate>
 [JsonConverter(typeof(JsonModelConverter<CoachUpdate, CoachUpdateFromRaw>))]
 public sealed record class CoachUpdate : JsonModel
 {
-    public IReadOnlyList<string>? Certifications
-    {
-        get
-        {
+    public IReadOnlyList<string>? Certifications {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("certifications");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "certifications"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>?>(
                 "certifications",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -692,42 +669,42 @@ public sealed record class CoachUpdate : JsonModel
     /// <summary>
     /// Coaching specialties.
     /// </summary>
-    public ApiEnum<string, CoachSpecialty>? Specialty
-    {
-        get
-        {
+    public ApiEnum<string, CoachSpecialty>? Specialty {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, CoachSpecialty>>("specialty");
+            return this._rawData.GetNullableClass<ApiEnum<string, CoachSpecialty>>(
+                "specialty"
+            );
         }
         init { this._rawData.Set("specialty", value); }
     }
 
-    public string? TeamID
-    {
-        get
-        {
+    public string? TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("team_id");
+            return this._rawData.GetNullableClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
 
-    public double? WinRate
-    {
-        get
-        {
+    public double? WinRate {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<double>("win_rate");
+            return this._rawData.GetNullableStruct<double>(
+                "win_rate"
+            );
         }
         init { this._rawData.Set("win_rate", value); }
     }
 
-    public long? YearsWithTeam
-    {
-        get
-        {
+    public long? YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("years_with_team");
+            return this._rawData.GetNullableStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -742,39 +719,38 @@ public sealed record class CoachUpdate : JsonModel
         _ = this.YearsWithTeam;
     }
 
-    public CoachUpdate() { }
+    public CoachUpdate ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public CoachUpdate(CoachUpdate coachUpdate)
-        : base(coachUpdate) { }
-#pragma warning restore CS8618
+    public CoachUpdate (CoachUpdate coachUpdate) : base(coachUpdate)
+    {  }
+    #pragma warning restore CS8618
 
-    public CoachUpdate(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public CoachUpdate (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CoachUpdate(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    CoachUpdate (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="CoachUpdateFromRaw.FromRawUnchecked"/>
-    public static CoachUpdate FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    public static CoachUpdate FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class CoachUpdateFromRaw : IFromRawJson<CoachUpdate>
 {
     /// <inheritdoc/>
-    public CoachUpdate FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        CoachUpdate.FromRawUnchecked(rawData);
+    public CoachUpdate FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>CoachUpdate.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -783,25 +759,24 @@ class CoachUpdateFromRaw : IFromRawJson<CoachUpdate>
 [JsonConverter(typeof(JsonModelConverter<MedicalStaffUpdate, MedicalStaffUpdateFromRaw>))]
 public sealed record class MedicalStaffUpdate : JsonModel
 {
-    public string? LicenseNumber
-    {
-        get
-        {
+    public string? LicenseNumber {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("license_number");
+            return this._rawData.GetNullableClass<string>(
+                "license_number"
+            );
         }
         init { this._rawData.Set("license_number", value); }
     }
 
-    public IReadOnlyList<string>? Qualifications
-    {
-        get
-        {
+    public IReadOnlyList<string>? Qualifications {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("qualifications");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "qualifications"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>?>(
                 "qualifications",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -812,32 +787,32 @@ public sealed record class MedicalStaffUpdate : JsonModel
     /// <summary>
     /// Medical staff specialties.
     /// </summary>
-    public ApiEnum<string, MedicalSpecialty>? Specialty
-    {
-        get
-        {
+    public ApiEnum<string, MedicalSpecialty>? Specialty {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<ApiEnum<string, MedicalSpecialty>>("specialty");
+            return this._rawData.GetNullableClass<ApiEnum<string, MedicalSpecialty>>(
+                "specialty"
+            );
         }
         init { this._rawData.Set("specialty", value); }
     }
 
-    public string? TeamID
-    {
-        get
-        {
+    public string? TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("team_id");
+            return this._rawData.GetNullableClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
 
-    public long? YearsWithTeam
-    {
-        get
-        {
+    public long? YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("years_with_team");
+            return this._rawData.GetNullableStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -852,41 +827,40 @@ public sealed record class MedicalStaffUpdate : JsonModel
         _ = this.YearsWithTeam;
     }
 
-    public MedicalStaffUpdate() { }
+    public MedicalStaffUpdate ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public MedicalStaffUpdate(MedicalStaffUpdate medicalStaffUpdate)
-        : base(medicalStaffUpdate) { }
-#pragma warning restore CS8618
+    public MedicalStaffUpdate (MedicalStaffUpdate medicalStaffUpdate) : base(
+        medicalStaffUpdate
+    )
+    {  }
+    #pragma warning restore CS8618
 
-    public MedicalStaffUpdate(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public MedicalStaffUpdate (IReadOnlyDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    MedicalStaffUpdate(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    MedicalStaffUpdate (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="MedicalStaffUpdateFromRaw.FromRawUnchecked"/>
     public static MedicalStaffUpdate FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class MedicalStaffUpdateFromRaw : IFromRawJson<MedicalStaffUpdate>
 {
     /// <inheritdoc/>
-    public MedicalStaffUpdate FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        MedicalStaffUpdate.FromRawUnchecked(rawData);
+    public MedicalStaffUpdate FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    =>MedicalStaffUpdate.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -895,25 +869,24 @@ class MedicalStaffUpdateFromRaw : IFromRawJson<MedicalStaffUpdate>
 [JsonConverter(typeof(JsonModelConverter<EquipmentManagerUpdate, EquipmentManagerUpdateFromRaw>))]
 public sealed record class EquipmentManagerUpdate : JsonModel
 {
-    public bool? IsHeadKitman
-    {
-        get
-        {
+    public bool? IsHeadKitman {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<bool>("is_head_kitman");
+            return this._rawData.GetNullableStruct<bool>(
+                "is_head_kitman"
+            );
         }
         init { this._rawData.Set("is_head_kitman", value); }
     }
 
-    public IReadOnlyList<string>? Responsibilities
-    {
-        get
-        {
+    public IReadOnlyList<string>? Responsibilities {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<ImmutableArray<string>>("responsibilities");
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>(
+                "responsibilities"
+            );
         }
-        init
-        {
+        init {
             this._rawData.Set<ImmutableArray<string>?>(
                 "responsibilities",
                 value == null ? null : ImmutableArray.ToImmutableArray(value)
@@ -921,22 +894,22 @@ public sealed record class EquipmentManagerUpdate : JsonModel
         }
     }
 
-    public string? TeamID
-    {
-        get
-        {
+    public string? TeamID {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<string>("team_id");
+            return this._rawData.GetNullableClass<string>(
+                "team_id"
+            );
         }
         init { this._rawData.Set("team_id", value); }
     }
 
-    public long? YearsWithTeam
-    {
-        get
-        {
+    public long? YearsWithTeam {
+        get {
             this._rawData.Freeze();
-            return this._rawData.GetNullableStruct<long>("years_with_team");
+            return this._rawData.GetNullableStruct<long>(
+                "years_with_team"
+            );
         }
         init { this._rawData.Set("years_with_team", value); }
     }
@@ -950,34 +923,33 @@ public sealed record class EquipmentManagerUpdate : JsonModel
         _ = this.YearsWithTeam;
     }
 
-    public EquipmentManagerUpdate() { }
+    public EquipmentManagerUpdate ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public EquipmentManagerUpdate(EquipmentManagerUpdate equipmentManagerUpdate)
-        : base(equipmentManagerUpdate) { }
-#pragma warning restore CS8618
+    public EquipmentManagerUpdate (
+        EquipmentManagerUpdate equipmentManagerUpdate
+    ) : base(equipmentManagerUpdate)
+    {  }
+    #pragma warning restore CS8618
 
-    public EquipmentManagerUpdate(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
+    public EquipmentManagerUpdate (
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    { this._rawData = new(rawData); }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    EquipmentManagerUpdate(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = new(rawData);
-    }
-#pragma warning restore CS8618
+    EquipmentManagerUpdate (FrozenDictionary<string, JsonElement> rawData)
+    { this._rawData = new(rawData); }
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="EquipmentManagerUpdateFromRaw.FromRawUnchecked"/>
     public static EquipmentManagerUpdate FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
+    { return new(FrozenDictionary.ToFrozenDictionary(rawData)); }
 }
 
 class EquipmentManagerUpdateFromRaw : IFromRawJson<EquipmentManagerUpdate>
@@ -985,5 +957,6 @@ class EquipmentManagerUpdateFromRaw : IFromRawJson<EquipmentManagerUpdate>
     /// <inheritdoc/>
     public EquipmentManagerUpdate FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => EquipmentManagerUpdate.FromRawUnchecked(rawData);
+    )
+    =>EquipmentManagerUpdate.FromRawUnchecked(rawData);
 }

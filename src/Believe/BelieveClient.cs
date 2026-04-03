@@ -19,43 +19,37 @@ public sealed class BelieveClient : IBelieveClient
     readonly ClientOptions _options;
 
     /// <inheritdoc/>
-    public HttpClient HttpClient
-    {
+    public HttpClient HttpClient {
         get { return this._options.HttpClient; }
         init { this._options.HttpClient = value; }
     }
 
     /// <inheritdoc/>
-    public string BaseUrl
-    {
+    public string BaseUrl {
         get { return this._options.BaseUrl; }
         init { this._options.BaseUrl = value; }
     }
 
     /// <inheritdoc/>
-    public bool ResponseValidation
-    {
+    public bool ResponseValidation {
         get { return this._options.ResponseValidation; }
         init { this._options.ResponseValidation = value; }
     }
 
     /// <inheritdoc/>
-    public int? MaxRetries
-    {
+    public int? MaxRetries {
         get { return this._options.MaxRetries; }
         init { this._options.MaxRetries = value; }
     }
 
     /// <inheritdoc/>
-    public TimeSpan? Timeout
-    {
+    public TimeSpan? Timeout {
         get { return this._options.Timeout; }
         init { this._options.Timeout = value; }
     }
 
     /// <inheritdoc/>
-    public string ApiKey
-    {
+    public string ApiKey {
         get { return this._options.ApiKey; }
         init { this._options.ApiKey = value; }
     }
@@ -63,130 +57,72 @@ public sealed class BelieveClient : IBelieveClient
     readonly Lazy<IBelieveClientWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public IBelieveClientWithRawResponse WithRawResponse
-    {
+    public IBelieveClientWithRawResponse WithRawResponse {
         get { return _withRawResponse.Value; }
     }
 
     /// <inheritdoc/>
-    public IBelieveClient WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new BelieveClient(modifier(this._options));
-    }
+    public IBelieveClient WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new BelieveClient(modifier(this._options)); }
 
     readonly Lazy<ICharacterService> _characters;
-    public ICharacterService Characters
-    {
-        get { return _characters.Value; }
-    }
+    public ICharacterService Characters { get { return _characters.Value; } }
 
     readonly Lazy<ITeamService> _teams;
-    public ITeamService Teams
-    {
-        get { return _teams.Value; }
-    }
+    public ITeamService Teams { get { return _teams.Value; } }
 
     readonly Lazy<IMatchService> _matches;
-    public IMatchService Matches
-    {
-        get { return _matches.Value; }
-    }
+    public IMatchService Matches { get { return _matches.Value; } }
 
     readonly Lazy<IEpisodeService> _episodes;
-    public IEpisodeService Episodes
-    {
-        get { return _episodes.Value; }
-    }
+    public IEpisodeService Episodes { get { return _episodes.Value; } }
 
     readonly Lazy<IQuoteService> _quotes;
-    public IQuoteService Quotes
-    {
-        get { return _quotes.Value; }
-    }
+    public IQuoteService Quotes { get { return _quotes.Value; } }
 
     readonly Lazy<IBelieveService> _believe;
-    public IBelieveService Believe
-    {
-        get { return _believe.Value; }
-    }
+    public IBelieveService Believe { get { return _believe.Value; } }
 
     readonly Lazy<IConflictService> _conflicts;
-    public IConflictService Conflicts
-    {
-        get { return _conflicts.Value; }
-    }
+    public IConflictService Conflicts { get { return _conflicts.Value; } }
 
     readonly Lazy<IReframeService> _reframe;
-    public IReframeService Reframe
-    {
-        get { return _reframe.Value; }
-    }
+    public IReframeService Reframe { get { return _reframe.Value; } }
 
     readonly Lazy<IPressService> _press;
-    public IPressService Press
-    {
-        get { return _press.Value; }
-    }
+    public IPressService Press { get { return _press.Value; } }
 
     readonly Lazy<ICoachingService> _coaching;
-    public ICoachingService Coaching
-    {
-        get { return _coaching.Value; }
-    }
+    public ICoachingService Coaching { get { return _coaching.Value; } }
 
     readonly Lazy<IBiscuitService> _biscuits;
-    public IBiscuitService Biscuits
-    {
-        get { return _biscuits.Value; }
-    }
+    public IBiscuitService Biscuits { get { return _biscuits.Value; } }
 
     readonly Lazy<IPepTalkService> _pepTalk;
-    public IPepTalkService PepTalk
-    {
-        get { return _pepTalk.Value; }
-    }
+    public IPepTalkService PepTalk { get { return _pepTalk.Value; } }
 
     readonly Lazy<IStreamService> _stream;
-    public IStreamService Stream
-    {
-        get { return _stream.Value; }
-    }
+    public IStreamService Stream { get { return _stream.Value; } }
 
     readonly Lazy<ITeamMemberService> _teamMembers;
-    public ITeamMemberService TeamMembers
-    {
-        get { return _teamMembers.Value; }
-    }
+    public ITeamMemberService TeamMembers { get { return _teamMembers.Value; } }
 
     readonly Lazy<IWebhookService> _webhooks;
-    public IWebhookService Webhooks
-    {
-        get { return _webhooks.Value; }
-    }
+    public IWebhookService Webhooks { get { return _webhooks.Value; } }
 
     readonly Lazy<ITicketSaleService> _ticketSales;
-    public ITicketSaleService TicketSales
-    {
-        get { return _ticketSales.Value; }
-    }
+    public ITicketSaleService TicketSales { get { return _ticketSales.Value; } }
 
     readonly Lazy<IHealthService> _health;
-    public IHealthService Health
-    {
-        get { return _health.Value; }
-    }
+    public IHealthService Health { get { return _health.Value; } }
 
     readonly Lazy<IVersionService> _version;
-    public IVersionService Version
-    {
-        get { return _version.Value; }
-    }
+    public IVersionService Version { get { return _version.Value; } }
 
     readonly Lazy<IClientService> _client;
-    public IClientService Client
-    {
-        get { return _client.Value; }
-    }
+    public IClientService Client { get { return _client.Value; } }
 
     /// <inheritdoc/>
     public async Task<JsonElement> GetWelcome(
@@ -194,224 +130,190 @@ public sealed class BelieveClient : IBelieveClient
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.GetWelcome(parameters, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await this.WithRawResponse.GetWelcome(parameters, cancellationToken).ConfigureAwait(false);
         return await response.Deserialize(cancellationToken).ConfigureAwait(false);
     }
 
-    public void Dispose() => this.HttpClient.Dispose();
+    public void Dispose()
+    =>this.HttpClient.Dispose();
 
-    public BelieveClient()
+    public BelieveClient ()
     {
         _options = new();
 
-        _withRawResponse = new(() => new BelieveClientWithRawResponse(this._options));
-        _characters = new(() => new CharacterService(this));
-        _teams = new(() => new TeamService(this));
-        _matches = new(() => new MatchService(this));
-        _episodes = new(() => new EpisodeService(this));
-        _quotes = new(() => new QuoteService(this));
-        _believe = new(() => new BelieveService(this));
-        _conflicts = new(() => new ConflictService(this));
-        _reframe = new(() => new ReframeService(this));
-        _press = new(() => new PressService(this));
-        _coaching = new(() => new CoachingService(this));
-        _biscuits = new(() => new BiscuitService(this));
-        _pepTalk = new(() => new PepTalkService(this));
-        _stream = new(() => new StreamService(this));
-        _teamMembers = new(() => new TeamMemberService(this));
-        _webhooks = new(() => new WebhookService(this));
-        _ticketSales = new(() => new TicketSaleService(this));
-        _health = new(() => new HealthService(this));
-        _version = new(() => new VersionService(this));
-        _client = new(() => new ClientService(this));
+        _withRawResponse =new(
+            () => new BelieveClientWithRawResponse(this._options)
+        ) ;
+        _characters =new(() => new CharacterService(this)) ;
+        _teams =new(() => new TeamService(this)) ;
+        _matches =new(() => new MatchService(this)) ;
+        _episodes =new(() => new EpisodeService(this)) ;
+        _quotes =new(() => new QuoteService(this)) ;
+        _believe =new(() => new BelieveService(this)) ;
+        _conflicts =new(() => new ConflictService(this)) ;
+        _reframe =new(() => new ReframeService(this)) ;
+        _press =new(() => new PressService(this)) ;
+        _coaching =new(() => new CoachingService(this)) ;
+        _biscuits =new(() => new BiscuitService(this)) ;
+        _pepTalk =new(() => new PepTalkService(this)) ;
+        _stream =new(() => new StreamService(this)) ;
+        _teamMembers =new(() => new TeamMemberService(this)) ;
+        _webhooks =new(() => new WebhookService(this)) ;
+        _ticketSales =new(() => new TicketSaleService(this)) ;
+        _health =new(() => new HealthService(this)) ;
+        _version =new(() => new VersionService(this)) ;
+        _client =new(() => new ClientService(this)) ;
     }
 
-    public BelieveClient(ClientOptions options)
-        : this()
-    {
-        _options = options;
-    }
+    public BelieveClient (ClientOptions options) : this()
+    { _options = options; }
 }
 
 /// <inheritdoc/>
 public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
 {
-#if NET
+
+    #if NET
     static readonly Random Random = Random.Shared;
-#else
+    #else
     static readonly ThreadLocal<Random> _threadLocalRandom = new(() => new Random());
 
-    static Random Random
-    {
-        get { return _threadLocalRandom.Value!; }
-    }
-#endif
+    static Random Random { get { return _threadLocalRandom.Value!; } }
+    #endif
+
 
     internal static HttpMethod PatchMethod = new("PATCH");
 
     readonly ClientOptions _options;
 
     /// <inheritdoc/>
-    public HttpClient HttpClient
-    {
+    public HttpClient HttpClient {
         get { return this._options.HttpClient; }
         init { this._options.HttpClient = value; }
     }
 
     /// <inheritdoc/>
-    public string BaseUrl
-    {
+    public string BaseUrl {
         get { return this._options.BaseUrl; }
         init { this._options.BaseUrl = value; }
     }
 
     /// <inheritdoc/>
-    public bool ResponseValidation
-    {
+    public bool ResponseValidation {
         get { return this._options.ResponseValidation; }
         init { this._options.ResponseValidation = value; }
     }
 
     /// <inheritdoc/>
-    public int? MaxRetries
-    {
+    public int? MaxRetries {
         get { return this._options.MaxRetries; }
         init { this._options.MaxRetries = value; }
     }
 
     /// <inheritdoc/>
-    public TimeSpan? Timeout
-    {
+    public TimeSpan? Timeout {
         get { return this._options.Timeout; }
         init { this._options.Timeout = value; }
     }
 
     /// <inheritdoc/>
-    public string ApiKey
-    {
+    public string ApiKey {
         get { return this._options.ApiKey; }
         init { this._options.ApiKey = value; }
     }
 
     /// <inheritdoc/>
-    public IBelieveClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
-    {
-        return new BelieveClientWithRawResponse(modifier(this._options));
-    }
+    public IBelieveClientWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    { return new BelieveClientWithRawResponse(modifier(this._options)); }
 
     readonly Lazy<ICharacterServiceWithRawResponse> _characters;
-    public ICharacterServiceWithRawResponse Characters
-    {
+    public ICharacterServiceWithRawResponse Characters {
         get { return _characters.Value; }
     }
 
     readonly Lazy<ITeamServiceWithRawResponse> _teams;
-    public ITeamServiceWithRawResponse Teams
-    {
-        get { return _teams.Value; }
-    }
+    public ITeamServiceWithRawResponse Teams { get { return _teams.Value; } }
 
     readonly Lazy<IMatchServiceWithRawResponse> _matches;
-    public IMatchServiceWithRawResponse Matches
-    {
+    public IMatchServiceWithRawResponse Matches {
         get { return _matches.Value; }
     }
 
     readonly Lazy<IEpisodeServiceWithRawResponse> _episodes;
-    public IEpisodeServiceWithRawResponse Episodes
-    {
+    public IEpisodeServiceWithRawResponse Episodes {
         get { return _episodes.Value; }
     }
 
     readonly Lazy<IQuoteServiceWithRawResponse> _quotes;
-    public IQuoteServiceWithRawResponse Quotes
-    {
-        get { return _quotes.Value; }
-    }
+    public IQuoteServiceWithRawResponse Quotes { get { return _quotes.Value; } }
 
     readonly Lazy<IBelieveServiceWithRawResponse> _believe;
-    public IBelieveServiceWithRawResponse Believe
-    {
+    public IBelieveServiceWithRawResponse Believe {
         get { return _believe.Value; }
     }
 
     readonly Lazy<IConflictServiceWithRawResponse> _conflicts;
-    public IConflictServiceWithRawResponse Conflicts
-    {
+    public IConflictServiceWithRawResponse Conflicts {
         get { return _conflicts.Value; }
     }
 
     readonly Lazy<IReframeServiceWithRawResponse> _reframe;
-    public IReframeServiceWithRawResponse Reframe
-    {
+    public IReframeServiceWithRawResponse Reframe {
         get { return _reframe.Value; }
     }
 
     readonly Lazy<IPressServiceWithRawResponse> _press;
-    public IPressServiceWithRawResponse Press
-    {
-        get { return _press.Value; }
-    }
+    public IPressServiceWithRawResponse Press { get { return _press.Value; } }
 
     readonly Lazy<ICoachingServiceWithRawResponse> _coaching;
-    public ICoachingServiceWithRawResponse Coaching
-    {
+    public ICoachingServiceWithRawResponse Coaching {
         get { return _coaching.Value; }
     }
 
     readonly Lazy<IBiscuitServiceWithRawResponse> _biscuits;
-    public IBiscuitServiceWithRawResponse Biscuits
-    {
+    public IBiscuitServiceWithRawResponse Biscuits {
         get { return _biscuits.Value; }
     }
 
     readonly Lazy<IPepTalkServiceWithRawResponse> _pepTalk;
-    public IPepTalkServiceWithRawResponse PepTalk
-    {
+    public IPepTalkServiceWithRawResponse PepTalk {
         get { return _pepTalk.Value; }
     }
 
     readonly Lazy<IStreamServiceWithRawResponse> _stream;
-    public IStreamServiceWithRawResponse Stream
-    {
+    public IStreamServiceWithRawResponse Stream {
         get { return _stream.Value; }
     }
 
     readonly Lazy<ITeamMemberServiceWithRawResponse> _teamMembers;
-    public ITeamMemberServiceWithRawResponse TeamMembers
-    {
+    public ITeamMemberServiceWithRawResponse TeamMembers {
         get { return _teamMembers.Value; }
     }
 
     readonly Lazy<IWebhookServiceWithRawResponse> _webhooks;
-    public IWebhookServiceWithRawResponse Webhooks
-    {
+    public IWebhookServiceWithRawResponse Webhooks {
         get { return _webhooks.Value; }
     }
 
     readonly Lazy<ITicketSaleServiceWithRawResponse> _ticketSales;
-    public ITicketSaleServiceWithRawResponse TicketSales
-    {
+    public ITicketSaleServiceWithRawResponse TicketSales {
         get { return _ticketSales.Value; }
     }
 
     readonly Lazy<IHealthServiceWithRawResponse> _health;
-    public IHealthServiceWithRawResponse Health
-    {
+    public IHealthServiceWithRawResponse Health {
         get { return _health.Value; }
     }
 
     readonly Lazy<IVersionServiceWithRawResponse> _version;
-    public IVersionServiceWithRawResponse Version
-    {
+    public IVersionServiceWithRawResponse Version {
         get { return _version.Value; }
     }
 
     readonly Lazy<IClientServiceWithRawResponse> _client;
-    public IClientServiceWithRawResponse Client
-    {
+    public IClientServiceWithRawResponse Client {
         get { return _client.Value; }
     }
 
@@ -429,21 +331,16 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
             Params = parameters,
         };
         var response = await this.Execute(request, cancellationToken).ConfigureAwait(false);
-        return new(
-            response,
-            async (token) =>
-            {
-                return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
-            }
-        );
+        return new(response, async ( token )=>{
+            return await response.Deserialize<JsonElement>(token).ConfigureAwait(false);
+        });
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse> Execute<T>(
-        HttpRequest<T> request,
-        CancellationToken cancellationToken = default
-    )
-        where T : ParamsBase
+    public async Task<HttpResponse> Execute<T>
+    (
+        HttpRequest<T> request, CancellationToken cancellationToken = default
+    ) where T: ParamsBase
     {
         var maxRetries = this.MaxRetries ?? ClientOptions.DefaultMaxRetries;
         var retries = 0;
@@ -452,8 +349,9 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
             HttpResponse? response = null;
             try
             {
-                response = await ExecuteOnce(request, retries, cancellationToken)
-                    .ConfigureAwait(false);
+                response = await ExecuteOnce(request,
+                retries,
+                cancellationToken).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -465,8 +363,7 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
 
             if (response != null && (++retries > maxRetries || !ShouldRetry(response)))
             {
-                if (response.IsSuccessStatusCode)
-                {
+                if (response.IsSuccessStatusCode) {
                     return response;
                 }
 
@@ -480,11 +377,8 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
                 catch (HttpRequestException e)
                 {
                     throw new BelieveIOException("I/O Exception", e);
-                }
-                finally
-                {
-                    response.Dispose();
-                }
+                }finally
+                { response.Dispose(); }
             }
 
             var backoff = ComputeRetryBackoff(retries, response);
@@ -493,58 +387,41 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
         }
     }
 
-    async Task<HttpResponse> ExecuteOnce<T>(
+    async Task<HttpResponse> ExecuteOnce<T>
+    (
         HttpRequest<T> request,
         int retryCount,
         CancellationToken cancellationToken = default
-    )
-        where T : ParamsBase
+    ) where T: ParamsBase
     {
         using HttpRequestMessage requestMessage = new(
-            request.Method,
-            request.Params.Url(this._options)
+            request.Method, request.Params.Url(this._options)
         )
         {
-            Content = request.Params.BodyContent(),
-        };
-        request.Params.AddHeadersToRequest(requestMessage, this._options);
-        if (!requestMessage.Headers.Contains("x-stainless-retry-count"))
+            Content = request.Params.BodyContent()
+        };request.Params.AddHeadersToRequest(requestMessage, this._options);if (!requestMessage.Headers.Contains("x-stainless-retry-count"))
         {
             requestMessage.Headers.Add("x-stainless-retry-count", retryCount.ToString());
-        }
-        using CancellationTokenSource timeoutCts = new(
+        }using CancellationTokenSource timeoutCts = new(
             this.Timeout ?? ClientOptions.DefaultTimeout
-        );
-        using var cts = CancellationTokenSource.CreateLinkedTokenSource(
-            timeoutCts.Token,
-            cancellationToken
-        );
-        HttpResponseMessage responseMessage;
-        try
+        );using var cts = CancellationTokenSource.CreateLinkedTokenSource(timeoutCts.Token, cancellationToken);HttpResponseMessage responseMessage;try
         {
-            responseMessage = await this
-                .HttpClient.SendAsync(
-                    requestMessage,
-                    HttpCompletionOption.ResponseHeadersRead,
-                    cts.Token
-                )
-                .ConfigureAwait(false);
+            responseMessage =await this.HttpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, cts.Token).ConfigureAwait(false) ;
         }
         catch (HttpRequestException e)
         {
             throw new BelieveIOException("I/O exception", e);
-        }
-        return new() { RawMessage = responseMessage, CancellationToken = cts.Token };
+        }return new()
+        {
+            RawMessage = responseMessage,
+            CancellationToken = cts.Token,
+        };
     }
 
     static TimeSpan ComputeRetryBackoff(int retries, HttpResponse? response)
     {
         TimeSpan? apiBackoff = ParseRetryAfterMsHeader(response) ?? ParseRetryAfterHeader(response);
-        if (
-            apiBackoff != null
-            && apiBackoff > TimeSpan.Zero
-            && apiBackoff < TimeSpan.FromMinutes(1)
-        )
+        if (apiBackoff != null && apiBackoff > TimeSpan.Zero && apiBackoff < TimeSpan.FromMinutes(1))
         {
             // If the API asks us to wait a certain amount of time (and it's a reasonable amount), then just
             // do what it says.
@@ -552,7 +429,9 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
         }
 
         // Apply exponential backoff, but not more than the max.
-        var backoffSeconds = Math.Min(0.5 * Math.Pow(2.0, retries - 1), 8.0);
+        var backoffSeconds = Math.Min(
+            0.5 * Math.Pow(2.0, retries - 1), 8.0
+        );
         var jitter = 1.0 - 0.25 * Random.NextDouble();
         return TimeSpan.FromSeconds(backoffSeconds * jitter);
     }
@@ -599,10 +478,8 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
 
     static bool ShouldRetry(HttpResponse response)
     {
-        if (
-            response.TryGetHeaderValues("X-Should-Retry", out var headerValues)
-            && bool.TryParse(Enumerable.FirstOrDefault(headerValues), out var shouldRetry)
-        )
+        if (response.TryGetHeaderValues("X-Should-Retry", out var headerValues)
+            && bool.TryParse(Enumerable.FirstOrDefault(headerValues), out var shouldRetry))
         {
             // If the server explicitly says whether to retry, then we obey.
             return shouldRetry;
@@ -626,40 +503,36 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
     }
 
     static bool ShouldRetry(Exception e)
-    {
-        return e is IOException || e is BelieveIOException;
-    }
+    { return e is IOException || e is BelieveIOException; }
 
-    public void Dispose() => this.HttpClient.Dispose();
+    public void Dispose()
+    =>this.HttpClient.Dispose();
 
-    public BelieveClientWithRawResponse()
+    public BelieveClientWithRawResponse ()
     {
         _options = new();
 
-        _characters = new(() => new CharacterServiceWithRawResponse(this));
-        _teams = new(() => new TeamServiceWithRawResponse(this));
-        _matches = new(() => new MatchServiceWithRawResponse(this));
-        _episodes = new(() => new EpisodeServiceWithRawResponse(this));
-        _quotes = new(() => new QuoteServiceWithRawResponse(this));
-        _believe = new(() => new BelieveServiceWithRawResponse(this));
-        _conflicts = new(() => new ConflictServiceWithRawResponse(this));
-        _reframe = new(() => new ReframeServiceWithRawResponse(this));
-        _press = new(() => new PressServiceWithRawResponse(this));
-        _coaching = new(() => new CoachingServiceWithRawResponse(this));
-        _biscuits = new(() => new BiscuitServiceWithRawResponse(this));
-        _pepTalk = new(() => new PepTalkServiceWithRawResponse(this));
-        _stream = new(() => new StreamServiceWithRawResponse(this));
-        _teamMembers = new(() => new TeamMemberServiceWithRawResponse(this));
-        _webhooks = new(() => new WebhookServiceWithRawResponse(this));
-        _ticketSales = new(() => new TicketSaleServiceWithRawResponse(this));
-        _health = new(() => new HealthServiceWithRawResponse(this));
-        _version = new(() => new VersionServiceWithRawResponse(this));
-        _client = new(() => new ClientServiceWithRawResponse(this));
+        _characters =new(() => new CharacterServiceWithRawResponse(this)) ;
+        _teams =new(() => new TeamServiceWithRawResponse(this)) ;
+        _matches =new(() => new MatchServiceWithRawResponse(this)) ;
+        _episodes =new(() => new EpisodeServiceWithRawResponse(this)) ;
+        _quotes =new(() => new QuoteServiceWithRawResponse(this)) ;
+        _believe =new(() => new BelieveServiceWithRawResponse(this)) ;
+        _conflicts =new(() => new ConflictServiceWithRawResponse(this)) ;
+        _reframe =new(() => new ReframeServiceWithRawResponse(this)) ;
+        _press =new(() => new PressServiceWithRawResponse(this)) ;
+        _coaching =new(() => new CoachingServiceWithRawResponse(this)) ;
+        _biscuits =new(() => new BiscuitServiceWithRawResponse(this)) ;
+        _pepTalk =new(() => new PepTalkServiceWithRawResponse(this)) ;
+        _stream =new(() => new StreamServiceWithRawResponse(this)) ;
+        _teamMembers =new(() => new TeamMemberServiceWithRawResponse(this)) ;
+        _webhooks =new(() => new WebhookServiceWithRawResponse(this)) ;
+        _ticketSales =new(() => new TicketSaleServiceWithRawResponse(this)) ;
+        _health =new(() => new HealthServiceWithRawResponse(this)) ;
+        _version =new(() => new VersionServiceWithRawResponse(this)) ;
+        _client =new(() => new ClientServiceWithRawResponse(this)) ;
     }
 
-    public BelieveClientWithRawResponse(ClientOptions options)
-        : this()
-    {
-        _options = options;
-    }
+    public BelieveClientWithRawResponse (ClientOptions options) : this()
+    { _options = options; }
 }

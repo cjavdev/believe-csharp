@@ -19,18 +19,18 @@ public record class EpisodeRetrieveParams : ParamsBase
 {
     public string? EpisodeID { get; init; }
 
-    public EpisodeRetrieveParams() { }
+    public EpisodeRetrieveParams ()
+    {  }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public EpisodeRetrieveParams(EpisodeRetrieveParams episodeRetrieveParams)
-        : base(episodeRetrieveParams)
-    {
-        this.EpisodeID = episodeRetrieveParams.EpisodeID;
-    }
-#pragma warning restore CS8618
+    public EpisodeRetrieveParams (
+        EpisodeRetrieveParams episodeRetrieveParams
+    ) : base(episodeRetrieveParams)
+    { this.EpisodeID = episodeRetrieveParams.EpisodeID; }
+    #pragma warning restore CS8618
 
-    public EpisodeRetrieveParams(
+    public EpisodeRetrieveParams (
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -39,9 +39,9 @@ public record class EpisodeRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
     }
 
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     [SetsRequiredMembers]
-    EpisodeRetrieveParams(
+    EpisodeRetrieveParams (
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
         string episodeID
@@ -51,7 +51,7 @@ public record class EpisodeRetrieveParams : ParamsBase
         this._rawQueryData = new(rawQueryData);
         this.EpisodeID = episodeID;
     }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static EpisodeRetrieveParams FromRawUnchecked(
@@ -64,25 +64,18 @@ public record class EpisodeRetrieveParams : ParamsBase
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
             episodeID
-        );
+        ) ;
     }
 
-    public override string ToString() =>
-        JsonSerializer.Serialize(
-            FriendlyJsonPrinter.PrintValue(
-                new Dictionary<string, JsonElement>()
-                {
-                    ["EpisodeID"] = JsonSerializer.SerializeToElement(this.EpisodeID),
-                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
-                    ),
-                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
-                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
-                    ),
-                }
-            ),
-            ModelBase.ToStringSerializerOptions
-        );
+    public override string ToString()
+    =>JsonSerializer.Serialize(FriendlyJsonPrinter.PrintValue(new Dictionary<string, JsonElement>(
+
+    )
+    {
+        ["EpisodeID"] = JsonSerializer.SerializeToElement(this.EpisodeID),
+        ["HeaderData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())),
+        ["QueryData"] = FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())),
+    }), ModelBase.ToStringSerializerOptions);
 
     public virtual bool Equals(EpisodeRetrieveParams? other)
     {
@@ -90,22 +83,23 @@ public record class EpisodeRetrieveParams : ParamsBase
         {
             return false;
         }
-        return (this.EpisodeID?.Equals(other.EpisodeID) ?? other.EpisodeID == null)
-            && this._rawHeaderData.Equals(other._rawHeaderData)
-            && this._rawQueryData.Equals(other._rawQueryData);
+        return (this.EpisodeID?.Equals(other.EpisodeID) ?? other.EpisodeID == null)&&this._rawHeaderData.Equals(other._rawHeaderData)&&this._rawQueryData.Equals(other._rawQueryData) ;
     }
 
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
-            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/episodes/{0}", this.EpisodeID)
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/episodes/{0}",
+            this.EpisodeID)
         )
         {
-            Query = this.QueryString(options),
-        }.Uri;
+            Query = this.QueryString(options)
+        }.Uri ;
     }
 
-    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    internal override void AddHeadersToRequest(
+        HttpRequestMessage request, ClientOptions options
+    )
     {
         ParamsBase.AddDefaultHeaders(request, options);
         foreach (var item in this.RawHeaderData)
@@ -115,7 +109,5 @@ public record class EpisodeRetrieveParams : ParamsBase
     }
 
     public override int GetHashCode()
-    {
-        return 0;
-    }
+    { return 0; }
 }
