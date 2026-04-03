@@ -52,7 +52,7 @@ public interface IStreamServiceWithRawResponse
     IStreamServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /stream/test`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /stream/test</c>, but is otherwise the
     /// same as <see cref="IStreamService.TestConnection(StreamTestConnectionParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<JsonElement>> TestConnection(

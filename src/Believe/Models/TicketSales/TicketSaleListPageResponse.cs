@@ -6,23 +6,23 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Believe.Core;
 
-namespace Believe.Models.Client.TicketSales;
+namespace Believe.Models.TicketSales;
 
 [JsonConverter(
     typeof(JsonModelConverter<TicketSaleListPageResponse, TicketSaleListPageResponseFromRaw>)
 )]
 public sealed record class TicketSaleListPageResponse : JsonModel
 {
-    public required IReadOnlyList<TicketSaleListResponse> Data
+    public required IReadOnlyList<TicketSale> Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<TicketSaleListResponse>>("data");
+            return this._rawData.GetNotNullStruct<ImmutableArray<TicketSale>>("data");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<TicketSaleListResponse>>(
+            this._rawData.Set<ImmutableArray<TicketSale>>(
                 "data",
                 ImmutableArray.ToImmutableArray(value)
             );

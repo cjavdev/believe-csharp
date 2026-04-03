@@ -5,11 +5,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Believe.Core;
-using Believe.Exceptions;
 
-namespace Believe.Models.Client.TicketSales;
+namespace Believe.Models.TicketSales;
 
 /// <summary>
 /// Record a new ticket sale.
@@ -220,7 +218,7 @@ public record class TicketSaleCreateParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TicketSaleCreateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -291,58 +289,5 @@ public record class TicketSaleCreateParams : ParamsBase
     public override int GetHashCode()
     {
         return 0;
-    }
-}
-
-/// <summary>
-/// How the ticket was purchased
-/// </summary>
-[JsonConverter(typeof(PurchaseMethodConverter))]
-public enum PurchaseMethod
-{
-    Online,
-    BoxOffice,
-    WillCall,
-    Phone,
-}
-
-sealed class PurchaseMethodConverter : JsonConverter<PurchaseMethod>
-{
-    public override PurchaseMethod Read(
-        ref Utf8JsonReader reader,
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
-    {
-        return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "online" => PurchaseMethod.Online,
-            "box_office" => PurchaseMethod.BoxOffice,
-            "will_call" => PurchaseMethod.WillCall,
-            "phone" => PurchaseMethod.Phone,
-            _ => (PurchaseMethod)(-1),
-        };
-    }
-
-    public override void Write(
-        Utf8JsonWriter writer,
-        PurchaseMethod value,
-        JsonSerializerOptions options
-    )
-    {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                PurchaseMethod.Online => "online",
-                PurchaseMethod.BoxOffice => "box_office",
-                PurchaseMethod.WillCall => "will_call",
-                PurchaseMethod.Phone => "phone",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
     }
 }

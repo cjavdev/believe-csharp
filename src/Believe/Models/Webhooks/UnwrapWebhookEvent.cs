@@ -68,7 +68,7 @@ public record class UnwrapWebhookEvent : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="MatchCompletedWebhookEvent"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -89,7 +89,7 @@ public record class UnwrapWebhookEvent : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TeamMemberTransferredWebhookEvent"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -111,7 +111,7 @@ public record class UnwrapWebhookEvent : ModelBase
     /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
     /// if you need your function parameters to return something.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -122,8 +122,8 @@ public record class UnwrapWebhookEvent : ModelBase
     /// <example>
     /// <code>
     /// instance.Switch(
-    ///     (MatchCompletedWebhookEvent value) => {...},
-    ///     (TeamMemberTransferredWebhookEvent value) => {...}
+    ///     (MatchCompletedWebhookEvent value) =&gt; {...},
+    ///     (TeamMemberTransferredWebhookEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -152,7 +152,7 @@ public record class UnwrapWebhookEvent : ModelBase
     /// Calls the function parameter corresponding to the variant the instance was constructed with and
     /// returns its result.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
     /// if you don't need your function parameters to return a value.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -163,8 +163,8 @@ public record class UnwrapWebhookEvent : ModelBase
     /// <example>
     /// <code>
     /// var result = instance.Match(
-    ///     (MatchCompletedWebhookEvent value) => {...},
-    ///     (TeamMemberTransferredWebhookEvent value) => {...}
+    ///     (MatchCompletedWebhookEvent value) =&gt; {...},
+    ///     (TeamMemberTransferredWebhookEvent value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -250,66 +250,41 @@ sealed class UnwrapWebhookEventConverter : JsonConverter<UnwrapWebhookEvent>
     )
     {
         var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
-        string? eventType;
         try
         {
-            eventType = element.GetProperty("event_type").GetString();
+            var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEvent>(
+                element,
+                options
+            );
+            if (deserialized != null)
+            {
+                deserialized.Validate();
+                return new(deserialized, element);
+            }
         }
-        catch
+        catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
         {
-            eventType = null;
+            // ignore
         }
 
-        switch (eventType)
+        try
         {
-            case "match.completed":
+            var deserialized = JsonSerializer.Deserialize<TeamMemberTransferredWebhookEvent>(
+                element,
+                options
+            );
+            if (deserialized != null)
             {
-                try
-                {
-                    var deserialized = JsonSerializer.Deserialize<MatchCompletedWebhookEvent>(
-                        element,
-                        options
-                    );
-                    if (deserialized != null)
-                    {
-                        deserialized.Validate();
-                        return new(deserialized, element);
-                    }
-                }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
-                {
-                    // ignore
-                }
-
-                return new(element);
-            }
-            case "team_member.transferred":
-            {
-                try
-                {
-                    var deserialized =
-                        JsonSerializer.Deserialize<TeamMemberTransferredWebhookEvent>(
-                            element,
-                            options
-                        );
-                    if (deserialized != null)
-                    {
-                        deserialized.Validate();
-                        return new(deserialized, element);
-                    }
-                }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
-                {
-                    // ignore
-                }
-
-                return new(element);
-            }
-            default:
-            {
-                return new UnwrapWebhookEvent(element);
+                deserialized.Validate();
+                return new(deserialized, element);
             }
         }
+        catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+        {
+            // ignore
+        }
+
+        return new(element);
     }
 
     public override void Write(

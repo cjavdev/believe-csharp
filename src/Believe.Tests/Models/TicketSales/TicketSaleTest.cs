@@ -1,23 +1,22 @@
 using System.Text.Json;
 using Believe.Core;
-using Believe.Exceptions;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Tests.Models.Client.TicketSales;
+namespace Believe.Tests.Models.TicketSales;
 
-public class TicketSaleUpdateResponseTest : TestBase
+public class TicketSaleTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -32,8 +31,7 @@ public class TicketSaleUpdateResponseTest : TestBase
         string expectedCurrency = "GBP";
         string expectedDiscount = "9.00";
         string expectedMatchID = "match-001";
-        ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod> expectedPurchaseMethod =
-            TicketSaleUpdateResponsePurchaseMethod.Online;
+        ApiEnum<string, PurchaseMethod> expectedPurchaseMethod = PurchaseMethod.Online;
         long expectedQuantity = 2;
         string expectedSubtotal = "90.00";
         string expectedTax = "16.20";
@@ -60,14 +58,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -78,7 +76,7 @@ public class TicketSaleUpdateResponseTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketSaleUpdateResponse>(
+        var deserialized = JsonSerializer.Deserialize<TicketSale>(
             json,
             ModelBase.SerializerOptions
         );
@@ -89,14 +87,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -107,7 +105,7 @@ public class TicketSaleUpdateResponseTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<TicketSaleUpdateResponse>(
+        var deserialized = JsonSerializer.Deserialize<TicketSale>(
             element,
             ModelBase.SerializerOptions
         );
@@ -118,8 +116,7 @@ public class TicketSaleUpdateResponseTest : TestBase
         string expectedCurrency = "GBP";
         string expectedDiscount = "9.00";
         string expectedMatchID = "match-001";
-        ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod> expectedPurchaseMethod =
-            TicketSaleUpdateResponsePurchaseMethod.Online;
+        ApiEnum<string, PurchaseMethod> expectedPurchaseMethod = PurchaseMethod.Online;
         long expectedQuantity = 2;
         string expectedSubtotal = "90.00";
         string expectedTax = "16.20";
@@ -146,14 +143,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -169,14 +166,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -193,14 +190,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -214,14 +211,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -241,14 +238,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -265,14 +262,14 @@ public class TicketSaleUpdateResponseTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new TicketSaleUpdateResponse
+        var model = new TicketSale
         {
             ID = "ts-001",
             BuyerName = "Mae Green",
             Currency = "GBP",
             Discount = "9.00",
             MatchID = "match-001",
-            PurchaseMethod = TicketSaleUpdateResponsePurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 2,
             Subtotal = "90.00",
             Tax = "16.20",
@@ -282,66 +279,8 @@ public class TicketSaleUpdateResponseTest : TestBase
             CouponCode = "BELIEVE10",
         };
 
-        TicketSaleUpdateResponse copied = new(model);
+        TicketSale copied = new(model);
 
         Assert.Equal(model, copied);
-    }
-}
-
-public class TicketSaleUpdateResponsePurchaseMethodTest : TestBase
-{
-    [Theory]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.Online)]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.BoxOffice)]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.WillCall)]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.Phone)]
-    public void Validation_Works(TicketSaleUpdateResponsePurchaseMethod rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod> value = rawValue;
-        value.Validate();
-    }
-
-    [Fact]
-    public void InvalidEnumValidationThrows_Works()
-    {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
-
-        Assert.NotNull(value);
-        Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
-    }
-
-    [Theory]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.Online)]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.BoxOffice)]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.WillCall)]
-    [InlineData(TicketSaleUpdateResponsePurchaseMethod.Phone)]
-    public void SerializationRoundtrip_Works(TicketSaleUpdateResponsePurchaseMethod rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod> value = rawValue;
-
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod>
-        >(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(value, deserialized);
-    }
-
-    [Fact]
-    public void InvalidEnumSerializationRoundtrip_Works()
-    {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateResponsePurchaseMethod>
-        >(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(value, deserialized);
     }
 }

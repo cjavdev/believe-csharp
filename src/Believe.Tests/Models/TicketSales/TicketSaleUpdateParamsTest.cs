@@ -1,10 +1,8 @@
 using System;
-using System.Text.Json;
 using Believe.Core;
-using Believe.Exceptions;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Tests.Models.Client.TicketSales;
+namespace Believe.Tests.Models.TicketSales;
 
 public class TicketSaleUpdateParamsTest : TestBase
 {
@@ -20,7 +18,7 @@ public class TicketSaleUpdateParamsTest : TestBase
             Currency = "currency",
             Discount = "discount",
             MatchID = "match_id",
-            PurchaseMethod = TicketSaleUpdateParamsPurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 1,
             Subtotal = "subtotal",
             Tax = "tax",
@@ -35,8 +33,7 @@ public class TicketSaleUpdateParamsTest : TestBase
         string expectedCurrency = "currency";
         string expectedDiscount = "discount";
         string expectedMatchID = "match_id";
-        ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod> expectedPurchaseMethod =
-            TicketSaleUpdateParamsPurchaseMethod.Online;
+        ApiEnum<string, PurchaseMethod> expectedPurchaseMethod = PurchaseMethod.Online;
         long expectedQuantity = 1;
         string expectedSubtotal = "subtotal";
         string expectedTax = "tax";
@@ -158,7 +155,7 @@ public class TicketSaleUpdateParamsTest : TestBase
             Currency = "currency",
             Discount = "discount",
             MatchID = "match_id",
-            PurchaseMethod = TicketSaleUpdateParamsPurchaseMethod.Online,
+            PurchaseMethod = PurchaseMethod.Online,
             Quantity = 1,
             Subtotal = "subtotal",
             Tax = "tax",
@@ -169,63 +166,5 @@ public class TicketSaleUpdateParamsTest : TestBase
         TicketSaleUpdateParams copied = new(parameters);
 
         Assert.Equal(parameters, copied);
-    }
-}
-
-public class TicketSaleUpdateParamsPurchaseMethodTest : TestBase
-{
-    [Theory]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.Online)]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.BoxOffice)]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.WillCall)]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.Phone)]
-    public void Validation_Works(TicketSaleUpdateParamsPurchaseMethod rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod> value = rawValue;
-        value.Validate();
-    }
-
-    [Fact]
-    public void InvalidEnumValidationThrows_Works()
-    {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
-
-        Assert.NotNull(value);
-        Assert.Throws<BelieveInvalidDataException>(() => value.Validate());
-    }
-
-    [Theory]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.Online)]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.BoxOffice)]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.WillCall)]
-    [InlineData(TicketSaleUpdateParamsPurchaseMethod.Phone)]
-    public void SerializationRoundtrip_Works(TicketSaleUpdateParamsPurchaseMethod rawValue)
-    {
-        // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod> value = rawValue;
-
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod>
-        >(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(value, deserialized);
-    }
-
-    [Fact]
-    public void InvalidEnumSerializationRoundtrip_Works()
-    {
-        var value = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod>
-        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
-        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<
-            ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod>
-        >(json, ModelBase.SerializerOptions);
-
-        Assert.Equal(value, deserialized);
     }
 }

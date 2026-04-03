@@ -29,19 +29,12 @@ public sealed class ClientService : IClientService
 
         _withRawResponse = new(() => new ClientServiceWithRawResponse(client.WithRawResponse));
         _ws = new(() => new WService(client));
-        _ticketSales = new(() => new TicketSaleService(client));
     }
 
     readonly Lazy<IWService> _ws;
     public IWService Ws
     {
         get { return _ws.Value; }
-    }
-
-    readonly Lazy<ITicketSaleService> _ticketSales;
-    public ITicketSaleService TicketSales
-    {
-        get { return _ticketSales.Value; }
     }
 }
 
@@ -61,18 +54,11 @@ public sealed class ClientServiceWithRawResponse : IClientServiceWithRawResponse
         _client = client;
 
         _ws = new(() => new WServiceWithRawResponse(client));
-        _ticketSales = new(() => new TicketSaleServiceWithRawResponse(client));
     }
 
     readonly Lazy<IWServiceWithRawResponse> _ws;
     public IWServiceWithRawResponse Ws
     {
         get { return _ws.Value; }
-    }
-
-    readonly Lazy<ITicketSaleServiceWithRawResponse> _ticketSales;
-    public ITicketSaleServiceWithRawResponse TicketSales
-    {
-        get { return _ticketSales.Value; }
     }
 }

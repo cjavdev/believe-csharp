@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Believe.Core;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Tests.Models.Client.TicketSales;
+namespace Believe.Tests.Models.TicketSales;
 
 public class TicketSaleListPageResponseTest : TestBase
 {
@@ -21,7 +21,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     Currency = "GBP",
                     Discount = "9.00",
                     MatchID = "match-001",
-                    PurchaseMethod = TicketSaleListResponsePurchaseMethod.Online,
+                    PurchaseMethod = PurchaseMethod.Online,
                     Quantity = 2,
                     Subtotal = "90.00",
                     Tax = "16.20",
@@ -39,7 +39,7 @@ public class TicketSaleListPageResponseTest : TestBase
             Total = 0,
         };
 
-        List<TicketSaleListResponse> expectedData =
+        List<TicketSale> expectedData =
         [
             new()
             {
@@ -48,7 +48,7 @@ public class TicketSaleListPageResponseTest : TestBase
                 Currency = "GBP",
                 Discount = "9.00",
                 MatchID = "match-001",
-                PurchaseMethod = TicketSaleListResponsePurchaseMethod.Online,
+                PurchaseMethod = PurchaseMethod.Online,
                 Quantity = 2,
                 Subtotal = "90.00",
                 Tax = "16.20",
@@ -92,7 +92,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     Currency = "GBP",
                     Discount = "9.00",
                     MatchID = "match-001",
-                    PurchaseMethod = TicketSaleListResponsePurchaseMethod.Online,
+                    PurchaseMethod = PurchaseMethod.Online,
                     Quantity = 2,
                     Subtotal = "90.00",
                     Tax = "16.20",
@@ -133,7 +133,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     Currency = "GBP",
                     Discount = "9.00",
                     MatchID = "match-001",
-                    PurchaseMethod = TicketSaleListResponsePurchaseMethod.Online,
+                    PurchaseMethod = PurchaseMethod.Online,
                     Quantity = 2,
                     Subtotal = "90.00",
                     Tax = "16.20",
@@ -158,7 +158,7 @@ public class TicketSaleListPageResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        List<TicketSaleListResponse> expectedData =
+        List<TicketSale> expectedData =
         [
             new()
             {
@@ -167,7 +167,7 @@ public class TicketSaleListPageResponseTest : TestBase
                 Currency = "GBP",
                 Discount = "9.00",
                 MatchID = "match-001",
-                PurchaseMethod = TicketSaleListResponsePurchaseMethod.Online,
+                PurchaseMethod = PurchaseMethod.Online,
                 Quantity = 2,
                 Subtotal = "90.00",
                 Tax = "16.20",
@@ -211,7 +211,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     Currency = "GBP",
                     Discount = "9.00",
                     MatchID = "match-001",
-                    PurchaseMethod = TicketSaleListResponsePurchaseMethod.Online,
+                    PurchaseMethod = PurchaseMethod.Online,
                     Quantity = 2,
                     Subtotal = "90.00",
                     Tax = "16.20",
@@ -246,7 +246,7 @@ public class TicketSaleListPageResponseTest : TestBase
                     Currency = "GBP",
                     Discount = "9.00",
                     MatchID = "match-001",
-                    PurchaseMethod = TicketSaleListResponsePurchaseMethod.Online,
+                    PurchaseMethod = PurchaseMethod.Online,
                     Quantity = 2,
                     Subtotal = "90.00",
                     Tax = "16.20",

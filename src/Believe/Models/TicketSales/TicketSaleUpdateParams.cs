@@ -5,11 +5,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Believe.Core;
-using Believe.Exceptions;
 
-namespace Believe.Models.Client.TicketSales;
+namespace Believe.Models.TicketSales;
 
 /// <summary>
 /// Update specific fields of an existing ticket sale.
@@ -91,14 +89,14 @@ public record class TicketSaleUpdateParams : ParamsBase
     /// <summary>
     /// How the ticket was purchased.
     /// </summary>
-    public ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod>? PurchaseMethod
+    public ApiEnum<string, PurchaseMethod>? PurchaseMethod
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNullableClass<
-                ApiEnum<string, TicketSaleUpdateParamsPurchaseMethod>
-            >("purchase_method");
+            return this._rawBodyData.GetNullableClass<ApiEnum<string, PurchaseMethod>>(
+                "purchase_method"
+            );
         }
         init { this._rawBodyData.Set("purchase_method", value); }
     }
@@ -182,26 +180,30 @@ public record class TicketSaleUpdateParams : ParamsBase
     TicketSaleUpdateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        FrozenDictionary<string, JsonElement> rawBodyData,
+        string ticketSaleID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
+        this.TicketSaleID = ticketSaleID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TicketSaleUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData,
+        string ticketSaleID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            FrozenDictionary.ToFrozenDictionary(rawBodyData),
+            ticketSaleID
         );
     }
 
@@ -267,59 +269,5 @@ public record class TicketSaleUpdateParams : ParamsBase
     public override int GetHashCode()
     {
         return 0;
-    }
-}
-
-/// <summary>
-/// How the ticket was purchased.
-/// </summary>
-[JsonConverter(typeof(TicketSaleUpdateParamsPurchaseMethodConverter))]
-public enum TicketSaleUpdateParamsPurchaseMethod
-{
-    Online,
-    BoxOffice,
-    WillCall,
-    Phone,
-}
-
-sealed class TicketSaleUpdateParamsPurchaseMethodConverter
-    : JsonConverter<TicketSaleUpdateParamsPurchaseMethod>
-{
-    public override TicketSaleUpdateParamsPurchaseMethod Read(
-        ref Utf8JsonReader reader,
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
-    {
-        return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "online" => TicketSaleUpdateParamsPurchaseMethod.Online,
-            "box_office" => TicketSaleUpdateParamsPurchaseMethod.BoxOffice,
-            "will_call" => TicketSaleUpdateParamsPurchaseMethod.WillCall,
-            "phone" => TicketSaleUpdateParamsPurchaseMethod.Phone,
-            _ => (TicketSaleUpdateParamsPurchaseMethod)(-1),
-        };
-    }
-
-    public override void Write(
-        Utf8JsonWriter writer,
-        TicketSaleUpdateParamsPurchaseMethod value,
-        JsonSerializerOptions options
-    )
-    {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TicketSaleUpdateParamsPurchaseMethod.Online => "online",
-                TicketSaleUpdateParamsPurchaseMethod.BoxOffice => "box_office",
-                TicketSaleUpdateParamsPurchaseMethod.WillCall => "will_call",
-                TicketSaleUpdateParamsPurchaseMethod.Phone => "phone",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
     }
 }

@@ -6,31 +6,31 @@ using System.Net.Http;
 using System.Text.Json;
 using Believe.Core;
 
-namespace Believe.Models.Client.TicketSales;
+namespace Believe.Models.TicketSales;
 
 /// <summary>
-/// Remove a ticket sale from the database.
+/// Retrieve detailed information about a specific ticket sale.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
-public record class TicketSaleDeleteParams : ParamsBase
+public record class TicketSaleRetrieveParams : ParamsBase
 {
     public string? TicketSaleID { get; init; }
 
-    public TicketSaleDeleteParams() { }
+    public TicketSaleRetrieveParams() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public TicketSaleDeleteParams(TicketSaleDeleteParams ticketSaleDeleteParams)
-        : base(ticketSaleDeleteParams)
+    public TicketSaleRetrieveParams(TicketSaleRetrieveParams ticketSaleRetrieveParams)
+        : base(ticketSaleRetrieveParams)
     {
-        this.TicketSaleID = ticketSaleDeleteParams.TicketSaleID;
+        this.TicketSaleID = ticketSaleRetrieveParams.TicketSaleID;
     }
 #pragma warning restore CS8618
 
-    public TicketSaleDeleteParams(
+    public TicketSaleRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
@@ -41,25 +41,29 @@ public record class TicketSaleDeleteParams : ParamsBase
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    TicketSaleDeleteParams(
+    TicketSaleRetrieveParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
-        FrozenDictionary<string, JsonElement> rawQueryData
+        FrozenDictionary<string, JsonElement> rawQueryData,
+        string ticketSaleID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
+        this.TicketSaleID = ticketSaleID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
-    public static TicketSaleDeleteParams FromRawUnchecked(
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
+    public static TicketSaleRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
-        IReadOnlyDictionary<string, JsonElement> rawQueryData
+        IReadOnlyDictionary<string, JsonElement> rawQueryData,
+        string ticketSaleID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
-            FrozenDictionary.ToFrozenDictionary(rawQueryData)
+            FrozenDictionary.ToFrozenDictionary(rawQueryData),
+            ticketSaleID
         );
     }
 
@@ -80,7 +84,7 @@ public record class TicketSaleDeleteParams : ParamsBase
             ModelBase.ToStringSerializerOptions
         );
 
-    public virtual bool Equals(TicketSaleDeleteParams? other)
+    public virtual bool Equals(TicketSaleRetrieveParams? other)
     {
         if (other == null)
         {

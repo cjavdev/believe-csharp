@@ -3,12 +3,12 @@ using Believe.Exceptions;
 using Believe.Models.Believe;
 using Believe.Models.Biscuits;
 using Believe.Models.Characters;
-using Believe.Models.Client.TicketSales;
 using Believe.Models.Conflicts;
 using Believe.Models.Matches;
 using Believe.Models.Quotes;
 using Believe.Models.TeamMembers;
 using Believe.Models.Teams;
+using Believe.Models.TicketSales;
 using Webhooks = Believe.Models.Webhooks;
 
 namespace Believe.Core;
@@ -73,13 +73,7 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, Webhooks::MemberType>(),
             new ApiEnumConverter<string, Webhooks::TransferType>(),
             new ApiEnumConverter<string, Webhooks::TeamMemberTransferredEventType>(),
-            new ApiEnumConverter<string, TicketSaleCreateResponsePurchaseMethod>(),
-            new ApiEnumConverter<string, TicketSaleRetrieveResponsePurchaseMethod>(),
-            new ApiEnumConverter<string, TicketSaleUpdateResponsePurchaseMethod>(),
-            new ApiEnumConverter<string, TicketSaleListResponsePurchaseMethod>(),
             new ApiEnumConverter<string, PurchaseMethod>(),
-            new ApiEnumConverter<string, TicketSaleUpdateParamsPurchaseMethod>(),
-            new ApiEnumConverter<string, TicketSaleListParamsPurchaseMethod>(),
         },
     };
 

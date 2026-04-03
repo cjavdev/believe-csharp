@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.3.0 (2026-04-03)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/cjavdev/believe-csharp/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** manual updates ([c8d41ef](https://github.com/cjavdev/believe-csharp/commit/c8d41ef6edd3c3a2e9033b7a8be78f18bb3aca4d))
+* **api:** manual updates ([0e79dd0](https://github.com/cjavdev/believe-csharp/commit/0e79dd00ac845f1105a9de4eeb0fab34861fd00f))
+* **api:** manual updates ([070dc45](https://github.com/cjavdev/believe-csharp/commit/070dc45caffe00b753f17fa7bca80f5d18a7249b))
+* **api:** manual updates ([1e0558e](https://github.com/cjavdev/believe-csharp/commit/1e0558e50d90537a75848c7479d4a84141a98ed5))
+* **api:** manual updates ([54a3bea](https://github.com/cjavdev/believe-csharp/commit/54a3bea1be2bd792d9af2eed28b51701f9f3e1db))
+* **api:** manual updates ([14cc896](https://github.com/cjavdev/believe-csharp/commit/14cc8964c23add01739fab534b5a0ec8115cb233))
+* **client:** enable gzip decompression ([3748b97](https://github.com/cjavdev/believe-csharp/commit/3748b9767e1343e73f47cfd4e2317b7ea7ec32a7))
+
+
+### Bug Fixes
+
+* **client:** allow cancelling when enumerating over an http response ([51e916f](https://github.com/cjavdev/believe-csharp/commit/51e916fb40e21275ca3bbc14d6c56b585cf64bf4))
+* **client:** don't overzealously validate union variants when deserializing ([1ebc212](https://github.com/cjavdev/believe-csharp/commit/1ebc212224a2f7ee920e93da45a0dbf242b56d1a))
+* **client:** handle path params correctly in `FromRawUnchecked` ([dd0724b](https://github.com/cjavdev/believe-csharp/commit/dd0724bd3cbc978f87d07debd7d76943e677b76b))
+* **client:** handle root bodies in requests properly ([90457a0](https://github.com/cjavdev/believe-csharp/commit/90457a01d83bd349856c17a472fa6c1509ad3f92))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([3929f8d](https://github.com/cjavdev/believe-csharp/commit/3929f8d339bdd960ff640cdc9f64b95731324f2e))
+* **client:** update formatting ([de26a48](https://github.com/cjavdev/believe-csharp/commit/de26a4851ea8dd00e9c52adbad629df005ffbbe8))
+* **internal:** codegen related update ([f7131db](https://github.com/cjavdev/believe-csharp/commit/f7131dbdd37bfd46666aedfabec912e9de44cd79))
+* **internal:** tweak CI branches ([b657299](https://github.com/cjavdev/believe-csharp/commit/b657299a680ba68d107e2654b04b0e4b326b047d))
+* **internal:** update gitignore ([2a4c54f](https://github.com/cjavdev/believe-csharp/commit/2a4c54ffc971179d4b4e383aa4859f0056400b34))
+
 ## 0.2.0 (2026-03-09)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/cjavdev/believe-csharp/compare/v0.1.0...v0.2.0)

@@ -30,8 +30,8 @@ public interface ICommentaryService
     ICommentaryService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Stream live match commentary for a specific match. Uses Server-Sent Events
-    /// (SSE) to stream commentary events in real-time.
+    /// Stream live match commentary for a specific match. Uses Server-Sent Events (SSE)
+    /// to stream commentary events in real-time.
     /// </summary>
     Task<JsonElement> Stream(
         CommentaryStreamParams parameters,
@@ -60,7 +60,7 @@ public interface ICommentaryServiceWithRawResponse
     ICommentaryServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /matches/{match_id}/commentary/stream`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /matches/{match_id}/commentary/stream</c>, but is otherwise the
     /// same as <see cref="ICommentaryService.Stream(CommentaryStreamParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<JsonElement>> Stream(

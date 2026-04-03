@@ -113,7 +113,7 @@ public record class TeamMemberListResponse : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TeamMemberPlayer"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -134,7 +134,7 @@ public record class TeamMemberListResponse : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TeamMemberCoach"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -155,7 +155,7 @@ public record class TeamMemberListResponse : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TeamMemberMedicalStaff"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -176,7 +176,7 @@ public record class TeamMemberListResponse : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TeamMemberEquipmentManager"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -196,7 +196,7 @@ public record class TeamMemberListResponse : ModelBase
     /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
     /// if you need your function parameters to return something.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -207,10 +207,10 @@ public record class TeamMemberListResponse : ModelBase
     /// <example>
     /// <code>
     /// instance.Switch(
-    ///     (TeamMemberPlayer value) => {...},
-    ///     (TeamMemberCoach value) => {...},
-    ///     (TeamMemberMedicalStaff value) => {...},
-    ///     (TeamMemberEquipmentManager value) => {...}
+    ///     (TeamMemberPlayer value) =&gt; {...},
+    ///     (TeamMemberCoach value) =&gt; {...},
+    ///     (TeamMemberMedicalStaff value) =&gt; {...},
+    ///     (TeamMemberEquipmentManager value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -247,7 +247,7 @@ public record class TeamMemberListResponse : ModelBase
     /// Calls the function parameter corresponding to the variant the instance was constructed with and
     /// returns its result.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
     /// if you don't need your function parameters to return a value.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -258,10 +258,10 @@ public record class TeamMemberListResponse : ModelBase
     /// <example>
     /// <code>
     /// var result = instance.Match(
-    ///     (TeamMemberPlayer value) => {...},
-    ///     (TeamMemberCoach value) => {...},
-    ///     (TeamMemberMedicalStaff value) => {...},
-    ///     (TeamMemberEquipmentManager value) => {...}
+    ///     (TeamMemberPlayer value) =&gt; {...},
+    ///     (TeamMemberCoach value) =&gt; {...},
+    ///     (TeamMemberMedicalStaff value) =&gt; {...},
+    ///     (TeamMemberEquipmentManager value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -381,11 +381,10 @@ sealed class TeamMemberListResponseConverter : JsonConverter<TeamMemberListRespo
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -402,11 +401,10 @@ sealed class TeamMemberListResponseConverter : JsonConverter<TeamMemberListRespo
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -423,11 +421,10 @@ sealed class TeamMemberListResponseConverter : JsonConverter<TeamMemberListRespo
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -444,11 +441,10 @@ sealed class TeamMemberListResponseConverter : JsonConverter<TeamMemberListRespo
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }

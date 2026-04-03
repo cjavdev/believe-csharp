@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Believe.Core;
-using Believe.Exceptions;
 
-namespace Believe.Models.Client.TicketSales;
+namespace Believe.Models.TicketSales;
 
 /// <summary>
 /// Get a paginated list of all ticket sales with optional filtering. With 300 records,
@@ -83,14 +81,14 @@ public record class TicketSaleListParams : ParamsBase
     /// <summary>
     /// Filter by purchase method
     /// </summary>
-    public ApiEnum<string, TicketSaleListParamsPurchaseMethod>? PurchaseMethod
+    public ApiEnum<string, PurchaseMethod>? PurchaseMethod
     {
         get
         {
             this._rawQueryData.Freeze();
-            return this._rawQueryData.GetNullableClass<
-                ApiEnum<string, TicketSaleListParamsPurchaseMethod>
-            >("purchase_method");
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, PurchaseMethod>>(
+                "purchase_method"
+            );
         }
         init { this._rawQueryData.Set("purchase_method", value); }
     }
@@ -145,7 +143,7 @@ public record class TicketSaleListParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TicketSaleListParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
@@ -203,59 +201,5 @@ public record class TicketSaleListParams : ParamsBase
     public override int GetHashCode()
     {
         return 0;
-    }
-}
-
-/// <summary>
-/// Filter by purchase method
-/// </summary>
-[JsonConverter(typeof(TicketSaleListParamsPurchaseMethodConverter))]
-public enum TicketSaleListParamsPurchaseMethod
-{
-    Online,
-    BoxOffice,
-    WillCall,
-    Phone,
-}
-
-sealed class TicketSaleListParamsPurchaseMethodConverter
-    : JsonConverter<TicketSaleListParamsPurchaseMethod>
-{
-    public override TicketSaleListParamsPurchaseMethod Read(
-        ref Utf8JsonReader reader,
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
-    {
-        return JsonSerializer.Deserialize<string>(ref reader, options) switch
-        {
-            "online" => TicketSaleListParamsPurchaseMethod.Online,
-            "box_office" => TicketSaleListParamsPurchaseMethod.BoxOffice,
-            "will_call" => TicketSaleListParamsPurchaseMethod.WillCall,
-            "phone" => TicketSaleListParamsPurchaseMethod.Phone,
-            _ => (TicketSaleListParamsPurchaseMethod)(-1),
-        };
-    }
-
-    public override void Write(
-        Utf8JsonWriter writer,
-        TicketSaleListParamsPurchaseMethod value,
-        JsonSerializerOptions options
-    )
-    {
-        JsonSerializer.Serialize(
-            writer,
-            value switch
-            {
-                TicketSaleListParamsPurchaseMethod.Online => "online",
-                TicketSaleListParamsPurchaseMethod.BoxOffice => "box_office",
-                TicketSaleListParamsPurchaseMethod.WillCall => "will_call",
-                TicketSaleListParamsPurchaseMethod.Phone => "phone",
-                _ => throw new BelieveInvalidDataException(
-                    string.Format("Invalid value '{0}' in {1}", value, nameof(value))
-                ),
-            },
-            options
-        );
     }
 }

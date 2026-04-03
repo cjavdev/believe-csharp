@@ -164,6 +164,12 @@ public sealed class BelieveClient : IBelieveClient
         get { return _webhooks.Value; }
     }
 
+    readonly Lazy<ITicketSaleService> _ticketSales;
+    public ITicketSaleService TicketSales
+    {
+        get { return _ticketSales.Value; }
+    }
+
     readonly Lazy<IHealthService> _health;
     public IHealthService Health
     {
@@ -216,6 +222,7 @@ public sealed class BelieveClient : IBelieveClient
         _stream = new(() => new StreamService(this));
         _teamMembers = new(() => new TeamMemberService(this));
         _webhooks = new(() => new WebhookService(this));
+        _ticketSales = new(() => new TicketSaleService(this));
         _health = new(() => new HealthService(this));
         _version = new(() => new VersionService(this));
         _client = new(() => new ClientService(this));
@@ -382,6 +389,12 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
     public IWebhookServiceWithRawResponse Webhooks
     {
         get { return _webhooks.Value; }
+    }
+
+    readonly Lazy<ITicketSaleServiceWithRawResponse> _ticketSales;
+    public ITicketSaleServiceWithRawResponse TicketSales
+    {
+        get { return _ticketSales.Value; }
     }
 
     readonly Lazy<IHealthServiceWithRawResponse> _health;
@@ -638,6 +651,7 @@ public sealed class BelieveClientWithRawResponse : IBelieveClientWithRawResponse
         _stream = new(() => new StreamServiceWithRawResponse(this));
         _teamMembers = new(() => new TeamMemberServiceWithRawResponse(this));
         _webhooks = new(() => new WebhookServiceWithRawResponse(this));
+        _ticketSales = new(() => new TicketSaleServiceWithRawResponse(this));
         _health = new(() => new HealthServiceWithRawResponse(this));
         _version = new(() => new VersionServiceWithRawResponse(this));
         _client = new(() => new ClientServiceWithRawResponse(this));

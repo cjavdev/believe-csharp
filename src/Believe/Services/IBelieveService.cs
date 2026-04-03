@@ -51,7 +51,7 @@ public interface IBelieveServiceWithRawResponse
     IBelieveServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /believe`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /believe</c>, but is otherwise the
     /// same as <see cref="IBelieveService.Submit(BelieveSubmitParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<BelieveSubmitResponse>> Submit(

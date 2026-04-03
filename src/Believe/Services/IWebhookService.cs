@@ -35,20 +35,21 @@ public interface IWebhookService
     ///
     /// <para>## Event Types</para>
     ///
-    /// <para>Available event types to subscribe to: - `match.completed` - Fired
-    /// when a football match ends - `team_member.transferred` - Fired when a player/coach
+    /// <para>Available event types to subscribe to: - `match.completed` - Fired when a
+    /// football match ends - `team_member.transferred` - Fired when a player/coach
     /// joins or leaves a team</para>
     ///
     /// <para>If no event types are specified, the webhook will receive all event types.</para>
     ///
     /// <para>## Webhook Signatures</para>
     ///
-    /// <para>All webhook deliveries include Standard Webhooks signature headers:
-    /// - `webhook-id` - Unique message identifier - `webhook-timestamp` - Unix timestamp
-    /// of when the webhook was sent - `webhook-signature` - HMAC-SHA256 signature
-    /// in format `v1,{base64_signature}`</para>
+    /// <para>All webhook deliveries include Standard Webhooks signature headers: -
+    /// `webhook-id` - Unique message identifier - `webhook-timestamp` - Unix timestamp
+    /// of when the webhook was sent - `webhook-signature` - HMAC-SHA256 signature in
+    /// format `v1,{base64_signature}`</para>
     ///
-    /// <para>Store the returned `secret` securely - you'll need it to verify webhook signatures.</para>
+    /// <para>Store the returned `secret` securely - you'll need it to verify webhook
+    /// signatures.</para>
     /// </summary>
     Task<WebhookCreateResponse> Create(
         WebhookCreateParams parameters,
@@ -96,24 +97,25 @@ public interface IWebhookService
     /// <summary>
     /// Trigger a webhook event and deliver it to all subscribed endpoints.
     ///
-    /// <para>This endpoint is useful for testing your webhook integration. It will:
-    /// 1. Generate an event with the specified type and payload 2. Find all webhooks
+    /// <para>This endpoint is useful for testing your webhook integration. It will: 1.
+    /// Generate an event with the specified type and payload 2. Find all webhooks
     /// subscribed to that event type 3. Send a POST request to each webhook URL with
     /// signature headers 4. Return the delivery results</para>
     ///
     /// <para>## Event Payload</para>
     ///
-    /// <para>You can provide a custom payload, or leave it empty to use a sample payload.</para>
+    /// <para>You can provide a custom payload, or leave it empty to use a sample
+    /// payload.</para>
     ///
     /// <para>## Webhook Signature Headers</para>
     ///
     /// <para>Each webhook delivery includes: - `webhook-id` - Unique event identifier
-    /// (e.g., `evt_abc123...`) - `webhook-timestamp` - Unix timestamp - `webhook-signature`
-    /// - HMAC-SHA256 signature (`v1,{base64}`)</para>
+    /// (e.g., `evt_abc123...`) - `webhook-timestamp` - Unix timestamp -
+    /// `webhook-signature` - HMAC-SHA256 signature (`v1,{base64}`)</para>
     ///
-    /// <para>To verify signatures, compute: ``` signature = HMAC-SHA256(     key
-    /// = base64_decode(secret_without_prefix),     message = "{timestamp}.{raw_json_payload}"
-    /// ) ```</para>
+    /// <para>To verify signatures, compute: ``` signature = HMAC-SHA256(     key =
+    /// base64_decode(secret_without_prefix),     message =
+    /// "{timestamp}.{raw_json_payload}" ) ```</para>
     /// </summary>
     Task<WebhookTriggerEventResponse> TriggerEvent(
         WebhookTriggerEventParams parameters,
@@ -135,7 +137,7 @@ public interface IWebhookServiceWithRawResponse
     IWebhookServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /webhooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /webhooks</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Create(WebhookCreateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookCreateResponse>> Create(
@@ -144,7 +146,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /webhooks/{webhook_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /webhooks/{webhook_id}</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Retrieve(WebhookRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<RegisteredWebhook>> Retrieve(
@@ -160,7 +162,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /webhooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /webhooks</c>, but is otherwise the
     /// same as <see cref="IWebhookService.List(WebhookListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<RegisteredWebhook>>> List(
@@ -169,7 +171,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /webhooks/{webhook_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /webhooks/{webhook_id}</c>, but is otherwise the
     /// same as <see cref="IWebhookService.Delete(WebhookDeleteParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<Dictionary<string, JsonElement>>> Delete(
@@ -185,7 +187,7 @@ public interface IWebhookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /webhooks/trigger`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /webhooks/trigger</c>, but is otherwise the
     /// same as <see cref="IWebhookService.TriggerEvent(WebhookTriggerEventParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<WebhookTriggerEventResponse>> TriggerEvent(

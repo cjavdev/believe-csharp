@@ -35,11 +35,7 @@ namespace Believe.Models.TeamMembers;
 /// </summary>
 public record class TeamMemberCreateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
-        get { return this._rawBodyData.Freeze(); }
-    }
+    public JsonElement RawBodyData { get; private init; }
 
     /// <summary>
     /// A football player on the team.
@@ -48,10 +44,9 @@ public record class TeamMemberCreateParams : ParamsBase
     {
         get
         {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<Member>("member");
+            return WrappedJsonSerializer.GetNotNullClass<Member>(this.RawBodyData, "RawBodyData");
         }
-        init { this._rawBodyData.Set("member", value); }
+        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
     public TeamMemberCreateParams() { }
@@ -61,19 +56,19 @@ public record class TeamMemberCreateParams : ParamsBase
     public TeamMemberCreateParams(TeamMemberCreateParams teamMemberCreateParams)
         : base(teamMemberCreateParams)
     {
-        this._rawBodyData = new(teamMemberCreateParams._rawBodyData);
+        this.RawBodyData = teamMemberCreateParams.RawBodyData;
     }
 #pragma warning restore CS8618
 
     public TeamMemberCreateParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
     }
 
 #pragma warning disable CS8618
@@ -81,26 +76,26 @@ public record class TeamMemberCreateParams : ParamsBase
     TeamMemberCreateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TeamMemberCreateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            rawBodyData
         );
     }
 
@@ -115,7 +110,7 @@ public record class TeamMemberCreateParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -129,7 +124,7 @@ public record class TeamMemberCreateParams : ParamsBase
         }
         return this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+            && this.RawBodyData.Equals(other.RawBodyData);
     }
 
     public override Uri Url(ClientOptions options)
@@ -257,7 +252,7 @@ public record class Member : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="Player"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -278,7 +273,7 @@ public record class Member : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="Coach"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -299,7 +294,7 @@ public record class Member : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="MedicalStaff"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -320,7 +315,7 @@ public record class Member : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="EquipmentManager"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -340,7 +335,7 @@ public record class Member : ModelBase
     /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
     /// if you need your function parameters to return something.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -351,10 +346,10 @@ public record class Member : ModelBase
     /// <example>
     /// <code>
     /// instance.Switch(
-    ///     (Player value) => {...},
-    ///     (Coach value) => {...},
-    ///     (MedicalStaff value) => {...},
-    ///     (EquipmentManager value) => {...}
+    ///     (Player value) =&gt; {...},
+    ///     (Coach value) =&gt; {...},
+    ///     (MedicalStaff value) =&gt; {...},
+    ///     (EquipmentManager value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -389,7 +384,7 @@ public record class Member : ModelBase
     /// Calls the function parameter corresponding to the variant the instance was constructed with and
     /// returns its result.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
     /// if you don't need your function parameters to return a value.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -400,10 +395,10 @@ public record class Member : ModelBase
     /// <example>
     /// <code>
     /// var result = instance.Match(
-    ///     (Player value) => {...},
-    ///     (Coach value) => {...},
-    ///     (MedicalStaff value) => {...},
-    ///     (EquipmentManager value) => {...}
+    ///     (Player value) =&gt; {...},
+    ///     (Coach value) =&gt; {...},
+    ///     (MedicalStaff value) =&gt; {...},
+    ///     (EquipmentManager value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -514,11 +509,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     var deserialized = JsonSerializer.Deserialize<Player>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -532,11 +526,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     var deserialized = JsonSerializer.Deserialize<Coach>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -550,11 +543,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     var deserialized = JsonSerializer.Deserialize<MedicalStaff>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -571,11 +563,10 @@ sealed class MemberConverter : JsonConverter<Member>
                     );
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (Exception e) when (e is JsonException || e is BelieveInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }

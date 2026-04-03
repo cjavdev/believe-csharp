@@ -21,11 +21,7 @@ namespace Believe.Models.TeamMembers;
 /// </summary>
 public record class TeamMemberUpdateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
-        get { return this._rawBodyData.Freeze(); }
-    }
+    public JsonElement RawBodyData { get; private init; }
 
     public string? MemberID { get; init; }
 
@@ -36,10 +32,9 @@ public record class TeamMemberUpdateParams : ParamsBase
     {
         get
         {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<Updates>("updates");
+            return WrappedJsonSerializer.GetNotNullClass<Updates>(this.RawBodyData, "RawBodyData");
         }
-        init { this._rawBodyData.Set("updates", value); }
+        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
     public TeamMemberUpdateParams() { }
@@ -51,19 +46,19 @@ public record class TeamMemberUpdateParams : ParamsBase
     {
         this.MemberID = teamMemberUpdateParams.MemberID;
 
-        this._rawBodyData = new(teamMemberUpdateParams._rawBodyData);
+        this.RawBodyData = teamMemberUpdateParams.RawBodyData;
     }
 #pragma warning restore CS8618
 
     public TeamMemberUpdateParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
     }
 
 #pragma warning disable CS8618
@@ -71,26 +66,30 @@ public record class TeamMemberUpdateParams : ParamsBase
     TeamMemberUpdateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData,
+        string memberID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
+        this.MemberID = memberID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TeamMemberUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData,
+        string memberID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            rawBodyData,
+            memberID
         );
     }
 
@@ -106,7 +105,7 @@ public record class TeamMemberUpdateParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -121,7 +120,7 @@ public record class TeamMemberUpdateParams : ParamsBase
         return (this.MemberID?.Equals(other.MemberID) ?? other.MemberID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+            && this.RawBodyData.Equals(other.RawBodyData);
     }
 
     public override Uri Url(ClientOptions options)
@@ -239,7 +238,7 @@ public record class Updates : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="PlayerUpdate"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -260,7 +259,7 @@ public record class Updates : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="CoachUpdate"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -281,7 +280,7 @@ public record class Updates : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="MedicalStaffUpdate"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -302,7 +301,7 @@ public record class Updates : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="EquipmentManagerUpdate"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -322,7 +321,7 @@ public record class Updates : ModelBase
     /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
     /// if you need your function parameters to return something.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -333,10 +332,10 @@ public record class Updates : ModelBase
     /// <example>
     /// <code>
     /// instance.Switch(
-    ///     (PlayerUpdate value) => {...},
-    ///     (CoachUpdate value) => {...},
-    ///     (MedicalStaffUpdate value) => {...},
-    ///     (EquipmentManagerUpdate value) => {...}
+    ///     (PlayerUpdate value) =&gt; {...},
+    ///     (CoachUpdate value) =&gt; {...},
+    ///     (MedicalStaffUpdate value) =&gt; {...},
+    ///     (EquipmentManagerUpdate value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -371,7 +370,7 @@ public record class Updates : ModelBase
     /// Calls the function parameter corresponding to the variant the instance was constructed with and
     /// returns its result.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
     /// if you don't need your function parameters to return a value.</para>
     ///
     /// <exception cref="BelieveInvalidDataException">
@@ -382,10 +381,10 @@ public record class Updates : ModelBase
     /// <example>
     /// <code>
     /// var result = instance.Match(
-    ///     (PlayerUpdate value) => {...},
-    ///     (CoachUpdate value) => {...},
-    ///     (MedicalStaffUpdate value) => {...},
-    ///     (EquipmentManagerUpdate value) => {...}
+    ///     (PlayerUpdate value) =&gt; {...},
+    ///     (CoachUpdate value) =&gt; {...},
+    ///     (MedicalStaffUpdate value) =&gt; {...},
+    ///     (EquipmentManagerUpdate value) =&gt; {...}
     /// );
     /// </code>
     /// </example>

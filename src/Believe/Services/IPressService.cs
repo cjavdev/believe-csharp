@@ -51,7 +51,7 @@ public interface IPressServiceWithRawResponse
     IPressServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /press`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /press</c>, but is otherwise the
     /// same as <see cref="IPressService.Simulate(PressSimulateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PressSimulateResponse>> Simulate(

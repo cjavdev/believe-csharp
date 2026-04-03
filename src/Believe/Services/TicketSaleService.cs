@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Believe.Core;
 using Believe.Exceptions;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Services.Client;
+namespace Believe.Services;
 
 /// <inheritdoc/>
 public sealed class TicketSaleService : ITicketSaleService
@@ -35,7 +35,7 @@ public sealed class TicketSaleService : ITicketSaleService
     }
 
     /// <inheritdoc/>
-    public async Task<TicketSaleCreateResponse> Create(
+    public async Task<TicketSale> Create(
         TicketSaleCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -47,7 +47,7 @@ public sealed class TicketSaleService : ITicketSaleService
     }
 
     /// <inheritdoc/>
-    public async Task<TicketSaleRetrieveResponse> Retrieve(
+    public async Task<TicketSale> Retrieve(
         TicketSaleRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -59,7 +59,7 @@ public sealed class TicketSaleService : ITicketSaleService
     }
 
     /// <inheritdoc/>
-    public Task<TicketSaleRetrieveResponse> Retrieve(
+    public Task<TicketSale> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -71,7 +71,7 @@ public sealed class TicketSaleService : ITicketSaleService
     }
 
     /// <inheritdoc/>
-    public async Task<TicketSaleUpdateResponse> Update(
+    public async Task<TicketSale> Update(
         TicketSaleUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -83,7 +83,7 @@ public sealed class TicketSaleService : ITicketSaleService
     }
 
     /// <inheritdoc/>
-    public Task<TicketSaleUpdateResponse> Update(
+    public Task<TicketSale> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -148,7 +148,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TicketSaleCreateResponse>> Create(
+    public async Task<HttpResponse<TicketSale>> Create(
         TicketSaleCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -164,7 +164,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             async (token) =>
             {
                 var ticketSale = await response
-                    .Deserialize<TicketSaleCreateResponse>(token)
+                    .Deserialize<TicketSale>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
@@ -176,7 +176,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TicketSaleRetrieveResponse>> Retrieve(
+    public async Task<HttpResponse<TicketSale>> Retrieve(
         TicketSaleRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -197,7 +197,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             async (token) =>
             {
                 var ticketSale = await response
-                    .Deserialize<TicketSaleRetrieveResponse>(token)
+                    .Deserialize<TicketSale>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
@@ -209,7 +209,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<TicketSaleRetrieveResponse>> Retrieve(
+    public Task<HttpResponse<TicketSale>> Retrieve(
         string ticketSaleID,
         TicketSaleRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -221,7 +221,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<TicketSaleUpdateResponse>> Update(
+    public async Task<HttpResponse<TicketSale>> Update(
         TicketSaleUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -242,7 +242,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
             async (token) =>
             {
                 var ticketSale = await response
-                    .Deserialize<TicketSaleUpdateResponse>(token)
+                    .Deserialize<TicketSale>(token)
                     .ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
@@ -254,7 +254,7 @@ public sealed class TicketSaleServiceWithRawResponse : ITicketSaleServiceWithRaw
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<TicketSaleUpdateResponse>> Update(
+    public Task<HttpResponse<TicketSale>> Update(
         string ticketSaleID,
         TicketSaleUpdateParams? parameters = null,
         CancellationToken cancellationToken = default

@@ -50,7 +50,7 @@ public interface IVersionServiceWithRawResponse
     IVersionServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /version`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /version</c>, but is otherwise the
     /// same as <see cref="IVersionService.Retrieve(VersionRetrieveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<JsonElement>> Retrieve(

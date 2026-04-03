@@ -51,7 +51,7 @@ public interface IConflictServiceWithRawResponse
     IConflictServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /conflicts/resolve`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /conflicts/resolve</c>, but is otherwise the
     /// same as <see cref="IConflictService.Resolve(ConflictResolveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ConflictResolveResponse>> Resolve(

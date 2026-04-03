@@ -1,14 +1,14 @@
 using System.Threading.Tasks;
-using Believe.Models.Client.TicketSales;
+using Believe.Models.TicketSales;
 
-namespace Believe.Tests.Services.Client;
+namespace Believe.Tests.Services;
 
 public class TicketSaleServiceTest : TestBase
 {
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var ticketSale = await this.client.Client.TicketSales.Create(
+        var ticketSale = await this.client.TicketSales.Create(
             new()
             {
                 BuyerName = "Mae Green",
@@ -30,7 +30,7 @@ public class TicketSaleServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var ticketSale = await this.client.Client.TicketSales.Retrieve(
+        var ticketSale = await this.client.TicketSales.Retrieve(
             "ticket_sale_id",
             new(),
             TestContext.Current.CancellationToken
@@ -41,7 +41,7 @@ public class TicketSaleServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var ticketSale = await this.client.Client.TicketSales.Update(
+        var ticketSale = await this.client.TicketSales.Update(
             "ticket_sale_id",
             new(),
             TestContext.Current.CancellationToken
@@ -52,17 +52,14 @@ public class TicketSaleServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
-        var page = await this.client.Client.TicketSales.List(
-            new(),
-            TestContext.Current.CancellationToken
-        );
+        var page = await this.client.TicketSales.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Delete_Works()
     {
-        await this.client.Client.TicketSales.Delete(
+        await this.client.TicketSales.Delete(
             "ticket_sale_id",
             new(),
             TestContext.Current.CancellationToken
