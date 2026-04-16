@@ -32,11 +32,13 @@ public class LogoDeleteParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/teams/team_id/logo/182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/teams/team_id/logo/182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+                ),
+                url
+            )
         );
     }
 

@@ -99,11 +99,13 @@ public class EpisodeListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/episodes?character_focus=character_focus&limit=10&season=1&skip=0"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/episodes?character_focus=character_focus&limit=10&season=1&skip=0"
+                ),
+                url
+            )
         );
     }
 

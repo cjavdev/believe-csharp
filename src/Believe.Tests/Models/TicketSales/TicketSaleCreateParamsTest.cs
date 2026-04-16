@@ -120,7 +120,7 @@ public class TicketSaleCreateParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/ticket-sales"), url);
+        Assert.True(TestBase.UrisEqual(new Uri("https://believe.cjav.dev/ticket-sales"), url));
     }
 
     [Fact]

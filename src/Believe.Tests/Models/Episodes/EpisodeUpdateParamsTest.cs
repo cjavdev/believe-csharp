@@ -174,7 +174,9 @@ public class EpisodeUpdateParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/episodes/episode_id"), url);
+        Assert.True(
+            TestBase.UrisEqual(new Uri("https://believe.cjav.dev/episodes/episode_id"), url)
+        );
     }
 
     [Fact]

@@ -22,7 +22,7 @@ public class TeamDeleteParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/teams/team_id"), url);
+        Assert.True(TestBase.UrisEqual(new Uri("https://believe.cjav.dev/teams/team_id"), url));
     }
 
     [Fact]

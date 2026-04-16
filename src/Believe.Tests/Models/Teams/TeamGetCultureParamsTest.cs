@@ -22,7 +22,9 @@ public class TeamGetCultureParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/teams/team_id/culture"), url);
+        Assert.True(
+            TestBase.UrisEqual(new Uri("https://believe.cjav.dev/teams/team_id/culture"), url)
+        );
     }
 
     [Fact]

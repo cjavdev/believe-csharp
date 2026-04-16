@@ -100,11 +100,13 @@ public class TeamListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/teams?league=Premier+League&limit=10&min_culture_score=0&skip=0"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/teams?league=Premier+League&limit=10&min_culture_score=0&skip=0"
+                ),
+                url
+            )
         );
     }
 

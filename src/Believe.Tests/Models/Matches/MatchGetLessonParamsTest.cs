@@ -22,7 +22,9 @@ public class MatchGetLessonParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/matches/match_id/lesson"), url);
+        Assert.True(
+            TestBase.UrisEqual(new Uri("https://believe.cjav.dev/matches/match_id/lesson"), url)
+        );
     }
 
     [Fact]
