@@ -22,7 +22,9 @@ public class WebhookDeleteParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/webhooks/webhook_id"), url);
+        Assert.True(
+            TestBase.UrisEqual(new Uri("https://believe.cjav.dev/webhooks/webhook_id"), url)
+        );
     }
 
     [Fact]

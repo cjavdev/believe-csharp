@@ -89,9 +89,13 @@ public class TeamMemberListStaffParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri("https://believe.cjav.dev/team-members/staff/?limit=10&skip=0&team_id=team_id"),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/team-members/staff/?limit=10&skip=0&team_id=team_id"
+                ),
+                url
+            )
         );
     }
 
