@@ -65,9 +65,11 @@ public class QuoteListByCharacterParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri("https://believe.cjav.dev/quotes/characters/character_id?limit=10&skip=0"),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://believe.cjav.dev/quotes/characters/character_id?limit=10&skip=0"),
+                url
+            )
         );
     }
 

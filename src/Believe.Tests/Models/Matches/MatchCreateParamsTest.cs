@@ -257,7 +257,7 @@ public class MatchCreateParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/matches"), url);
+        Assert.True(TestBase.UrisEqual(new Uri("https://believe.cjav.dev/matches"), url));
     }
 
     [Fact]

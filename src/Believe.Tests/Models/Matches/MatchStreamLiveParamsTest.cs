@@ -77,11 +77,13 @@ public class MatchStreamLiveParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/matches/live?away_team=away_team&excitement_level=1&home_team=home_team&speed=0.1"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/matches/live?away_team=away_team&excitement_level=1&home_team=home_team&speed=0.1"
+                ),
+                url
+            )
         );
     }
 

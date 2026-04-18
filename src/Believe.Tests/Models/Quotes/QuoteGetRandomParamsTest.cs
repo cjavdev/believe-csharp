@@ -68,11 +68,13 @@ public class QuoteGetRandomParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/quotes/random?character_id=character_id&inspirational=true&theme=belief"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/quotes/random?character_id=character_id&inspirational=true&theme=belief"
+                ),
+                url
+            )
         );
     }
 

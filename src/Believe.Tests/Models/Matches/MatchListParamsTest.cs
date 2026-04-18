@@ -115,11 +115,13 @@ public class MatchListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/matches?limit=10&match_type=league&result=win&skip=0&team_id=team_id"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/matches?limit=10&match_type=league&result=win&skip=0&team_id=team_id"
+                ),
+                url
+            )
         );
     }
 

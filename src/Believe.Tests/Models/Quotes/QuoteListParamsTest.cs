@@ -137,11 +137,13 @@ public class QuoteListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/quotes?character_id=character_id&funny=true&inspirational=true&limit=10&moment_type=halftime_speech&skip=0&theme=belief"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/quotes?character_id=character_id&funny=true&inspirational=true&limit=10&moment_type=halftime_speech&skip=0&theme=belief"
+                ),
+                url
+            )
         );
     }
 

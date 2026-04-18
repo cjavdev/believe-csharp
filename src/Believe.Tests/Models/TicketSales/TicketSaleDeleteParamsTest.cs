@@ -22,7 +22,9 @@ public class TicketSaleDeleteParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/ticket-sales/ticket_sale_id"), url);
+        Assert.True(
+            TestBase.UrisEqual(new Uri("https://believe.cjav.dev/ticket-sales/ticket_sale_id"), url)
+        );
     }
 
     [Fact]

@@ -104,11 +104,13 @@ public class TeamMemberListCoachesParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/team-members/coaches/?limit=10&skip=0&specialty=head_coach&team_id=team_id"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/team-members/coaches/?limit=10&skip=0&specialty=head_coach&team_id=team_id"
+                ),
+                url
+            )
         );
     }
 

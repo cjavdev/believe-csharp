@@ -65,7 +65,7 @@ public class TeamMemberCreateParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/team-members"), url);
+        Assert.True(TestBase.UrisEqual(new Uri("https://believe.cjav.dev/team-members"), url));
     }
 
     [Fact]

@@ -115,11 +115,13 @@ public class CharacterListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/characters?limit=10&min_optimism=0&role=coach&skip=0&team_id=team_id"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/characters?limit=10&min_optimism=0&role=coach&skip=0&team_id=team_id"
+                ),
+                url
+            )
         );
     }
 

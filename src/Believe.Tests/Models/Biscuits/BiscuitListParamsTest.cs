@@ -51,7 +51,9 @@ public class BiscuitListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(new Uri("https://believe.cjav.dev/biscuits?limit=10&skip=0"), url);
+        Assert.True(
+            TestBase.UrisEqual(new Uri("https://believe.cjav.dev/biscuits?limit=10&skip=0"), url)
+        );
     }
 
     [Fact]

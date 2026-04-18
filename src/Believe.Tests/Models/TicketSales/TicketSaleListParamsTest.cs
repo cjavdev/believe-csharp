@@ -126,11 +126,13 @@ public class TicketSaleListParamsTest : TestBase
 
         var url = parameters.Url(new() { ApiKey = "My API Key" });
 
-        Assert.Equal(
-            new Uri(
-                "https://believe.cjav.dev/ticket-sales?coupon_code=coupon_code&currency=currency&limit=10&match_id=match_id&purchase_method=online&skip=0"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://believe.cjav.dev/ticket-sales?coupon_code=coupon_code&currency=currency&limit=10&match_id=match_id&purchase_method=online&skip=0"
+                ),
+                url
+            )
         );
     }
 
