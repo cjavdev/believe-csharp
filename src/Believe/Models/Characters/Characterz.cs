@@ -11,8 +11,8 @@ namespace Believe.Models.Characters;
 /// <summary>
 /// Full character model with ID.
 /// </summary>
-[JsonConverter(typeof(JsonModelConverter<Character, CharacterFromRaw>))]
-public sealed record class Character : JsonModel
+[JsonConverter(typeof(JsonModelConverter<Characterz, CharacterzFromRaw>))]
+public sealed record class Characterz : JsonModel
 {
     /// <summary>
     /// Unique identifier
@@ -246,37 +246,37 @@ public sealed record class Character : JsonModel
         _ = this.TeamID;
     }
 
-    public Character() { }
+    public Characterz() { }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    public Character(Character character)
-        : base(character) { }
+    public Characterz(Characterz characterz)
+        : base(characterz) { }
 #pragma warning restore CS8618
 
-    public Character(IReadOnlyDictionary<string, JsonElement> rawData)
+    public Characterz(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    Character(FrozenDictionary<string, JsonElement> rawData)
+    Characterz(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="CharacterFromRaw.FromRawUnchecked"/>
-    public static Character FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    /// <inheritdoc cref="CharacterzFromRaw.FromRawUnchecked"/>
+    public static Characterz FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class CharacterFromRaw : IFromRawJson<Character>
+class CharacterzFromRaw : IFromRawJson<Characterz>
 {
     /// <inheritdoc/>
-    public Character FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Character.FromRawUnchecked(rawData);
+    public Characterz FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Characterz.FromRawUnchecked(rawData);
 }
