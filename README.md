@@ -1,6 +1,6 @@
 # Believe C# API Library
 
-The Believe C# SDK provides convenient access to the Believe REST API from applications written in C#.
+The Believe C# SDK provides convenient access to the Believe REST API from applications written in   C#.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -56,14 +56,14 @@ Or using a combination of the two approaches.
 
 See this table for the available options:
 
-| Property  | Environment variable | Required | Default value                |
-| --------- | -------------------- | -------- | ---------------------------- |
-| `ApiKey`  | `BELIEVE_API_KEY`    | true     | -                            |
-| `BaseUrl` | `BELIEVE_BASE_URL`   | true     | `"https://believe.cjav.dev"` |
+| Property | Environment variable | Required | Default value |
+| - | - | - | - |
+| `ApiKey` | `BELIEVE_API_KEY` | true | - |
+| `BaseUrl` | `BELIEVE_BASE_URL` | true | `"https://believe.cjav.dev"` |
 
 ### Modifying configuration
 
-To temporarily use a modified client configuration, while reusing the same connection and thread pools, call `WithOptions` on any client or service:
+To temporarily use a modified client configuration, while reusing the same connection and thread pools,     call `WithOptions` on any client or service:
 
 ```csharp
 using System;
@@ -81,19 +81,19 @@ var page = await client
 Console.WriteLine(page);
 ```
 
-Using a [`with` expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression) makes it easy to construct the modified options.
+Using a [`with` expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression)     makes it easy to construct the modified options.
 
 The `WithOptions` method does not affect the original client or service.
 
 ## Requests and responses
 
-To send a request to the Believe API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
+To send a request to the Believe API, build an instance of some `Params` class and pass it to the     corresponding client method. When the response is received, it will be deserialized into an instance of     a C# class.
 
-For example, `client.Characters.List` should be called with an instance of `CharacterListParams`, and it will return an instance of `Task<CharacterListPage>`.
+For example, `client.Characters.List` should be called with an instance of `CharacterListParams`, and it will     return an instance of `Task<CharacterListPage>`.
 
 ## Raw responses
 
-The SDK defines methods that deserialize responses into instances of C# classes. However, these methods don't provide access to the response headers, status code, or the raw response body.
+The SDK defines methods that deserialize responses into instances of C# classes.       However, these methods don't provide access to the response headers, status code, or the raw response       body.
 
 To access this data, prefix any HTTP method call on a client or service with `WithRawResponse`:
 
@@ -120,34 +120,36 @@ Console.WriteLine(deserialized);
 
 The SDK throws custom unchecked exception types:
 
-- `BelieveApiException`: Base class for API errors. See this table for which exception subclass is thrown for each HTTP status code:
+- `BelieveApiException`: Base class for API errors. See this table for which exception       subclass is thrown for each HTTP status code:
 
-| Status | Exception                              |
-| ------ | -------------------------------------- |
-| 400    | `BelieveBadRequestException`           |
-| 401    | `BelieveUnauthorizedException`         |
-| 403    | `BelieveForbiddenException`            |
-| 404    | `BelieveNotFoundException`             |
-| 422    | `BelieveUnprocessableEntityException`  |
-| 429    | `BelieveRateLimitException`            |
-| 5xx    | `Believe5xxException`                  |
-| others | `BelieveUnexpectedStatusCodeException` |
+| Status | Exception                                                    |
+| ------ | ------------------------------------------------------------ |
+| 400    | `BelieveBadRequestException`            |
+| 401    | `BelieveUnauthorizedException`          |
+| 403    | `BelieveForbiddenException`             |
+| 404    | `BelieveNotFoundException`              |
+| 422    | `BelieveUnprocessableEntityException`   |
+| 429    | `BelieveRateLimitException`             |
+| 5xx    | `Believe5xxException`                   |
+| others | `BelieveUnexpectedStatusCodeException`  |
 
 Additionally, all 4xx errors inherit from `Believe4xxException`.
 
+
+
 - `BelieveIOException`: I/O networking errors.
 
-- `BelieveInvalidDataException`: Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
+- `BelieveInvalidDataException`: Failure to interpret successfully parsed data. For example,       when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the       response.
 
 - `BelieveException`: Base class for all exceptions.
 
 ## Pagination
 
-The SDK defines methods that return a paginated lists of results. It provides convenient ways to access the results either one page at a time or item-by-item across all pages.
+The SDK defines methods that return a paginated lists of results. It provides convenient ways to access     the results either one page at a time or item-by-item across all pages.
 
 ### Auto-pagination
 
-To iterate through all results across all pages, use the `Paginate` method, which automatically fetches more pages as needed. The method returns an [`IAsyncEnumerable`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1):
+To iterate through all results across all pages, use the `Paginate` method, which     automatically fetches more pages as needed. The method returns an     [`IAsyncEnumerable`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1):
 
 ```csharp
 using System;
@@ -161,7 +163,7 @@ await foreach (var item in page.Paginate())
 
 ### Manual pagination
 
-To access individual page items and manually request the next page, use the `Items` property, and `HasNext` and `Next` methods:
+To access individual page items and manually request the next page, use the `Items`     property, and `HasNext` and `Next` methods:
 
 ```csharp
 using System;
@@ -188,7 +190,6 @@ while (true)
 The SDK automatically retries 2 times by default, with a short exponential backoff between requests.
 
 Only the following error types are retried:
-
 - Connection errors (for example, due to a network connectivity problem)
 - 408 Request Timeout
 - 409 Conflict
@@ -197,7 +198,7 @@ Only the following error types are retried:
 
 The API may also explicitly instruct the SDK to retry or not retry a request.
 
-To set a custom number of retries, configure the client using the `MaxRetries` method:
+To set a custom number of retries, configure the client using the     `MaxRetries` method:
 
 ```csharp
 using Believe;
@@ -380,11 +381,11 @@ if (response.RawData.TryGetValue("my_custom_key", out JsonElement value))
 
 ### Response validation
 
-In rare cases, the API may return a response that doesn't match the expected type. For example, the SDK may expect a property to contain a `string`, but the API could return something else.
+In rare cases, the API may return a response that doesn't match the expected type. For example, the SDK     may expect a property to contain a `string`, but the API could return something else.
 
-By default, the SDK will not throw an exception in this case. It will throw `BelieveInvalidDataException` only if you directly access the property.
+By default, the SDK will not throw an exception in this case. It will throw     `BelieveInvalidDataException` only if you directly access the property.
 
-If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
+If you would prefer to check that the response is completely well-typed upfront, then either call     `Validate`:
 
 ```csharp
 var characterz = client.Characters.Create(parameters);
