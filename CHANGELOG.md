@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2026-04-22)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/believe-csharp/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** manual updates ([42bfb21](https://github.com/cjavdev/believe-csharp/commit/42bfb21890154c85d2073a38ccd676997f3487c8))
+
 ## 0.4.0 (2026-04-18)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/cjavdev/believe-csharp/compare/v0.3.0...v0.4.0)
