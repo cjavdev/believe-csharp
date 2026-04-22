@@ -36,7 +36,7 @@ public sealed class CharacterService : ICharacterService
     }
 
     /// <inheritdoc/>
-    public async Task<Characterz> Create(
+    public async Task<Character> Create(
         CharacterCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -48,7 +48,7 @@ public sealed class CharacterService : ICharacterService
     }
 
     /// <inheritdoc/>
-    public async Task<Characterz> Retrieve(
+    public async Task<Character> Retrieve(
         CharacterRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -60,7 +60,7 @@ public sealed class CharacterService : ICharacterService
     }
 
     /// <inheritdoc/>
-    public Task<Characterz> Retrieve(
+    public Task<Character> Retrieve(
         string characterID,
         CharacterRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -72,7 +72,7 @@ public sealed class CharacterService : ICharacterService
     }
 
     /// <inheritdoc/>
-    public async Task<Characterz> Update(
+    public async Task<Character> Update(
         CharacterUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -84,7 +84,7 @@ public sealed class CharacterService : ICharacterService
     }
 
     /// <inheritdoc/>
-    public Task<Characterz> Update(
+    public Task<Character> Update(
         string characterID,
         CharacterUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -171,7 +171,7 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<Characterz>> Create(
+    public async Task<HttpResponse<Character>> Create(
         CharacterCreateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -186,20 +186,18 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             response,
             async (token) =>
             {
-                var characterz = await response
-                    .Deserialize<Characterz>(token)
-                    .ConfigureAwait(false);
+                var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    characterz.Validate();
+                    character.Validate();
                 }
-                return characterz;
+                return character;
             }
         );
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<Characterz>> Retrieve(
+    public async Task<HttpResponse<Character>> Retrieve(
         CharacterRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -219,20 +217,18 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             response,
             async (token) =>
             {
-                var characterz = await response
-                    .Deserialize<Characterz>(token)
-                    .ConfigureAwait(false);
+                var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    characterz.Validate();
+                    character.Validate();
                 }
-                return characterz;
+                return character;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<Characterz>> Retrieve(
+    public Task<HttpResponse<Character>> Retrieve(
         string characterID,
         CharacterRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -244,7 +240,7 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
     }
 
     /// <inheritdoc/>
-    public async Task<HttpResponse<Characterz>> Update(
+    public async Task<HttpResponse<Character>> Update(
         CharacterUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -264,20 +260,18 @@ public sealed class CharacterServiceWithRawResponse : ICharacterServiceWithRawRe
             response,
             async (token) =>
             {
-                var characterz = await response
-                    .Deserialize<Characterz>(token)
-                    .ConfigureAwait(false);
+                var character = await response.Deserialize<Character>(token).ConfigureAwait(false);
                 if (this._client.ResponseValidation)
                 {
-                    characterz.Validate();
+                    character.Validate();
                 }
-                return characterz;
+                return character;
             }
         );
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponse<Characterz>> Update(
+    public Task<HttpResponse<Character>> Update(
         string characterID,
         CharacterUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
