@@ -16,10 +16,10 @@ public sealed class CharacterListPage(
     ICharacterServiceWithRawResponse service,
     CharacterListParams parameters,
     CharacterListPageResponse response
-) : IPage<Character>
+) : IPage<Characterz>
 {
     /// <inheritdoc/>
-    public IReadOnlyList<Character> Items
+    public IReadOnlyList<Characterz> Items
     {
         get { return response.Data; }
     }
@@ -46,7 +46,7 @@ public sealed class CharacterListPage(
     }
 
     /// <inheritdoc/>
-    async Task<IPage<Character>> IPage<Character>.Next(CancellationToken cancellationToken) =>
+    async Task<IPage<Characterz>> IPage<Characterz>.Next(CancellationToken cancellationToken) =>
         await this.Next(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc cref="IPage{T}.Next"/>
