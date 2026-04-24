@@ -5,12 +5,12 @@ using Believe.Models.Characters;
 
 namespace Believe.Tests.Models.Characters;
 
-public class CharacterzTest : TestBase
+public class CharacterTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -116,7 +116,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -153,10 +153,7 @@ public class CharacterzTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Characterz>(
-            json,
-            ModelBase.SerializerOptions
-        );
+        var deserialized = JsonSerializer.Deserialize<Character>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -164,7 +161,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -201,7 +198,7 @@ public class CharacterzTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<Characterz>(
+        var deserialized = JsonSerializer.Deserialize<Character>(
             element,
             ModelBase.SerializerOptions
         );
@@ -277,7 +274,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -319,7 +316,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -352,7 +349,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -382,7 +379,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -419,7 +416,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -453,7 +450,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -500,7 +497,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -536,7 +533,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullAreSetToNull_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -590,7 +587,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -633,7 +630,7 @@ public class CharacterzTest : TestBase
     [Fact]
     public void CopyConstructor_Works()
     {
-        var model = new Characterz
+        var model = new Character
         {
             ID = "ted-lasso",
             Background =
@@ -669,7 +666,7 @@ public class CharacterzTest : TestBase
             TeamID = "afc-richmond",
         };
 
-        Characterz copied = new(model);
+        Character copied = new(model);
 
         Assert.Equal(model, copied);
     }
