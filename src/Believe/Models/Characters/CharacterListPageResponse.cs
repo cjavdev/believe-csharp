@@ -13,16 +13,16 @@ namespace Believe.Models.Characters;
 )]
 public sealed record class CharacterListPageResponse : JsonModel
 {
-    public required IReadOnlyList<Character> Data
+    public required IReadOnlyList<Characterz> Data
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<ImmutableArray<Character>>("data");
+            return this._rawData.GetNotNullStruct<ImmutableArray<Characterz>>("data");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<Character>>(
+            this._rawData.Set<ImmutableArray<Characterz>>(
                 "data",
                 ImmutableArray.ToImmutableArray(value)
             );
