@@ -32,7 +32,7 @@ public interface ICharacterService
     /// <summary>
     /// Add a new character to the Ted Lasso universe.
     /// </summary>
-    Task<Character> Create(
+    Task<Characterz> Create(
         CharacterCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -40,13 +40,13 @@ public interface ICharacterService
     /// <summary>
     /// Retrieve detailed information about a specific character.
     /// </summary>
-    Task<Character> Retrieve(
+    Task<Characterz> Retrieve(
         CharacterRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(CharacterRetrieveParams, CancellationToken)"/>
-    Task<Character> Retrieve(
+    Task<Characterz> Retrieve(
         string characterID,
         CharacterRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -55,13 +55,13 @@ public interface ICharacterService
     /// <summary>
     /// Update specific fields of an existing character.
     /// </summary>
-    Task<Character> Update(
+    Task<Characterz> Update(
         CharacterUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CharacterUpdateParams, CancellationToken)"/>
-    Task<Character> Update(
+    Task<Characterz> Update(
         string characterID,
         CharacterUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -120,7 +120,7 @@ public interface ICharacterServiceWithRawResponse
     /// Returns a raw HTTP response for <c>post /characters</c>, but is otherwise the
     /// same as <see cref="ICharacterService.Create(CharacterCreateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<Character>> Create(
+    Task<HttpResponse<Characterz>> Create(
         CharacterCreateParams parameters,
         CancellationToken cancellationToken = default
     );
@@ -129,13 +129,13 @@ public interface ICharacterServiceWithRawResponse
     /// Returns a raw HTTP response for <c>get /characters/{character_id}</c>, but is otherwise the
     /// same as <see cref="ICharacterService.Retrieve(CharacterRetrieveParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<Character>> Retrieve(
+    Task<HttpResponse<Characterz>> Retrieve(
         CharacterRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(CharacterRetrieveParams, CancellationToken)"/>
-    Task<HttpResponse<Character>> Retrieve(
+    Task<HttpResponse<Characterz>> Retrieve(
         string characterID,
         CharacterRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -145,13 +145,13 @@ public interface ICharacterServiceWithRawResponse
     /// Returns a raw HTTP response for <c>patch /characters/{character_id}</c>, but is otherwise the
     /// same as <see cref="ICharacterService.Update(CharacterUpdateParams, CancellationToken)"/>.
     /// </summary>
-    Task<HttpResponse<Character>> Update(
+    Task<HttpResponse<Characterz>> Update(
         CharacterUpdateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Update(CharacterUpdateParams, CancellationToken)"/>
-    Task<HttpResponse<Character>> Update(
+    Task<HttpResponse<Characterz>> Update(
         string characterID,
         CharacterUpdateParams? parameters = null,
         CancellationToken cancellationToken = default

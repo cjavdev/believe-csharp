@@ -58,7 +58,7 @@ public class CharacterListPageResponseTest : TestBase
             Total = 0,
         };
 
-        List<Character> expectedData =
+        List<Characterz> expectedData =
         [
             new()
             {
@@ -234,7 +234,7 @@ public class CharacterListPageResponseTest : TestBase
         );
         Assert.NotNull(deserialized);
 
-        List<Character> expectedData =
+        List<Characterz> expectedData =
         [
             new()
             {
