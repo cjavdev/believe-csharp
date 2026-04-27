@@ -387,8 +387,8 @@ By default, the SDK will not throw an exception in this case. It will throw `Bel
 If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
 
 ```csharp
-var characterz = client.Characters.Create(parameters);
-characterz.Validate();
+var character = client.Characters.Create(parameters);
+character.Validate();
 ```
 
 Or configure the client using the `ResponseValidation` option:
@@ -404,13 +404,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var characterz = await client
+var character = await client
     .WithOptions(options =>
         options with { ResponseValidation = true }
     )
     .Characters.Create(parameters);
 
-Console.WriteLine(characterz);
+Console.WriteLine(character);
 ```
 
 ## Semantic versioning

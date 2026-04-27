@@ -8,7 +8,7 @@ public class CharacterServiceTest : TestBase
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Create_Works()
     {
-        var characterz = await this.client.Characters.Create(
+        var character = await this.client.Characters.Create(
             new()
             {
                 Background =
@@ -27,29 +27,29 @@ public class CharacterServiceTest : TestBase
             },
             TestContext.Current.CancellationToken
         );
-        characterz.Validate();
+        character.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var characterz = await this.client.Characters.Retrieve(
+        var character = await this.client.Characters.Retrieve(
             "character_id",
             new(),
             TestContext.Current.CancellationToken
         );
-        characterz.Validate();
+        character.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
-        var characterz = await this.client.Characters.Update(
+        var character = await this.client.Characters.Update(
             "character_id",
             new(),
             TestContext.Current.CancellationToken
         );
-        characterz.Validate();
+        character.Validate();
     }
 
     [Fact(Skip = "Mock server tests are disabled")]
