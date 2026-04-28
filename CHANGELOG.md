@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 (2026-04-28)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/cjavdev/believe-csharp/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* support setting headers via env ([ffe23b2](https://github.com/cjavdev/believe-csharp/commit/ffe23b2c0a8a23f7c5a8c34fcee9c3b20ab688e9))
+
 ## 0.7.0 (2026-04-27)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/cjavdev/believe-csharp/compare/v0.6.0...v0.7.0)
