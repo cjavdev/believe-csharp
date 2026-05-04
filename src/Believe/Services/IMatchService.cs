@@ -126,9 +126,9 @@ public interface IMatchService
     ///
     /// <para>## Example WebSocket URL</para>
     ///
-    /// <para>```
-    /// ws://localhost:8000/matches/live?home_team=AFC%20Richmond&away_team=Manchester%20City&speed=2.0&excitement_level=7
-    /// ```</para>
+    /// <para>``` ws://localhost:8000/matches/live ```</para>
+    ///
+    /// <para>Append query parameters from the list above to customize the simulation.</para>
     ///
     /// <para>## Server Messages</para>
     ///
