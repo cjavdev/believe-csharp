@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.1](https://github.com/cjavdev/believe-csharp/compare/v0.8.0...v0.8.1) (2026-05-04)
+
+
+### Chores
+
+* regenerate from believe[#53](https://github.com/cjavdev/believe-csharp/issues/53) ([daf4958](https://github.com/cjavdev/believe-csharp/commit/daf4958d361b6b1b48f3d3579ece14fecc74be75))
+* regenerate SDKs from believe[#53](https://github.com/cjavdev/believe-csharp/issues/53) (Only merge) ([920c257](https://github.com/cjavdev/believe-csharp/commit/920c257197137afe34c7a9f533b4a209f39be900))
+
 ## 0.8.0 (2026-04-28)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/cjavdev/believe-csharp/compare/v0.7.0...v0.8.0)
