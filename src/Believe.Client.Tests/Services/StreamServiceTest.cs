@@ -1,0 +1,12 @@
+using System.Threading.Tasks;
+
+namespace Believe.Client.Tests.Services;
+
+public class StreamServiceTest : TestBase
+{
+    [Fact(Skip = "Mock server tests are disabled")]
+    public async Task TestConnection_Works()
+    {
+        await this.client.Stream.TestConnection(new(), TestContext.Current.CancellationToken);
+    }
+}
