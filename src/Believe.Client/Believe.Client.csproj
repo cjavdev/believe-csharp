@@ -3,7 +3,7 @@
     <!-- Metadata -->
     <AssemblyTitle>Believe C#</AssemblyTitle>
     <AssemblyName>Believe.Client</AssemblyName>
-    <VersionPrefix>0.5.0</VersionPrefix>
+    <VersionPrefix>0.8.1</VersionPrefix>
     <Description>The official .NET library for the Believe API.</Description>
     <OutputType>Library</OutputType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
