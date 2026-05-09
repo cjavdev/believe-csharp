@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.8.1](https://github.com/cjavdev/believe-csharp/compare/v0.8.0...v0.8.1) (2026-05-04)
+
+
+### Chores
+
+* regenerate from believe[#53](https://github.com/cjavdev/believe-csharp/issues/53) ([daf4958](https://github.com/cjavdev/believe-csharp/commit/daf4958d361b6b1b48f3d3579ece14fecc74be75))
+* regenerate SDKs from believe[#53](https://github.com/cjavdev/believe-csharp/issues/53) (Only merge) ([920c257](https://github.com/cjavdev/believe-csharp/commit/920c257197137afe34c7a9f533b4a209f39be900))
+
+## 0.8.0 (2026-04-28)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/cjavdev/believe-csharp/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* support setting headers via env ([ffe23b2](https://github.com/cjavdev/believe-csharp/commit/ffe23b2c0a8a23f7c5a8c34fcee9c3b20ab688e9))
+
+## 0.7.0 (2026-04-27)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/cjavdev/believe-csharp/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** manual updates ([95ec135](https://github.com/cjavdev/believe-csharp/commit/95ec1357107a5648e49d80918da47df7312bbc9e))
+* **api:** manual updates ([da52476](https://github.com/cjavdev/believe-csharp/commit/da524765f34d5fb18cd686ed3e3576f8f805c4ba))
+
+## 0.6.0 (2026-04-24)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/cjavdev/believe-csharp/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** manual updates ([a674d3b](https://github.com/cjavdev/believe-csharp/commit/a674d3b32025ce8e01bffffc0671ec77895fbc74))
+* **api:** manual updates ([71d3510](https://github.com/cjavdev/believe-csharp/commit/71d3510f91399866f217445e311f343031136615))
+
 ## 0.5.0 (2026-04-22)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/believe-csharp/compare/v0.4.0...v0.5.0)
