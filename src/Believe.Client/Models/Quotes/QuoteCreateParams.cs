@@ -159,6 +159,19 @@ public record class QuoteCreateParams : ParamsBase
     }
 
     /// <summary>
+    /// Season number (1-3) when the quote occurred
+    /// </summary>
+    public long? Season
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("season");
+        }
+        init { this._rawBodyData.Set("season", value); }
+    }
+
+    /// <summary>
     /// Additional themes
     /// </summary>
     public IReadOnlyList<ApiEnum<string, QuoteTheme>>? SecondaryThemes

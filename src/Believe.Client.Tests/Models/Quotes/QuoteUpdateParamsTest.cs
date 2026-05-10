@@ -20,6 +20,7 @@ public class QuoteUpdateParamsTest : TestBase
             IsInspirational = true,
             MomentType = QuoteMoment.HalftimeSpeech,
             PopularityScore = 0,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Belief],
             Text = "x",
             Theme = QuoteTheme.Belief,
@@ -34,6 +35,7 @@ public class QuoteUpdateParamsTest : TestBase
         bool expectedIsInspirational = true;
         ApiEnum<string, QuoteMoment> expectedMomentType = QuoteMoment.HalftimeSpeech;
         double expectedPopularityScore = 0;
+        long expectedSeason = 1;
         List<ApiEnum<string, QuoteTheme>> expectedSecondaryThemes = [QuoteTheme.Belief];
         string expectedText = "x";
         ApiEnum<string, QuoteTheme> expectedTheme = QuoteTheme.Belief;
@@ -47,6 +49,7 @@ public class QuoteUpdateParamsTest : TestBase
         Assert.Equal(expectedIsInspirational, parameters.IsInspirational);
         Assert.Equal(expectedMomentType, parameters.MomentType);
         Assert.Equal(expectedPopularityScore, parameters.PopularityScore);
+        Assert.Equal(expectedSeason, parameters.Season);
         Assert.NotNull(parameters.SecondaryThemes);
         Assert.Equal(expectedSecondaryThemes.Count, parameters.SecondaryThemes.Count);
         for (int i = 0; i < expectedSecondaryThemes.Count; i++)
@@ -77,6 +80,8 @@ public class QuoteUpdateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("moment_type"));
         Assert.Null(parameters.PopularityScore);
         Assert.False(parameters.RawBodyData.ContainsKey("popularity_score"));
+        Assert.Null(parameters.Season);
+        Assert.False(parameters.RawBodyData.ContainsKey("season"));
         Assert.Null(parameters.SecondaryThemes);
         Assert.False(parameters.RawBodyData.ContainsKey("secondary_themes"));
         Assert.Null(parameters.Text);
@@ -101,6 +106,7 @@ public class QuoteUpdateParamsTest : TestBase
             IsInspirational = null,
             MomentType = null,
             PopularityScore = null,
+            Season = null,
             SecondaryThemes = null,
             Text = null,
             Theme = null,
@@ -121,6 +127,8 @@ public class QuoteUpdateParamsTest : TestBase
         Assert.True(parameters.RawBodyData.ContainsKey("moment_type"));
         Assert.Null(parameters.PopularityScore);
         Assert.True(parameters.RawBodyData.ContainsKey("popularity_score"));
+        Assert.Null(parameters.Season);
+        Assert.True(parameters.RawBodyData.ContainsKey("season"));
         Assert.Null(parameters.SecondaryThemes);
         Assert.True(parameters.RawBodyData.ContainsKey("secondary_themes"));
         Assert.Null(parameters.Text);
@@ -154,6 +162,7 @@ public class QuoteUpdateParamsTest : TestBase
             IsInspirational = true,
             MomentType = QuoteMoment.HalftimeSpeech,
             PopularityScore = 0,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Belief],
             Text = "x",
             Theme = QuoteTheme.Belief,
