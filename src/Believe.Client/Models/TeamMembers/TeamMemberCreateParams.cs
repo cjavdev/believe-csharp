@@ -619,7 +619,7 @@ public sealed record class Player : JsonModel
     }
 
     /// <summary>
-    /// Playing position on the field
+    /// Players position on the field
     /// </summary>
     public required ApiEnum<string, Position> Position
     {
