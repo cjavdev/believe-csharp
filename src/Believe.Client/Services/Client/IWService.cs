@@ -37,8 +37,8 @@ public interface IWService
     /// <para>## Example</para>
     ///
     /// <para>```javascript const ws = new WebSocket('ws://localhost:8000/ws/test');
-    /// ws.onmessage = (event) => console.log(event.data); ws.send('Hello!');  // Server responds
-    /// with echo ``` </para>
+    /// ws.onmessage = (event) => console.log(event.data); ws.send('Hello!');  // Server
+    /// responds with echo ``` </para>
     /// </summary>
     Task Test(WTestParams? parameters = null, CancellationToken cancellationToken = default);
 }
