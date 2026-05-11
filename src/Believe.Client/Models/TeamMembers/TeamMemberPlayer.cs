@@ -55,7 +55,7 @@ public sealed record class TeamMemberPlayer : JsonModel
     }
 
     /// <summary>
-    /// Playing position on the field
+    /// Players position on the field
     /// </summary>
     public required ApiEnum<string, Position> Position
     {
