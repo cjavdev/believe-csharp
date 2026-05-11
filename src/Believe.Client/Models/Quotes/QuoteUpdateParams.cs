@@ -100,6 +100,16 @@ public record class QuoteUpdateParams : ParamsBase
         init { this._rawBodyData.Set("popularity_score", value); }
     }
 
+    public long? Season
+    {
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("season");
+        }
+        init { this._rawBodyData.Set("season", value); }
+    }
+
     public IReadOnlyList<ApiEnum<string, QuoteTheme>>? SecondaryThemes
     {
         get
