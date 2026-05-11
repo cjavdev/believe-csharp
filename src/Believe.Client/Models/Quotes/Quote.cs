@@ -161,6 +161,19 @@ public sealed record class Quote : JsonModel
     }
 
     /// <summary>
+    /// Season number (1-3) when the quote occurred
+    /// </summary>
+    public long? Season
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("season");
+        }
+        init { this._rawData.Set("season", value); }
+    }
+
+    /// <summary>
     /// Additional themes
     /// </summary>
     public IReadOnlyList<ApiEnum<string, QuoteTheme>>? SecondaryThemes
@@ -212,6 +225,7 @@ public sealed record class Quote : JsonModel
         _ = this.IsFunny;
         _ = this.IsInspirational;
         _ = this.PopularityScore;
+        _ = this.Season;
         foreach (var item in this.SecondaryThemes ?? [])
         {
             item.Validate();

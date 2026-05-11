@@ -21,6 +21,7 @@ public class QuoteCreateParamsTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 98.5,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Leadership, QuoteTheme.Teamwork],
             TimesShared = 250000,
         };
@@ -34,6 +35,7 @@ public class QuoteCreateParamsTest : TestBase
         bool expectedIsFunny = false;
         bool expectedIsInspirational = true;
         double expectedPopularityScore = 98.5;
+        long expectedSeason = 1;
         List<ApiEnum<string, QuoteTheme>> expectedSecondaryThemes =
         [
             QuoteTheme.Leadership,
@@ -50,6 +52,7 @@ public class QuoteCreateParamsTest : TestBase
         Assert.Equal(expectedIsFunny, parameters.IsFunny);
         Assert.Equal(expectedIsInspirational, parameters.IsInspirational);
         Assert.Equal(expectedPopularityScore, parameters.PopularityScore);
+        Assert.Equal(expectedSeason, parameters.Season);
         Assert.NotNull(parameters.SecondaryThemes);
         Assert.Equal(expectedSecondaryThemes.Count, parameters.SecondaryThemes.Count);
         for (int i = 0; i < expectedSecondaryThemes.Count; i++)
@@ -71,6 +74,7 @@ public class QuoteCreateParamsTest : TestBase
             Theme = QuoteTheme.Belief,
             EpisodeID = "s01e01",
             PopularityScore = 98.5,
+            Season = 1,
             TimesShared = 250000,
         };
 
@@ -94,6 +98,7 @@ public class QuoteCreateParamsTest : TestBase
             Theme = QuoteTheme.Belief,
             EpisodeID = "s01e01",
             PopularityScore = 98.5,
+            Season = 1,
             TimesShared = 250000,
 
             // Null should be interpreted as omitted for these properties
@@ -129,6 +134,8 @@ public class QuoteCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("episode_id"));
         Assert.Null(parameters.PopularityScore);
         Assert.False(parameters.RawBodyData.ContainsKey("popularity_score"));
+        Assert.Null(parameters.Season);
+        Assert.False(parameters.RawBodyData.ContainsKey("season"));
         Assert.Null(parameters.TimesShared);
         Assert.False(parameters.RawBodyData.ContainsKey("times_shared"));
     }
@@ -149,6 +156,7 @@ public class QuoteCreateParamsTest : TestBase
 
             EpisodeID = null,
             PopularityScore = null,
+            Season = null,
             TimesShared = null,
         };
 
@@ -156,6 +164,8 @@ public class QuoteCreateParamsTest : TestBase
         Assert.True(parameters.RawBodyData.ContainsKey("episode_id"));
         Assert.Null(parameters.PopularityScore);
         Assert.True(parameters.RawBodyData.ContainsKey("popularity_score"));
+        Assert.Null(parameters.Season);
+        Assert.True(parameters.RawBodyData.ContainsKey("season"));
         Assert.Null(parameters.TimesShared);
         Assert.True(parameters.RawBodyData.ContainsKey("times_shared"));
     }
@@ -191,6 +201,7 @@ public class QuoteCreateParamsTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 98.5,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Leadership, QuoteTheme.Teamwork],
             TimesShared = 250000,
         };

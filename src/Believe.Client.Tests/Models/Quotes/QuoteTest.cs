@@ -22,6 +22,7 @@ public class QuoteTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 95.5,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
             TimesShared = 150000,
         };
@@ -37,6 +38,7 @@ public class QuoteTest : TestBase
         bool expectedIsFunny = false;
         bool expectedIsInspirational = true;
         double expectedPopularityScore = 95.5;
+        long expectedSeason = 1;
         List<ApiEnum<string, QuoteTheme>> expectedSecondaryThemes =
         [
             QuoteTheme.Wisdom,
@@ -54,6 +56,7 @@ public class QuoteTest : TestBase
         Assert.Equal(expectedIsFunny, model.IsFunny);
         Assert.Equal(expectedIsInspirational, model.IsInspirational);
         Assert.Equal(expectedPopularityScore, model.PopularityScore);
+        Assert.Equal(expectedSeason, model.Season);
         Assert.NotNull(model.SecondaryThemes);
         Assert.Equal(expectedSecondaryThemes.Count, model.SecondaryThemes.Count);
         for (int i = 0; i < expectedSecondaryThemes.Count; i++)
@@ -78,6 +81,7 @@ public class QuoteTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 95.5,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
             TimesShared = 150000,
         };
@@ -103,6 +107,7 @@ public class QuoteTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 95.5,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
             TimesShared = 150000,
         };
@@ -122,6 +127,7 @@ public class QuoteTest : TestBase
         bool expectedIsFunny = false;
         bool expectedIsInspirational = true;
         double expectedPopularityScore = 95.5;
+        long expectedSeason = 1;
         List<ApiEnum<string, QuoteTheme>> expectedSecondaryThemes =
         [
             QuoteTheme.Wisdom,
@@ -139,6 +145,7 @@ public class QuoteTest : TestBase
         Assert.Equal(expectedIsFunny, deserialized.IsFunny);
         Assert.Equal(expectedIsInspirational, deserialized.IsInspirational);
         Assert.Equal(expectedPopularityScore, deserialized.PopularityScore);
+        Assert.Equal(expectedSeason, deserialized.Season);
         Assert.NotNull(deserialized.SecondaryThemes);
         Assert.Equal(expectedSecondaryThemes.Count, deserialized.SecondaryThemes.Count);
         for (int i = 0; i < expectedSecondaryThemes.Count; i++)
@@ -163,6 +170,7 @@ public class QuoteTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 95.5,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
             TimesShared = 150000,
         };
@@ -183,6 +191,7 @@ public class QuoteTest : TestBase
             Theme = QuoteTheme.Curiosity,
             EpisodeID = "s01e08",
             PopularityScore = 95.5,
+            Season = 1,
             TimesShared = 150000,
         };
 
@@ -207,6 +216,7 @@ public class QuoteTest : TestBase
             Theme = QuoteTheme.Curiosity,
             EpisodeID = "s01e08",
             PopularityScore = 95.5,
+            Season = 1,
             TimesShared = 150000,
         };
 
@@ -226,6 +236,7 @@ public class QuoteTest : TestBase
             Theme = QuoteTheme.Curiosity,
             EpisodeID = "s01e08",
             PopularityScore = 95.5,
+            Season = 1,
             TimesShared = 150000,
 
             // Null should be interpreted as omitted for these properties
@@ -255,6 +266,7 @@ public class QuoteTest : TestBase
             Theme = QuoteTheme.Curiosity,
             EpisodeID = "s01e08",
             PopularityScore = 95.5,
+            Season = 1,
             TimesShared = 150000,
 
             // Null should be interpreted as omitted for these properties
@@ -286,6 +298,8 @@ public class QuoteTest : TestBase
         Assert.False(model.RawData.ContainsKey("episode_id"));
         Assert.Null(model.PopularityScore);
         Assert.False(model.RawData.ContainsKey("popularity_score"));
+        Assert.Null(model.Season);
+        Assert.False(model.RawData.ContainsKey("season"));
         Assert.Null(model.TimesShared);
         Assert.False(model.RawData.ContainsKey("times_shared"));
     }
@@ -326,6 +340,7 @@ public class QuoteTest : TestBase
 
             EpisodeID = null,
             PopularityScore = null,
+            Season = null,
             TimesShared = null,
         };
 
@@ -333,6 +348,8 @@ public class QuoteTest : TestBase
         Assert.True(model.RawData.ContainsKey("episode_id"));
         Assert.Null(model.PopularityScore);
         Assert.True(model.RawData.ContainsKey("popularity_score"));
+        Assert.Null(model.Season);
+        Assert.True(model.RawData.ContainsKey("season"));
         Assert.Null(model.TimesShared);
         Assert.True(model.RawData.ContainsKey("times_shared"));
     }
@@ -354,6 +371,7 @@ public class QuoteTest : TestBase
 
             EpisodeID = null,
             PopularityScore = null,
+            Season = null,
             TimesShared = null,
         };
 
@@ -375,6 +393,7 @@ public class QuoteTest : TestBase
             IsFunny = false,
             IsInspirational = true,
             PopularityScore = 95.5,
+            Season = 1,
             SecondaryThemes = [QuoteTheme.Wisdom, QuoteTheme.Kindness],
             TimesShared = 150000,
         };
