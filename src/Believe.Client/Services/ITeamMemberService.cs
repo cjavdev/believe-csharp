@@ -43,9 +43,9 @@ public interface ITeamMemberService
     /// `/characters/{id}`.</para>
     ///
     /// <para>**Example for creating a player:** ```json {   "member_type": "player",
-    /// "character_id": "sam-obisanya",   "team_id": "afc-richmond",   "years_with_team":
-    /// 2,   "position": "midfielder",   "jersey_number": 24,   "goals_scored": 12,
-    /// "assists": 15 } ```</para>
+    /// "character_id": "sam-obisanya",   "team_id": "afc-richmond",
+    /// "years_with_team": 2,   "position": "midfielder",   "jersey_number": 24,
+    /// "goals_scored": 12,   "assists": 15 } ```</para>
     /// </summary>
     Task<TeamMemberCreateResponse> Create(
         TeamMemberCreateParams parameters,
