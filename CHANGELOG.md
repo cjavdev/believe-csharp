@@ -1,9 +1,6 @@
 # Changelog
 
-<<<<<<< HEAD
 ## [0.8.2](https://github.com/cjavdev/believe-csharp/compare/v0.8.1...v0.8.2) (2026-05-10)
-=======
-## 0.5.0 (2026-04-22)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/believe-csharp/compare/v0.4.0...v0.5.0)
 
@@ -45,14 +42,10 @@ Full Changelog: [v0.2.0...v0.3.0](https://github.com/cjavdev/believe-csharp/comp
 * **client:** don't overzealously validate union variants when deserializing ([1ebc212](https://github.com/cjavdev/believe-csharp/commit/1ebc212224a2f7ee920e93da45a0dbf242b56d1a))
 * **client:** handle path params correctly in `FromRawUnchecked` ([dd0724b](https://github.com/cjavdev/believe-csharp/commit/dd0724bd3cbc978f87d07debd7d76943e677b76b))
 * **client:** handle root bodies in requests properly ([90457a0](https://github.com/cjavdev/believe-csharp/commit/90457a01d83bd349856c17a472fa6c1509ad3f92))
->>>>>>> 09ac3e2 (Apply custom code)
 
 
 ### Chores
 
-<<<<<<< HEAD
-* regenerate from believe[#77](https://github.com/cjavdev/believe-csharp/issues/77) ([f271ae5](https://github.com/cjavdev/believe-csharp/commit/f271ae57ded5a22fff4a27a2f99b024054fa1c51))
-=======
 * **ci:** skip lint on metadata-only changes ([3929f8d](https://github.com/cjavdev/believe-csharp/commit/3929f8d339bdd960ff640cdc9f64b95731324f2e))
 * **client:** update formatting ([de26a48](https://github.com/cjavdev/believe-csharp/commit/de26a4851ea8dd00e9c52adbad629df005ffbbe8))
 * **internal:** codegen related update ([f7131db](https://github.com/cjavdev/believe-csharp/commit/f7131dbdd37bfd46666aedfabec912e9de44cd79))
@@ -106,4 +99,3 @@ Full Changelog: [v0.0.1...v0.1.0](https://github.com/cjavdev/believe-csharp/comp
 ### Refactors
 
 * **internal:** default headers ([7b2a55a](https://github.com/cjavdev/believe-csharp/commit/7b2a55a6c63d41858249588cfa69551cdb25383f))
->>>>>>> 09ac3e2 (Apply custom code)
